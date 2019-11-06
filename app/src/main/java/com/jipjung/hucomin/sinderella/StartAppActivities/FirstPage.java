@@ -1,7 +1,9 @@
-package com.jipjung.hucomin.sinderella;
+package com.jipjung.hucomin.sinderella.StartAppActivities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.jipjung.hucomin.sinderella.R;
 
 public class FirstPage extends AppCompatActivity {
 
