@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -28,17 +29,17 @@ public class SplashScreen extends Activity {
         StartAnimations();
     }
     private void StartAnimations() {
-        Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
-        anim.reset();
-        LinearLayout l=(LinearLayout) findViewById(R.id.lin_lay);
-        l.clearAnimation();
-        l.startAnimation(anim);
-
-        anim = AnimationUtils.loadAnimation(this, R.anim.translate);
-        anim.reset();
-        ImageView iv = (ImageView) findViewById(R.id.splash);
-        iv.clearAnimation();
-        iv.startAnimation(anim);
+//        Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);
+//        anim.reset();
+//        ConstraintLayout l=(ConstraintLayout) findViewById(R.id.lin_lay);
+//        l.clearAnimation();
+//        l.startAnimation(anim);
+//
+//        anim = AnimationUtils.loadAnimation(this, R.anim.translate);
+//        anim.reset();
+//        ImageView iv = (ImageView) findViewById(R.id.splash);
+//        iv.clearAnimation();
+//        iv.startAnimation(anim);
 
         splashTread = new Thread() {
             @Override
@@ -50,7 +51,7 @@ public class SplashScreen extends Activity {
                         sleep(50);
                         waited += 125;
                     }
-                    Intent intent = new Intent(SplashScreen.this, FirstPage.class);
+                    Intent intent = new Intent(SplashScreen.this, EmailPasswordActivity.class);
                     startActivity(intent);
 //                    FirebaseAuth mAuth = FirebaseAuth.getInstance();
 //                    if(mAuth.getCurrentUser()!=null){

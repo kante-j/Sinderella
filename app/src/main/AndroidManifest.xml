@@ -4,13 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartAppActivities.FirstPage">
-        </activity>
+        <activity android:name=".StartAppActivities.FirstPage"></activity>
         <activity
             android:name=".StartAppActivities.SplashScreen"
             android:screenOrientation="portrait"
@@ -21,6 +20,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".StartAppActivities.EmailPasswordActivity"></activity>
+        <activity android:name=".HomeActivities.HomeFeed"></activity>
     </application>
 
 </manifest>

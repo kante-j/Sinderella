@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/action_bar_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#87bee8"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <Button
+            android:id="@+id/menu"
+            android:layout_width="19dp"
+            android:layout_height="28dp"
+            android:layout_alignBottom="@+id/simpleLogo"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="98dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toStartOf="@+id/simpleLogo"
+            android:background="@drawable/icon_menu_rounded"
+            android:onClick="menuClick" />
+
+        <ImageView
+            android:id="@+id/simpleLogo"
+            android:layout_width="112dp"
+            android:layout_height="35dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="false"
+            android:background="@drawable/name_ver_1_white" />
+
+        <Button
+            android:id="@+id/searchingText"
+            android:layout_width="26dp"
+            android:layout_height="31dp"
+            android:layout_alignTop="@+id/simpleLogo"
+            android:layout_alignBottom="@+id/simpleLogo"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="91dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="2dp"
+            android:layout_toEndOf="@+id/simpleLogo"
+            android:background="@drawable/search" />
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
