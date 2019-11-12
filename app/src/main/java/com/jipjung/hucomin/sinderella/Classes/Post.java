@@ -47,6 +47,7 @@ public class Post {
     public String getCreated_at() {return this.created_at;}
     public String getId(){ return this.id;}
     public String getNickname(){ return this.nickname;}
+    public int getRating() {return rating; }
 
     @Exclude
     public Map<String, Object> toMap() {

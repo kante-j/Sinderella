@@ -6,12 +6,16 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+
 import com.jipjung.hucomin.sinderella.Fragments.FChat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,7 +31,8 @@ import java.util.ArrayList;
 public class HomeFeed extends AppCompatActivity {
 
     public static String TAG="HomeFeed";
-
+    private DrawerLayout drawerLayout;
+    private View drawerView;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseUser firebaseUser;
     private Fragment fr;
@@ -36,6 +41,8 @@ public class HomeFeed extends AppCompatActivity {
     boolean visible = false;
     public EditText searchingText;
     public static Context context;
+
+
 
     @Override
     protected void onStart() {
@@ -110,9 +117,72 @@ public class HomeFeed extends AppCompatActivity {
 //                }
 //            }
 //        });
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerView = (View)findViewById(R.id.drawer);
+
+        Button buttonOpenDrawer = (Button) findViewById(R.id.action_bar_menu);
+        buttonOpenDrawer.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                drawerLayout.openDrawer(drawerView);
+            }
+        });
+
+        Button buttonCloseDrawer = (Button) findViewById(R.id.closedrawer);
+        buttonCloseDrawer.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+                drawerLayout.closeDrawers();
+            }
+        });
+
+
+        drawerLayout.setDrawerListener(myDrawerListener);
+        drawerView.setOnTouchListener(new View.OnTouchListener() {
+
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                return true;
+            }
+        });
+
+
+
+
+
         context = this;
     }
+    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
 
+        public void onDrawerClosed(View drawerView) {
+        }
+        public void onDrawerOpened(View drawerView) {
+        }
+
+        public void onDrawerSlide(View drawerView, float slideOffset) {
+//                txtPrompt.setText("onDrawerSlide: "
+//                        + String.format("%.2f", slideOffset));
+        }
+
+        public void onDrawerStateChanged(int newState) {
+            String state;
+            switch (newState) {
+                case DrawerLayout.STATE_IDLE:
+                    state = "STATE_IDLE";
+                    break;
+                case DrawerLayout.STATE_DRAGGING:
+                    state = "STATE_DRAGGING";
+                    break;
+                case DrawerLayout.STATE_SETTLING:
+                    state = "STATE_SETTLING";
+                    break;
+                default:
+                    state = "unknown!";
+            }
+
+//                txtPrompt2.setText(state);
+        }
+    };
     public void selectCategory(View view){
         buttons.get(0).setBackgroundResource(R.drawable.converse);
 //        buttons.get(1).setBackgroundResource(R.drawable.recipies);
