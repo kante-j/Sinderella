@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="174dp"
+        android:layout_height="148dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:id="@+id/splash"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="56.5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/logo"
+            app:layout_constraintBottom_toTopOf="@+id/information"
+            app:layout_constraintEnd_toStartOf="@+id/textView2"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원정보 입력"
+            android:textColor="#757070"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/information"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/splash" />
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/information"
+        android:layout_width="319dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/input_information"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.633" />
+
+    <RadioGroup
+        android:id="@+id/sex_group"
+        android:layout_width="185dp"
+        android:layout_height="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="@+id/information"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toStartOf="@+id/information"
+        app:layout_constraintTop_toTopOf="@+id/information"
+        app:layout_constraintVertical_bias="0.274"
+
+        >
+
+        <RadioButton
+            android:id="@+id/man"
+            android:layout_width="61dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:lineSpacingExtra="5sp"
+            android:text="남자"
+            android:textColor="#757070"
+            android:textSize="15sp"
+            tools:text="남자" />
+
+        <RadioButton
+            android:id="@+id/woman"
+            android:layout_width="61dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:lineSpacingExtra="5sp"
+            android:text="여자"
+            android:textColor="#757070"
+            android:textSize="15sp"
+            tools:text="여자" />
+
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/info_nickname"
+        android:layout_width="179dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:hint="닉네임을 입력해주세요"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="@+id/information"
+        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintStart_toStartOf="@+id/information"
+        app:layout_constraintTop_toTopOf="@+id/information"
+        app:layout_constraintVertical_bias="0.048" />
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linearLayout"-->
+        <!--android:layout_width="305dp"-->
+        <!--android:layout_height="37dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/information"-->
+        <!--app:layout_constraintEnd_toEndOf="@+id/information"-->
+        <!--app:layout_constraintHorizontal_bias="0.817"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/information"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/information"-->
+        <!--app:layout_constraintVertical_bias="0.497">-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_year"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:entries="@array/date_year" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_month"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="37dp"-->
+            <!--android:entries="@array/date_month" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_day"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:entries="@array/date_day" />-->
+
+    <!--</LinearLayout>-->
+
+    <Spinner
+        android:id="@+id/foot_size"
+        android:layout_width="173dp"
+        android:layout_height="35dp"
+        android:entries="@array/foot_size"
+        android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
+        android:outlineSpotShadowColor="@color/bootstrap_brand_info"
+        android:textSize="20sp"
+        style="?android:attr/spinnerItemStyle"
+        app:layout_constraintBottom_toBottomOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="@+id/information"
+        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintStart_toStartOf="@+id/information"
+        app:layout_constraintTop_toTopOf="@+id/information"
+        app:layout_constraintVertical_bias="0.676" />
+
+    <RadioGroup
+        android:id="@+id/foot_width_group"
+        android:layout_width="186dp"
+        android:layout_height="22dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="@+id/information"
+        app:layout_constraintHorizontal_bias="0.867"
+        app:layout_constraintStart_toStartOf="@+id/information"
+        app:layout_constraintTop_toTopOf="@+id/information"
+        app:layout_constraintVertical_bias="0.894">
+
+        <RadioButton
+            android:id="@+id/small_foot"
+            android:layout_width="61dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:lineSpacingExtra="5sp"
+            android:text="좁은 편"
+            android:textColor="#757070"
+            android:textSize="10sp"
+            tools:text="좁은 편" />
+
+        <RadioButton
+            android:id="@+id/normal_foot"
+            android:layout_width="61dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:lineSpacingExtra="5sp"
+            android:text="보통"
+            android:textColor="#757070"
+            android:textSize="10sp"
+            tools:text="보통" />
+
+        <RadioButton
+            android:id="@+id/bigger_foot"
+            android:layout_width="61dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:lineSpacingExtra="5sp"
+            android:text="큰 편"
+            android:textColor="#757070"
+            android:textSize="10sp"
+            tools:text="큰 편" />
+
+    </RadioGroup>
+
+
+    <ImageButton
+        android:id="@+id/information_button"
+        android:layout_width="319dp"
+        android:layout_height="61dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="44dp"
+        android:background="@drawable/sign_up_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.52"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/information" />
+
+    <Button
+        android:id="@+id/birth_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="입력하기"
+        app:layout_constraintBottom_toTopOf="@+id/information_button"
+        app:layout_constraintEnd_toEndOf="@+id/information"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/information"
+        app:layout_constraintTop_toTopOf="@+id/information"
+        app:layout_constraintVertical_bias="0.476" />
+
+
+</android.support.constraint.ConstraintLayout>

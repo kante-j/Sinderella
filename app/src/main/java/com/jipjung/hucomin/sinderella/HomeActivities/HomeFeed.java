@@ -24,7 +24,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.jipjung.hucomin.sinderella.PostActivities.Posting;
 import com.jipjung.hucomin.sinderella.R;
+import com.jipjung.hucomin.sinderella.StartAppActivities.UserInfoInput;
 
 import java.util.ArrayList;
 
@@ -59,8 +61,8 @@ public class HomeFeed extends AppCompatActivity {
                         nickname = document.getString("nickname");
 
                     } else {
-//                        Intent i = new Intent(HomeFeed.this,EnterDetailed.class);
-//                        startActivityForResult(i, 1);
+                        Intent i = new Intent(HomeFeed.this,UserInfoInput.class);
+                        startActivityForResult(i, 1);
 //                        Log.d(TAG, "No such document");
                     }
                 } else {
@@ -96,12 +98,12 @@ public class HomeFeed extends AppCompatActivity {
         Button bActivities = (Button) findViewById(R.id.activities);
         Button bTips = (Button) findViewById(R.id.tips);
         Button btn = (Button) findViewById(R.id.add_post);
-//        btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                goPosting();
-//            }
-//        });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goPosting();
+            }
+        });
         Button btnSearch = (Button)findViewById(R.id.searchingText);
 //        searchingText = (EditText)findViewById(R.id.searchingText);
 //        btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -183,6 +185,12 @@ public class HomeFeed extends AppCompatActivity {
 //                txtPrompt2.setText(state);
         }
     };
+
+    private void goPosting(){
+        Intent intent = new Intent(this, Posting.class);
+        intent.putExtra("Category",fr.getClass().getSimpleName());
+        startActivity(intent);
+    }
     public void selectCategory(View view){
         buttons.get(0).setBackgroundResource(R.drawable.converse);
 //        buttons.get(1).setBackgroundResource(R.drawable.recipies);

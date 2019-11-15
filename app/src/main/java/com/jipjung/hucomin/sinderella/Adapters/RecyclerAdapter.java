@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-//import com.example.kante.live_alone.PostActivities.DetailedPost;
+import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
 import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.Classes.Post;
@@ -112,7 +112,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.post_id= post.getId();
         holder.post_category = post.getCategory();
 
-        //like count 설정
+//        like count 설정
 //        Like like = null;
 //        int likecount = 0;
 //        for(int i=0; i<likes.size(); i++){
@@ -120,7 +120,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //                likecount++;
 //            }
 //        }
-//
+
 //        if(like == null){
 //            holder.like_counts.setText(String.valueOf(0));
 //        }else{
@@ -154,13 +154,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         //리사이클러뷰 각각의 아이템에 유저 닉네임 보이도록 표시
 
-        try{
-            Date date = new SimpleDateFormat("yyyyMMddkkmmss").parse(post.getCreated_at());
-            String format = new SimpleDateFormat("yyyy/MM/dd kk:mm").format(date);
-            holder.time.setText(format);
-        }catch(ParseException pe){
-            pe.printStackTrace();
-        }
+//        try{
+//            Date date = new SimpleDateFormat("yyyyMMddkkmmss").parse(post.getCreated_at());
+//            String format = new SimpleDateFormat("yyyy/MM/dd kk:mm").format(date);
+//            holder.time.setText(format);
+//        }catch(ParseException pe){
+//            pe.printStackTrace();
+//        }
         if (post.getImageURL() != null) {
             StorageReference path = storageRef.child(post.image_url);
             Glide.with(this.context).load(path).skipMemoryCache(true).into(holder.image);
@@ -230,26 +230,26 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             posting_user_id = itemView.findViewById(R.id.posting_user_id);
 
 
-//            cardview.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    String pTitle = title.getText().toString();
-//                    String pBody = body.getText().toString();
-//                    String pUid = feed_nickname.getText().toString();
-//                    String pTime = time.getText().toString();
-//                    Intent intent = new Intent(context, DetailedPost.class);
-//                    intent.putExtra("TIME", pTime);
-//                    intent.putExtra("TITLE", pTitle);
-//                    intent.putExtra("BODY", pBody);
-//                    intent.putExtra("UID", pUid);
-//                    intent.putExtra("TIME", pTime);
-//                    intent.putExtra("URL", url);
-//                    intent.putExtra("POSTID",post_id);
-//                    intent.putExtra("posting_user_id",posting_user_id.getText().toString());
-//                    intent.putExtra("CATEGORY",post_category);
-//                    context.startActivity(intent);
-//                }
-//            });
+            cardview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String pTitle = title.getText().toString();
+                    String pBody = body.getText().toString();
+                    String pUid = feed_nickname.getText().toString();
+                    String pTime = time.getText().toString();
+                    Intent intent = new Intent(context, DetailedPost.class);
+                    intent.putExtra("TIME", pTime);
+                    intent.putExtra("TITLE", pTitle);
+                    intent.putExtra("BODY", pBody);
+                    intent.putExtra("UID", pUid);
+                    intent.putExtra("TIME", pTime);
+                    intent.putExtra("URL", url);
+                    intent.putExtra("POSTID",post_id);
+                    intent.putExtra("posting_user_id",posting_user_id.getText().toString());
+                    intent.putExtra("CATEGORY",post_category);
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
