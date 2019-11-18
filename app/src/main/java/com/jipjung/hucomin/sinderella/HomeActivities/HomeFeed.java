@@ -24,8 +24,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.jipjung.hucomin.sinderella.MyMenuActivities.MyMenu;
 import com.jipjung.hucomin.sinderella.PostActivities.Posting;
 import com.jipjung.hucomin.sinderella.R;
+import com.jipjung.hucomin.sinderella.Search.SearchActivity;
 import com.jipjung.hucomin.sinderella.StartAppActivities.UserInfoInput;
 
 import java.util.ArrayList;
@@ -119,6 +121,8 @@ public class HomeFeed extends AppCompatActivity {
 //                }
 //            }
 //        });
+
+        // Drawer Layout 화면
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View)findViewById(R.id.drawer);
 
@@ -135,6 +139,26 @@ public class HomeFeed extends AppCompatActivity {
 
             public void onClick(View arg0) {
                 drawerLayout.closeDrawers();
+            }
+        });
+
+        Button btn_gomymenu = findViewById(R.id.go_mymenu_btn);
+        btn_gomymenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeFeed.this, MyMenu.class);
+                startActivity(intent);
+
+            }
+        });
+
+        Button btn_searchingText = findViewById(R.id.searchingText);
+        btn_searchingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
+                startActivity(intent);
+
             }
         });
 

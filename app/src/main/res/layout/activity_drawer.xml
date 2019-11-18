@@ -31,21 +31,23 @@
             android:textColor="#6c8e5e" />
     </LinearLayout>
 
-    <LinearLayout
+    <!--<LinearLayout-->
+        <!--android:id="@+id/go_mymenu"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="50dp"-->
+        <!--android:layout_margin="10dp"-->
+        <!--android:background="#f2ffe8"-->
+        <!--android:gravity="center"-->
+        <!--android:orientation="vertical">-->
+
+    <Button
+        android:id="@+id/go_mymenu_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="#f2ffe8"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="퍼즐잎 메뉴2"
-            android:textColor="#6c8e5e" />
-    </LinearLayout>
+        android:text="내 정보"
+        android:textColor="#6c8e5e" />
+    <!--</LinearLayout>-->
 
     <Button
         android:id="@+id/closedrawer"

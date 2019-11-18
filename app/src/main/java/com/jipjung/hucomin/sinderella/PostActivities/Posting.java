@@ -105,8 +105,8 @@ public class Posting extends AppCompatActivity {
 
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
         users = mFirestore.collection("users").document(fbUser.getUid());
-        postingTitle = findViewById(R.id.posting_title);
-        changePostingTitle();
+//        postingTitle = findViewById(R.id.posting_title);
+//        changePostingTitle();
         getUserInfo(fbUser);
         postingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,24 +195,24 @@ public class Posting extends AppCompatActivity {
         }
     }
 
-    public void changePostingTitle(){
-        String category = getIntent().getStringExtra("Category");
-        if(category.equals("FCook")){
-            postingTitle.setText("꿀 레시피 게시글 작성하기");
-        }else if(category.equals("FActivities")){
-            postingTitle.setText("교내/대외 활동 게시글 작성하기");
-        }else if(category.equals("FEatout")){
-            postingTitle.setText("음식점 추천 게시글 작성하기");
-        }else if(category.equals("FRoom")){
-            postingTitle.setText("방값 정보 게시글 작성하기");
-        }else if(category.equals("FTips")){
-            postingTitle.setText("생활 꿀팁 게시글 작성하기");
-        }else if(category.equals("FTrans")){
-            postingTitle.setText("중고품 거래 게시글 작성하기");
-        }else if(category.equals("FChat")){
-            postingTitle.setText("자유 게시판 게시글 작성하기");
-        }
-    }
+//    public void changePostingTitle(){
+//        String category = getIntent().getStringExtra("Category");
+//        if(category.equals("FCook")){
+//            postingTitle.setText("꿀 레시피 게시글 작성하기");
+//        }else if(category.equals("FActivities")){
+//            postingTitle.setText("교내/대외 활동 게시글 작성하기");
+//        }else if(category.equals("FEatout")){
+//            postingTitle.setText("음식점 추천 게시글 작성하기");
+//        }else if(category.equals("FRoom")){
+//            postingTitle.setText("방값 정보 게시글 작성하기");
+//        }else if(category.equals("FTips")){
+//            postingTitle.setText("생활 꿀팁 게시글 작성하기");
+//        }else if(category.equals("FTrans")){
+//            postingTitle.setText("중고품 거래 게시글 작성하기");
+//        }else if(category.equals("FChat")){
+//            postingTitle.setText("자유 게시판 게시글 작성하기");
+//        }
+//    }
 
     private void launchCamera() {
         Log.d("CAMERA", "launchCamera");

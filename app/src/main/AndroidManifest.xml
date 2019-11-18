@@ -25,6 +25,8 @@
         <activity android:name=".StartAppActivities.UserInfoInput"></activity>
         <activity android:name=".PostActivities.Posting"></activity>
         <activity android:name=".PostActivities.DetailedPost"></activity>
+        <activity android:name=".MyMenuActivities.MyMenu"></activity>
+        <activity android:name=".Search.SearchActivity"></activity>
     </application>
 
 </manifest>

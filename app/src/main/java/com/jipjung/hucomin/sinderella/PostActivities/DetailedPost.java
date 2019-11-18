@@ -84,7 +84,7 @@ public class DetailedPost extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detailed_post);
+        setContentView(R.layout.post_detail);
 
         //유저정보와 글쓴이가 일치하다면 포스트 삭제버튼 활성화
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -114,7 +114,7 @@ public class DetailedPost extends AppCompatActivity {
         buttonLike = findViewById(R.id.btn_like);
 //        findLocationButton = findViewById(R.id.find_location);
 //        note = findViewById(R.id.note);
-        sendMessagebtn = findViewById(R.id.btn_send_message);
+//        sendMessagebtn = findViewById(R.id.btn_send_message);
         Intent intent = getIntent();
         dTitle.setText(intent.getStringExtra("TITLE"));
         dBody.setText(intent.getStringExtra("BODY"));
@@ -156,11 +156,11 @@ public class DetailedPost extends AppCompatActivity {
         Log.d("qweqweqwe",intent.getStringExtra("posting_user_id"));
         Log.d("qweqweqwe",firebaseAuth.getUid());
 
-        if(!firebaseAuth.getUid().equals(intent.getStringExtra("posting_user_id"))){
-            Log.d("qweqweqwe",intent.getStringExtra("posting_user_id"));
-            Log.d("qweqweqwe",firebaseAuth.getUid());
-            sendMessagebtn.setVisibility(View.VISIBLE);
-        }
+//        if(!firebaseAuth.getUid().equals(intent.getStringExtra("posting_user_id"))){
+//            Log.d("qweqweqwe",intent.getStringExtra("posting_user_id"));
+//            Log.d("qweqweqwe",firebaseAuth.getUid());
+//            sendMessagebtn.setVisibility(View.VISIBLE);
+//        }
 
         commentListView = (ListView)findViewById(R.id.list_comments);
         //댓글 보이기
