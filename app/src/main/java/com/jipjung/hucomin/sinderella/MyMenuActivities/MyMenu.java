@@ -66,11 +66,11 @@ public class MyMenu extends AppCompatActivity {
 //        text_foot_size = findViewById(R.id.mypage_foot_size);
 //        text_foot_width = findViewById(R.id.mypage_foot_width);
 
-        text_nickname.setText(user.getNickname());
-        text_email.setText(fbUser.getEmail());
-        birth_date.setText(user.get);
-        text_foot_width.setText(user.getFoot_width());
-        text_foot_size.setText(user.getFoot_size());
+//        text_nickname.setText(user.getNickname());
+//        text_email.setText(fbUser.getEmail());
+//        birth_date.setText(user.get);
+//        text_foot_width.setText(user.getFoot_width());
+//        text_foot_size.setText(user.getFoot_size());
 
 //        String timeStamp = new SimpleDateFormat("yyyy년 MM월 dd일").format(fbUser.getMetadata().getCreationTimestamp());
 //        text_email.setText(fbUser.getEmail().toString());
