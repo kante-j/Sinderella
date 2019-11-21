@@ -1,6 +1,8 @@
 package com.jipjung.hucomin.sinderella.PostActivities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -11,15 +13,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RatingBar;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.beardedhen.androidbootstrap.BootstrapButton;
-import com.beardedhen.androidbootstrap.BootstrapLabel;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,6 +38,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.jipjung.hucomin.sinderella.StartAppActivities.FirstPage;
+import com.jipjung.hucomin.sinderella.StartAppActivities.SplashScreen;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -50,11 +56,6 @@ public class Posting extends AppCompatActivity {
     private Button postingButton;
     private TextView text_title;
     private TextView text_context;
-//    private TextView text_reason;
-//    private TextView text_inf;
-//    private TextView text_product;
-//    private TextView text_cost;
-    private String foodFrom;
     private String uid;
     private String email;
     private String nickname;
@@ -64,9 +65,32 @@ public class Posting extends AppCompatActivity {
     private DocumentReference users;
     private String imagePath;
     private Uri filePath;
-    private BootstrapButton btnChoose;
+    private ImageButton btnChoose;
     private ImageView imageView;
-    private BootstrapLabel postingTitle;
+
+
+    //Rating bar
+    private RatingBar ratingBarForShoes;
+    private float rating;
+    // RadioButton
+    private RadioGroup shoes_weight_radiogroup;
+    private RadioGroup shoe_size_radiogroup;
+    private RadioGroup vantilation_radiogroup;
+    private RadioGroup waterproof_radiogroup;
+
+    private String buyURLString;
+    private String price;
+
+    private String shoes_weight;
+    private String shoe_size;
+    private String vantilation;
+    private String waterproof;
+
+
+    private TextView buyURL;
+
+    private TextView priceTextView;
+
 
 
     @Override
@@ -85,7 +109,7 @@ public class Posting extends AppCompatActivity {
         // Create a storage reference from our app
         storageReference = storage.getReference();
 
-        btnChoose = (BootstrapButton) findViewById(R.id.btnChoose);
+        btnChoose = (ImageButton) findViewById(R.id.btnChoose);
         btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -98,11 +122,6 @@ public class Posting extends AppCompatActivity {
         text_context = findViewById(R.id.text_context);
         text_title = findViewById(R.id.text_title);
 
-//        text_reason = findViewById(R.id.text_reason);
-//        text_product = findViewById(R.id.text_pname);
-//        text_cost = findViewById(R.id.text_cost);
-//        text_inf = findViewById(R.id.inf);
-
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
         users = mFirestore.collection("users").document(fbUser.getUid());
 //        postingTitle = findViewById(R.id.posting_title);
@@ -114,31 +133,12 @@ public class Posting extends AppCompatActivity {
                 String eatoutBody = null;
                 String transBody;
                 if(imageView.getDrawable()==null) {
-//                    if (getIntent().getStringExtra("Category").equals("FEatout")) {
-//                        if (foodFrom != null)
-//                            eatoutBody = "음식 종류 : " + foodFrom + "\n\n추천 이유 : " + text_reason.getText() + "\n\n기타 정보 : " + text_inf.getText();
-//                        writeNewPost(uid, nickname, text_title.getText().toString(), eatoutBody);
-//                    } else if (getIntent().getStringExtra("Category").equals("FTrans")) {
-//                        transBody = "판매품 이름 : " + text_product.getText() + "\n\n가격 : " + text_cost.getText() + "원\n\n기타 정보 : " + text_inf.getText();
-//                        writeNewPost(uid, nickname, text_title.getText().toString(), transBody);
-//                    }
-//                    else
                         writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
                     if(validatePost())
                         finish();
                 }else{
                     if(validatePost())
                         uploadImage();
-//                    if(getIntent().getStringExtra("Category").equals("FEatout")){
-//                        if(foodFrom != null)
-//                            eatoutBody = "음식 종류 : "+foodFrom+"\n\n추천 이유 : "+text_reason.getText()+"\n\n기타 정보 : "+text_inf.getText();
-//                        writeNewPost(uid, nickname, text_title.getText().toString(), eatoutBody);
-//                    }
-//                    else if(getIntent().getStringExtra("Category").equals("FTrans")){
-//                        transBody = "판매품 이름 : "+text_product.getText()+"\n\n가격 : "+text_cost.getText()+"원\n\n기타 정보 : "+text_inf.getText();
-//                        writeNewPost(uid, nickname, text_title.getText().toString(), transBody);
-//                    }
-//                    else
                         writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
                 }
             }
@@ -151,6 +151,88 @@ public class Posting extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        ratingBarForShoes = findViewById(R.id.ratingForShoes);
+
+
+        shoes_weight_radiogroup = findViewById(R.id.shoes_weight);
+        shoes_weight_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.shoes_weight_fit:
+                        shoes_weight = "fit";
+                        break;
+                    case R.id.shoes_weight_heavy:
+                        shoes_weight = "heavy";
+                        break;
+                    case R.id.shoes_weight_light:
+                        shoes_weight = "light";
+                            break;
+                }
+
+            }
+        });
+
+        shoe_size_radiogroup = findViewById(R.id.shoes_size);
+        shoe_size_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+
+                switch (checkedId){
+                    case R.id.shoes_size_big:
+                        shoe_size = "big";
+                        break;
+                    case R.id.shoes_size_fit:
+                        shoe_size = "fit";
+                        break;
+                    case R.id.shoes_size_small:
+                        shoe_size = "small";
+                }
+
+            }
+        });
+
+        vantilation_radiogroup = findViewById(R.id.ventilation);
+        vantilation_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.ventilation_good:
+                        vantilation = "good";
+                        break;
+                    case R.id.ventilation_best:
+                        vantilation = "best";
+                        break;
+                    case R.id.ventilation_bad:
+                        vantilation = "bad";
+                        break;
+                }
+            }
+        });
+
+        waterproof_radiogroup = findViewById(R.id.waterproof);
+        waterproof_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.waterproof_bad:
+                        waterproof = "bad";
+                        break;
+                    case R.id.waterproof_best:
+                        waterproof= "best";
+                        break;
+                    case R.id.waterproof_good:
+                        waterproof="good";
+                        break;
+                }
+            }
+        });
+
+        buyURL = findViewById(R.id.buyURL);
+
+        priceTextView = findViewById(R.id.priceTextView);
+
 
 
 
@@ -170,6 +252,9 @@ public class Posting extends AppCompatActivity {
     }
 
     private void writeNewPost(String userId, String username, String title, String body) {
+        rating = ratingBarForShoes.getRating();
+        buyURLString = buyURL.getText().toString();
+        price = priceTextView.getText().toString();
         WriteBatch batch = mFirestore.batch();
         DocumentReference posts = mFirestore.collection("posts").document();
         if(validatePost()){
@@ -181,6 +266,13 @@ public class Posting extends AppCompatActivity {
             docData.put("title",title);
             docData.put("nickname",nickname);
             docData.put("body",body);
+            docData.put("waterproof",waterproof);
+            docData.put("ventilation",vantilation);
+            docData.put("shoes_size",shoe_size);
+            docData.put("shoes_weight",shoes_weight);
+            docData.put("rating",rating);
+            docData.put("price",price);
+            docData.put("buyURL",buyURLString);
             docData.put("category",getIntent().getStringExtra("Category"));
 
             if(imagePath!=null){
@@ -194,25 +286,6 @@ public class Posting extends AppCompatActivity {
             batch.commit();
         }
     }
-
-//    public void changePostingTitle(){
-//        String category = getIntent().getStringExtra("Category");
-//        if(category.equals("FCook")){
-//            postingTitle.setText("꿀 레시피 게시글 작성하기");
-//        }else if(category.equals("FActivities")){
-//            postingTitle.setText("교내/대외 활동 게시글 작성하기");
-//        }else if(category.equals("FEatout")){
-//            postingTitle.setText("음식점 추천 게시글 작성하기");
-//        }else if(category.equals("FRoom")){
-//            postingTitle.setText("방값 정보 게시글 작성하기");
-//        }else if(category.equals("FTips")){
-//            postingTitle.setText("생활 꿀팁 게시글 작성하기");
-//        }else if(category.equals("FTrans")){
-//            postingTitle.setText("중고품 거래 게시글 작성하기");
-//        }else if(category.equals("FChat")){
-//            postingTitle.setText("자유 게시판 게시글 작성하기");
-//        }
-//    }
 
     private void launchCamera() {
         Log.d("CAMERA", "launchCamera");
@@ -286,8 +359,20 @@ public class Posting extends AppCompatActivity {
         }
     }
 
-    public void onRadioButtonClicked(View v){
-        foodFrom = (String)((RadioButton) v).getText();
+//    public void onRadioButtonClicked(View v){
+//        foodFrom = (String)((RadioButton) v).getText();
+//    }
+
+    public void shoeDialogNotImage(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("사진을 넣어주세요!");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.show();
     }
 
     public boolean validatePost(){
@@ -298,19 +383,11 @@ public class Posting extends AppCompatActivity {
             valid = false;
         } else
             text_title.setError(null);
+        if(filePath==null){
+            shoeDialogNotImage();
+            valid = false;
+        }
 
-//        if(getIntent().getStringExtra("Category").equals("FTrans")){
-//            if(TextUtils.isEmpty(text_product.getText())){
-//                text_product.setError("판매할 상품 이름을 입력하세요!");
-//                valid = false;
-//            } else
-//                text_product.setError(null);
-//            if(TextUtils.isEmpty(text_cost.getText())){
-//                text_cost.setError("판매 가격을 입력하세요!");
-//                valid = false;
-//            } else
-//                text_cost.setError(null);
-//        }
         return valid;
     }
 }

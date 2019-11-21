@@ -208,6 +208,8 @@ public class DetailedPost extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 
     @Override

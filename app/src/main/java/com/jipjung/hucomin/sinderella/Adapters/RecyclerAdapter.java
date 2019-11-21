@@ -236,13 +236,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     String pTitle = title.getText().toString();
                     String pBody = body.getText().toString();
                     String pUid = feed_nickname.getText().toString();
-                    String pTime = time.getText().toString();
+//                    String pTime = time.getText().toString();
                     Intent intent = new Intent(context, DetailedPost.class);
-                    intent.putExtra("TIME", pTime);
+//                    intent.putExtra("TIME", pTime);
                     intent.putExtra("TITLE", pTitle);
                     intent.putExtra("BODY", pBody);
                     intent.putExtra("UID", pUid);
-                    intent.putExtra("TIME", pTime);
+//                    intent.putExtra("TIME", pTime);
                     intent.putExtra("URL", url);
                     intent.putExtra("POSTID",post_id);
                     intent.putExtra("posting_user_id",posting_user_id.getText().toString());

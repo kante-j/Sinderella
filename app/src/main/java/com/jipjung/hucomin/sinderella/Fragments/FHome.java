@@ -28,7 +28,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
-public class FChat extends Fragment {
+public class FHome extends Fragment {
     private FirebaseFirestore fs;
     //    static final int LIMIT = 50;
     private ArrayList<Post> mArrayList;
@@ -40,7 +40,7 @@ public class FChat extends Fragment {
     ProgressBar pgsBar;
 
 
-    public FChat() {
+    public FHome() {
         // Required empty public constructor
     }
 

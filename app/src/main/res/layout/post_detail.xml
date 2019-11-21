@@ -78,34 +78,38 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2">
-
-                                    <ImageView
-                                        android:id="@+id/post_follow_bar"
-                                        android:layout_width="94dp"
-                                        android:layout_height="33.5dp"
-                                        android:layout_centerInParent="true"
-                                        android:background="@drawable/follow_bar" />
-
-                                    <TextView
-                                        android:id="@+id/post_follow"
+                                    <Switch
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_alignLeft="@+id/post_follow_bar"
-                                        android:layout_centerInParent="true"
-                                        android:layout_marginStart="13dp"
-                                        android:letterSpacing="0.06"
-                                        android:lineSpacingExtra="4sp"
-                                        android:text="follow"
-                                        android:textColor="#ffffff"
-                                        android:textSize="15dp" />
+                                        android:text="Follow"/>
 
-                                    <ImageView
-                                        android:id="@+id/follow_circle"
-                                        android:layout_width="29.8dp"
-                                        android:layout_height="29.8dp"
-                                        android:layout_alignRight="@+id/post_follow_bar"
-                                        android:layout_centerInParent="true"
-                                        android:background="@drawable/follow_circle" />
+                                    <!--<ImageView-->
+                                        <!--android:id="@+id/post_follow_bar"-->
+                                        <!--android:layout_width="94dp"-->
+                                        <!--android:layout_height="33.5dp"-->
+                                        <!--android:layout_centerInParent="true"-->
+                                        <!--android:background="@drawable/follow_bar" />-->
+
+                                    <!--<TextView-->
+                                        <!--android:id="@+id/post_follow"-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:layout_alignLeft="@+id/post_follow_bar"-->
+                                        <!--android:layout_centerInParent="true"-->
+                                        <!--android:layout_marginStart="13dp"-->
+                                        <!--android:letterSpacing="0.06"-->
+                                        <!--android:lineSpacingExtra="4sp"-->
+                                        <!--android:text="follow"-->
+                                        <!--android:textColor="#ffffff"-->
+                                        <!--android:textSize="15dp" />-->
+
+                                    <!--<ImageView-->
+                                        <!--android:id="@+id/follow_circle"-->
+                                        <!--android:layout_width="29.8dp"-->
+                                        <!--android:layout_height="29.8dp"-->
+                                        <!--android:layout_alignRight="@+id/post_follow_bar"-->
+                                        <!--android:layout_centerInParent="true"-->
+                                        <!--android:background="@drawable/follow_circle" />-->
                                 </RelativeLayout>
                             </LinearLayout>
 
