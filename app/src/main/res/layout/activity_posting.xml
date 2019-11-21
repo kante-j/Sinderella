@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        tools:context=".PostActivities.Posting">
+
+        <RelativeLayout
+            android:id="@+id/actionbar"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#87bee8"
+            android:orientation="horizontal"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="0dp">
+
+            <ImageButton
+                android:id="@+id/xButtoninPosting"
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#87bee8"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/x_btn" />
+
+            <ImageView
+                android:id="@+id/simpleLogo"
+                android:layout_width="112dp"
+                android:layout_height="35dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:adjustViewBounds="false"
+                android:background="@drawable/name_ver_1_white" />
+
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageButton
+                        android:id="@+id/btnChoose"
+                        android:layout_width="wrap_content"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:background="@drawable/photo_sample"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/postImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_context"
+                        app:layout_constraintVertical_bias="0.473" />
+
+                </FrameLayout>
+
+                <com.beardedhen.androidbootstrap.BootstrapButtonGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:text="BootstrapButtonGroup"
+                    app:bootstrapBrand="success"
+                    app:bootstrapSize="lg"
+                    app:roundedCorners="true">
+
+                </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
+
+                <com.beardedhen.androidbootstrap.BootstrapWell
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:bootstrapSize="sm">
+
+                    <EditText
+                        android:id="@+id/text_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:hint="제목을 입력하세요"
+                        android:inputType="textPersonName"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.503"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </com.beardedhen.androidbootstrap.BootstrapWell>
+
+                <Spinner
+                    android:id="@+id/foot_size_correction"
+                    style="?android:attr/spinnerItemStyle"
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:entries="@array/foot_size"
+                    android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
+                    android:outlineSpotShadowColor="@color/bootstrap_brand_info"
+                    android:spinnerMode="dialog"
+                    android:textSize="20sp"
+
+                    app:layout_constraintBottom_toBottomOf="@+id/information"
+                    app:layout_constraintEnd_toEndOf="@+id/information"
+                    app:layout_constraintHorizontal_bias="0.846"
+                    app:layout_constraintStart_toStartOf="@+id/information"
+                    app:layout_constraintTop_toTopOf="@+id/information"
+                    app:layout_constraintVertical_bias="0.676" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="평점" />
+
+                    <RatingBar
+                        android:id="@+id/ratingForShoes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:numStars="5"
+                        android:outlineSpotShadowColor="#87bee8"
+                        android:stepSize="0.5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="구입처" />
+
+                    <EditText
+                        android:id="@+id/buyURL"
+                        android:layout_width="201dp"
+                        android:layout_height="43dp"
+                        android:hint="구입처의 url을 입력해 주세요"
+                        android:letterSpacing="-0.01"
+                        android:textColor="#707070"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:text="구매가격" />
+
+                    <EditText android:id="@+id/priceTextView"
+                        android:layout_width="201dp"
+                        android:layout_height="43dp"
+                        android:hint="구입한 가격을 입력해 주세요"
+                        android:letterSpacing="-0.01"
+                        android:textColor="#707070"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="신발 무게" />
+
+                    <RadioGroup
+                        android:id="@+id/shoes_weight"
+                        android:layout_width="274dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/shoes_weight_heavy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="무겁다" />
+
+                        <RadioButton
+                            android:id="@+id/shoes_weight_fit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="적당하다" />
+
+                        <RadioButton
+                            android:id="@+id/shoes_weight_light"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="가볍다" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="신발 사이즈" />
+
+                    <RadioGroup
+                        android:id="@+id/shoes_size"
+                        android:layout_width="274dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/shoes_size_big"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="크다" />
+
+                        <RadioButton
+                            android:id="@+id/shoes_size_fit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="적당하다" />
+
+                        <RadioButton
+                            android:id="@+id/shoes_size_small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="작다" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="통풍" />
+
+                    <RadioGroup
+                        android:id="@+id/ventilation"
+                        android:layout_width="274dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/ventilation_best"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="잘된다" />
+
+                        <RadioButton
+                            android:id="@+id/ventilation_good"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="적당하다" />
+
+                        <RadioButton
+                            android:id="@+id/ventilation_bad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="안된다" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="방수" />
+
+                    <RadioGroup
+                        android:id="@+id/waterproof"
+                        android:layout_width="274dp"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/waterproof_best"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="잘된다" />
+
+                        <RadioButton
+                            android:id="@+id/waterproof_good"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="적당하다" />
+
+                        <RadioButton
+                            android:id="@+id/waterproof_bad"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="안된다" />
+                    </RadioGroup>
+                </LinearLayout>
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/posting_context_back"
+                        android:layout_width="350dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/posting_context"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"></ImageView>
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="30dp"
+                        android:lineSpacingExtra="3sp"
+                        android:text="리뷰"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_constraintLeft_toLeftOf="@+id/posting_context_back"
+                        app:layout_constraintTop_toTopOf="@+id/posting_context_back" />
+
+                    <View
+                        android:id="@+id/vertical_line"
+                        android:layout_width="300dp"
+                        android:layout_height="2dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="#000000"
+                        app:layout_constraintEnd_toEndOf="@+id/posting_context_back"
+                        app:layout_constraintHorizontal_bias="0.727"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/textView3" />
+
+                    <EditText
+                        android:id="@+id/text_context"
+                        android:layout_width="302dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentBottom="true"
+                        android:hint="진과 실물이 흡사한지, 발등은 어느정도
+여유가 남는지 등
+자세하고 자유롭게 서술해 주세요!"
+                        app:layout_constraintHorizontal_bias="0.542"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/vertical_line" />
+
+                </android.support.constraint.ConstraintLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_posting"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/add_post_btin"
+        android:textColor="@android:color/white" />
+</RelativeLayout>

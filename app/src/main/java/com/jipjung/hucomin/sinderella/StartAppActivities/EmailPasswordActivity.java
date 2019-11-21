@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
 
 public class EmailPasswordActivity extends BaseActivity implements
@@ -98,7 +99,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Intent intent = new Intent(EmailPasswordActivity.this, FirstPage.class);
+                            Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
                             startActivity(intent);
                             finish();
 //                            updateUI(user);
@@ -137,7 +138,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                             FirebaseUser user = mAuth.getCurrentUser();
 //                            updateUI(user);
 
-                            Intent intent = new Intent(EmailPasswordActivity.this, FirstPage.class);
+                            Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
                             startActivity(intent);
                             finish();
                         } else {
@@ -233,7 +234,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 //            findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
 //            if(user.isEmailVerified()){
                 Log.d("qwdqwdwqdqddw",user.getEmail());
-                Intent intent = new Intent(this, FirstPage.class);
+                Intent intent = new Intent(this, HomeFeed.class);
                 startActivity(intent);
                 finish();
 //            }

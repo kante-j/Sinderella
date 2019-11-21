@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="327dp"
+    android:layout_height="151dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/mypage_item_feeds_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_margin="5dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/mypage_item_feeds_post_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/mypage_item_feeds_postedImage"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_gravity="center_vertical"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/mypage_item_feeds_postedImage"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mypage_item_feeds_feed_posting_user_id"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="TextView"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/mypage_item_feeds_feed_nickname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="3sp"
+                        android:text="nickname"
+                        android:textColor="#6c6464"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/mypage_item_feeds_detail"
+                        android:layout_width="157dp"
+                        android:layout_height="45dp"
+                        android:lineSpacingExtra="2sp"
+                        android:text="content"
+                        android:textColor="#6c6464"
+                        android:textSize="10sp" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="0" />
+
+                    <LinearLayout
+                        android:id="@+id/mypage_item_feeds_likes_comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/info"
+                        android:layout_gravity="fill_horizontal"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:orientation="horizontal">
+
+
+
+                        <ImageView
+                            android:id="@+id/mypage_item_feeds_commet"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginTop="3dp"
+                            android:layout_below="@+id/info"
+                            android:background="@drawable/commet"
+                            />
+
+                        <TextView
+                            android:id="@+id/mypage_item_feeds_commet_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="0"
+                            android:text="0"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            />
+
+                        <ImageView
+                            android:id="@+id/mypage_item_feeds_like"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_below="@+id/info"
+                            android:layout_marginTop="3dp"
+                            app:srcCompat="@drawable/like" />
+
+                        <TextView
+                            android:id="@+id/mypage_item_feeds_likes_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="0"
+                            android:text="0"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+
+                        <ImageView
+                            android:id="@+id/mypage_item_feeds_cart"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_below="@+id/info"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/cart"/>
+
+                        <TextView
+                            android:id="@+id/mypage_item_feeds_cart_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_weight="0"
+                            android:text="0"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            />
+
+
+                        <RatingBar
+                            android:id="@+id/mypage_item_feeds_ratingBar"
+                            style="?android:attr/ratingBarStyleSmall"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:numStars="5"
+                            android:rating="3"
+                            android:stepSize="0.5"
+                            />
+                        <TextView
+                            android:id="@+id/mypage_item_feeds_star_evaluation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0.0"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5dp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</LinearLayout>

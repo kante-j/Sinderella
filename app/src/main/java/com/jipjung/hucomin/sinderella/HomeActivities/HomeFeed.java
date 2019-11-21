@@ -14,9 +14,16 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.jipjung.hucomin.sinderella.Fragments.FChat;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.jipjung.hucomin.sinderella.Classes.User;
+import com.jipjung.hucomin.sinderella.Fragments.FCart;
+import com.jipjung.hucomin.sinderella.Fragments.FFollow;
+import com.jipjung.hucomin.sinderella.Fragments.FHome;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,7 +31,12 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.jipjung.hucomin.sinderella.Fragments.FMymenu;
+import com.jipjung.hucomin.sinderella.MyMenuActivities.MyMenu;
+import com.jipjung.hucomin.sinderella.PostActivities.Posting;
 import com.jipjung.hucomin.sinderella.R;
+import com.jipjung.hucomin.sinderella.Search.SearchActivity;
+import com.jipjung.hucomin.sinderella.StartAppActivities.UserInfoInput;
 
 import java.util.ArrayList;
 
@@ -41,6 +53,15 @@ public class HomeFeed extends AppCompatActivity {
     boolean visible = false;
     public EditText searchingText;
     public static Context context;
+
+    private Bundle userbundle;
+
+    private User user;
+    // under bar Button
+    private ImageView follow_btn;
+    private ImageView cart_btn;
+    private ImageView home_btn;
+    private ImageView mypage_btn;
 
 
 
@@ -59,8 +80,8 @@ public class HomeFeed extends AppCompatActivity {
                         nickname = document.getString("nickname");
 
                     } else {
-//                        Intent i = new Intent(HomeFeed.this,EnterDetailed.class);
-//                        startActivityForResult(i, 1);
+                        Intent i = new Intent(HomeFeed.this,UserInfoInput.class);
+                        startActivityForResult(i, 1);
 //                        Log.d(TAG, "No such document");
                     }
                 } else {
@@ -78,30 +99,78 @@ public class HomeFeed extends AppCompatActivity {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        fr = new FChat();
+        fr = new FHome();
         getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fr).commit();
 
-        buttons = new ArrayList<Button>();
-        buttons.add((Button)findViewById(R.id.chat));
-        buttons.add((Button)findViewById(R.id.cook));
-        buttons.add((Button)findViewById(R.id.room));
-        buttons.add((Button)findViewById(R.id.activities));
-        buttons.add((Button)findViewById(R.id.tips));
-        buttons.add((Button)findViewById(R.id.eatout));
-        buttons.add((Button)findViewById(R.id.trans));
-//        buttons.get(0).setBackgroundResource(R.drawable.chat_2);
+        follow_btn = findViewById(R.id.go_follow);
+        cart_btn = findViewById(R.id.go_shop);
+        mypage_btn = findViewById(R.id.go_mymenu);
+        home_btn = findViewById(R.id.go_home);
 
-        Button bCook = (Button) findViewById(R.id.cook);
-        Button bRoom = (Button) findViewById(R.id.room);
-        Button bActivities = (Button) findViewById(R.id.activities);
-        Button bTips = (Button) findViewById(R.id.tips);
-        Button btn = (Button) findViewById(R.id.add_post);
-//        btn.setOnClickListener(new View.OnClickListener() {
+
+        userbundle = new Bundle();
+
+        firebaseFirestore.collection("users").whereEqualTo("user_id",firebaseUser.getUid()).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    }
+                })
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            return;
+                        }else{
+                            user = queryDocumentSnapshots.toObjects(User.class).get(0);
+                            userbundle.putSerializable("user",user);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+//        follow_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                goPosting();
+//                fr = new FFollow();
+//                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fr).commit();
 //            }
 //        });
+//
+//        home_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                fr = new FHome();
+//                getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fr).commit();
+//            }
+//        });
+
+
+
+//        buttons = new ArrayList<Button>();
+//        buttons.add((Button)findViewById(R.id.chat));
+//        buttons.add((Button)findViewById(R.id.cook));
+//        buttons.add((Button)findViewById(R.id.room));
+//        buttons.add((Button)findViewById(R.id.activities));
+//        buttons.add((Button)findViewById(R.id.tips));
+//        buttons.add((Button)findViewById(R.id.eatout));
+//        buttons.add((Button)findViewById(R.id.trans));
+//        buttons.get(0).setBackgroundResource(R.drawable.chat_2);
+
+//        Button bCook = (Button) findViewById(R.id.cook);
+//        Button bRoom = (Button) findViewById(R.id.room);
+//        Button bActivities = (Button) findViewById(R.id.activities);
+//        Button bTips = (Button) findViewById(R.id.tips);
+        Button btn = (Button) findViewById(R.id.add_post);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goPosting();
+            }
+        });
         Button btnSearch = (Button)findViewById(R.id.searchingText);
 //        searchingText = (EditText)findViewById(R.id.searchingText);
 //        btnSearch.setOnClickListener(new View.OnClickListener() {
@@ -117,6 +186,8 @@ public class HomeFeed extends AppCompatActivity {
 //                }
 //            }
 //        });
+
+        // Drawer Layout 화면
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View)findViewById(R.id.drawer);
 
@@ -133,6 +204,38 @@ public class HomeFeed extends AppCompatActivity {
 
             public void onClick(View arg0) {
                 drawerLayout.closeDrawers();
+            }
+        });
+
+        Button btn_gomymenu = findViewById(R.id.go_mymenu_btn);
+        btn_gomymenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fr = new FMymenu();
+                fr.setArguments(userbundle);
+//                mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
+
+                FragmentManager fm = getSupportFragmentManager();
+
+                FragmentTransaction ft = fm.beginTransaction();
+
+                ft.replace(R.id.fragment_container, fr);
+
+                ft.commit();
+
+//                Intent intent = new Intent(HomeFeed.this, MyMenu.class);
+//                startActivity(intent);
+
+            }
+        });
+
+        Button btn_searchingText = findViewById(R.id.searchingText);
+        btn_searchingText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
+                startActivity(intent);
+
             }
         });
 
@@ -183,46 +286,38 @@ public class HomeFeed extends AppCompatActivity {
 //                txtPrompt2.setText(state);
         }
     };
+
+    private void goPosting(){
+        Intent intent = new Intent(this, Posting.class);
+        intent.putExtra("Category",fr.getClass().getSimpleName());
+        startActivity(intent);
+    }
     public void selectCategory(View view){
-        buttons.get(0).setBackgroundResource(R.drawable.converse);
-//        buttons.get(1).setBackgroundResource(R.drawable.recipies);
-//        buttons.get(2).setBackgroundResource(R.drawable.roominfo);
-//        buttons.get(3).setBackgroundResource(R.drawable.schoolact);
-//        buttons.get(4).setBackgroundResource(R.drawable.tips);
-//        buttons.get(5).setBackgroundResource(R.drawable.eatout);
-//        buttons.get(6).setBackgroundResource(R.drawable.trans);
+        follow_btn.setBackgroundResource(R.drawable.follow);
+        home_btn.setBackgroundResource(R.drawable.home);
+        cart_btn.setBackgroundResource(R.drawable.shop);
+        mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
 
         fr = null;
+
         switch(view.getId()){
-            case R.id.chat:
-                fr = new FChat();
-                Bundle b = new Bundle();
-                buttons.get(0).setBackgroundResource(R.drawable.converse);
+            case R.id.go_home:
+                fr = new FHome();
+                home_btn.setBackgroundResource(R.drawable.icon_home);
                 break;
-//            case R.id.cook:
-//                fr = new FCook();
-//                buttons.get(1).setBackgroundResource(R.drawable.recipies_2);
-//                break;
-//            case R.id.room:
-//                fr = new FRoom();
-//                buttons.get(2).setBackgroundResource(R.drawable.room_2);
-//                break;
-//            case R.id.activities:
-//                fr = new FActivities();
-//                buttons.get(3).setBackgroundResource(R.drawable.activities_2);
-//                break;
-//            case R.id.tips:
-//                fr = new FTips();
-//                buttons.get(4).setBackgroundResource(R.drawable.tips_2);
-//                break;
-//            case R.id.eatout:
-//                fr = new FEatout();
-//                buttons.get(5).setBackgroundResource(R.drawable.eatout_2);
-//                break;
-//            case R.id.trans:
-//                fr = new FTrans();
-//                buttons.get(6).setBackgroundResource(R.drawable.trans_2);
-//                break;
+            case R.id.go_follow:
+                fr = new FFollow();
+                follow_btn.setBackgroundResource(R.drawable.follow_clicked);
+                break;
+            case R.id.go_shop:
+                fr = new FCart();
+                cart_btn.setBackgroundResource(R.drawable.cart_clicked);
+                break;
+            case R.id.go_mymenu:
+                fr = new FMymenu();
+                fr.setArguments(userbundle);
+                mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
+                break;
         }
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
