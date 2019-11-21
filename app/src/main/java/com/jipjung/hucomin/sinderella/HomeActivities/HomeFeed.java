@@ -17,6 +17,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.QuerySnapshot;
+import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.Fragments.FCart;
 import com.jipjung.hucomin.sinderella.Fragments.FFollow;
 import com.jipjung.hucomin.sinderella.Fragments.FHome;
@@ -50,6 +54,9 @@ public class HomeFeed extends AppCompatActivity {
     public EditText searchingText;
     public static Context context;
 
+    private Bundle userbundle;
+
+    private User user;
     // under bar Button
     private ImageView follow_btn;
     private ImageView cart_btn;
@@ -99,6 +106,32 @@ public class HomeFeed extends AppCompatActivity {
         cart_btn = findViewById(R.id.go_shop);
         mypage_btn = findViewById(R.id.go_mymenu);
         home_btn = findViewById(R.id.go_home);
+
+
+        userbundle = new Bundle();
+
+        firebaseFirestore.collection("users").whereEqualTo("user_id",firebaseUser.getUid()).get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    }
+                })
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            return;
+                        }else{
+                            user = queryDocumentSnapshots.toObjects(User.class).get(0);
+                            userbundle.putSerializable("user",user);
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
 //        follow_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -178,8 +211,20 @@ public class HomeFeed extends AppCompatActivity {
         btn_gomymenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeFeed.this, MyMenu.class);
-                startActivity(intent);
+                fr = new FMymenu();
+                fr.setArguments(userbundle);
+//                mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
+
+                FragmentManager fm = getSupportFragmentManager();
+
+                FragmentTransaction ft = fm.beginTransaction();
+
+                ft.replace(R.id.fragment_container, fr);
+
+                ft.commit();
+
+//                Intent intent = new Intent(HomeFeed.this, MyMenu.class);
+//                startActivity(intent);
 
             }
         });
@@ -254,10 +299,10 @@ public class HomeFeed extends AppCompatActivity {
         mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
 
         fr = null;
+
         switch(view.getId()){
             case R.id.go_home:
                 fr = new FHome();
-                Bundle b = new Bundle();
                 home_btn.setBackgroundResource(R.drawable.icon_home);
                 break;
             case R.id.go_follow:
@@ -270,6 +315,7 @@ public class HomeFeed extends AppCompatActivity {
                 break;
             case R.id.go_mymenu:
                 fr = new FMymenu();
+                fr.setArguments(userbundle);
                 mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
                 break;
         }

@@ -34,36 +34,49 @@ public class MyMenu extends AppCompatActivity {
     private TextView text_created_at;
     private TextView text_email;
     private TextView text_nickname;
+    private TextView birth_date;
+    private TextView text_foot_size;
+    private TextView text_foot_width;
     private User user;
     private FirebaseAuth fbAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profilecoerrection);
+        setContentView(R.layout.profilemodify);
 
 //        //get User Info
 //        FirebaseFirestore.setLoggingEnabled(true);
-//        fs = FirebaseFirestore.getInstance();
+        fs = FirebaseFirestore.getInstance();
 ////        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
 ////                .setTimestampsInSnapshotsEnabled(true)
 ////                .build();
 ////        fs.setFirestoreSettings(settings);
 //
 //
-//        fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        fbUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        user = (User)getIntent().getSerializableExtra("user");
 //
 //        //Find Text View by Id
-//        text_email = findViewById(R.id.mymenu_email);
+        text_email = findViewById(R.id.profilemodify_email);
 //        text_created_at = findViewById(R.id.mymenu_created_at);
-//        text_nickname = findViewById(R.id.mymenu_nickname);
-//
+        text_nickname = findViewById(R.id.profilemodify_email);
+        birth_date = findViewById(R.id.year_month_day);
+//        text_foot_size = findViewById(R.id.mypage_foot_size);
+//        text_foot_width = findViewById(R.id.mypage_foot_width);
+
+        text_nickname.setText(user.getNickname());
+        text_email.setText(fbUser.getEmail());
+        birth_date.setText(user.get);
+        text_foot_width.setText(user.getFoot_width());
+        text_foot_size.setText(user.getFoot_size());
+
 //        String timeStamp = new SimpleDateFormat("yyyy년 MM월 dd일").format(fbUser.getMetadata().getCreationTimestamp());
 //        text_email.setText(fbUser.getEmail().toString());
 //        text_created_at.setText(timeStamp);
 //
 //
-////        getUser();
 //        text_nickname.setText(getIntent().getStringExtra("nickname"));
 //
 //        //로그아웃
@@ -122,30 +135,31 @@ public class MyMenu extends AppCompatActivity {
     public void restartApp(Context context) {
     }
 
-    private void getUser(){
-        fs.collection("users").whereEqualTo("user_id",fbUser.getUid()).get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    }
-                })
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(queryDocumentSnapshots.isEmpty()){
-                            return;
-                        }else{
-                            user = queryDocumentSnapshots.toObjects(User.class).get(0);
-                            text_nickname.setText(user.getNickname());
-                        }
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                    }
-                });
-    }
+//    private void getUser(){
+//        fs.collection("users").whereEqualTo("user_id",fbUser.getUid()).get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                    }
+//                })
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(queryDocumentSnapshots.isEmpty()){
+//                            return;
+//                        }else{
+//                            user = queryDocumentSnapshots.toObjects(User.class).get(0);
+//
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                    }
+//                });
+//
+//    }
 //    public void menuClick(View v){
 //        PopupMenu popup = new PopupMenu(getApplicationContext(), v);
 //        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
