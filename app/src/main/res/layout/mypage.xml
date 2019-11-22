@@ -8,7 +8,8 @@
 
     <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -18,6 +19,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="36dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
 
@@ -35,9 +38,9 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_marginTop="5dp"
                             android:layout_marginEnd="10dp"
                             android:layout_marginBottom="5dp"
-                            android:layout_marginTop="5dp"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -51,83 +54,78 @@
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:text=""
-                                    android:textSize="15sp"
-                                    />
+                                    android:textSize="15sp" />
 
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:orientation="horizontal">
 
                                 <TextView
                                     android:id="@+id/mypage_email"
-                                    android:layout_weight="1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/profile_word"
                                     android:gravity="center"
                                     android:text=""
-                                    android:textSize="15sp"
-                                    android:background="@drawable/profile_word"
-                                    />
+                                    android:textSize="15sp" />
 
                             </LinearLayout>
 
 
                             <LinearLayout
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_weight="1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_weight="1"
                                     android:gravity="center"
                                     android:text="발사이즈"
-                                    android:textSize="15sp"
-                                    />
+                                    android:textSize="15sp" />
+
                                 <TextView
                                     android:id="@+id/mypage_foot_size"
-                                    android:layout_weight="1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/profile_word"
                                     android:gravity="center"
                                     android:text=""
-                                    android:textSize="15sp"
-                                    android:background="@drawable/profile_word"
-                                    />
+                                    android:textSize="15sp" />
                             </LinearLayout>
 
                             <LinearLayout
-                                android:layout_weight="1"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:orientation="horizontal">
 
                                 <TextView
-                                    android:layout_weight="1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_weight="1"
                                     android:gravity="center"
                                     android:text="발볼"
-                                    android:textSize="15sp"
-                                    />
+                                    android:textSize="15sp" />
+
                                 <TextView
                                     android:id="@+id/mypage_foot_width"
-                                    android:layout_weight="1"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/profile_word"
                                     android:gravity="center"
                                     android:text=""
-                                    android:textSize="15sp"
-                                    android:background="@drawable/profile_word"
-                                    />
+                                    android:textSize="15sp" />
                             </LinearLayout>
-
 
 
                         </LinearLayout>
@@ -137,8 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        >
+                        android:gravity="center">
 
 
                         <ImageView
@@ -152,28 +149,26 @@
                             android:gravity="center"
 
                             />
+
                         <TextView
                             android:layout_width="300dp"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
                             android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="프로필 수정하기"
                             android:textColor="@android:color/white"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:text="프로필 수정하기"
-                            />
+                            android:textStyle="bold" />
 
                         <ImageView
                             android:id="@+id/mypage_btn_profile_scroll"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:background="@drawable/scroll"
                             android:layout_alignRight="@+id/mypage_btn_profile"
-                            android:layout_marginEnd="5dp"
                             android:layout_centerVertical="true"
-                            />
+                            android:layout_marginEnd="5dp"
+                            android:background="@drawable/scroll" />
                     </RelativeLayout>
-
 
 
                     <LinearLayout
@@ -181,40 +176,36 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="horizontal"
                         android:layout_marginStart="30dp"
-                        android:layout_marginEnd="30dp"
                         android:layout_marginTop="20dp"
-                        >
+                        android:layout_marginEnd="30dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/follower"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/mypage_follow"
                             android:gravity="center"
                             android:text="팔로워"
-                            android:textStyle="bold"
                             android:textSize="15sp"
-                            android:background="@drawable/mypage_follow" />
+                            android:textStyle="bold" />
 
 
                         <Button
                             android:id="@+id/following"
-                            android:layout_weight="1"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:background="@drawable/mypage_following"
                             android:gravity="center"
                             android:text="팔로잉"
-                            android:textStyle="bold"
                             android:textSize="15sp"
-                            android:background="@drawable/mypage_following"
-                            />
-
-
+                            android:textStyle="bold" />
 
 
                     </LinearLayout>
@@ -224,17 +215,13 @@
                         android:id="@+id/mypage_follower_and_following"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/mypage_followLayout"
                         android:layout_above="@id/mypage_commet_container_layout"
-                        android:layout_gravity="center"
-                        >
+                        android:layout_below="@+id/mypage_followLayout"
+                        android:layout_gravity="center">
 
 
 
                     </FrameLayout>
-
-
-
 
 
                     <LinearLayout
@@ -243,8 +230,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        android:orientation="vertical"
-                        >
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/mypage_commet_upper_text"
@@ -262,10 +248,9 @@
                         android:id="@+id/mypage_commet_fragment_container"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:layout_above="@id/under"
                         android:layout_below="@id/mypage_followLayout"
-                        >
+                        android:layout_gravity="center">
 
                     </FrameLayout>
 
@@ -274,18 +259,12 @@
                         android:id="@+id/mypage_logout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
+                        android:layout_below="@+id/mypage_commet_fragment_container"
+                        android:background="@drawable/logout"
                         android:text="Logout"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:background="@drawable/logout"
-                        android:layout_below="@+id/mypage_commet_fragment_container"
-                        />
-
-
-
-
-
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>

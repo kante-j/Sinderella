@@ -44,7 +44,7 @@
 
                             <LinearLayout
                                 android:id="@+id/user_add_follow"
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_marginTop="24.5dp"
@@ -54,6 +54,7 @@
                                     android:id="@+id/picture_post"
                                     android:layout_width="45dp"
                                     android:layout_height="45dp"
+                                    android:layout_marginStart="20.1dp"
                                     android:layout_marginEnd="10dp"
                                     android:layout_weight="1"
                                     android:background="@drawable/profile_circle" />
@@ -78,39 +79,42 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_weight="2">
+
                                     <Switch
+                                        android:id="@+id/follow_switch"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="Follow"/>
+                                        android:text="Follow" />
 
                                     <!--<ImageView-->
-                                        <!--android:id="@+id/post_follow_bar"-->
-                                        <!--android:layout_width="94dp"-->
-                                        <!--android:layout_height="33.5dp"-->
-                                        <!--android:layout_centerInParent="true"-->
-                                        <!--android:background="@drawable/follow_bar" />-->
+                                    <!--android:id="@+id/post_follow_bar"-->
+                                    <!--android:layout_width="94dp"-->
+                                    <!--android:layout_height="33.5dp"-->
+                                    <!--android:layout_centerInParent="true"-->
+                                    <!--android:background="@drawable/follow_bar" />-->
 
                                     <!--<TextView-->
-                                        <!--android:id="@+id/post_follow"-->
-                                        <!--android:layout_width="wrap_content"-->
-                                        <!--android:layout_height="wrap_content"-->
-                                        <!--android:layout_alignLeft="@+id/post_follow_bar"-->
-                                        <!--android:layout_centerInParent="true"-->
-                                        <!--android:layout_marginStart="13dp"-->
-                                        <!--android:letterSpacing="0.06"-->
-                                        <!--android:lineSpacingExtra="4sp"-->
-                                        <!--android:text="follow"-->
-                                        <!--android:textColor="#ffffff"-->
-                                        <!--android:textSize="15dp" />-->
+                                    <!--android:id="@+id/post_follow"-->
+                                    <!--android:layout_width="wrap_content"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:layout_alignLeft="@+id/post_follow_bar"-->
+                                    <!--android:layout_centerInParent="true"-->
+                                    <!--android:layout_marginStart="13dp"-->
+                                    <!--android:letterSpacing="0.06"-->
+                                    <!--android:lineSpacingExtra="4sp"-->
+                                    <!--android:text="follow"-->
+                                    <!--android:textColor="#ffffff"-->
+                                    <!--android:textSize="15dp" />-->
 
                                     <!--<ImageView-->
-                                        <!--android:id="@+id/follow_circle"-->
-                                        <!--android:layout_width="29.8dp"-->
-                                        <!--android:layout_height="29.8dp"-->
-                                        <!--android:layout_alignRight="@+id/post_follow_bar"-->
-                                        <!--android:layout_centerInParent="true"-->
-                                        <!--android:background="@drawable/follow_circle" />-->
+                                    <!--android:id="@+id/follow_circle"-->
+                                    <!--android:layout_width="29.8dp"-->
+                                    <!--android:layout_height="29.8dp"-->
+                                    <!--android:layout_alignRight="@+id/post_follow_bar"-->
+                                    <!--android:layout_centerInParent="true"-->
+                                    <!--android:background="@drawable/follow_circle" />-->
                                 </RelativeLayout>
+
                             </LinearLayout>
 
                             <ImageView
@@ -120,8 +124,7 @@
                                 android:layout_gravity="center"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:visibility="gone"
-                                />
+                                android:visibility="gone" />
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
@@ -131,118 +134,110 @@
                                 <ImageView
                                     android:id="@+id/btn_commet"
                                     android:layout_width="20dp"
-                                    android:layout_height="30dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginBottom="10dp"
+                                    android:layout_height="20dp"
                                     android:layout_alignParentStart="true"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/commet"
-                                    />
+                                    android:layout_marginStart="26dp"
+                                    android:layout_marginTop="20dp"
+                                    android:layout_marginBottom="10dp"
+                                    android:background="@drawable/comment" />
 
                                 <TextView
                                     android:id="@+id/post_commet_count"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginStart="5dp"
-                                    android:textSize="15sp"
-                                    android:textColor="#bbbccd"
-                                    android:lineSpacingExtra="1.5sp"
                                     android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
                                     android:layout_toRightOf="@+id/btn_commet"
                                     android:gravity="start"
+                                    android:lineSpacingExtra="1.5sp"
                                     android:text="256"
-                                    />
+                                    android:textColor="#bbbccd"
+                                    android:textSize="15sp" />
 
                                 <ImageView
                                     android:id="@+id/btn_like"
                                     android:layout_width="20dp"
                                     android:layout_height="30dp"
-                                    android:layout_toRightOf="@+id/post_commet_count"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
                                     android:layout_marginTop="20dp"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginStart="5dp"
+                                    android:layout_toRightOf="@+id/post_commet_count"
                                     android:onClick="onClickLike"
-                                    android:layout_centerVertical="true"
                                     app:srcCompat="@drawable/like" />
 
                                 <TextView
                                     android:id="@+id/post_like_count"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginStart="5dp"
-                                    android:textSize="15sp"
-                                    android:textColor="#bbbccd"
-                                    android:lineSpacingExtra="1.5sp"
                                     android:layout_centerVertical="true"
-                                    android:gravity="start"
+                                    android:layout_marginStart="5dp"
                                     android:layout_toRightOf="@+id/btn_like"
+                                    android:gravity="start"
+                                    android:lineSpacingExtra="1.5sp"
                                     android:text="256"
-                                    />
+                                    android:textColor="#bbbccd"
+                                    android:textSize="15sp" />
 
                                 <ImageView
                                     android:id="@+id/btn_cart"
                                     android:layout_width="20dp"
                                     android:layout_height="20dp"
-                                    android:layout_toRightOf="@+id/post_like_count"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginStart="5dp"
                                     android:layout_marginTop="20dp"
                                     android:layout_marginBottom="10dp"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_centerVertical="true"
-                                    android:background="@drawable/cart"/>
+                                    android:layout_toRightOf="@+id/post_like_count"
+                                    android:background="@drawable/cart" />
 
                                 <TextView
                                     android:id="@+id/post_cart_count"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="30dp"
-                                    android:textSize="15sp"
-                                    android:textColor="#bbbccd"
-                                    android:lineSpacingExtra="1.5sp"
-                                    android:layout_centerVertical="true"
-                                    android:gravity="start"
                                     android:layout_toRightOf="@+id/btn_cart"
-                                    android:text="256"/>
-
-
-
+                                    android:gravity="start"
+                                    android:lineSpacingExtra="1.5sp"
+                                    android:text="256"
+                                    android:textColor="#bbbccd"
+                                    android:textSize="15sp" />
 
 
                                 <RatingBar
                                     android:id="@+id/star_evaluation"
+                                    style="@style/Widget.AppCompat.RatingBar.Small"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toLeftOf="@+id/post_star_evaluation"
                                     android:numStars="5"
                                     android:rating="3"
-                                    android:stepSize="0.5"
-                                    android:layout_centerVertical="true"
-                                    style="@style/Widget.AppCompat.RatingBar.Small"
-                                    android:layout_toLeftOf="@+id/post_star_evaluation"
-                                    />
+                                    android:stepSize="0.5" />
 
                                 <TextView
                                     android:id="@+id/post_star_evaluation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:layout_marginBottom="5dp"
-                                    android:layout_marginTop="5dp"
-                                    android:layout_toLeftOf="@+id/dp_posted_time"
                                     android:layout_centerVertical="true"
-                                    android:text="5.0점"
-                                    />
+                                    android:layout_marginTop="5dp"
+                                    android:layout_marginBottom="5dp"
+                                    android:layout_toLeftOf="@+id/dp_posted_time"
+                                    android:text="5.0점" />
 
                                 <TextView
                                     android:id="@+id/dp_posted_time"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="5dp"
                                     android:layout_marginRight="5dp"
                                     android:text="Time"
-                                    android:textAlignment="textEnd"
-                                    android:layout_alignParentEnd="true"
-                                    android:layout_centerVertical="true"
-                                    />
+                                    android:textAlignment="textEnd" />
 
                             </RelativeLayout>
 
@@ -258,6 +253,7 @@
                                 android:textColor="#707070"
                                 android:textSize="18sp"
                                 android:textStyle="normal" />
+
                             <TextView
                                 android:id="@+id/dp_body"
                                 android:layout_width="match_parent"

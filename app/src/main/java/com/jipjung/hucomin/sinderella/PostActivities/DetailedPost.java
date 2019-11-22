@@ -15,11 +15,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,7 +32,9 @@ import com.bumptech.glide.Glide;
 
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
+import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Like;
+import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.R;
 
@@ -79,6 +83,9 @@ public class DetailedPost extends AppCompatActivity {
     private ListView commentListView;
     private CommentAdapter adapter;
     private List<Comment> comments;
+    private Post post;
+
+    private Switch followSwitch;
 
 //    private Post p;
     @Override
@@ -90,19 +97,23 @@ public class DetailedPost extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         String user_id = firebaseAuth.getUid(); // 유저버튼 받아옴
-        firebaseFirestore.collection("users").document(user_id).get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                    @Override
-                    public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        if(documentSnapshot.exists()){
-                            user = documentSnapshot.toObject(User.class);
-                            if(user.getNickname().equals(dUid.getText().toString())){
-                                deleteButton.setVisibility(View.VISIBLE);
-                            }
-                        }
-                    }
-                });
+        user = (User)getIntent().getSerializableExtra("user");
+        post = (Post)getIntent().getSerializableExtra("post");
+        Log.d("qwea",post.getTitle());
+//        firebaseFirestore.collection("users").document(user_id).get()
+//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                        if(documentSnapshot.exists()){
+//                            user = documentSnapshot.toObject(User.class);
+//                            if(user.getNickname().equals(dUid.getText().toString())){
+//                                deleteButton.setVisibility(View.VISIBLE);
+//                            }
+//                        }
+//                    }
+//                });
 
+        followSwitch = findViewById(R.id.follow_switch);
         dImage = findViewById(R.id.dp_image);
         dTitle = findViewById(R.id.dp_title);
         dBody = findViewById(R.id.dp_body);
@@ -145,6 +156,18 @@ public class DetailedPost extends AppCompatActivity {
             dImage.setVisibility(View.VISIBLE);
         }
         post_id = getIntent().getStringExtra("POSTID");
+//        firebaseFirestore.collection("posts").document(post_id).get()
+//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                        if(documentSnapshot.exists()){
+//                            post = documentSnapshot.toObject(Post.class);
+//
+//                        }
+//                    }
+//                });
+
+
 
         fs = FirebaseStorage.getInstance();
         sr = fs.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
@@ -153,8 +176,6 @@ public class DetailedPost extends AppCompatActivity {
             Glide.with(this).load(path).skipMemoryCache(true).into(dImage);
         }
 
-        Log.d("qweqweqwe",intent.getStringExtra("posting_user_id"));
-        Log.d("qweqweqwe",firebaseAuth.getUid());
 
 //        if(!firebaseAuth.getUid().equals(intent.getStringExtra("posting_user_id"))){
 //            Log.d("qweqweqwe",intent.getStringExtra("posting_user_id"));
@@ -168,6 +189,7 @@ public class DetailedPost extends AppCompatActivity {
 
         //처음에 시작할 때 자기가 좋아요한 글일 경우 좋아요 이미지가 활성화 되어있게 변경
         isLikePost();
+        isFollowed();
 
         final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -210,7 +232,172 @@ public class DetailedPost extends AppCompatActivity {
         });
 
 
+        followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id())
+                        .whereEqualTo("followed_id",post.getUser_id()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            /* 팔로우 객체가 없을때 */
+                            WriteBatch batch = firebaseFirestore.batch();
+                            DocumentReference follow = firebaseFirestore.collection("follows").document();
+                            Map<String, Object> docData = new HashMap<>();
+
+                            docData.put("follower_id", user.getUser_id());
+                            docData.put("followed_it", post.getUser_id());
+                            docData.put("id", follow.getId());
+
+                            // 댓글 날짜 DB
+                            SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
+                            String format = s.format(new Date());
+
+                            docData.put("created_at",format);
+                            docData.put("status", "active");
+//                            buttonLike.setImageResource(R.drawable.like_clicked);
+
+                            batch.set(follow,docData);
+                            batch.commit();
+
+                            Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
+                        }else {
+                            /* 팔로우 객체가 있을 때*/
+                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
+
+                            if (l.getStatus().equals("active")) {
+                                firebaseFirestore.collection("follows").document(l.id).update("status", "deactivated");
+//                                buttonLike.setImageResource(R.drawable.like);
+                                Toast.makeText(getApplicationContext(),"팔로우 취소",Toast.LENGTH_LONG).show();
+                            } else {
+                                firebaseFirestore.collection("follows").document(l.id).update("status", "active");
+//                                buttonLike.setImageResource(R.drawable.like_clicked);
+                                Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
+                            }
+                        }
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        WriteBatch batch = firebaseFirestore.batch();
+                        DocumentReference follow = firebaseFirestore.collection("follows").document();
+                        Map<String, Object> docData = new HashMap<>();
+
+                        docData.put("follower_id", user.getUser_id());
+                        docData.put("followed_it", post.getUser_id());
+                        docData.put("id", follow.getId());
+
+                        // 댓글 날짜 DB
+                        SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
+                        String format = s.format(new Date());
+
+                        docData.put("created_at",format);
+                        docData.put("status", "active");
+//                buttonLike.setImageResource(R.drawable.like_clicked);
+
+                        batch.set(follow,docData);
+                        batch.commit();
+                    }
+                });
+            }
+        });
+
+
     }
+
+
+    /********************************
+     ************ 팔로우 관련***********
+     ********************************/
+
+    public void isFollowed(){
+        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(!queryDocumentSnapshots.isEmpty()){
+                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
+                            if(l.status.equals("active")){
+                                followSwitch.setChecked(true);
+                            }
+                        }else{
+                            return;
+                        }
+                    }
+                });
+    }
+
+    public void onClickFollow(View v){
+
+        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            /* 팔로우 객체가 없을때 */
+                            WriteBatch batch = firebaseFirestore.batch();
+                            DocumentReference follow = firebaseFirestore.collection("follows").document();
+                            Map<String, Object> docData = new HashMap<>();
+
+                            docData.put("follower_id", user.getUser_id());
+                            docData.put("followed_it", post.getUser_id());
+                            docData.put("id", follow.getId());
+
+                            // 댓글 날짜 DB
+                            SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
+                            String format = s.format(new Date());
+
+                            docData.put("created_at",format);
+                            docData.put("status", "active");
+//                            buttonLike.setImageResource(R.drawable.like_clicked);
+
+                            batch.set(follow,docData);
+                            batch.commit();
+
+                            Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
+                        }else {
+                            /* 좋아요 객체가 있을 때*/
+                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
+                            if (l.status.equals("active")) {
+                                firebaseFirestore.collection("follows").document(l.id).update("status", "deactivated");
+//                                buttonLike.setImageResource(R.drawable.like);
+                                Toast.makeText(getApplicationContext(),"팔로우 취소",Toast.LENGTH_LONG).show();
+                            } else {
+                                Log.d("qweasdzxc", "qqq");
+                                firebaseFirestore.collection("follows").document(l.id).update("status", "active");
+//                                buttonLike.setImageResource(R.drawable.like_clicked);
+                                Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
+                            }
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                WriteBatch batch = firebaseFirestore.batch();
+                DocumentReference follow = firebaseFirestore.collection("follows").document();
+                Map<String, Object> docData = new HashMap<>();
+
+                docData.put("follower_id", user.getUser_id());
+                docData.put("followed_it", post.getUser_id());
+                docData.put("id", follow.getId());
+
+                // 댓글 날짜 DB
+                SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
+                String format = s.format(new Date());
+
+                docData.put("created_at",format);
+                docData.put("status", "active");
+//                buttonLike.setImageResource(R.drawable.like_clicked);
+
+                batch.set(follow,docData);
+                batch.commit();
+            }
+        });
+    }
+
+
+
 
     @Override
     public void onResume(){
@@ -272,6 +459,7 @@ public class DetailedPost extends AppCompatActivity {
 
 
 
+
     /**********************************
      *             댓글 관련            *
      **********************************/
@@ -279,7 +467,6 @@ public class DetailedPost extends AppCompatActivity {
     public void getComments(){
 //        if (!comments.isEmpty())
 ////            comments.clear();
-        Log.d("qweqweqwe", "aaaaaaaa");
         firebaseFirestore.collection("comments").whereEqualTo("post_id",post_id).whereEqualTo("status","active").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override

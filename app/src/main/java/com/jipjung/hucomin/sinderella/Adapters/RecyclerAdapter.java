@@ -36,6 +36,8 @@ import java.util.Locale;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
+    private User user;
+    private Post post;
     private int item_layout;
     private FirebaseStorage storage;
     private StorageReference storageRef;
@@ -74,7 +76,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
-        final Post post = posts.get(position);
+          post = posts.get(position);
+          holder.h_post = post;
 //        Iterator<User> iterator = users.iterator();
 //        User user = null;
 //        while (iterator.hasNext()) {
@@ -85,13 +88,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //        }
 
         //TODO : 그냥 FCOOK 이런데서 불러올 때 포스트 객체에다가 닉네임 칼럼 추가해서 넘겨주는게 로딩 안걸리고 젤 좋은것 같다...
-        firestore.collection("users").document(post.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        firestore.collection("users").document(post.getUser_id()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(!documentSnapshot.exists()){
                     return;
                 }else{
-                    User user = documentSnapshot.toObject(User.class);
+                    user = documentSnapshot.toObject(User.class);
 //                    String nickname = user.getNickname();
                     holder.posting_user_id.setText(user.getUser_id());
 //                    holder.feed_nickname.setText(nickname);
@@ -215,6 +218,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private ImageView like;
         private String post_category;
         private TextView posting_user_id;
+        private Post h_post;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -239,6 +243,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //                    String pTime = time.getText().toString();
                     Intent intent = new Intent(context, DetailedPost.class);
 //                    intent.putExtra("TIME", pTime);
+                    intent.putExtra("user",user);
+                    intent.putExtra("post",h_post);
                     intent.putExtra("TITLE", pTitle);
                     intent.putExtra("BODY", pBody);
                     intent.putExtra("UID", pUid);
