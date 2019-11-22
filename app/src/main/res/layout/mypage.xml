@@ -6,16 +6,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-<<<<<<< HEAD
-        <android.support.v4.widget.SwipeRefreshLayout
-            android:id="@+id/swipe_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ScrollView
-=======
     <ScrollView
->>>>>>> bb0349a8689087d5985700354c965501466425b2
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="#FFFFFF">
