@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:background="#87bee8"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/x_btn" />
+                app:srcCompat="@drawable/close_btn" />
 
             <ImageView
                 android:id="@+id/simpleLogo"
