@@ -40,11 +40,6 @@ public class FCart extends Fragment {
         return v;
     }
 
-//    @Override
-//    public void onResume(){
-//        super.onResume();
-//    }
-
 
 
 }
