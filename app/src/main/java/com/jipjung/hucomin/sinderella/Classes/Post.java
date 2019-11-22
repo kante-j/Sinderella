@@ -6,11 +6,12 @@ import android.support.annotation.NonNull;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class Post {
+public class Post implements Serializable {
     @Exclude
     public String id;
     public String image_url;
@@ -46,7 +47,6 @@ public class Post {
     public String getBody() {
         return this.body;
     }
-    public String getUid() { return this.user_id;}
     public String getCategory() {return this.category;}
     public String getCreated_at() {return this.created_at;}
     public String getId(){ return this.id;}
