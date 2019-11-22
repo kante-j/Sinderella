@@ -37,6 +37,7 @@ public class Product implements Serializable {
         result.put("price", price);
         result.put("image_url", image_url);
         result.put("category",category);
+        result.put("product_url",product_url);
         return result;
     }
 

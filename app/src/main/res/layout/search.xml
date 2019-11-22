@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+=======
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+>>>>>>> bb0349a8689087d5985700354c965501466425b2
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/search_page"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     android:background="#8C000000">
 
+=======
+    android:background="@drawable/invisible"
+    >
+>>>>>>> bb0349a8689087d5985700354c965501466425b2
 
     <RelativeLayout
         android:id="@+id/search_Layout"
@@ -76,6 +86,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/search_page" />
 
+<<<<<<< HEAD
 
     >>>>>>> jiseok
+=======
+>>>>>>> bb0349a8689087d5985700354c965501466425b2
 </android.support.constraint.ConstraintLayout>

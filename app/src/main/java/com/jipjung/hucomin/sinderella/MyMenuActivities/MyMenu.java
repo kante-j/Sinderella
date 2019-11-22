@@ -7,10 +7,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupMenu;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.jipjung.hucomin.sinderella.R;
@@ -32,11 +37,12 @@ public class MyMenu extends AppCompatActivity {
     private FirebaseUser fbUser;
     private FirebaseFirestore fs;
     private TextView text_created_at;
-    private TextView text_email;
-    private TextView text_nickname;
+    private EditText text_email;
+    private EditText text_nickname;
     private TextView birth_date;
-    private TextView text_foot_size;
-    private TextView text_foot_width;
+    private Spinner foot_size;
+    private RadioGroup foot_width;
+
     private User user;
     private FirebaseAuth fbAuth;
 
@@ -57,18 +63,34 @@ public class MyMenu extends AppCompatActivity {
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
 
         user = (User)getIntent().getSerializableExtra("user");
-//
+
 //        //Find Text View by Id
         text_email = findViewById(R.id.profilemodify_email);
 //        text_created_at = findViewById(R.id.mymenu_created_at);
-        text_nickname = findViewById(R.id.profilemodify_email);
+        text_nickname = findViewById(R.id.profilemodify_nicname);
         birth_date = findViewById(R.id.year_month_day);
-//        text_foot_size = findViewById(R.id.mypage_foot_size);
-//        text_foot_width = findViewById(R.id.mypage_foot_width);
 
-//        text_nickname.setText(user.getNickname());
-//        text_email.setText(fbUser.getEmail());
-//        birth_date.setText(user.get);
+
+        // Spinner set
+
+        foot_size = findViewById(R.id.profilemodify_foot_size);
+        String compareValue = String.valueOf(user.getFoot_size());
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.foot_size, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        foot_size.setAdapter(adapter);
+        if (compareValue != null) {
+            int spinnerPosition = adapter.getPosition(compareValue);
+            foot_size.setSelection(spinnerPosition);
+        }
+
+
+        text_nickname.setText(user.getNickname());
+        text_email.setText(fbUser.getEmail());
+        birth_date.setText(user.getBirth_date());
+
+
+
+
 //        text_foot_width.setText(user.getFoot_width());
 //        text_foot_size.setText(user.getFoot_size());
 
