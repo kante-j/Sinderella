@@ -1,5 +1,7 @@
 package com.jipjung.hucomin.sinderella.Fragments;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,6 +24,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.MyMenuActivities.MyMenu;
 import com.jipjung.hucomin.sinderella.R;
+import com.jipjung.hucomin.sinderella.StartAppActivities.FirstPage;
+import com.jipjung.hucomin.sinderella.StartAppActivities.SplashScreen;
 
 public class FMymenu extends Fragment {
 
@@ -29,11 +33,14 @@ public class FMymenu extends Fragment {
 
     private User user;
     private FirebaseUser fbUser;
+    private FirebaseAuth fbAuth;
     private FirebaseFirestore fs;
     private TextView text_email;
     private TextView text_nickname;
     private TextView text_foot_size;
     private TextView text_foot_width;
+    private Button logoutbtn;
+
 
     public FMymenu(){
 
@@ -47,6 +54,7 @@ public class FMymenu extends Fragment {
 
         fs = FirebaseFirestore.getInstance();
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        fbAuth = FirebaseAuth.getInstance();
 
         text_email = v.findViewById(R.id.mypage_email);
         text_nickname = v.findViewById(R.id.mypage_username);
@@ -71,6 +79,37 @@ public class FMymenu extends Fragment {
                 startActivity(intent);
             }
         });
+
+        logoutbtn = v.findViewById(R.id.mypage_logout);
+        logoutbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("로그아웃");
+                builder.setMessage("로그아웃 하시겠습니까?");
+                builder.setPositiveButton("예", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+//                        fbUser = FirebaseAuth.getInstance();
+                        fbAuth.signOut();
+                        Intent intent = new Intent(getActivity(), SplashScreen.class);
+                        getActivity().finishAffinity();
+//                        finishAffinity();
+//                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                });
+                builder.setNegativeButton("아니오", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+                builder.show();
+            }
+        });
+
+
 
 //        getUser();
 

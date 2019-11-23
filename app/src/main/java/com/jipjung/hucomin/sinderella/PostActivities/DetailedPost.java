@@ -176,13 +176,6 @@ public class DetailedPost extends AppCompatActivity {
             Glide.with(this).load(path).skipMemoryCache(true).into(dImage);
         }
 
-
-//        if(!firebaseAuth.getUid().equals(intent.getStringExtra("posting_user_id"))){
-//            Log.d("qweqweqwe",intent.getStringExtra("posting_user_id"));
-//            Log.d("qweqweqwe",firebaseAuth.getUid());
-//            sendMessagebtn.setVisibility(View.VISIBLE);
-//        }
-
         commentListView = (ListView)findViewById(R.id.list_comments);
         //댓글 보이기
         getComments();
@@ -231,15 +224,14 @@ public class DetailedPost extends AppCompatActivity {
             }
         });
 
-
-        followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        followSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id())
-                        .whereEqualTo("followed_id",post.getUser_id()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            public void onClick(View v) {
+                firebaseFirestore.collection("follows").whereEqualTo("follower_id", user.getUser_id())
+                        .whereEqualTo("followed_id", post.getUser_id()).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(queryDocumentSnapshots.isEmpty()){
+                        if (queryDocumentSnapshots.isEmpty()) {
                             /* 팔로우 객체가 없을때 */
                             WriteBatch batch = firebaseFirestore.batch();
                             DocumentReference follow = firebaseFirestore.collection("follows").document();
@@ -253,26 +245,26 @@ public class DetailedPost extends AppCompatActivity {
                             SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
                             String format = s.format(new Date());
 
-                            docData.put("created_at",format);
+                            docData.put("created_at", format);
                             docData.put("status", "active");
 //                            buttonLike.setImageResource(R.drawable.like_clicked);
 
-                            batch.set(follow,docData);
+                            batch.set(follow, docData);
                             batch.commit();
 
-                            Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
-                        }else {
+                            Toast.makeText(getApplicationContext(), "팔로우", Toast.LENGTH_LONG).show();
+                        } else {
                             /* 팔로우 객체가 있을 때*/
                             Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
-
+                            Log.d("qwea", "cccccC");
                             if (l.getStatus().equals("active")) {
                                 firebaseFirestore.collection("follows").document(l.id).update("status", "deactivated");
 //                                buttonLike.setImageResource(R.drawable.like);
-                                Toast.makeText(getApplicationContext(),"팔로우 취소",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "팔로우 취소", Toast.LENGTH_LONG).show();
                             } else {
                                 firebaseFirestore.collection("follows").document(l.id).update("status", "active");
 //                                buttonLike.setImageResource(R.drawable.like_clicked);
-                                Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "팔로우", Toast.LENGTH_LONG).show();
                             }
                         }
 
@@ -292,18 +284,16 @@ public class DetailedPost extends AppCompatActivity {
                         SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
                         String format = s.format(new Date());
 
-                        docData.put("created_at",format);
+                        docData.put("created_at", format);
                         docData.put("status", "active");
 //                buttonLike.setImageResource(R.drawable.like_clicked);
 
-                        batch.set(follow,docData);
+                        batch.set(follow, docData);
                         batch.commit();
                     }
                 });
             }
         });
-
-
     }
 
 
@@ -312,13 +302,18 @@ public class DetailedPost extends AppCompatActivity {
      ********************************/
 
     public void isFollowed(){
+        Log.d("qwea","qweqwe");
         firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(!queryDocumentSnapshots.isEmpty()){
                             Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
-                            if(l.status.equals("active")){
+
+                            Log.d("qwea",l.getFollowed_id());
+                            Log.d("qwea",l.getFollower_id());
+                            Log.d("qwea",l.getStatus());
+                            if(l.getStatus().equals("active")){
                                 followSwitch.setChecked(true);
                             }
                         }else{
@@ -328,105 +323,11 @@ public class DetailedPost extends AppCompatActivity {
                 });
     }
 
-    public void onClickFollow(View v){
-
-        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(queryDocumentSnapshots.isEmpty()){
-                            /* 팔로우 객체가 없을때 */
-                            WriteBatch batch = firebaseFirestore.batch();
-                            DocumentReference follow = firebaseFirestore.collection("follows").document();
-                            Map<String, Object> docData = new HashMap<>();
-
-                            docData.put("follower_id", user.getUser_id());
-                            docData.put("followed_it", post.getUser_id());
-                            docData.put("id", follow.getId());
-
-                            // 댓글 날짜 DB
-                            SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
-                            String format = s.format(new Date());
-
-                            docData.put("created_at",format);
-                            docData.put("status", "active");
-//                            buttonLike.setImageResource(R.drawable.like_clicked);
-
-                            batch.set(follow,docData);
-                            batch.commit();
-
-                            Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
-                        }else {
-                            /* 좋아요 객체가 있을 때*/
-                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
-                            if (l.status.equals("active")) {
-                                firebaseFirestore.collection("follows").document(l.id).update("status", "deactivated");
-//                                buttonLike.setImageResource(R.drawable.like);
-                                Toast.makeText(getApplicationContext(),"팔로우 취소",Toast.LENGTH_LONG).show();
-                            } else {
-                                Log.d("qweasdzxc", "qqq");
-                                firebaseFirestore.collection("follows").document(l.id).update("status", "active");
-//                                buttonLike.setImageResource(R.drawable.like_clicked);
-                                Toast.makeText(getApplicationContext(),"팔로우",Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                WriteBatch batch = firebaseFirestore.batch();
-                DocumentReference follow = firebaseFirestore.collection("follows").document();
-                Map<String, Object> docData = new HashMap<>();
-
-                docData.put("follower_id", user.getUser_id());
-                docData.put("followed_it", post.getUser_id());
-                docData.put("id", follow.getId());
-
-                // 댓글 날짜 DB
-                SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
-                String format = s.format(new Date());
-
-                docData.put("created_at",format);
-                docData.put("status", "active");
-//                buttonLike.setImageResource(R.drawable.like_clicked);
-
-                batch.set(follow,docData);
-                batch.commit();
-            }
-        });
-    }
-
-
-
 
     @Override
     public void onResume(){
         super.onResume();
     }
-
-
-//    public void menuClick(View v){
-//        PopupMenu popup = new PopupMenu(getApplicationContext(), v);
-//        popup.getMenuInflater().inflate(R.menu.popup_menu, popup.getMenu());
-//        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-//            @Override
-//            public boolean onMenuItemClick(MenuItem item) {
-//                switch(item.getItemId()){
-//                    case R.id.go_mymenu:
-//                        Intent intent = new Intent(DetailedPost.this, MyMenu.class);
-//                        intent.putExtra("nickname",user.getNickname());
-//                        startActivity(intent);
-//                        break;
-//                    case R.id.messages:
-//                        Intent i = new Intent(DetailedPost.this, MyMessages.class);
-//                        startActivity(i);
-//                        break;
-//                }
-//                return false;
-//            }
-//        });
-//        popup.show();
-//    }
 
 
     public void deletePost(){

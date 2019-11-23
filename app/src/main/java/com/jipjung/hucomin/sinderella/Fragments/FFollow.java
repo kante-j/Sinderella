@@ -2,12 +2,18 @@ package com.jipjung.hucomin.sinderella.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.jipjung.hucomin.sinderella.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 public class FFollow extends Fragment {
+
+    private RecyclerView recyclerView;
+    private FirebaseFirestore firebaseFirestore;
+
+
     public FFollow() {
     }
 

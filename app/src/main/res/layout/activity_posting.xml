@@ -482,7 +482,6 @@
         android:id="@+id/btn_posting"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_below="@id/activity_posting_contextbox"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
