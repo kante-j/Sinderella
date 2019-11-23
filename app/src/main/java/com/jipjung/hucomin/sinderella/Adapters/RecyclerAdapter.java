@@ -63,7 +63,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_feeds, null);
+        final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.mypage_item_feeds, null);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         // TODO : 여기에다가 likes 데이터 불러온거 저장해놓고 onBindViewHolder에서 settext만 해주면 될까?
