@@ -64,7 +64,7 @@
                     android:background="@color/fui_transparent"
                     android:onClick="onClickCommentDelete"
                     android:visibility="gone"
-                    app:srcCompat="@drawable/x_btn" />
+                    app:srcCompat="@drawable/close_btn" />
 
             </LinearLayout>
 

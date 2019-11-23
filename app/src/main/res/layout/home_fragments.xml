@@ -2,12 +2,57 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:id="@+id/order_of_priority_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        >
+
+        <Spinner
+            android:id="@+id/order_of_priority"
+            style="?android:attr/spinnerItemStyle"
+            android:layout_width="173dp"
+            android:layout_height="35dp"
+            android:entries="@array/order_of_priority"
+            android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
+            android:outlineSpotShadowColor="@color/bootstrap_brand_info"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+           />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/fiter_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/order_of_priority_layout">
+
+        <ImageView
+            android:id="@+id/btn_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/filter"
+            />
+
+
+
+
+
+    </LinearLayout>
+
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/swipe_layout">
+        android:id="@+id/swipe_layout"
+        android:layout_below="@+id/fiter_layout">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/feeds"
             android:layout_width="match_parent"

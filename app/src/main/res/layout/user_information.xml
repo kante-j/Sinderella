@@ -61,6 +61,54 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.633" />
 
+    <EditText
+        android:id="@+id/info_nickname"
+        android:layout_width="179dp"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:hint="닉네임을 입력해주세요"
+        android:textSize="15sp"
+        android:background="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/information"
+        app:layout_constraintEnd_toEndOf="@+id/information"
+        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintStart_toStartOf="@+id/information"
+        app:layout_constraintTop_toTopOf="@+id/information"
+        app:layout_constraintVertical_bias="0.048" />
+
+
+    <!--<LinearLayout-->
+        <!--android:id="@+id/linearLayout"-->
+        <!--android:layout_width="305dp"-->
+        <!--android:layout_height="37dp"-->
+        <!--android:orientation="horizontal"-->
+        <!--app:layout_constraintBottom_toBottomOf="@+id/information"-->
+        <!--app:layout_constraintEnd_toEndOf="@+id/information"-->
+        <!--app:layout_constraintHorizontal_bias="0.817"-->
+        <!--app:layout_constraintStart_toStartOf="@+id/information"-->
+        <!--app:layout_constraintTop_toTopOf="@+id/information"-->
+        <!--app:layout_constraintVertical_bias="0.497">-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_year"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:entries="@array/date_year" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_month"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="37dp"-->
+            <!--android:entries="@array/date_month" />-->
+
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_day"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:entries="@array/date_day" />-->
+
+    <!--</LinearLayout>-->
+
     <RadioGroup
         android:id="@+id/sex_group"
         android:layout_width="185dp"
@@ -99,67 +147,32 @@
 
     </RadioGroup>
 
-    <EditText
-        android:id="@+id/info_nickname"
-        android:layout_width="179dp"
-        android:layout_height="38dp"
-        android:gravity="center"
-        android:hint="닉네임을 입력해주세요"
-        android:textSize="15sp"
+    <Button
+        android:id="@+id/birth_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="입력하기"
         app:layout_constraintBottom_toBottomOf="@+id/information"
         app:layout_constraintEnd_toEndOf="@+id/information"
-        app:layout_constraintHorizontal_bias="0.872"
+        app:layout_constraintHorizontal_bias="0.683"
         app:layout_constraintStart_toStartOf="@+id/information"
-        app:layout_constraintTop_toTopOf="@+id/information"
-        app:layout_constraintVertical_bias="0.048" />
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/linearLayout"-->
-        <!--android:layout_width="305dp"-->
-        <!--android:layout_height="37dp"-->
-        <!--android:orientation="horizontal"-->
-        <!--app:layout_constraintBottom_toBottomOf="@+id/information"-->
-        <!--app:layout_constraintEnd_toEndOf="@+id/information"-->
-        <!--app:layout_constraintHorizontal_bias="0.817"-->
-        <!--app:layout_constraintStart_toStartOf="@+id/information"-->
-        <!--app:layout_constraintTop_toTopOf="@+id/information"-->
-        <!--app:layout_constraintVertical_bias="0.497">-->
-
-        <!--<Spinner-->
-            <!--android:id="@+id/spinner_year"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:entries="@array/date_year" />-->
-
-        <!--<Spinner-->
-            <!--android:id="@+id/spinner_month"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="37dp"-->
-            <!--android:entries="@array/date_month" />-->
-
-        <!--<Spinner-->
-            <!--android:id="@+id/spinner_day"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:entries="@array/date_day" />-->
-
-    <!--</LinearLayout>-->
+        app:layout_constraintTop_toTopOf="@+id/information" />
 
     <Spinner
         android:id="@+id/foot_size"
+        style="?android:attr/spinnerItemStyle"
         android:layout_width="173dp"
         android:layout_height="35dp"
         android:entries="@array/foot_size"
         android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
         android:outlineSpotShadowColor="@color/bootstrap_brand_info"
         android:textSize="20sp"
-        style="?android:attr/spinnerItemStyle"
         app:layout_constraintBottom_toBottomOf="@+id/information"
         app:layout_constraintEnd_toEndOf="@+id/information"
-        app:layout_constraintHorizontal_bias="0.846"
+        app:layout_constraintHorizontal_bias="0.835"
         app:layout_constraintStart_toStartOf="@+id/information"
         app:layout_constraintTop_toTopOf="@+id/information"
-        app:layout_constraintVertical_bias="0.676" />
+        app:layout_constraintVertical_bias="0.743" />
 
     <RadioGroup
         android:id="@+id/foot_width_group"
@@ -224,18 +237,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/information" />
 
-    <Button
-        android:id="@+id/birth_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="입력하기"
-        app:layout_constraintBottom_toTopOf="@+id/information_button"
-        app:layout_constraintEnd_toEndOf="@+id/information"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/information"
-        app:layout_constraintTop_toTopOf="@+id/information"
-        app:layout_constraintVertical_bias="0.476" />
+
 
 </android.support.constraint.ConstraintLayout>
