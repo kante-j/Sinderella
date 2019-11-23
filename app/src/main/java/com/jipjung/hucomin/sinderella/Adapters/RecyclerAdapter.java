@@ -254,7 +254,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //                    intent.putExtra("TIME", pTime);
                     intent.putExtra("URL", url);
                     intent.putExtra("POSTID",post_id);
-                    intent.putExtra("posting_user_id",posting_user_id.getText().toString());
+//                    intent.putExtra("posting_user_id",posting_user_id.getText().toString());
                     intent.putExtra("CATEGORY",post_category);
                     context.startActivity(intent);
                 }
