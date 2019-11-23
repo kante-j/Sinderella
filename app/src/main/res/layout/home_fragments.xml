@@ -7,18 +7,23 @@
     >
 
     <LinearLayout
-        android:id="@+id/order_of_privity"
+        android:id="@+id/order_of_priority_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         >
 
         <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            />
-
+            android:id="@+id/order_of_priority"
+            style="?android:attr/spinnerItemStyle"
+            android:layout_width="173dp"
+            android:layout_height="35dp"
+            android:entries="@array/order_of_priority"
+            android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
+            android:outlineSpotShadowColor="@color/bootstrap_brand_info"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+           />
     </LinearLayout>
 
 
@@ -26,7 +31,9 @@
         android:id="@+id/fiter_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/order_of_priority_layout">
+
 
 
 
