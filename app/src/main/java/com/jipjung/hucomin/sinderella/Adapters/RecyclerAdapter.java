@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void onBindViewHolder(final ViewHolder holder, int position) {
 
           post = posts.get(position);
+        Log.d("qweqwe",post.getTitle());
+        Log.d("qweqwe",post.getShoe_size());
           holder.h_post = post;
 //        Iterator<User> iterator = users.iterator();
 //        User user = null;
@@ -96,7 +99,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 }else{
                     user = documentSnapshot.toObject(User.class);
 //                    String nickname = user.getNickname();
-                    holder.posting_user_id.setText(user.getUser_id());
+//                    holder.posting_user_id.setText(user.getUser_id());
 //                    holder.feed_nickname.setText(nickname);
                 }
             }
@@ -231,7 +234,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             time = (TextView) itemView.findViewById(R.id.time);
             like_counts = itemView.findViewById(R.id.likes_count);
             like = itemView.findViewById(R.id.like);
-            posting_user_id = itemView.findViewById(R.id.posting_user_id);
+//            posting_user_id = itemView.findViewById(R.id.posting_user_id);
 
 
             cardview.setOnClickListener(new View.OnClickListener() {

@@ -169,7 +169,7 @@ public class FHome extends Fragment {
             @Override
             public void run() {
                 Log.d("qpoqop", "whiatqwdqw?");
-                fs.collection("posts").whereEqualTo("category", "FChat").get()
+                fs.collection("posts").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
