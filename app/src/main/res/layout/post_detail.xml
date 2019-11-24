@@ -278,25 +278,40 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="200dp"
-                                        android:layout_height="wrap_content"
-                                        android:layout_gravity="center|center_vertical"
+                                        android:layout_width="275dp"
+                                        android:layout_height="37.5dp"
+                                        android:layout_marginTop="13dp"
                                         android:layout_marginBottom="13dp"
                                         android:text="구매가격 / 구매 사이즈"
+                                        android:textAlignment="textStart"
                                         android:textColor="#707070"
                                         android:textSize="16sp"
                                         android:textStyle="normal" />
 
-                                    <Button
-                                        android:id="@+id/button"
-                                        android:layout_width="60dp"
-                                        android:layout_height="37.5dp"
-                                        android:layout_weight="1"
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
                                         android:background="@drawable/linkbox"
-                                        android:fontFamily="@font/gyeonggititle_medium"
-                                        android:text="구입처"
-                                        android:textColor="#ffffff"
-                                        android:textSize="12sp" />
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="center_vertical"
+                                            android:layout_marginStart="15dp"
+                                            android:layout_marginEnd="10dp"
+                                            android:fontFamily="@font/gyeonggititle_medium"
+                                            android:gravity="center"
+                                            android:text="구입처"
+                                            android:textColor="#ffffff" />
+
+                                        <Button
+                                            android:id="@+id/button"
+                                            android:layout_width="14dp"
+                                            android:layout_height="28dp"
+                                            android:layout_gravity="center_vertical"
+                                            android:background="@drawable/right_button" />
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
@@ -308,8 +323,9 @@
                                     <LinearLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="37.5dp"
-                                        android:layout_marginStart="27.5dp"
-                                        android:layout_marginEnd="27.5dp"
+                                        android:layout_marginStart="22.5dp"
+                                        android:layout_marginEnd="22.5dp"
+                                        android:layout_marginBottom="5dp"
                                         android:background="@drawable/review_box"
                                         android:orientation="horizontal">
 
@@ -356,7 +372,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_heavy"
-                                                android:layout_width="70dp"
+                                                android:layout_width="68dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="무겁다"
@@ -364,7 +380,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_fit"
-                                                android:layout_width="88dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="적당하다"
@@ -404,7 +420,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/shoes_size_big"
-                                                android:layout_width="70dp"
+                                                android:layout_width="68dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="크다"
@@ -412,7 +428,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/shoes_size_fit"
-                                                android:layout_width="88dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="적당하다"
@@ -451,7 +467,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/ventilation_best"
-                                                android:layout_width="70dp"
+                                                android:layout_width="68dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="잘된다"
@@ -459,7 +475,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/ventilation_good"
-                                                android:layout_width="88dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="적당하다"
@@ -499,7 +515,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/waterproof_best"
-                                                android:layout_width="70dp"
+                                                android:layout_width="68dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="잘된다"
@@ -507,7 +523,7 @@
 
                                             <RadioButton
                                                 android:id="@+id/waterproof_good"
-                                                android:layout_width="88dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_weight="1"
                                                 android:text="적당하다"
@@ -529,8 +545,8 @@
                                 <LinearLayout
                                     android:layout_width="fill_parent"
                                     android:layout_height="37.5dp"
-                                    android:layout_marginStart="27.5dp"
-                                    android:layout_marginEnd="27.5dp"
+                                    android:layout_marginStart="22.5dp"
+                                    android:layout_marginEnd="22.5dp"
                                     android:layout_marginBottom="10dp"
                                     android:background="@drawable/review_box"
                                     android:orientation="horizontal">
