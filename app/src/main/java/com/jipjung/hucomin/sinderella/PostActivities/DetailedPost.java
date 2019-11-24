@@ -237,7 +237,7 @@ public class DetailedPost extends AppCompatActivity {
                             Map<String, Object> docData = new HashMap<>();
 
                             docData.put("follower_id", user.getUser_id());
-                            docData.put("followed_it", post.getUser_id());
+                            docData.put("followed_id", post.getUser_id());
                             docData.put("id", follow.getId());
 
                             // 댓글 날짜 DB
@@ -276,7 +276,7 @@ public class DetailedPost extends AppCompatActivity {
                         Map<String, Object> docData = new HashMap<>();
 
                         docData.put("follower_id", user.getUser_id());
-                        docData.put("followed_it", post.getUser_id());
+                        docData.put("followed_id", post.getUser_id());
                         docData.put("id", follow.getId());
 
                         // 댓글 날짜 DB
@@ -308,10 +308,6 @@ public class DetailedPost extends AppCompatActivity {
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(!queryDocumentSnapshots.isEmpty()){
                             Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
-
-                            Log.d("qwea",l.getFollowed_id());
-                            Log.d("qwea",l.getFollower_id());
-                            Log.d("qwea",l.getStatus());
                             if(l.getStatus().equals("active")){
                                 followSwitch.setChecked(true);
                             }
