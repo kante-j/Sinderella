@@ -129,8 +129,11 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:layout_marginStart="28.5dp"
                                 android:layout_marginTop="10dp"
+                                android:layout_marginEnd="28.5dp"
                                 android:layout_marginBottom="10dp"
+                                android:duplicateParentState="false"
                                 android:visibility="gone" />
 
                             <RelativeLayout
@@ -268,19 +271,32 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
+                                    android:layout_height="37.5dp"
                                     android:layout_marginStart="27.5dp"
                                     android:layout_marginEnd="27.5dp"
+                                    android:gravity="left|center_vertical"
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="20dp"
+                                        android:layout_width="200dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center|center_vertical"
                                         android:layout_marginBottom="13dp"
                                         android:text="구매가격 / 구매 사이즈"
                                         android:textColor="#707070"
                                         android:textSize="16sp"
                                         android:textStyle="normal" />
+
+                                    <Button
+                                        android:id="@+id/button"
+                                        android:layout_width="60dp"
+                                        android:layout_height="37.5dp"
+                                        android:layout_weight="1"
+                                        android:background="@drawable/linkbox"
+                                        android:fontFamily="@font/gyeonggititle_medium"
+                                        android:text="구입처"
+                                        android:textColor="#ffffff"
+                                        android:textSize="12sp" />
 
                                 </LinearLayout>
 
@@ -543,12 +559,13 @@
                                     android:id="@+id/dp_body"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
                                     android:layout_marginStart="30.2dp"
                                     android:layout_marginEnd="30.2dp"
                                     android:layout_marginBottom="10dp"
                                     android:text="body"
                                     android:textColor="#707070"
-                                    android:textSize="18sp"
+                                    android:textSize="16sp"
                                     android:textStyle="normal" />
 
                             </LinearLayout>
