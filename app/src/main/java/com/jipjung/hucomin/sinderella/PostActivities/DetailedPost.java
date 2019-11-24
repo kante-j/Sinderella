@@ -84,6 +84,7 @@ public class DetailedPost extends AppCompatActivity {
     private CommentAdapter adapter;
     private List<Comment> comments;
     private Post post;
+    private Follow follow;
 
     private Switch followSwitch;
 
@@ -99,6 +100,7 @@ public class DetailedPost extends AppCompatActivity {
         String user_id = firebaseAuth.getUid(); // 유저버튼 받아옴
         user = (User)getIntent().getSerializableExtra("user");
         post = (Post)getIntent().getSerializableExtra("post");
+        follow = (Follow) getIntent().getSerializableExtra("follow");
 //        firebaseFirestore.collection("users").document(user_id).get()
 //                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //                    @Override
@@ -270,14 +272,14 @@ public class DetailedPost extends AppCompatActivity {
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        WriteBatch batch = firebaseFirestore.batch();
-                        DocumentReference follow = firebaseFirestore.collection("follows").document();
-                        Map<String, Object> docData = new HashMap<>();
+                        public void onFailure(@NonNull Exception e) {
+                            WriteBatch batch = firebaseFirestore.batch();
+                            DocumentReference follow = firebaseFirestore.collection("follows").document();
+                            Map<String, Object> docData = new HashMap<>();
 
-                        docData.put("follower_id", user.getUser_id());
-                        docData.put("followed_id", post.getUser_id());
-                        docData.put("id", follow.getId());
+                            docData.put("follower_id", user.getUser_id());
+                            docData.put("followed_id", post.getUser_id());
+                            docData.put("id", follow.getId());
 
                         // 댓글 날짜 DB
                         SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
@@ -302,20 +304,29 @@ public class DetailedPost extends AppCompatActivity {
 
     public void isFollowed(){
         Log.d("qwea","qweqwe");
-        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(!queryDocumentSnapshots.isEmpty()){
-                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
-                            if(l.getStatus().equals("active")){
-                                followSwitch.setChecked(true);
-                            }
-                        }else{
-                            return;
-                        }
-                    }
-                });
+//        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(!queryDocumentSnapshots.isEmpty()){
+//                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
+//                            if(l.getStatus().equals("active")){
+//                                followSwitch.setChecked(true);
+//                            }
+//                        }else{
+//                            return;
+//                        }
+//                    }
+//                });
+        if(follow.equals(null)){
+        }else if(follow.getStatus().equals("active")){
+            followSwitch.setChecked(true);
+        }else{
+        }
+        if(post.getUser_id().equals(user.getUser_id())){
+            followSwitch.setVisibility(View.GONE);
+        }
+
     }
 
 

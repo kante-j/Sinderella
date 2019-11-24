@@ -3,11 +3,12 @@ package com.jipjung.hucomin.sinderella.Classes;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class Follow {
+public class Follow implements Serializable {
     @Exclude
     public String id;
     public String follower_id;
