@@ -27,9 +27,12 @@
 
             <ImageButton
                 android:id="@+id/xButtoninPosting"
-                android:layout_width="56dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/simpleLogo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="3dp"
                 android:background="#87bee8"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/close_btn" />
