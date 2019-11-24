@@ -32,7 +32,7 @@
                 android:layout_weight="1"
                 android:background="#87bee8"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/x_btn" />
+                app:srcCompat="@drawable/close_btn" />
 
             <ImageView
                 android:id="@+id/simpleLogo"
@@ -482,7 +482,6 @@
         android:id="@+id/btn_posting"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_below="@id/activity_posting_contextbox"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"

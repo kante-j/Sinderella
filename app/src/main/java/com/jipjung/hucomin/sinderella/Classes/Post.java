@@ -6,11 +6,12 @@ import android.support.annotation.NonNull;
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 @IgnoreExtraProperties
-public class Post {
+public class Post implements Serializable {
     @Exclude
     public String id;
     public String image_url;
@@ -21,7 +22,7 @@ public class Post {
     public String category;
     public String weight;
     public String vantilation;
-    public String shoe_size;
+    public String shoes_size;
     public String waterproof;
     public int rating;
     public String created_at;
@@ -46,7 +47,6 @@ public class Post {
     public String getBody() {
         return this.body;
     }
-    public String getUid() { return this.user_id;}
     public String getCategory() {return this.category;}
     public String getCreated_at() {return this.created_at;}
     public String getId(){ return this.id;}
@@ -56,7 +56,7 @@ public class Post {
     public String getUser_id() { return user_id; }
     public String getWeight() { return weight; }
     public String getVantilation() { return vantilation; }
-    public String getShoe_size() { return shoe_size; }
+    public String getShoe_size() { return shoes_size; }
     public String getWaterproof() { return waterproof; }
     public Bitmap getBitmap() { return bitmap; }
 
@@ -75,7 +75,7 @@ public class Post {
         result.put("weight",weight);
         result.put("user_id",user_id);
         result.put("vantilation",vantilation);
-        result.put("shoe_size",shoe_size);
+        result.put("shoe_size",shoes_size);
         result.put("waterproof",waterproof);
         return result;
     }

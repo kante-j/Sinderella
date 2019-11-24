@@ -19,13 +19,13 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/mypage_item_feeds_post_body"
+                android:id="@+id/shoes_Image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/mypage_item_feeds_postedImage"
+                    android:id="@+id/shoes_image"
                     android:layout_width="160dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="5dp"
@@ -42,7 +42,7 @@
                     android:gravity="end">
 
                     <TextView
-                        android:id="@+id/cart_item_feeds_feed_shoesname"
+                        android:id="@+id/shoes_code_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="shoesname"
@@ -51,7 +51,7 @@
                         android:visibility="gone" />
 
                     <TextView
-                        android:id="@+id/cart_item_feeds_category"
+                        android:id="@+id/category"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="3sp"
@@ -61,16 +61,16 @@
 
 
                     <TextView
-                        android:id="@+id/cart_item_feeds_brand"
+                        android:id="@+id/buyURL"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="3sp"
-                        android:text="brand"
+                        android:text="buyURL"
                         android:textColor="#6c6464"
                         android:textSize="13sp" />
 
                     <TextView
-                        android:id="@+id/cart_item_feeds_price"
+                        android:id="@+id/price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:lineSpacingExtra="2sp"

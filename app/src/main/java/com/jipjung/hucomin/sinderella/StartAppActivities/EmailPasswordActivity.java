@@ -31,6 +31,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
 
@@ -46,6 +49,9 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
+
+    private FirebaseUser firebaseUser;
+    private FirebaseFirestore firebaseFirestore;
     // [END declare_auth]
 
     @Override
@@ -223,6 +229,9 @@ public class EmailPasswordActivity extends BaseActivity implements
     private void updateUI(FirebaseUser user) {
         hideProgressDialog();
         if (user != null) {
+
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+            firebaseFirestore = FirebaseFirestore.getInstance();
 //            mStatusTextView.setText(getString(R.string.emailpassword_status_fmt,
 //                    user.getEmail(), user.isEmailVerified()));
 //            mDetailTextView.setText(getString(R.string.firebase_status_fmt, user.getUid()));
@@ -233,6 +242,31 @@ public class EmailPasswordActivity extends BaseActivity implements
 //
 //            findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
 //            if(user.isEmailVerified()){
+
+            final DocumentReference docRef = firebaseFirestore.collection("users").document(firebaseUser.getUid());
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document != null && document.exists()) {
+//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+//                        User user = document.toObject(User.class);
+
+                        } else {
+                            Intent i = new Intent(EmailPasswordActivity.this,UserInfoInput.class);
+                            startActivityForResult(i, 1);
+                            finish();
+//                        Log.d(TAG, "No such document");
+                        }
+                    } else {
+                        Log.d(TAG, "get failed with ", task.getException());
+                    }
+
+                }
+            });
+
+
                 Log.d("qwdqwdwqdqddw",user.getEmail());
                 Intent intent = new Intent(this, HomeFeed.class);
                 startActivity(intent);

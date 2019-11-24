@@ -219,6 +219,8 @@
                         android:layout_below="@+id/mypage_followLayout"
                         android:layout_gravity="center">
 
+
+
                     </FrameLayout>
 
 

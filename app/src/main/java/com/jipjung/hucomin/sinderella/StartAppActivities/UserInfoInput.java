@@ -1,6 +1,7 @@
 package com.jipjung.hucomin.sinderella.StartAppActivities;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
+import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
 
 import java.text.SimpleDateFormat;
@@ -106,6 +108,10 @@ public class UserInfoInput extends AppCompatActivity {
 
                 batch.set(users, docData);
                 batch.commit();
+
+                Intent intent = new Intent(UserInfoInput.this, HomeFeed.class);
+                startActivity(intent);
+
 
                 finish();
             }

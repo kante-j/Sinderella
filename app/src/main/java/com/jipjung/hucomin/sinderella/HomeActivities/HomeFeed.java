@@ -68,28 +68,28 @@ public class HomeFeed extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        final DocumentReference docRef = firebaseFirestore.collection("users").document(firebaseUser.getUid());
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document != null && document.exists()) {
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-//                        User user = document.toObject(User.class);
-                        nickname = document.getString("nickname");
-
-                    } else {
-                        Intent i = new Intent(HomeFeed.this,UserInfoInput.class);
-                        startActivityForResult(i, 1);
-//                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-
-            }
-        });
+//        final DocumentReference docRef = firebaseFirestore.collection("users").document(firebaseUser.getUid());
+//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//                    if (document != null && document.exists()) {
+////                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+////                        User user = document.toObject(User.class);
+//                        nickname = document.getString("nickname");
+//
+//                    } else {
+//                        Intent i = new Intent(HomeFeed.this,UserInfoInput.class);
+//                        startActivityForResult(i, 1);
+////                        Log.d(TAG, "No such document");
+//                    }
+//                } else {
+//                    Log.d(TAG, "get failed with ", task.getException());
+//                }
+//
+//            }
+//        });
     }
 
     @Override
