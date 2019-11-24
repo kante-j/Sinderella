@@ -1,61 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawer"
-    android:layout_width="180dp"
+    android:layout_width="240dp"
     android:layout_height="match_parent"
     android:layout_gravity="start"
     android:background="#87bee8"
     android:orientation="vertical"
     android:padding="5dp">
 
-    <TextView
+    <Button
+        android:id="@+id/closedrawer"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/back_button" />
+
+    <View
+        android:id="@+id/vertical_line2"
         android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignBottom="@+id/closedrawer"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Category"
+        android:layout_marginStart="13dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/norwester"
+        android:gravity="left|center_vertical"
+        android:text="category"
         android:textColor="#ffffff"
-        android:textSize="20sp" />
+        android:textSize="28sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="퍼즐잎 메뉴1"
-            android:textColor="#6c8e5e" />
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_bold"
+            android:gravity="left|center_vertical"
+            android:text="운동화"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="컨버스화"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="슬립온"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="스니커즈"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_bold"
+            android:gravity="left|center_vertical"
+            android:text="스포츠, 레저"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="아쿠아슈즈"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="골프화"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="런닝화"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="등산화"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_bold"
+            android:gravity="left|center_vertical"
+            android:text="샌들"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="슬라이드"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="플립플랍"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/gyeonggititle_light"
+            android:gravity="left|center_vertical"
+            android:text="스트랩샌들"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/vertical_line3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_alignBottom="@+id/closedrawer"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:background="#ffffff" />
+
     <!--<LinearLayout-->
-        <!--android:id="@+id/go_mymenu"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="50dp"-->
-        <!--android:layout_margin="10dp"-->
-        <!--android:background="#f2ffe8"-->
-        <!--android:gravity="center"-->
-        <!--android:orientation="vertical">-->
+    <!--android:id="@+id/go_mymenu"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:background="#f2ffe8"-->
+    <!--android:gravity="center"-->
+    <!--android:orientation="vertical">-->
 
-    <Button
-        android:id="@+id/go_mymenu_btn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="내 정보"
-        android:textColor="#6c8e5e" />
+        android:layout_height="40dp"
+        android:gravity="left|center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:srcCompat="@drawable/icon_perm_identity_rounded" />
+
+        <Button
+            android:id="@+id/go_mymenu_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7.5dp"
+            android:background="@null"
+            android:fontFamily="@font/norwester"
+            android:gravity="center"
+            android:text="MY PAGE"
+            android:textColor="#ffffff"
+            android:textSize="28sp" />
+    </LinearLayout>
+
     <!--</LinearLayout>-->
-
-    <Button
-        android:id="@+id/closedrawer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:text="Close Drawer"
-        android:textColor="#000000" />
 
 
 </LinearLayout>
