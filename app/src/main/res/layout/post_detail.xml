@@ -346,6 +346,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center_vertical"
                                                 android:layout_weight="1"
+                                                android:enabled="false"
                                                 android:text="무겁다"
                                                 android:textSize="14sp" />
 
@@ -355,6 +356,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center_vertical"
                                                 android:layout_weight="1"
+                                                android:enabled="false"
                                                 android:text="적당하다"
                                                 android:textSize="14sp" />
 
@@ -364,6 +366,7 @@
                                                 android:layout_height="wrap_content"
                                                 android:layout_gravity="center"
                                                 android:layout_weight="1"
+                                                android:enabled="false"
                                                 android:text="가볍다"
                                                 android:textSize="14sp" />
                                         </RadioGroup>

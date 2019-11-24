@@ -99,7 +99,6 @@ public class DetailedPost extends AppCompatActivity {
         String user_id = firebaseAuth.getUid(); // 유저버튼 받아옴
         user = (User)getIntent().getSerializableExtra("user");
         post = (Post)getIntent().getSerializableExtra("post");
-        Log.d("qwea",post.getTitle());
 //        firebaseFirestore.collection("users").document(user_id).get()
 //                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //                    @Override
