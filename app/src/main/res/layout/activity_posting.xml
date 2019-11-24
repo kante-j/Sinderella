@@ -27,9 +27,12 @@
 
             <ImageButton
                 android:id="@+id/xButtoninPosting"
-                android:layout_width="56dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignBottom="@id/simpleLogo"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="11dp"
+                android:layout_marginBottom="3dp"
                 android:background="#87bee8"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/close_btn" />
@@ -463,6 +466,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="12.5dp"
                         android:background="@null"
+                        android:gravity="center|center_vertical"
                         android:hint=" 사진과 실물이 흡사한지, 발등은 어느정도 여유가 남는지 등 자세하고 자유롭게 서술해 주세요!" />
 
                 </RelativeLayout>
