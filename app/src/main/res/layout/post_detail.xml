@@ -299,7 +299,7 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="center_vertical"
                                             android:layout_marginStart="15dp"
-                                            android:layout_marginEnd="10dp"
+                                            android:layout_marginEnd="7.5dp"
                                             android:fontFamily="@font/gyeonggititle_medium"
                                             android:gravity="center"
                                             android:text="구입처"
@@ -352,12 +352,12 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:layout_marginBottom="10dp"
-                                        android:gravity="left|center_vertical"
                                         android:orientation="horizontal">
 
                                         <TextView
                                             android:layout_width="90dp"
                                             android:layout_height="wrap_content"
+                                            android:layout_gravity="left|center_vertical"
                                             android:layout_marginStart="30.2dp"
                                             android:text="신발 무게"
                                             android:textSize="14sp"
@@ -365,36 +365,45 @@
 
                                         <RadioGroup
                                             android:id="@+id/shoes_weight"
-                                            android:layout_width="match_parent"
+                                            android:layout_width="wrap_content"
                                             android:layout_height="match_parent"
                                             android:layout_weight="1"
                                             android:orientation="horizontal">
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_heavy"
-                                                android:layout_width="68dp"
+                                                android:layout_width="85dp"
                                                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                                                 android:layout_weight="1"
                                                 android:enabled="false"
+=======
+>>>>>>> 011ef6898196160780cfe553bd50758b8fcfdd80
                                                 android:text="무겁다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_fit"
-                                                android:layout_width="80dp"
+                                                android:layout_width="95dp"
                                                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                                                 android:layout_weight="1"
                                                 android:enabled="false"
+=======
+>>>>>>> 011ef6898196160780cfe553bd50758b8fcfdd80
                                                 android:text="적당하다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_light"
-                                                android:layout_width="63dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginEnd="30.2dp"
+<<<<<<< HEAD
                                                 android:layout_weight="1"
                                                 android:enabled="false"
+=======
+>>>>>>> 011ef6898196160780cfe553bd50758b8fcfdd80
                                                 android:text="가볍다"
                                                 android:textSize="14sp" />
                                         </RadioGroup>
@@ -423,26 +432,23 @@
 
                                             <RadioButton
                                                 android:id="@+id/shoes_size_big"
-                                                android:layout_width="68dp"
+                                                android:layout_width="85dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
                                                 android:text="크다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/shoes_size_fit"
-                                                android:layout_width="80dp"
+                                                android:layout_width="95dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
                                                 android:text="적당하다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/shoes_size_small"
-                                                android:layout_width="63dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginEnd="30.2dp"
-                                                android:layout_weight="1"
                                                 android:text="작다"
                                                 android:textSize="14sp" />
                                         </RadioGroup>
@@ -470,26 +476,23 @@
 
                                             <RadioButton
                                                 android:id="@+id/ventilation_best"
-                                                android:layout_width="68dp"
+                                                android:layout_width="85dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
                                                 android:text="잘된다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/ventilation_good"
-                                                android:layout_width="80dp"
+                                                android:layout_width="95dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
                                                 android:text="적당하다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/ventilation_bad"
-                                                android:layout_width="63dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginEnd="30.2dp"
-                                                android:layout_weight="1"
                                                 android:text="안된다"
                                                 android:textSize="14sp" />
                                         </RadioGroup>
@@ -518,23 +521,21 @@
 
                                             <RadioButton
                                                 android:id="@+id/waterproof_best"
-                                                android:layout_width="68dp"
+                                                android:layout_width="85dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
                                                 android:text="잘된다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/waterproof_good"
-                                                android:layout_width="80dp"
+                                                android:layout_width="95dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
                                                 android:text="적당하다"
                                                 android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/waterproof_bad"
-                                                android:layout_width="63dp"
+                                                android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginEnd="30.2dp"
                                                 android:layout_weight="1"
