@@ -63,6 +63,8 @@ public class DetailedPost extends AppCompatActivity {
     private TextView dBody;
     private TextView dUid;
     private TextView dTime;
+    private TextView post_commet_count;
+    private TextView post_like_count;
     private TextView note;
     private String dUrl;
     private StorageReference sr;
@@ -114,6 +116,8 @@ public class DetailedPost extends AppCompatActivity {
 //                    }
 //                });
 
+        post_like_count = findViewById(R.id.post_like_count);
+        post_commet_count = findViewById(R.id.post_commet_count);
         followSwitch = findViewById(R.id.follow_switch);
         dImage = findViewById(R.id.dp_image);
         dTitle = findViewById(R.id.dp_title);
@@ -180,7 +184,7 @@ public class DetailedPost extends AppCompatActivity {
         commentListView = (ListView)findViewById(R.id.list_comments);
         //댓글 보이기
         getComments();
-
+        getLikeCount();
         //처음에 시작할 때 자기가 좋아요한 글일 경우 좋아요 이미지가 활성화 되어있게 변경
         isLikePost();
         isFollowed();
@@ -379,9 +383,11 @@ public class DetailedPost extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(queryDocumentSnapshots.isEmpty()){
+                            post_commet_count.setText(String.valueOf(0));
                             return;
                         } else{
                             comments = queryDocumentSnapshots.toObjects(Comment.class);
+                            post_commet_count.setText(String.valueOf(comments.size()));
                             comments.sort(new CommentComparator());
                             adapter = new CommentAdapter(DetailedPost.this, comments);
                             commentListView.setAdapter(adapter);
@@ -517,7 +523,31 @@ public class DetailedPost extends AppCompatActivity {
     /**********************************
      *             좋아요 관련            *
      **********************************/
+    public void getLikeCount(){
+//        if (!comments.isEmpty())
+////            comments.clear();
+        firebaseFirestore.collection("likes").whereEqualTo("post_id",post_id).whereEqualTo("status","active").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            post_like_count.setText(String.valueOf(0));
+                            return;
+                        } else{
+                            List<Like> l = queryDocumentSnapshots.toObjects(Like.class);
+                            post_like_count.setText(String.valueOf(l.size()));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
 
+
+
+    }
 
     public void isLikePost(){
         firebaseFirestore.collection("likes").whereEqualTo("post_id",post_id).whereEqualTo("user_id",firebaseAuth.getUid()).get()

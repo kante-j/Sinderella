@@ -161,7 +161,7 @@
                                     android:layout_toRightOf="@+id/btn_commet"
                                     android:gravity="start"
                                     android:lineSpacingExtra="1.5sp"
-                                    android:text="256"
+                                    android:text=""
                                     android:textColor="#bbbccd"
                                     android:textSize="15sp" />
 
@@ -186,7 +186,7 @@
                                     android:layout_toRightOf="@+id/btn_like"
                                     android:gravity="start"
                                     android:lineSpacingExtra="1.5sp"
-                                    android:text="256"
+                                    android:text=""
                                     android:textColor="#bbbccd"
                                     android:textSize="15sp" />
 
@@ -211,7 +211,7 @@
                                     android:layout_toRightOf="@+id/btn_cart"
                                     android:gravity="start"
                                     android:lineSpacingExtra="1.5sp"
-                                    android:text="256"
+                                    android:text=""
                                     android:textColor="#bbbccd"
                                     android:textSize="15sp" />
 
