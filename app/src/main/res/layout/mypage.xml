@@ -183,12 +183,12 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/follower"
+                            android:id="@+id/mypage_follower"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/mypage_follow"
+                            android:background="@drawable/click_change_color"
                             android:gravity="center"
                             android:text="팔로워"
                             android:textSize="15sp"
@@ -196,12 +196,12 @@
 
 
                         <Button
-                            android:id="@+id/following"
+                            android:id="@+id/mypage_following"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:layout_weight="1"
-                            android:background="@drawable/mypage_following"
+                            android:background="@drawable/click_change_color"
                             android:gravity="center"
                             android:text="팔로잉"
                             android:textSize="15sp"

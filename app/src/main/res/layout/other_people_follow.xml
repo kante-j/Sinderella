@@ -166,7 +166,7 @@
                     android:orientation="horizontal">
 
                     <Button
-                        android:id="@+id/post_board"
+                        android:id="@+id/other_people_post_board"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -178,7 +178,7 @@
                         android:textStyle="bold" />
 
                     <Button
-                        android:id="@+id/follower"
+                        android:id="@+id/other_people_follower"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
@@ -191,7 +191,7 @@
 
 
                     <Button
-                        android:id="@+id/following"
+                        android:id="@+id/other_people_following"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
