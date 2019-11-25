@@ -99,4 +99,17 @@
         <item>최신 순</item>
     </string-array>
 
+    <string-array name="category">
+        <item>컨버스화</item>
+        <item>슬립온</item>
+        <item>스니커즈</item>
+        <item>런닝화</item>
+        <item>등산화</item>
+        <item>아쿠아슈즈</item>
+        <item>골프화</item>
+        <item>플립플랍</item>
+        <item>슬라이드</item>
+        <item>스트랩샌들</item>
+    </string-array>
+
 </resources>
