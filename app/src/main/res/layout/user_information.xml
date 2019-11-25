@@ -277,7 +277,7 @@
             <LinearLayout
                 android:id="@+id/check_foot_width"
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
+                android:layout_height="450dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
@@ -288,7 +288,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="32dp"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="32dp"
                     android:fontFamily="@font/gyeonggititle_medium"
                     android:text=" 발 볼 측정을 위해 이 신발들 중 \n즐겨 신거나 맞았던 신발들을 골라주세요!"
@@ -301,6 +301,7 @@
                     android:layout_marginStart="40dp"
                     android:layout_marginTop="2dp"
                     android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="17.5dp"
                     android:fontFamily="@font/gyeonggititle_light"
                     android:text="* 만일 없다면 즐겨신었던 신발의 브랜드를 골라주세요!"
                     android:textAlignment="center"
@@ -310,35 +311,426 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="3dp"
-                    android:layout_marginTop="12.5dp"
                     android:layout_marginEnd="3dp"
                     android:background="@null"
                     android:visibility="visible"
                     app:columnCount="3"
                     app:rowCount="3">
 
-                    <CheckBox
-                        android:id="@+id/nike_sample"
-                        android:layout_width="105dp"
-                        android:layout_height="105dp"
-                        android:layout_margin="2.5dp"
-                        android:background="@drawable/nike" />
+                    <FrameLayout
+                        android:id="@+id/nike_airforce"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
 
-                    <CheckBox
-                        android:id="@+id/reebok_sample"
-                        android:layout_width="105dp"
-                        android:layout_height="105dp"
-                        android:layout_marginTop="2.5dp"
-                        android:background="@drawable/reebok" />
+                        <ImageView
+                            android:id="@+id/nike_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/nike" />
 
-                    <CheckBox
-                        android:id="@+id/checkBox3"
-                        android:layout_width="105dp"
-                        android:layout_height="105dp"
-                        android:background="@drawable/adidas" />
+                        <TextView
+                            android:id="@+id/nike_airforce_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="나이키\n에어포스"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
 
+                        <CheckBox
+                            android:id="@+id/nike_airforce_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/reebok_fury"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/reebok_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/reebok" />
+
+                        <TextView
+                            android:id="@+id/reebok_fury_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="리복\n퓨리"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/reebol_fury_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/newbalcnce_574"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/newbalanced_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/newbalance574" />
+
+                        <TextView
+                            android:id="@+id/newbalance_574_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="뉴발란스\n574"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/newbalance_574_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/converse_converse"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/converse_sample_image"
+                            android:layout_width="110dp"
+                            android:layout_height="110dp"
+                            app:layout_columnWeight="1"
+                            app:layout_gravity="fill"
+                            app:layout_rowWeight="1"
+                            app:srcCompat="@drawable/converse_sample_image" />
+
+                        <TextView
+                            android:id="@+id/converse_converse_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="컨버스"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/converse_converse_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/vans_oidschool"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/vans_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/vans" />
+
+                        <TextView
+                            android:id="@+id/vans_oldschool_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="반스\n올드스쿨"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/vans_oldschool_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/adidas_superstar"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/adidas_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/adidas" />
+
+                        <TextView
+                            android:id="@+id/adidas_superstar_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="아이다스\n슈퍼스타\n스탠스미스"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/adidas_superstar_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/skechers_dlites"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/skechers_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/skechers" />
+
+                        <TextView
+                            android:id="@+id/skechers_dlites_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="스케쳐스\n딜라이트"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/skerchers_dlites_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/fila_courtdeluxe"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
+                        app:layout_columnWeight="1"
+                        app:layout_rowWeight="1">
+
+                        <ImageView
+                            android:id="@+id/fila_sample_image"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:layout_gravity="fill"
+                            app:srcCompat="@drawable/fila" />
+
+                        <TextView
+                            android:id="@+id/fila_courtdeluxe_hover"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/check_foot_width_shoebox"
+                            android:fontFamily="@font/gyeonggititle_bold"
+                            android:gravity="center"
+                            android:text="휠라\n코트니디럭스"
+                            android:textColor="#ffffff"
+                            android:textSize="20sp" />
+
+                        <CheckBox
+                            android:id="@+id/fila_courtdeluxe_check"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="2.5dp" />
+
+                    </FrameLayout>
                 </android.support.v7.widget.GridLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/check_foot_disease"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="25dp"
+                android:background="@drawable/foot_disease"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="117.5dp"
+                    android:layout_gravity="fill_horizontal|top"
+                    android:fontFamily="@font/gyeonggititle_medium"
+                    android:gravity="center"
+                    android:text="신발을 살 때 고려해야 하는 발 질환이 있다면\n아래 항목에 체크해 주세요.\n만약 항목에 존재하지 않으시다면\n기타에 기입해 주시면 됩니다."
+                    android:textSize="16sp" />
+
+                <android.support.v7.widget.GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="2.5dp"
+                    android:layout_marginEnd="2.5dp"
+                    app:columnCount="2"
+                    app:rowCount="5">
+
+                    <CheckBox
+                        android:id="@+id/disease_resistant_claw"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:gravity="left|center_vertical"
+                        android:text="내성발톱"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="짝다리"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/disease_eczema"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="습진"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/wart_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="사마귀"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/valgus_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="무지외반증"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/athletes_foot_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="무좀"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/accessory_navicular_bone_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="부주상골증후군"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <CheckBox
+                        android:id="@+id/plantar_fasciitis_disease"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="족저근막염"
+                        android:textColor="#707070"
+                        android:textSize="16sp"
+                        app:layout_columnWeight="1"
+                        app:layout_gravity="fill" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        app:layout_columnSpan="2"
+                        app:layout_gravity="fill">
+
+                        <CheckBox
+                            android:id="@+id/disease_etc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/gyeonggititle_medium"
+                            android:textColor="#707070"
+                            app:layout_gravity="fill" />
+
+                        <EditText
+                            android:id="@+id/disease_etc_input"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:fontFamily="@font/gyeonggititle_medium"
+                            android:hint="기타"
+                            android:inputType="textPersonName"
+                            android:textSize="16sp" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.GridLayout>
             </LinearLayout>
 
             <Button
