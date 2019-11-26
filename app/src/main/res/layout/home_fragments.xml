@@ -16,9 +16,10 @@
         <Spinner
             android:id="@+id/order_of_priority"
             style="?android:attr/spinnerItemStyle"
-            android:layout_width="173dp"
+            android:layout_width="match_parent"
             android:layout_height="35dp"
             android:entries="@array/order_of_priority"
+            android:textAlignment="center"
             android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
             android:outlineSpotShadowColor="@color/bootstrap_brand_info"
             android:textSize="20sp"

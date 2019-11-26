@@ -106,7 +106,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 });
 
         //TODO : 그냥 FCOOK 이런데서 불러올 때 포스트 객체에다가 닉네임 칼럼 추가해서 넘겨주는게 로딩 안걸리고 젤 좋은것 같다...
-        firestore.collection("users").document(post.getUser_id()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+        firestore.collection("users").document(firebaseAuth.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(!documentSnapshot.exists()){

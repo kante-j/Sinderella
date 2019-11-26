@@ -37,7 +37,7 @@ public class UserInfoInput extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private FirebaseUser firebaseUser;
     private TextView textview_nickname;
-    private ImageButton submit_btn;
+    private Button submit_btn;
     private Spinner spinner_foot_size;
     private RadioGroup sex_group;
     private RadioGroup radio_foot_width;
@@ -60,7 +60,7 @@ public class UserInfoInput extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         sex_group = findViewById(R.id.sex_group);
-        submit_btn = (ImageButton)findViewById(R.id.information_button);
+        submit_btn = (Button)findViewById(R.id.information_button);
         birthbtn = findViewById(R.id.birth_date);
         spinner_foot_size = findViewById(R.id.foot_size);
         radio_foot_width = findViewById(R.id.foot_width_group);

@@ -322,7 +322,11 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
-        if(follow.equals(null)){
+        Log.d("qweqwe 1",follow.getFollower_id());
+        Log.d("qweqwe 2",follow.getFollowed_id());
+        Log.d("qweqwe 3",post.getUser_id());
+        Log.d("qweqwe 4",user.getUser_id());
+        if(follow == null){
         }else if(follow.getStatus().equals("active")){
             followSwitch.setChecked(true);
         }else{

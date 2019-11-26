@@ -374,38 +374,29 @@
                                                 android:id="@+id/shoes_weight_heavy"
                                                 android:layout_width="85dp"
                                                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-                                                android:layout_weight="1"
-                                                android:enabled="false"
-=======
->>>>>>> 011ef6898196160780cfe553bd50758b8fcfdd80
-                                                android:text="무겁다"
-                                                android:textSize="14sp" />
+                                            android:layout_weight="1"
+                                            android:enabled="false"
+                                            android:text="무겁다"
+                                            android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_fit"
                                                 android:layout_width="95dp"
                                                 android:layout_height="wrap_content"
-<<<<<<< HEAD
-                                                android:layout_weight="1"
-                                                android:enabled="false"
-=======
->>>>>>> 011ef6898196160780cfe553bd50758b8fcfdd80
-                                                android:text="적당하다"
-                                                android:textSize="14sp" />
+                                            android:layout_weight="1"
+                                            android:enabled="false"
+                                            android:text="적당하다"
+                                            android:textSize="14sp" />
 
                                             <RadioButton
                                                 android:id="@+id/shoes_weight_light"
                                                 android:layout_width="80dp"
                                                 android:layout_height="wrap_content"
                                                 android:layout_marginEnd="30.2dp"
-<<<<<<< HEAD
-                                                android:layout_weight="1"
-                                                android:enabled="false"
-=======
->>>>>>> 011ef6898196160780cfe553bd50758b8fcfdd80
-                                                android:text="가볍다"
-                                                android:textSize="14sp" />
+                                            android:layout_weight="1"
+                                            android:enabled="false"
+                                            android:text="가볍다"
+                                            android:textSize="14sp" />
                                         </RadioGroup>
 
                                     </LinearLayout>
