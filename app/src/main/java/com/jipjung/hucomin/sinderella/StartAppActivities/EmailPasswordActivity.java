@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,8 +43,6 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     private static final String TAG = "EmailPassword";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -105,7 +104,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
+                            Intent intent = new Intent(EmailPasswordActivity.this, UserInfoInput.class);
                             startActivity(intent);
                             finish();
 //                            updateUI(user);
@@ -243,6 +242,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 //            findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
 //            if(user.isEmailVerified()){
 
+            showProgressDialog();
             final DocumentReference docRef = firebaseFirestore.collection("users").document(firebaseUser.getUid());
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -250,16 +250,24 @@ public class EmailPasswordActivity extends BaseActivity implements
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document != null && document.exists()) {
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
 //                        User user = document.toObject(User.class);
-
+                            Log.d("qweqwe",user.getEmail());
+                            Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
+                            startActivity(intent);
+                            finish();
+                            hideProgressDialog();
                         } else {
+                            hideProgressDialog();
+                            Log.d("qweqwe","ascacs");
                             Intent i = new Intent(EmailPasswordActivity.this,UserInfoInput.class);
                             startActivityForResult(i, 1);
                             finish();
+
 //                        Log.d(TAG, "No such document");
                         }
                     } else {
+
+                        hideProgressDialog();
                         Log.d(TAG, "get failed with ", task.getException());
                     }
 
@@ -267,10 +275,6 @@ public class EmailPasswordActivity extends BaseActivity implements
             });
 
 
-                Log.d("qwdqwdwqdqddw",user.getEmail());
-                Intent intent = new Intent(this, HomeFeed.class);
-                startActivity(intent);
-                finish();
 //            }
         } else {
 //            mStatusTextView.setText(R.string.signed_out);
