@@ -70,7 +70,7 @@ public class UserInfoInput extends AppCompatActivity {
         radio_foot_width = findViewById(R.id.foot_width_group);
         TextView nike_airforce_hover;
         AnimatorSet animatorSet;
-        
+
         nike_airforce_hover=(TextView)findViewById(R.id.nike_airforce_hover);
         animatorSet=new AnimatorSet();
 
@@ -90,6 +90,7 @@ public class UserInfoInput extends AppCompatActivity {
         });
 
         animatorSet.start();
+
 
         radio_foot_width.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -220,6 +221,8 @@ public class UserInfoInput extends AppCompatActivity {
 
     private boolean validateForm() {
         boolean valid = true;
+
+        // TODO : 안들어간 값들 전부 에러처리
 
         nickname = textview_nickname.getText().toString();
         if (TextUtils.isEmpty(nickname)) {
