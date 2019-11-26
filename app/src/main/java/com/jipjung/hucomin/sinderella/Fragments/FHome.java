@@ -13,7 +13,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.app.Activity;
+
+
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
@@ -38,6 +48,10 @@ public class FHome extends Fragment {
     boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     ProgressBar pgsBar;
+    private ImageView filterbtn;
+    private TextView applytext;
+    private RelativeLayout filterscreen;
+
 
 
     public FHome() {
@@ -123,8 +137,91 @@ public class FHome extends Fragment {
             }
         });
 
+        applytext=v.findViewById(R.id.apply);
+        filterscreen=v.findViewById(R.id.filter_screen);
+
+
+        filterbtn =v.findViewById(R.id.btn_filter);
+        filterbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(applytext.getVisibility() == View.GONE){
+                    applytext.setVisibility(View.VISIBLE);
+                }else{
+                    applytext.setVisibility(View.GONE);
+                }
+
+                if(filterscreen.getVisibility() == View.GONE){
+                    filterscreen.setVisibility(View.VISIBLE);
+                }else{
+                    filterscreen.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+        applytext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterscreen.setVisibility(View.GONE);
+                applytext.setVisibility(View.GONE);
+            }
+        });
+
+        //ToDo: spinner textSize 조절하기
+        Spinner foot_size_spinner = v.findViewById(R.id.start_foot_size);
+
+        String[] foot_sizes = getResources().getStringArray(R.array.foot_size);
+
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+                getContext(),R.layout.foot_size_spinner_items,foot_sizes
+        );
+
+        spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        foot_size_spinner.setAdapter(spinnerArrayAdapter);
+
+        foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(foot_size_spinner.getSelectedItemPosition()>0) {
+                    Log.v("알림", foot_size_spinner.getSelectedItem().toString() + "is selected");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
+        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(
+                getContext(),R.layout.foot_size_spinner_items,foot_sizes
+        );
+
+        spinnerArrayAdapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        foot_size_spinner2.setAdapter(spinnerArrayAdapter2);
+
+        foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(foot_size_spinner.getSelectedItemPosition()>0) {
+                    Log.v("알림", foot_size_spinner.getSelectedItem().toString() + "is selected");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
         return v;
     }
+
+
 
 //    @Override
 //    public void onResume(){
