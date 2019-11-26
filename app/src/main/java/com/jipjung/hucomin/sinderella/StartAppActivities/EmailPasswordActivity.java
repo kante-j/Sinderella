@@ -43,8 +43,6 @@ public class EmailPasswordActivity extends BaseActivity implements
 
     private static final String TAG = "EmailPassword";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
     private EditText mEmailField;
     private EditText mPasswordField;
 
@@ -244,6 +242,7 @@ public class EmailPasswordActivity extends BaseActivity implements
 //            findViewById(R.id.verifyEmailButton).setEnabled(!user.isEmailVerified());
 //            if(user.isEmailVerified()){
 
+            showProgressDialog();
             final DocumentReference docRef = firebaseFirestore.collection("users").document(firebaseUser.getUid());
             docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -251,18 +250,24 @@ public class EmailPasswordActivity extends BaseActivity implements
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document != null && document.exists()) {
-                            Log.d("qweqwe","zzzzzzz");
 //                        User user = document.toObject(User.class);
-
+                            Log.d("qweqwe",user.getEmail());
+                            Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
+                            startActivity(intent);
+                            finish();
+                            hideProgressDialog();
                         } else {
-
-                            Log.d("qweqwe","zxczxc");
+                            hideProgressDialog();
+                            Log.d("qweqwe","ascacs");
                             Intent i = new Intent(EmailPasswordActivity.this,UserInfoInput.class);
                             startActivityForResult(i, 1);
                             finish();
+
 //                        Log.d(TAG, "No such document");
                         }
                     } else {
+
+                        hideProgressDialog();
                         Log.d(TAG, "get failed with ", task.getException());
                     }
 
@@ -270,10 +275,6 @@ public class EmailPasswordActivity extends BaseActivity implements
             });
 
 
-//                Log.d("qwdqwdwqdqddw",user.getEmail());
-//                Intent intent = new Intent(this, HomeFeed.class);
-//                startActivity(intent);
-//                finish();
 //            }
         } else {
 //            mStatusTextView.setText(R.string.signed_out);
