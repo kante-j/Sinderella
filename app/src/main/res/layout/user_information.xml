@@ -277,7 +277,7 @@
             <LinearLayout
                 android:id="@+id/check_foot_width"
                 android:layout_width="match_parent"
-                android:layout_height="450dp"
+                android:layout_height="475dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
@@ -312,7 +312,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="15dp"
                     android:background="@null"
                     android:visibility="visible"
                     app:columnCount="3"
@@ -341,7 +341,8 @@
                             android:gravity="center"
                             android:text="나이키\n에어포스"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/nike_airforce_check"
@@ -374,7 +375,8 @@
                             android:gravity="center"
                             android:text="리복\n퓨리"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/reebol_fury_check"
@@ -407,7 +409,8 @@
                             android:gravity="center"
                             android:text="뉴발란스\n574"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/newbalance_574_check"
@@ -442,7 +445,8 @@
                             android:gravity="center"
                             android:text="컨버스"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/converse_converse_check"
@@ -475,7 +479,8 @@
                             android:gravity="center"
                             android:text="반스\n올드스쿨"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/vans_oldschool_check"
@@ -508,7 +513,8 @@
                             android:gravity="center"
                             android:text="아이다스\n슈퍼스타\n스탠스미스"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/adidas_superstar_check"
@@ -541,7 +547,8 @@
                             android:gravity="center"
                             android:text="스케쳐스\n딜라이트"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/skerchers_dlites_check"
@@ -574,7 +581,8 @@
                             android:gravity="center"
                             android:text="휠라\n코트니디럭스"
                             android:textColor="#ffffff"
-                            android:textSize="20sp" />
+                            android:textSize="20sp"
+                            android:visibility="invisible" />
 
                         <CheckBox
                             android:id="@+id/fila_courtdeluxe_check"
@@ -736,15 +744,14 @@
 
             <Button
                 android:id="@+id/information_button"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/sign_up_button"
                 android:fontFamily="@font/gyeonggititle_bold"
-                android:letterSpacing="0.9"
                 android:text="회원정보제출"
                 android:textColor="#ffffff"
                 android:textSize="20sp" />
