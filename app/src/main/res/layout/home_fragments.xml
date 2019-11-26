@@ -101,9 +101,11 @@
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/fiter_screen"
+            android:id="@+id/filter_screen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="30dp"
             android:orientation="vertical"
             android:layout_below="@+id/filter_layout"
             android:visibility="gone"
@@ -116,16 +118,15 @@
 
                 <TextView
                     android:id="@+id/home_fragments_foot_with"
-                    android:layout_width="100dp"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
                     android:gravity="center"
                     android:background="@drawable/home_fragments_filter_upper"
                     android:text="발 볼"
                     android:textColor="#707070"/>
 
                 <RelativeLayout
-                    android:layout_width="270dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/home_fragments_foot_with"
                     android:orientation="horizontal"
@@ -136,8 +137,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:textSize="10sp"
                         android:text="좁은 편"
                         android:textColor="#757070" />
 
@@ -146,9 +148,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_toRightOf="@+id/small_foot"
+                        android:textSize="10sp"
                         android:text="보통"
                         android:textColor="#757070" />
 
@@ -157,9 +160,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
                         android:layout_toRightOf="@+id/normal_foot"
+                        android:textSize="10sp"
                         android:text="큰 편"
                         android:textColor="#757070" />
                 </RelativeLayout>
@@ -176,9 +180,8 @@
 
                 <TextView
                     android:id="@+id/home_fragments_foot_size"
-                    android:layout_width="100dp"
+                    android:layout_width="60dp"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="30dp"
                     android:gravity="center"
                     android:background="@drawable/home_fragments_filter_under"
                     android:text="발 사이즈"
@@ -190,7 +193,7 @@
 
 
                 <RelativeLayout
-                    android:layout_width="270dp"
+                    android:layout_width="230dp"
                     android:layout_height="match_parent"
                     android:layout_toRightOf="@+id/home_fragments_foot_size"
                     android:orientation="horizontal"
@@ -208,13 +211,13 @@
                         android:entries="@array/foot_size"
                         android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
                         android:outlineSpotShadowColor="@color/bootstrap_brand_info"
-                        android:textSize="20sp"
+                        android:textSize="10sp"
                         android:layout_marginLeft="10dp"
                         />
 
                     <TextView
                         android:id="@+id/between"
-                        android:layout_width="20dp"
+                        android:layout_width="10dp"
                         android:layout_height="match_parent"
                         android:layout_toRightOf="@+id/start_foot_size"
                         android:gravity="center"
@@ -232,7 +235,7 @@
                         android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
                         android:outlineSpotShadowColor="@color/bootstrap_brand_info"
                         android:layout_marginRight="5dp"
-                        android:textSize="20dp"
+                        android:textSize="10sp"
                         android:layout_toRightOf="@+id/between"
                         />
 
