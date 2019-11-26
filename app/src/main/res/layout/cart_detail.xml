@@ -66,6 +66,7 @@
                                 android:id="@+id/category"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/gyeonggititle_medium"
                                 android:lineSpacingExtra="3sp"
                                 android:text="category"
                                 android:textColor="#6c6464"
@@ -76,6 +77,7 @@
                                 android:id="@+id/buyURL"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/gyeonggititle_medium"
                                 android:lineSpacingExtra="3sp"
                                 android:text="buyURL"
                                 android:textColor="#6c6464"
@@ -85,6 +87,7 @@
                                 android:id="@+id/price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/gyeonggititle_medium"
                                 android:lineSpacingExtra="2sp"
                                 android:text="price"
                                 android:textColor="#6c6464"
@@ -117,16 +120,17 @@
                         android:gravity="center"
 
                         />
+
                     <TextView
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
                         android:layout_centerInParent="true"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:gravity="center"
+                        android:text="공식 홈페이지 가기"
                         android:textColor="@android:color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="공식 홈페이지 가기"
-                        />
+                        android:textStyle="bold" />
 
                     <ImageView
                         android:id="@+id/cart_derail_btn_scroll"
