@@ -3,10 +3,12 @@ package com.jipjung.hucomin.sinderella.Fragments;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -40,6 +42,8 @@ public class FMymenu extends Fragment {
     private TextView text_foot_size;
     private TextView text_foot_width;
     private Button logoutbtn;
+    private Button followerbtn;
+    private Button followingbtn;
 
 
     public FMymenu(){
@@ -109,6 +113,30 @@ public class FMymenu extends Fragment {
             }
         });
 
+        followerbtn = v.findViewById(R.id.mypage_follower);
+        followerbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(followerbtn.isSelected()){
+                    followerbtn.setSelected(false);
+                }else{
+                    followerbtn.setSelected(true);
+                }
+            }
+        });
+
+        followingbtn=v.findViewById(R.id.mypage_following);
+        followingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(followingbtn.isSelected()){
+                    followingbtn.setSelected(false);
+                }else{
+                    followingbtn.setSelected(true);
+                }
+            }
+        });
+
 
 
 //        getUser();
@@ -144,6 +172,10 @@ public class FMymenu extends Fragment {
                     }
                 });
     }
+
+
+
+
 
 
 }
