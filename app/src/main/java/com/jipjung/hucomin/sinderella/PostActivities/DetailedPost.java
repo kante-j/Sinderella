@@ -63,6 +63,8 @@ public class DetailedPost extends AppCompatActivity {
     private TextView dBody;
     private TextView dUid;
     private TextView dTime;
+    private TextView post_commet_count;
+    private TextView post_like_count;
     private TextView note;
     private String dUrl;
     private StorageReference sr;
@@ -84,6 +86,7 @@ public class DetailedPost extends AppCompatActivity {
     private CommentAdapter adapter;
     private List<Comment> comments;
     private Post post;
+    private Follow follow;
 
     private Switch followSwitch;
 
@@ -99,7 +102,7 @@ public class DetailedPost extends AppCompatActivity {
         String user_id = firebaseAuth.getUid(); // 유저버튼 받아옴
         user = (User)getIntent().getSerializableExtra("user");
         post = (Post)getIntent().getSerializableExtra("post");
-        Log.d("qwea",post.getTitle());
+        follow = (Follow) getIntent().getSerializableExtra("follow");
 //        firebaseFirestore.collection("users").document(user_id).get()
 //                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //                    @Override
@@ -113,6 +116,8 @@ public class DetailedPost extends AppCompatActivity {
 //                    }
 //                });
 
+        post_like_count = findViewById(R.id.post_like_count);
+        post_commet_count = findViewById(R.id.post_commet_count);
         followSwitch = findViewById(R.id.follow_switch);
         dImage = findViewById(R.id.dp_image);
         dTitle = findViewById(R.id.dp_title);
@@ -179,7 +184,7 @@ public class DetailedPost extends AppCompatActivity {
         commentListView = (ListView)findViewById(R.id.list_comments);
         //댓글 보이기
         getComments();
-
+        getLikeCount();
         //처음에 시작할 때 자기가 좋아요한 글일 경우 좋아요 이미지가 활성화 되어있게 변경
         isLikePost();
         isFollowed();
@@ -238,7 +243,7 @@ public class DetailedPost extends AppCompatActivity {
                             Map<String, Object> docData = new HashMap<>();
 
                             docData.put("follower_id", user.getUser_id());
-                            docData.put("followed_it", post.getUser_id());
+                            docData.put("followed_id", post.getUser_id());
                             docData.put("id", follow.getId());
 
                             // 댓글 날짜 DB
@@ -271,14 +276,14 @@ public class DetailedPost extends AppCompatActivity {
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
-                        WriteBatch batch = firebaseFirestore.batch();
-                        DocumentReference follow = firebaseFirestore.collection("follows").document();
-                        Map<String, Object> docData = new HashMap<>();
+                        public void onFailure(@NonNull Exception e) {
+                            WriteBatch batch = firebaseFirestore.batch();
+                            DocumentReference follow = firebaseFirestore.collection("follows").document();
+                            Map<String, Object> docData = new HashMap<>();
 
-                        docData.put("follower_id", user.getUser_id());
-                        docData.put("followed_it", post.getUser_id());
-                        docData.put("id", follow.getId());
+                            docData.put("follower_id", user.getUser_id());
+                            docData.put("followed_id", post.getUser_id());
+                            docData.put("id", follow.getId());
 
                         // 댓글 날짜 DB
                         SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
@@ -303,24 +308,33 @@ public class DetailedPost extends AppCompatActivity {
 
     public void isFollowed(){
         Log.d("qwea","qweqwe");
-        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(!queryDocumentSnapshots.isEmpty()){
-                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
+//        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(!queryDocumentSnapshots.isEmpty()){
+//                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
+//                            if(l.getStatus().equals("active")){
+//                                followSwitch.setChecked(true);
+//                            }
+//                        }else{
+//                            return;
+//                        }
+//                    }
+//                });
+        Log.d("qweqwe 1",follow.getFollower_id());
+        Log.d("qweqwe 2",follow.getFollowed_id());
+        Log.d("qweqwe 3",post.getUser_id());
+        Log.d("qweqwe 4",user.getUser_id());
+        if(follow == null){
+        }else if(follow.getStatus().equals("active")){
+            followSwitch.setChecked(true);
+        }else{
+        }
+        if(post.getUser_id().equals(user.getUser_id())){
+            followSwitch.setVisibility(View.GONE);
+        }
 
-                            Log.d("qwea",l.getFollowed_id());
-                            Log.d("qwea",l.getFollower_id());
-                            Log.d("qwea",l.getStatus());
-                            if(l.getStatus().equals("active")){
-                                followSwitch.setChecked(true);
-                            }
-                        }else{
-                            return;
-                        }
-                    }
-                });
     }
 
 
@@ -373,9 +387,11 @@ public class DetailedPost extends AppCompatActivity {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if(queryDocumentSnapshots.isEmpty()){
+                            post_commet_count.setText(String.valueOf(0));
                             return;
                         } else{
                             comments = queryDocumentSnapshots.toObjects(Comment.class);
+                            post_commet_count.setText(String.valueOf(comments.size()));
                             comments.sort(new CommentComparator());
                             adapter = new CommentAdapter(DetailedPost.this, comments);
                             commentListView.setAdapter(adapter);
@@ -511,7 +527,31 @@ public class DetailedPost extends AppCompatActivity {
     /**********************************
      *             좋아요 관련            *
      **********************************/
+    public void getLikeCount(){
+//        if (!comments.isEmpty())
+////            comments.clear();
+        firebaseFirestore.collection("likes").whereEqualTo("post_id",post_id).whereEqualTo("status","active").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            post_like_count.setText(String.valueOf(0));
+                            return;
+                        } else{
+                            List<Like> l = queryDocumentSnapshots.toObjects(Like.class);
+                            post_like_count.setText(String.valueOf(l.size()));
+                        }
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
 
+
+
+    }
 
     public void isLikePost(){
         firebaseFirestore.collection("likes").whereEqualTo("post_id",post_id).whereEqualTo("user_id",firebaseAuth.getUid()).get()

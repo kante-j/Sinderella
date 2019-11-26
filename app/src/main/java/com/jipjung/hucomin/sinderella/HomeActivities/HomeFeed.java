@@ -307,10 +307,12 @@ public class HomeFeed extends AppCompatActivity {
                 break;
             case R.id.go_follow:
                 fr = new FFollow();
+                fr.setArguments(userbundle);
                 follow_btn.setBackgroundResource(R.drawable.follow_clicked);
                 break;
             case R.id.go_shop:
                 fr = new FCart();
+                fr.setArguments(userbundle);
                 cart_btn.setBackgroundResource(R.drawable.cart_clicked);
                 break;
             case R.id.go_mymenu:

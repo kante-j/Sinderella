@@ -35,28 +35,28 @@
     </string-array>
 
     <string-array name="foot_size">
-        <item>200이하</item>
-        <item>205</item>
-        <item>210</item>
-        <item>215</item>
-        <item>220</item>
-        <item>225</item>
-        <item>230</item>
-        <item>235</item>
-        <item>240</item>
-        <item>245</item>
-        <item>250</item>
-        <item>255</item>
-        <item>260</item>
-        <item>265</item>
-        <item>270</item>
-        <item>275</item>
-        <item>280</item>
-        <item>285</item>
-        <item>290</item>
-        <item>295</item>
-        <item>300이상</item>
-    </string-array>
+    <item>200이하</item>
+    <item>205</item>
+    <item>210</item>
+    <item>215</item>
+    <item>220</item>
+    <item>225</item>
+    <item>230</item>
+    <item>235</item>
+    <item>240</item>
+    <item>245</item>
+    <item>250</item>
+    <item>255</item>
+    <item>260</item>
+    <item>265</item>
+    <item>270</item>
+    <item>275</item>
+    <item>280</item>
+    <item>285</item>
+    <item>290</item>
+    <item>295</item>
+    <item>300이상</item>
+</string-array>
 
     <string-array name="date_day">
         <item>1일</item>

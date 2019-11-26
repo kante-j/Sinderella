@@ -83,7 +83,7 @@ public class FHome extends Fragment {
 //                        .toLowerCase(Locale.getDefault());
 //                mAdapter.filter(searchWord);
 //            }
-//        });
+//        } 
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override

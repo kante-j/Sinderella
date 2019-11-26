@@ -132,15 +132,16 @@ public class Posting extends AppCompatActivity {
             public void onClick(View v) {
                 String eatoutBody = null;
                 String transBody;
-                if(imageView.getDrawable()==null) {
-                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
-                    if(validatePost())
-                        finish();
-                }else{
-                    if(validatePost())
-                        uploadImage();
-                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
-                }
+                writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
+//                if(imageView.getDrawable()==null) {
+//                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
+//                    if(validatePost())
+//                        finish();
+//                }else{
+//                    if(validatePost())
+//                        uploadImage();
+//                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
+//                }
             }
         });
 
@@ -374,6 +375,50 @@ public class Posting extends AppCompatActivity {
         });
         builder.show();
     }
+    public void shoesWeightNotSelected(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("신발 무게를 입력해 주세요!");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.show();
+    }
+    public void waterproofNotSelected(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("방수 정도를 입력해 주세요!");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.show();
+    }
+    public void ventilationNotSelected(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("통기성 정도를 선택해 주세요!");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.show();
+    }
+    public void shoeSizenotSelected(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("신발 사이즈를 선택해 주세요!");
+        builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.show();
+    }
 
     public boolean validatePost(){
         boolean valid = true;
@@ -383,11 +428,45 @@ public class Posting extends AppCompatActivity {
             valid = false;
         } else
             text_title.setError(null);
+
+        if(TextUtils.isEmpty(priceTextView.getText())){
+            priceTextView.setError("가격을 입력하세요!");
+            valid = false;
+        }else
+            text_title.setError(null);
+        if(TextUtils.isEmpty(buyURL.getText())){
+            buyURL.setError("구입처를 입력하세요!");
+            valid = false;
+        }else
+            text_title.setError(null);
+
+
         if(filePath==null){
             shoeDialogNotImage();
+            Log.d("qweqwe","zxczxc");
             valid = false;
+            return valid;
         }
-
+        if(!shoes_weight_radiogroup.isSelected()){
+            shoesWeightNotSelected();
+            valid = false;
+            return valid;
+        }
+        if(!waterproof_radiogroup.isSelected()){
+            waterproofNotSelected();
+            valid = false;
+            return valid;
+        }
+        if(!vantilation_radiogroup.isSelected()){
+            ventilationNotSelected();
+            valid = false;
+            return valid;
+        }
+        if(!shoe_size_radiogroup.isSelected()){
+            shoeSizenotSelected();
+            valid = false;
+            return valid;
+        }
         return valid;
     }
 }
