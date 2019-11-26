@@ -31,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserInfo;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -105,7 +106,7 @@ public class EmailPasswordActivity extends BaseActivity implements
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
+                            Intent intent = new Intent(EmailPasswordActivity.this, UserInfoInput.class);
                             startActivity(intent);
                             finish();
 //                            updateUI(user);
@@ -250,10 +251,12 @@ public class EmailPasswordActivity extends BaseActivity implements
                     if (task.isSuccessful()) {
                         DocumentSnapshot document = task.getResult();
                         if (document != null && document.exists()) {
-//                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                            Log.d("qweqwe","zzzzzzz");
 //                        User user = document.toObject(User.class);
 
                         } else {
+
+                            Log.d("qweqwe","zxczxc");
                             Intent i = new Intent(EmailPasswordActivity.this,UserInfoInput.class);
                             startActivityForResult(i, 1);
                             finish();
@@ -267,10 +270,10 @@ public class EmailPasswordActivity extends BaseActivity implements
             });
 
 
-                Log.d("qwdqwdwqdqddw",user.getEmail());
-                Intent intent = new Intent(this, HomeFeed.class);
-                startActivity(intent);
-                finish();
+//                Log.d("qwdqwdwqdqddw",user.getEmail());
+//                Intent intent = new Intent(this, HomeFeed.class);
+//                startActivity(intent);
+//                finish();
 //            }
         } else {
 //            mStatusTextView.setText(R.string.signed_out);

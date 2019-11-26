@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.Fragments.FCart;
 import com.jipjung.hucomin.sinderella.Fragments.FFollow;
@@ -38,7 +39,10 @@ import com.jipjung.hucomin.sinderella.R;
 import com.jipjung.hucomin.sinderella.Search.SearchActivity;
 import com.jipjung.hucomin.sinderella.StartAppActivities.UserInfoInput;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ForkJoinPool;
 
 public class HomeFeed extends AppCompatActivity {
 
@@ -47,6 +51,7 @@ public class HomeFeed extends AppCompatActivity {
     private View drawerView;
     private FirebaseFirestore firebaseFirestore;
     private FirebaseUser firebaseUser;
+    private FirebaseAuth firebaseAuth;
     private Fragment fr;
     private String nickname;
     private ArrayList<Button> buttons;
@@ -55,6 +60,7 @@ public class HomeFeed extends AppCompatActivity {
     public static Context context;
 
     private Bundle userbundle;
+    private Bundle followbundle;
 
     private User user;
     // under bar Button
@@ -96,7 +102,7 @@ public class HomeFeed extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_feed);
-
+        firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
         fr = new FHome();
@@ -109,6 +115,7 @@ public class HomeFeed extends AppCompatActivity {
 
 
         userbundle = new Bundle();
+        followbundle = new Bundle();
 
         firebaseFirestore.collection("users").whereEqualTo("user_id",firebaseUser.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -124,6 +131,7 @@ public class HomeFeed extends AppCompatActivity {
                         }else{
                             user = queryDocumentSnapshots.toObjects(User.class).get(0);
                             userbundle.putSerializable("user",user);
+                            followbundle.putSerializable("user",user);
                         }
                     }
                 })
@@ -132,6 +140,7 @@ public class HomeFeed extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
+
 //        follow_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
