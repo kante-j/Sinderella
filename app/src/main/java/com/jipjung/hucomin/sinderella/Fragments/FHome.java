@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
+import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,6 +36,7 @@ public class FHome extends Fragment {
     private List<Post> types;
     RecyclerView recyclerView;
     RecyclerAdapter mAdapter;
+    private User user;
     boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     ProgressBar pgsBar;
@@ -54,14 +56,16 @@ public class FHome extends Fragment {
 
         pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
 
+        Bundle bundle = getArguments();
         mArrayList = new ArrayList<>();
 
+        user = (User) bundle.getSerializable("user");
         //피드 카드뷰 생성
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
-        mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.home_fragments);
+        mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.home_fragments, user);
 
         //데이터 정렬
         getListItems();

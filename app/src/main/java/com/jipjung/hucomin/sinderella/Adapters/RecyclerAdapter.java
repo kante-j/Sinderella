@@ -51,10 +51,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     private DocumentReference documentReference;
     private List<User> users;
 
-    public RecyclerAdapter(Context context, List<Post> posts, int item_layout) {
+    public RecyclerAdapter(Context context, List<Post> posts, int item_layout, User user) {
         this.context = context;
         this.posts = posts;
         this.item_layout = item_layout;
+        this.user = user;
 
         firestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -106,19 +107,19 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 });
 
         //TODO : 그냥 FCOOK 이런데서 불러올 때 포스트 객체에다가 닉네임 칼럼 추가해서 넘겨주는게 로딩 안걸리고 젤 좋은것 같다...
-        firestore.collection("users").document(firebaseAuth.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(!documentSnapshot.exists()){
-                    return;
-                }else{
-                    user = documentSnapshot.toObject(User.class);
-//                    String nickname = user.getNickname();
-//                    holder.posting_user_id.setText(user.getUser_id());
-//                    holder.feed_nickname.setText(nickname);
-                }
-            }
-        });
+//        firestore.collection("users").document(firebaseAuth.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                if(!documentSnapshot.exists()){
+//                    return;
+//                }else{
+//                    user = documentSnapshot.toObject(User.class);
+////                    String nickname = user.getNickname();
+////                    holder.posting_user_id.setText(user.getUser_id());
+////                    holder.feed_nickname.setText(nickname);
+//                }
+//            }
+//        });
 
         holder.feed_nickname.setText(post.getNickname());
 

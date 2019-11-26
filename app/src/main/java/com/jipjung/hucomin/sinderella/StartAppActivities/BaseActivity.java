@@ -16,7 +16,7 @@ public class BaseActivity extends AppCompatActivity {
     public void showProgressDialog() {
         if (mProgressDialog == null) {
             mProgressDialog = new ProgressDialog(this);
-            mProgressDialog.setMessage("loading");
+            mProgressDialog.setMessage("로딩중");
             mProgressDialog.setIndeterminate(true);
         }
 

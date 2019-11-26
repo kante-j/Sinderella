@@ -105,8 +105,6 @@ public class HomeFeed extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         firebaseFirestore = FirebaseFirestore.getInstance();
-        fr = new FHome();
-        getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fr).commit();
 
         follow_btn = findViewById(R.id.go_follow);
         cart_btn = findViewById(R.id.go_shop);
@@ -116,6 +114,7 @@ public class HomeFeed extends AppCompatActivity {
 
         userbundle = new Bundle();
         followbundle = new Bundle();
+
 
         firebaseFirestore.collection("users").whereEqualTo("user_id",firebaseUser.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -132,6 +131,9 @@ public class HomeFeed extends AppCompatActivity {
                             user = queryDocumentSnapshots.toObjects(User.class).get(0);
                             userbundle.putSerializable("user",user);
                             followbundle.putSerializable("user",user);
+                            fr = new FHome();
+                            fr.setArguments(userbundle);
+                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fr).commit();
                         }
                     }
                 })
@@ -312,6 +314,7 @@ public class HomeFeed extends AppCompatActivity {
         switch(view.getId()){
             case R.id.go_home:
                 fr = new FHome();
+                fr.setArguments(userbundle);
                 home_btn.setBackgroundResource(R.drawable.icon_home);
                 break;
             case R.id.go_follow:
