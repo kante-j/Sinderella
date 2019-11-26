@@ -16,12 +16,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.app.Activity;
+import android.widget.Toast;
 
 
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
@@ -39,6 +42,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
+import static com.firebase.ui.auth.AuthUI.getApplicationContext;
+
 public class FHome extends Fragment {
     private FirebaseFirestore fs;
     //    static final int LIMIT = 50;
@@ -53,7 +58,10 @@ public class FHome extends Fragment {
     private ImageView filterbtn;
     private TextView applytext;
     private RelativeLayout filterscreen;
-
+    private CheckBox small_foot_checkbox;
+    private CheckBox normal_foot_checkbox;
+    private CheckBox bigger_foot_checkbox;
+    private ListView listView;
 
 
     public FHome() {
@@ -165,13 +173,7 @@ public class FHome extends Fragment {
             }
         });
 
-        applytext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterscreen.setVisibility(View.GONE);
-                applytext.setVisibility(View.GONE);
-            }
-        });
+       
 
         //ToDo: spinner textSize 조절하기
         Spinner foot_size_spinner = v.findViewById(R.id.start_foot_size);
@@ -220,10 +222,77 @@ public class FHome extends Fragment {
 
             }
         });
+        // Spinner
+
+        //ToDo:checkbox
+        
+        small_foot_checkbox = v.findViewById(R.id.small_foot);
+        normal_foot_checkbox = v.findViewById(R.id.normal_foot);
+        bigger_foot_checkbox = v.findViewById(R.id.bigger_foot);
+
+
+        ListView filterListView = v.findViewById(R.id.list_filter);
+
+       ArrayList<String> filter_arrayList = new ArrayList<String >();
+       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+               getActivity(),android.R.layout.simple_list_item_1
+       );
+
+       filterListView.setAdapter(arrayAdapter);
+
+
+        applytext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterscreen.setVisibility(View.GONE);
+                applytext.setVisibility(View.GONE);
+
+                if(small_foot_checkbox.isChecked() == true){
+                    filter_arrayList.add(small_foot_checkbox.toString());
+                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+                    Log.d("foot_size","small_foot");
+                }
+                if(normal_foot_checkbox.isChecked()== true){
+                    filter_arrayList.add(normal_foot_checkbox.getText().toString());
+                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+                    Log.d("foot_size","normal_foot");
+                }
+                if(bigger_foot_checkbox.isChecked() == true){
+                    filter_arrayList.add(bigger_foot_checkbox.getText().toString());
+                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+                    Log.d("foot_size","bigger_foot");
+                }
+
+                //체크된 값을 어디로 넘겨야된다.
+
+
+                arrayAdapter.notifyDataSetChanged();
+            }
+        });
+
+
+
+
 
 
         return v;
     }
+
+    public String Checked(View v) {
+        String resultText = "";
+        if(small_foot_checkbox.isChecked()){
+            resultText="작은 편";
+        }
+        else if(normal_foot_checkbox.isChecked()){
+            resultText="보통";
+        }
+        else{
+            resultText="큰 편";
+        }
+        return  resultText;
+    }
+
+
 
 
 
