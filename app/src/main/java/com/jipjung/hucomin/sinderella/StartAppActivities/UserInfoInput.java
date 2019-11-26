@@ -1,5 +1,9 @@
 package com.jipjung.hucomin.sinderella.StartAppActivities;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -64,6 +68,28 @@ public class UserInfoInput extends AppCompatActivity {
         birthbtn = findViewById(R.id.birth_date);
         spinner_foot_size = findViewById(R.id.foot_size);
         radio_foot_width = findViewById(R.id.foot_width_group);
+        TextView nike_airforce_hover;
+        AnimatorSet animatorSet;
+        
+        nike_airforce_hover=(TextView)findViewById(R.id.nike_airforce_hover);
+        animatorSet=new AnimatorSet();
+
+        ObjectAnimator fadeout = ObjectAnimator.ofFloat(nike_airforce_hover,"alpha",0.5f,0.1f);
+        fadeout.setDuration(500);
+
+        ObjectAnimator fadein=ObjectAnimator.ofFloat(nike_airforce_hover,"alpha", 0.1f, 0.5f);
+        fadein.setDuration(500);
+
+        animatorSet.play(fadein).after(fadeout);
+        animatorSet.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation){
+                super.onAnimationEnd(animation);
+                animatorSet.start();
+            }
+        });
+
+        animatorSet.start();
 
         radio_foot_width.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
