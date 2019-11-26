@@ -2,291 +2,310 @@
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
     <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="#e8eff5"
+        android:elevation="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="#e8eff5">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+
+                <ImageView
+                    android:id="@+id/mypage_profile_picture"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/profile_picture" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="5dp"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="36dp"
-                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
-
-                        <ImageView
-                            android:id="@+id/mypage_profile_picture"
-                            android:layout_width="150dp"
-                            android:layout_height="150dp"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:background="@drawable/profile_picture" />
-
-                        <LinearLayout
+                        <TextView
+                            android:id="@+id/mypage_username"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="5dp"
-                            android:layout_marginEnd="10dp"
-                            android:layout_marginBottom="5dp"
-                            android:orientation="vertical">
+                            android:gravity="center"
+                            android:text=""
+                            android:textSize="15sp" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/mypage_username"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textSize="15sp" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/mypage_email"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/profile_word"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textSize="15sp" />
-
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:text="발사이즈"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:id="@+id/mypage_foot_size"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/profile_word"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textSize="15sp" />
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:gravity="center"
-                                    android:text="발볼"
-                                    android:textSize="15sp" />
-
-                                <TextView
-                                    android:id="@+id/mypage_foot_width"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:background="@drawable/profile_word"
-                                    android:gravity="center"
-                                    android:text=""
-                                    android:textSize="15sp" />
-                            </LinearLayout>
-
-
-                        </LinearLayout>
                     </LinearLayout>
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center">
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-
-                        <ImageView
-                            android:id="@+id/mypage_btn_profile"
+                        <TextView
+                            android:id="@+id/mypage_email"
                             android:layout_width="match_parent"
-                            android:layout_height="40dp"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginEnd="30dp"
-                            android:background="@drawable/profile_correction"
-
+                            android:layout_height="match_parent"
+                            android:layout_margin="2.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/profile_box"
+                            android:elevation="2dp"
                             android:gravity="center"
+                            android:text=""
+                            android:textSize="15sp" />
 
-                            />
-
-                        <TextView
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:gravity="center"
-                            android:text="프로필 수정하기"
-                            android:textColor="@android:color/white"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/mypage_btn_profile_scroll"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_alignRight="@+id/mypage_btn_profile"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="5dp"
-                            android:background="@drawable/scroll" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="30dp"
-                        android:gravity="center">
-
-                        <LinearLayout
-                            android:id="@+id/mypage_followLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:orientation="horizontal">
-
-                            <Button
-                                android:id="@+id/mypage_follower"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:background="@drawable/click_change_color"
-                                android:gravity="center"
-                                android:text="팔로워"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-
-                            <Button
-                                android:id="@+id/mypage_following"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="1"
-                                android:background="@drawable/click_change_color"
-                                android:gravity="center"
-                                android:text="팔로잉"
-                                android:textSize="15sp"
-                                android:textStyle="bold" />
-
-
-                        </LinearLayout>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="100"
-                            android:layout_alignLeft="@+id/mypage_followLayout"
-                            android:layout_marginLeft="75dp"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="100"
-                            android:layout_alignRight="@+id/mypage_followLayout"
-                            android:layout_marginRight="75dp"/>
-
-
-                    </RelativeLayout>
-
-                    <FrameLayout
-                        android:id="@+id/mypage_follower_and_following"
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:layout_above="@id/mypage_commet_container_layout"
-                        android:layout_below="@+id/mypage_followLayout"
-                        android:layout_gravity="center">
-
-
-
-                    </FrameLayout>
+                    </LinearLayout>
 
 
                     <LinearLayout
-                        android:id="@+id/mypage_commet_container_layout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:orientation="vertical">
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/mypage_commet_upper_text"
-                            android:layout_width="300dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_horizontal"
-                            android:gravity="start"
-                            android:text="내가 쓴 게시물"
-                            android:textColor="@android:color/black"
-                            android:textSize="20sp"
-                            android:textStyle="normal" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="발사이즈"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/mypage_foot_size"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="2.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/profile_box"
+                            android:elevation="2dp"
+                            android:gravity="center"
+                            android:text=""
+                            android:textSize="15sp" />
                     </LinearLayout>
 
-                    <FrameLayout
-                        android:id="@+id/mypage_commet_fragment_container"
-                        android:layout_width="300dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_above="@id/under"
-                        android:layout_below="@id/mypage_followLayout"
-                        android:layout_gravity="center">
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    </FrameLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="발볼"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/mypage_foot_width"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="2.5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/profile_box"
+                            android:elevation="2dp"
+                            android:gravity="center"
+                            android:text=""
+                            android:textSize="15sp" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+
+                <ImageView
+                    android:id="@+id/mypage_btn_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@drawable/profile_correction"
+
+                    android:gravity="center"
+
+                    />
+
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="프로필 수정하기"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/mypage_btn_profile_scroll"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignRight="@+id/mypage_btn_profile"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/scroll" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="30dp"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:id="@+id/mypage_followLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/mypage_follower"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/click_change_color"
+                        android:gravity="center"
+                        android:text="팔로워"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
 
 
                     <Button
-                        android:id="@+id/mypage_logout"
+                        android:id="@+id/mypage_following"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:layout_below="@+id/mypage_commet_fragment_container"
-                        android:background="@drawable/logout"
-                        android:text="Logout"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/click_change_color"
+                        android:gravity="center"
+                        android:text="팔로잉"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
 
                 </LinearLayout>
-            </ScrollView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/mypage_followLayout"
+                    android:layout_marginLeft="75dp"
+                    android:text="100" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/mypage_followLayout"
+                    android:layout_marginRight="75dp"
+                    android:text="100" />
+
+
+            </RelativeLayout>
+
+            <FrameLayout
+                android:id="@+id/mypage_follower_and_following"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/mypage_commet_container_layout"
+                android:layout_below="@+id/mypage_followLayout"
+                android:layout_gravity="center">
+
+
+            </FrameLayout>
+
+
+            <LinearLayout
+                android:id="@+id/mypage_commet_container_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/mypage_commet_upper_text"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="start"
+                    android:text="내가 쓴 게시물"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp"
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/mypage_commet_fragment_container"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@id/under"
+                android:layout_below="@id/mypage_followLayout"
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
+
+            </FrameLayout>
+
+
+            <Button
+                android:id="@+id/mypage_logout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/mypage_commet_fragment_container"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:background="@drawable/logout"
+                android:fontFamily="@font/gyeonggititle_bold"
+                android:gravity="center"
+                android:text="로그아웃"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 

@@ -44,7 +44,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:adjustViewBounds="false"
-                android:background="@drawable/name_ver_1_white" />
+                android:background="@drawable/name_white" />
 
         </RelativeLayout>
 
