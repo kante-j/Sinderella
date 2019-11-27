@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -57,6 +58,11 @@ import java.util.List;
 import java.util.Map;
 
 public class DetailedPost extends AppCompatActivity {
+    // Pinch Zoom
+    private ScaleGestureDetector mScaleGestureDetector;
+    private float mScaleFactor = 1.0f;
+
+
     private FirebaseStorage fs;
     private ImageView dImage;
     private TextView dTitle;
@@ -299,9 +305,31 @@ public class DetailedPost extends AppCompatActivity {
                 });
             }
         });
+
+        /** 핀치 줌 **/
+        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
     }
 
+    /********************************
+     ************ 핀치 줌 관련***********
+     ********************************/
 
+    public boolean onTouchEvent(MotionEvent motionEvent) {
+        mScaleGestureDetector.onTouchEvent(motionEvent);
+        return true;
+    }
+
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+        @Override
+        public boolean onScale(ScaleGestureDetector scaleGestureDetector){
+            mScaleFactor *= scaleGestureDetector.getScaleFactor();
+            mScaleFactor = Math.max(0.1f,
+                    Math.min(mScaleFactor, 10.0f));
+            dImage.setScaleX(mScaleFactor);
+            dImage.setScaleY(mScaleFactor);
+            return true;
+        }
+    }
     /********************************
      ************ 팔로우 관련***********
      ********************************/

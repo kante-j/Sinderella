@@ -24,7 +24,7 @@ public class Post implements Serializable {
     public String vantilation;
     public String shoes_size;
     public String waterproof;
-    public int rating;
+    public float rating;
     public String created_at;
     public Bitmap bitmap;
 
@@ -51,7 +51,7 @@ public class Post implements Serializable {
     public String getCreated_at() {return this.created_at;}
     public String getId(){ return this.id;}
     public String getNickname(){ return this.nickname;}
-    public int getRating() {return rating; }
+    public float getRating() {return rating; }
     public String getImage_url() { return image_url; }
     public String getUser_id() { return user_id; }
     public String getWeight() { return weight; }

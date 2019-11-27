@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -133,6 +134,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         }
         holder.post_id= post.getId();
         holder.post_category = post.getCategory();
+        holder.rating.setRating(post.rating);
 
 //        like count 설정
 //        Like like = null;
@@ -235,6 +237,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private String post_id;
         private TextView like_counts;
         private ImageView like;
+        private RatingBar rating;
         private String post_category;
         private TextView posting_user_id;
         private Post h_post;
@@ -243,7 +246,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         public ViewHolder(View itemView) {
             super(itemView);
             image = (ImageView) itemView.findViewById(R.id.postedImage);
-
+            rating = itemView.findViewById(R.id.ratingBar);
             title = (TextView) itemView.findViewById(R.id.title);
             body = (TextView) itemView.findViewById(R.id.detail);
             feed_nickname = (TextView) itemView.findViewById(R.id.feed_nickname);

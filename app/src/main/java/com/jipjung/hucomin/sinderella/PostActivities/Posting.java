@@ -86,6 +86,8 @@ public class Posting extends AppCompatActivity {
     private String vantilation;
     private String waterproof;
 
+    private Spinner categorySpinner;
+
 
     private TextView buyURL;
 
@@ -121,7 +123,11 @@ public class Posting extends AppCompatActivity {
         postingButton = findViewById(R.id.btn_posting);
         text_context = findViewById(R.id.text_context);
         text_title = findViewById(R.id.text_title);
+        ratingBarForShoes = findViewById(R.id.ratingForShoes);
+        shoes_weight_radiogroup = findViewById(R.id.shoes_weight);
+        ImageButton xButton = findViewById(R.id.xButtoninPosting);
 
+        categorySpinner = findViewById(R.id.foot_size_correction2);
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
         users = mFirestore.collection("users").document(fbUser.getUid());
 //        postingTitle = findViewById(R.id.posting_title);
@@ -132,20 +138,19 @@ public class Posting extends AppCompatActivity {
             public void onClick(View v) {
                 String eatoutBody = null;
                 String transBody;
-                writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
+//                writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
 //                if(imageView.getDrawable()==null) {
 //                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
 //                    if(validatePost())
 //                        finish();
 //                }else{
-//                    if(validatePost())
-//                        uploadImage();
-//                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
+                    if(validatePost())
+                        uploadImage();
+                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
 //                }
             }
         });
 
-        ImageButton xButton = findViewById(R.id.xButtoninPosting);
         xButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,10 +158,8 @@ public class Posting extends AppCompatActivity {
             }
         });
 
-        ratingBarForShoes = findViewById(R.id.ratingForShoes);
 
 
-        shoes_weight_radiogroup = findViewById(R.id.shoes_weight);
         shoes_weight_radiogroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -256,6 +259,7 @@ public class Posting extends AppCompatActivity {
         rating = ratingBarForShoes.getRating();
         buyURLString = buyURL.getText().toString();
         price = priceTextView.getText().toString();
+        String category = categorySpinner.getSelectedItem().toString();
         WriteBatch batch = mFirestore.batch();
         DocumentReference posts = mFirestore.collection("posts").document();
         if(validatePost()){
@@ -274,7 +278,7 @@ public class Posting extends AppCompatActivity {
             docData.put("rating",rating);
             docData.put("price",price);
             docData.put("buyURL",buyURLString);
-            docData.put("category",getIntent().getStringExtra("Category"));
+            docData.put("category",category);
 
             if(imagePath!=null){
                 docData.put("image_url",imagePath);
@@ -429,6 +433,7 @@ public class Posting extends AppCompatActivity {
         } else
             text_title.setError(null);
 
+        Log.d("qweqwe 1",String.valueOf(valid));
         if(TextUtils.isEmpty(priceTextView.getText())){
             priceTextView.setError("가격을 입력하세요!");
             valid = false;
@@ -441,32 +446,33 @@ public class Posting extends AppCompatActivity {
             text_title.setError(null);
 
 
+        Log.d("qweqwe 2",String.valueOf(valid));
         if(filePath==null){
             shoeDialogNotImage();
-            Log.d("qweqwe","zxczxc");
             valid = false;
             return valid;
         }
-        if(!shoes_weight_radiogroup.isSelected()){
-            shoesWeightNotSelected();
-            valid = false;
-            return valid;
-        }
-        if(!waterproof_radiogroup.isSelected()){
-            waterproofNotSelected();
-            valid = false;
-            return valid;
-        }
-        if(!vantilation_radiogroup.isSelected()){
-            ventilationNotSelected();
-            valid = false;
-            return valid;
-        }
-        if(!shoe_size_radiogroup.isSelected()){
-            shoeSizenotSelected();
-            valid = false;
-            return valid;
-        }
+        Log.d("qweqwe 3",String.valueOf(valid));
+//        if(!shoes_weight_radiogroup.isActivated()){
+//            shoesWeightNotSelected();
+//            valid = false;
+//            return valid;
+//        }
+//        if(!waterproof_radiogroup.isSelected()){
+//            waterproofNotSelected();
+//            valid = false;
+//            return valid;
+//        }
+//        if(!vantilation_radiogroup.isSelected()){
+//            ventilationNotSelected();
+//            valid = false;
+//            return valid;
+//        }
+//        if(!shoe_size_radiogroup.isSelected()){
+//            shoeSizenotSelected();
+//            valid = false;
+//            return valid;
+//        }
         return valid;
     }
 }
