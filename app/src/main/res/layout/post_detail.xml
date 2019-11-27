@@ -274,44 +274,45 @@
                                     android:layout_height="37.5dp"
                                     android:layout_marginStart="27.5dp"
                                     android:layout_marginEnd="27.5dp"
-                                    android:gravity="left|center_vertical"
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="275dp"
-                                        android:layout_height="37.5dp"
-                                        android:layout_marginTop="13dp"
-                                        android:layout_marginBottom="13dp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center_vertical"
                                         android:text="구매가격 / 구매 사이즈"
-                                        android:textAlignment="textStart"
                                         android:textColor="#707070"
                                         android:textSize="16sp"
                                         android:textStyle="normal" />
 
-                                    <LinearLayout
+                                    <FrameLayout
                                         android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:background="@drawable/linkbox"
-                                        android:orientation="horizontal">
+                                        android:layout_height="37.5dp">
+
+                                        <Button
+                                            android:id="@+id/where_to_buy"
+                                            android:layout_width="100dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="right"
+                                            android:background="@drawable/switch_track_unfollow" />
 
                                         <TextView
                                             android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center_vertical"
-                                            android:layout_marginStart="15dp"
-                                            android:layout_marginEnd="7.5dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="right"
                                             android:fontFamily="@font/gyeonggititle_medium"
                                             android:gravity="center"
                                             android:text="구입처"
-                                            android:textColor="#ffffff" />
+                                            android:textColor="#ffffff"
+                                            android:textSize="18sp" />
 
-                                        <Button
-                                            android:id="@+id/button"
-                                            android:layout_width="14dp"
-                                            android:layout_height="28dp"
-                                            android:layout_gravity="center_vertical"
-                                            android:background="@drawable/right_button" />
-                                    </LinearLayout>
+                                        <ImageView
+                                            android:id="@+id/imageView2"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            app:srcCompat="@drawable/right_button" />
+
+                                    </FrameLayout>
 
                                 </LinearLayout>
 

@@ -31,10 +31,9 @@
             android:id="@+id/simpleLogo"
             android:layout_width="112dp"
             android:layout_height="35dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
             android:adjustViewBounds="false"
-            android:background="@drawable/name_ver_1_white" />
+            android:background="@drawable/name_white" />
 
     </RelativeLayout>
 
