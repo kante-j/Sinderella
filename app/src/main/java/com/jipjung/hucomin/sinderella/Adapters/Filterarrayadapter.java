@@ -13,7 +13,7 @@ import com.jipjung.hucomin.sinderella.R;
 import java.util.ArrayList;
 
 
-public class filterarrayadapter extends BaseAdapter {
+public class Filterarrayadapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<String> array_filter;
 
@@ -21,7 +21,7 @@ public class filterarrayadapter extends BaseAdapter {
 
 
 
-    public filterarrayadapter(Context mContext, ArrayList<String> array_filter){
+    public Filterarrayadapter(Context mContext, ArrayList<String> array_filter){
         this.mContext = mContext;
         this.array_filter = array_filter;
     }

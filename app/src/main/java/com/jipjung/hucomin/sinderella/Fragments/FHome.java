@@ -27,6 +27,7 @@ import android.app.Activity;
 import android.widget.Toast;
 
 
+import com.jipjung.hucomin.sinderella.Adapters.Filterarrayadapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
@@ -185,7 +186,7 @@ public class FHome extends Fragment {
         );
 
         spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        foot_size_spinner.setAdapter(spinnerArrayAdapter);
+
 
         foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -200,6 +201,7 @@ public class FHome extends Fragment {
 
             }
         });
+
 
         Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
         ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(
@@ -222,9 +224,10 @@ public class FHome extends Fragment {
 
             }
         });
+        foot_size_spinner.setAdapter(spinnerArrayAdapter);
         // Spinner
 
-        //ToDo:checkbox
+        //ToDo:checkbox 선택될 시 값 전달
         
         small_foot_checkbox = v.findViewById(R.id.small_foot);
         normal_foot_checkbox = v.findViewById(R.id.normal_foot);
@@ -233,12 +236,13 @@ public class FHome extends Fragment {
 
         ListView filterListView = v.findViewById(R.id.list_filter);
 
-       ArrayList<String> filter_arrayList = new ArrayList<String >();
-       ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-               getActivity(),android.R.layout.simple_list_item_1
-       );
+        ArrayList<String> filter_arrayList = new ArrayList<String>();
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+//                getActivity(), android.R.layout.i
+//       );
 
-       filterListView.setAdapter(arrayAdapter);
+
+        Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
 
 
         applytext.setOnClickListener(new View.OnClickListener() {
@@ -248,25 +252,27 @@ public class FHome extends Fragment {
                 applytext.setVisibility(View.GONE);
 
                 if(small_foot_checkbox.isChecked() == true){
-                    filter_arrayList.add(small_foot_checkbox.toString());
+                    filter_arrayList.add(small_foot_checkbox.getText().toString());
                     Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","small_foot");
                 }
                 if(normal_foot_checkbox.isChecked()== true){
                     filter_arrayList.add(normal_foot_checkbox.getText().toString());
-                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","normal_foot");
                 }
                 if(bigger_foot_checkbox.isChecked() == true){
                     filter_arrayList.add(bigger_foot_checkbox.getText().toString());
-                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","bigger_foot");
                 }
-
+                //TODO: 값은 나오는데 전달은 어디로 하는지?
                 //체크된 값을 어디로 넘겨야된다.
 
+                filterListView.setAdapter(filterarrayadapter);
 
-                arrayAdapter.notifyDataSetChanged();
+
+                filterarrayadapter.notifyDataSetChanged();
             }
         });
 
