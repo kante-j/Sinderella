@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,8 +13,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
@@ -24,6 +27,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
 
 public class FFollow extends Fragment {
@@ -66,6 +70,46 @@ public class FFollow extends Fragment {
         recyclerView.setHasFixedSize(true);
         mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.follow_fragment, user);
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if(!recyclerView.canScrollVertically(-1) || !recyclerView.canScrollVertically(1)){
+                    isScrolling = true;
+                }else if(recyclerView.computeVerticalScrollOffset() == 0){
+                    isScrolling = true;
+                }
+
+//                if(newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL){
+//                    isScrolling = true;
+//                }
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                currentItems = layoutManager.getChildCount();
+                totalItems = layoutManager.getItemCount();
+                scrollOutItems = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
+
+                if(isScrolling && (currentItems + scrollOutItems >= totalItems)){
+                    isScrolling = false;
+                    fetchData();
+                }
+            }
+        });
+
+        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipe_layout);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getFollowList();
+                types = new ArrayList<Post>();
+                getListItems();
+                swipeContainer.setRefreshing(false);
+            }
+        });
+
         getFollowList();
         getListItems();
         return v;
@@ -77,124 +121,59 @@ public class FFollow extends Fragment {
             mArrayList.clear();
             mAdapter.arrayList.clear();
         }
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                for (int i = 0; i < followList.size(); i++) {
-//                    Log.d("qweqwe f",String.valueOf(followList.get(i).getFollowed_id()));
-//                    firebaseFirestore.collection("posts").whereEqualTo("user_id", followList.get(i).getFollowed_id()).get()
-//                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                                @Override
-//                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                                    if (queryDocumentSnapshots.isEmpty()) {
-//                                        return;
-//                                    } else {
-//                                        types.addAll(queryDocumentSnapshots.toObjects(Post.class));
-//                                        Log.d("qweqwe",String.valueOf(types.size()));
-////                                        types = queryDocumentSnapshots.toObjects(Post.class);
-////                                        for (int x = 0; x < types.size(); x++) {
-////                                            String post_id = queryDocumentSnapshots.getDocuments().get(x).getId();
-////                                            types.get(x).withId(post_id);
-////                                        }
-////                                        types.sort(new FFollow.CustomComparator().reversed());
-////                                        if (types.size() < 10) {
-//////                                        for (int i = 0; i < types.size(); i++) {
-//////                                            mArrayList.add(types.get(i));
-//////                                        }
-////                                            mArrayList.addAll(types);
-////                                        } else {
-////                                            for (int j = 0; j < 10; j++)
-////                                                mArrayList.add(types.get(j));
-////                                        }
-////                                        recyclerView.setAdapter(mAdapter);
-////                                        mAdapter.arrayList.addAll(mArrayList);
-////                                        pgsBar.setVisibility(ProgressBar.GONE);
-//                                    }
-//                                }
-//                            })
-//                            .addOnFailureListener(new OnFailureListener() {
-//                                @Override
-//                                public void onFailure(@NonNull Exception e) {
-//                                    Log.d("qweqweqwe", "아무내용이없습니다");
-//                                    pgsBar.setVisibility(ProgressBar.GONE);
-//                                }
-//                            });
-//                }
-//
-//            }
-//        }, 500);
     }
 
     public void getFollowList() {
 
-        firebaseFirestore.collection("follows").whereEqualTo("follower_id", user.getUser_id()).whereEqualTo("status", "active").get()
+        firebaseFirestore.collection("follows").whereEqualTo("follower_id", user.getUser_id())
+                .whereEqualTo("status", "active").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         followList = queryDocumentSnapshots.toObjects(Follow.class);
+//                        String[] followarr = new String[];
+                        ArrayList<String> followarr = new ArrayList<String>();
+                        for(Iterator<Follow> it = followList.iterator(); it.hasNext(); ) {
+                            Follow follow = it.next();
+                            followarr.add(follow.getFollowed_id());
+                        }
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                for (int i = 0; i < followList.size(); i++) {
-                                    Log.d("qweqwe f", String.valueOf(followList.get(i).getFollowed_id()));
-                                    firebaseFirestore.collection("posts").whereEqualTo("user_id", followList.get(i).getFollowed_id()).get()
-                                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                                @Override
-                                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                                    if (queryDocumentSnapshots.isEmpty()) {
-                                                        return;
-                                                    } else {
-                                                        types.addAll(queryDocumentSnapshots.toObjects(Post.class));
-//                                        types = queryDocumentSnapshots.toObjects(Post.class);
-//                                        for (int x = 0; x < types.size(); x++) {
-//                                            String post_id = queryDocumentSnapshots.getDocuments().get(x).getId();
-//                                            types.get(x).withId(post_id);
-//                                        }
-//                                        types.sort(new FFollow.CustomComparator().reversed());
-//                                        if (types.size() < 10) {
-////                                        for (int i = 0; i < types.size(); i++) {
-////                                            mArrayList.add(types.get(i));
-////                                        }
-//                                            mArrayList.addAll(types);
-//                                        } else {
-//                                            for (int j = 0; j < 10; j++)
-//                                                mArrayList.add(types.get(j));
-//                                        }
-//                                        recyclerView.setAdapter(mAdapter);
-//                                        mAdapter.arrayList.addAll(mArrayList);
-//                                        pgsBar.setVisibility(ProgressBar.GONE);
-                                                    }
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Log.d("qweqweqwe", "아무내용이없습니다");
-                                                    pgsBar.setVisibility(ProgressBar.GONE);
-                                                }
-                                            });
-                                }
+                                firebaseFirestore.collection("posts").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        List<Post> postList = queryDocumentSnapshots.toObjects(Post.class);
+                                        for(Iterator<Post> it = postList.iterator(); it.hasNext(); ) {
+                                            Post post = it.next();
+                                            if(followarr.contains(post.getUser_id())) {
+                                                types.add(post);
+
+                                            }
+                                            Log.d("qweqwe",String.valueOf(types.size()));
+                                        }
+                                        types.sort(new FFollow.CustomComparator().reversed());
+                                        if (types.size() < 10) {
+                                            mArrayList.addAll(types);
+                                        } else {
+                                            for (int j = 0; j < 10; j++)
+                                                mArrayList.add(types.get(j));
+                                        }
+                                        recyclerView.setAdapter(mAdapter);
+                                        mAdapter.arrayList.addAll(mArrayList);
+                                        pgsBar.setVisibility(ProgressBar.GONE);
+
+
+                                    }
+                                });
 
                             }
+
                         }, 500);
 
                     }
                 });
 
-        types.sort(new FFollow.CustomComparator().reversed());
-        if (types.size() < 10) {
-//                                        for (int i = 0; i < types.size(); i++) {
-//                                            mArrayList.add(types.get(i));
-//                                        }
-            mArrayList.addAll(types);
-        } else {
-            for (int j = 0; j < 10; j++)
-                mArrayList.add(types.get(j));
-        }
-        recyclerView.setAdapter(mAdapter);
-        mAdapter.arrayList.addAll(mArrayList);
-        pgsBar.setVisibility(ProgressBar.GONE);
     }
 
     @Override
