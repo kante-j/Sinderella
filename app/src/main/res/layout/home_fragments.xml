@@ -235,7 +235,6 @@
                         android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
                         android:outlineSpotShadowColor="@color/bootstrap_brand_info"
                         android:layout_marginRight="5dp"
-                        android:textSize="10sp"
                         android:layout_toRightOf="@+id/between"
                         />
 

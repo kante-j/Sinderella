@@ -64,7 +64,6 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/under"
             android:layout_below="@id/topLayout">
-
         </FrameLayout>
 
         <Button
