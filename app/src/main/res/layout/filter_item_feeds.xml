@@ -34,6 +34,7 @@
         android:layout_height="17.5dp"
         android:layout_marginEnd="10dp"
         android:layout_alignEnd="@+id/filter_item_image"
+        android:background="@drawable/filter_close"
         android:layout_centerVertical="true"
         />
 </RelativeLayout>
