@@ -74,7 +74,7 @@
                 >
 
                 <ListView
-                    android:id="@+id/list_comments"
+                    android:id="@+id/list_filter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:divider="@null">
@@ -235,7 +235,6 @@
                         android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
                         android:outlineSpotShadowColor="@color/bootstrap_brand_info"
                         android:layout_marginRight="5dp"
-                        android:textSize="10sp"
                         android:layout_toRightOf="@+id/between"
                         />
 
