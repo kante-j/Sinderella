@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.jipjung.hucomin.sinderella.Adapters.Filterarrayadapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
+import com.jipjung.hucomin.sinderella.Adapters.SpinnerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
@@ -174,26 +175,31 @@ public class FHome extends Fragment {
             }
         });
 
-       
+        //ListView
+        ListView filterListView = v.findViewById(R.id.list_filter);
 
-        //ToDo: spinner textSize 조절하기
+        //Spinner text 사이즈 줄이기
+        //TODO: Spinner adapter 만들기
+
         Spinner foot_size_spinner = v.findViewById(R.id.start_foot_size);
 
+        //array.foot_size
         String[] foot_sizes = getResources().getStringArray(R.array.foot_size);
 
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> SpinnerAdapter = new ArrayAdapter<String>(
                 getContext(),R.layout.foot_size_spinner_items,foot_sizes
         );
 
-        spinnerArrayAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        SpinnerAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
 
         foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(foot_size_spinner.getSelectedItemPosition()>0) {
-                    Log.v("알림", foot_size_spinner.getSelectedItem().toString() + "is selected");
-                }
+                foot_size_spinner.getSelectedItem().toString();
+                Log.v("foot_size_spinner",foot_size_spinner.getSelectedItem().toString());
+
+//
             }
 
             @Override
@@ -203,20 +209,18 @@ public class FHome extends Fragment {
         });
 
 
-        Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
-        ArrayAdapter<String> spinnerArrayAdapter2 = new ArrayAdapter<String>(
-                getContext(),R.layout.foot_size_spinner_items,foot_sizes
-        );
 
-        spinnerArrayAdapter2.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        foot_size_spinner2.setAdapter(spinnerArrayAdapter2);
+
+        Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
+
+
+
+        foot_size_spinner2.setAdapter(SpinnerAdapter);
 
         foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(foot_size_spinner.getSelectedItemPosition()>0) {
-                    Log.v("알림", foot_size_spinner.getSelectedItem().toString() + "is selected");
-                }
+                Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
             }
 
             @Override
@@ -224,8 +228,11 @@ public class FHome extends Fragment {
 
             }
         });
-        foot_size_spinner.setAdapter(spinnerArrayAdapter);
+
+        foot_size_spinner.setAdapter(SpinnerAdapter);
         // Spinner
+
+
 
         //ToDo:checkbox 선택될 시 값 전달
         
@@ -234,7 +241,7 @@ public class FHome extends Fragment {
         bigger_foot_checkbox = v.findViewById(R.id.bigger_foot);
 
 
-        ListView filterListView = v.findViewById(R.id.list_filter);
+
 
         ArrayList<String> filter_arrayList = new ArrayList<String>();
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
