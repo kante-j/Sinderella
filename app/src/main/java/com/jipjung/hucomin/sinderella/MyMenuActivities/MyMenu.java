@@ -108,6 +108,8 @@ public class MyMenu extends AppCompatActivity {
                     password_modify_layout.setVisibility(View.VISIBLE);
                 }
             }
+
+
         });
 
 
@@ -116,13 +118,11 @@ public class MyMenu extends AppCompatActivity {
         profilemodify_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                OnClickHandler();
 
                 if(profilemodify_check.isPressed()){
                     password_modify_layout.setVisibility(View.GONE);
                     btn_password.setVisibility(View.VISIBLE);
-
-//                    AlertDialog.Builder builder = new AlertDialog.Builder();
-
                 }
             }
         });
@@ -210,6 +210,17 @@ public class MyMenu extends AppCompatActivity {
 //                startActivity(intent);
 //            }
 //        });
+    }
+
+    public void OnClickHandler(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("비밀번호 수정").setMessage("수정되었습니다.");
+
+        AlertDialog alertDialog =builder.create();
+
+        alertDialog.show();
     }
 
     public void restartApp(Context context) {
