@@ -23,6 +23,7 @@ public class Post implements Serializable {
     public String shoes_weight;
     public String ventilation;
     public String shoes_size;
+    public String buyURL;
     public String waterproof;
     public int price;
     public float rating;
@@ -47,6 +48,10 @@ public class Post implements Serializable {
 
     public int getShoe_size_num() {
         return shoe_size_num;
+    }
+
+    public String getBuyURL() {
+        return buyURL;
     }
 
     public String getImageURL() {
@@ -90,6 +95,7 @@ public class Post implements Serializable {
         result.put("shoe_size",shoes_size);
         result.put("waterproof",waterproof);
         result.put("shoe_size_num",shoe_size_num);
+        result.put("buyURL",buyURL);
         return result;
     }
 
