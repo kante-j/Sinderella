@@ -509,24 +509,25 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/activity_posting_contextbox"
+                    >
+                    <Button
+                        android:id="@+id/btn_posting"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="30dp"
+                        android:background="@drawable/add_post_btin"
+                        android:textColor="@android:color/white" />
                 </RelativeLayout>
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_posting"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@drawable/add_post_btin"
-        android:textColor="@android:color/white" />
+
 </RelativeLayout>
