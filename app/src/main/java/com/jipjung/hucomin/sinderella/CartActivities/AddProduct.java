@@ -54,6 +54,7 @@ public class AddProduct extends AppCompatActivity {
     private EditText product_url;
     private EditText price;
     private Spinner foot_size_correction2;
+    private Button action_bar_back_close;
 
 
     @Override
@@ -65,6 +66,8 @@ public class AddProduct extends AppCompatActivity {
         model_name = findViewById(R.id.model_name);
         brand_name = findViewById(R.id.brand_name);
         product_url = findViewById(R.id.product_url);
+
+        action_bar_back_close= findViewById(R.id.action_bar_back_close);
 
         price = findViewById(R.id.price);
         foot_size_correction2 = findViewById(R.id.foot_size_correction2);
@@ -93,6 +96,13 @@ public class AddProduct extends AppCompatActivity {
                     uploadImage();
                 writeNewPost();
 //                }
+            }
+        });
+
+        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 

@@ -28,10 +28,11 @@ public class CartDetail extends AppCompatActivity {
     private TextView price;
     private ImageView cart_detail_btn_profile;
     private String product_url;
-    private Button action_bar_back_close;
+
 
     private FirebaseStorage storage;
     private StorageReference storageRef;
+    private Button action_bar_back_close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,14 @@ public class CartDetail extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         cart_detail_btn_profile = findViewById(R.id.cart_detail_btn_profile);
+
+        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         cart_detail_btn_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,11 +80,7 @@ public class CartDetail extends AppCompatActivity {
 
 
 
-        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+
+
     }
 }
