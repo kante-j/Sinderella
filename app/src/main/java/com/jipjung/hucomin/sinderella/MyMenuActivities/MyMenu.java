@@ -121,6 +121,8 @@ public class MyMenu extends AppCompatActivity {
                     password_modify_layout.setVisibility(View.GONE);
                     btn_password.setVisibility(View.VISIBLE);
 
+//                    AlertDialog.Builder builder = new AlertDialog.Builder();
+
                 }
             }
         });
