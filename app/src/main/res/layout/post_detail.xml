@@ -290,6 +290,7 @@
                                     android:layout_marginBottom="5dp">
 
                                     <TextView
+                                        android:id="@+id/price_size"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
                                         android:gravity="center_vertical"

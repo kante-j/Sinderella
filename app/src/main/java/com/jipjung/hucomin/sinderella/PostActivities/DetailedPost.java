@@ -95,7 +95,7 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
-
+private TextView price_size;
     private Switch followSwitch;
 
 //    private Post p;
@@ -123,6 +123,7 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
+        price_size = findViewById(R.id.price_size);
 
         post_like_count = findViewById(R.id.post_like_count);
         post_commet_count = findViewById(R.id.post_commet_count);
@@ -144,7 +145,7 @@ public class DetailedPost extends AppCompatActivity {
         dBody.setText(intent.getStringExtra("BODY"));
         dUid.setText(intent.getStringExtra("UID"));
         dTime.setText(intent.getStringExtra("TIME"));
-
+        price_size.setText("구매가격 : "+post.getPrice() + " /구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
         if(intent.getStringExtra("CATEGORY").equals("FEatout")){
             findLocationButton.setVisibility(View.VISIBLE);
@@ -325,7 +326,7 @@ public class DetailedPost extends AppCompatActivity {
             r.setEnabled(true);
         }
 
-        String str_shoes_size = post.getShoe_size();
+        String str_shoes_size = post.getShoes_size();
         if(str_shoes_size.equals("big")){
             RadioButton r = findViewById(R.id.shoes_size_big);
             r.setChecked(true);

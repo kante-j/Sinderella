@@ -24,8 +24,10 @@ public class Post implements Serializable {
     public String ventilation;
     public String shoes_size;
     public String waterproof;
+    public int price;
     public float rating;
     public String created_at;
+    public int shoe_size_num;
     public Bitmap bitmap;
 
     public Post() {
@@ -36,6 +38,15 @@ public class Post implements Serializable {
         this.user_id = uid;
         this.title = title;
         this.body = body;
+    }
+
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getShoe_size_num() {
+        return shoe_size_num;
     }
 
     public String getImageURL() {
@@ -56,7 +67,7 @@ public class Post implements Serializable {
     public String getUser_id() { return user_id; }
     public String getShoes_weight() { return shoes_weight; }
     public String getVentilation() { return ventilation; }
-    public String getShoe_size() { return shoes_size; }
+    public String getShoes_size() { return shoes_size; }
     public String getWaterproof() { return waterproof; }
     public Bitmap getBitmap() { return bitmap; }
 
@@ -71,12 +82,14 @@ public class Post implements Serializable {
         result.put("category",category);
         result.put("created_at",created_at);
         result.put("id",id);
+        result.put("price",price);
         result.put("rating",rating);
         result.put("shoes_weight",shoes_weight);
         result.put("user_id",user_id);
         result.put("ventilation",ventilation);
         result.put("shoe_size",shoes_size);
         result.put("waterproof",waterproof);
+        result.put("shoe_size_num",shoe_size_num);
         return result;
     }
 
