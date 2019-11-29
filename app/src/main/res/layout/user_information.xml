@@ -42,6 +42,7 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/nickname_box"
                 android:layout_width="match_parent"
@@ -50,27 +51,30 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/nickname_box"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/gyeonggititle_bold"
                     android:gravity="center"
                     android:letterSpacing="0.06"
                     android:text="닉네임"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/user_information_top"
+                    />
 
                 <EditText
                     android:id="@+id/info_nickname"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@null"
+                    android:inputType="textMultiLine|textNoSuggestions"
+                    android:background="@drawable/user_information_input"
                     android:gravity="center"
                     android:hint="닉네임을 입력해주세요"
-                    android:textSize="15sp" />
+                    android:textSize="15sp"
+                    />
             </LinearLayout>
 
             <LinearLayout
@@ -81,24 +85,27 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/userinput_box"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/gyeonggititle_bold"
                     android:gravity="center"
                     android:letterSpacing="0.06"
                     android:text="성별"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/user_information_mid"
+                    />
 
                 <RadioGroup
                     android:id="@+id/sex_group"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="50dp"
                     android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/user_information_input"
 
                     >
 
@@ -128,6 +135,7 @@
 
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/birth_box"
                 android:layout_width="match_parent"
@@ -136,27 +144,35 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/userinput_box"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/gyeonggititle_bold"
                     android:gravity="center"
                     android:letterSpacing="0.06"
                     android:text="생년월일"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/user_information_mid"
+                    />
 
-                <Button
-                    android:id="@+id/birth_date"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="200dp"
-                    android:layout_marginEnd="10dp"
-                    android:background="@drawable/calendar" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/user_information_input"
+                    android:gravity="end">
 
+                    <Button
+                        android:id="@+id/birth_date"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/calendar" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -167,61 +183,72 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/userinput_box"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="50dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/gyeonggititle_bold"
                     android:gravity="center"
                     android:letterSpacing="0.06"
                     android:text="발사이즈"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/user_information_mid"/>
 
-                <Spinner
-                    android:id="@+id/foot_size"
-                    style="?android:attr/spinnerItemStyle"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:entries="@array/foot_size"
-                    android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
-                    android:outlineSpotShadowColor="@color/bootstrap_brand_info"
-                    android:textSize="20sp" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/user_information_input">
+
+                    <Spinner
+                        android:id="@+id/foot_size"
+                        style="?android:attr/spinnerItemStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:entries="@array/foot_size"
+                        android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
+                        android:outlineSpotShadowColor="@color/bootstrap_brand_info"
+                        android:textSize="20sp"
+                        />
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/foot_width_box"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/feetwide_box"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="110dp"
-                    android:layout_height="100dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/gyeonggititle_bold"
                     android:gravity="center"
                     android:letterSpacing="0.06"
                     android:text="발볼"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:background="@drawable/user_information_bottom"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/user_information_input"
+                    >
 
                     <RadioGroup
                         android:id="@+id/foot_width_group"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:gravity="center"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        >
 
                         <RadioButton
                             android:id="@+id/small_foot"
@@ -277,35 +304,42 @@
             <LinearLayout
                 android:id="@+id/check_foot_width"
                 android:layout_width="match_parent"
-                android:layout_height="475dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/check_foot_width_box"
+                android:background="@drawable/user_informatrion_check_foot_width"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
+                    android:id="@+id/check_foot_width_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="32dp"
-                    android:fontFamily="@font/gyeonggititle_medium"
-                    android:text=" 발 볼 측정을 위해 이 신발들 중 \n즐겨 신거나 맞았던 신발들을 골라주세요!"
-                    android:textAlignment="center"
-                    android:textSize="16sp" />
+                    android:background="@drawable/user_information_check_foot_width_head"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="17.5dp"
-                    android:fontFamily="@font/gyeonggititle_light"
-                    android:text="* 만일 없다면 즐겨신었던 신발의 브랜드를 골라주세요!"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="32dp"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text=" 발 볼 측정을 위해 이 신발들 중 \n즐겨 신거나 맞았던 신발들을 골라주세요!"
+                        android:textAlignment="center"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="17.5dp"
+                        android:fontFamily="@font/gyeonggititle_light"
+                        android:text="* 만일 없다면 즐겨신었던 신발의 브랜드를 골라주세요!"
+                        android:textAlignment="center" />
+                </LinearLayout>
 
                 <android.support.v7.widget.GridLayout
                     android:layout_width="match_parent"
