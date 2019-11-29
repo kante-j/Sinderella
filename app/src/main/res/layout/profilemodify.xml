@@ -123,15 +123,16 @@
 
 
                         <LinearLayout
+                            android:id="@+id/birthday_layout"
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:background="@drawable/profilemodify_outline"
                             android:orientation="horizontal">
 
                             <TextView
                                 android:layout_width="120dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="40dp"
                                 android:layout_weight="1"
                                 android:gravity="center"
                                 android:text="생년월일"
@@ -141,7 +142,7 @@
                             <TextView
                                 android:id="@+id/year_month_day"
                                 android:layout_width="200dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="40dp"
                                 android:layout_weight="1"
                                 android:background="@null"
                                 android:gravity="center"
@@ -152,19 +153,66 @@
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="40dp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:orientation="horizontal">
 
                             <Button
                                 android:id="@+id/btn_passward_profilemodify"
                                 android:layout_width="320dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="40dp"
                                 android:background="@drawable/profilemodify_passwoard"
                                 android:text="비밀번호 수정"
                                 android:textColor="@android:color/holo_red_light"
-                                android:textSize="18sp" />
+                                android:textSize="18sp"
+                                android:visibility="visible"
+                                />
+
                         </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/password_modify_layout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@drawable/profilemodify_passwoard"
+                            android:orientation="horizontal"
+                            android:layout_below="@+id/birthday_layout"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/newpassword"
+                                android:layout_width="120dp"
+                                android:layout_height="40dp"
+                                android:gravity="center"
+                                android:text="새비밀번호"
+                                android:textColor="@android:color/black"
+                                android:textSize="15sp" />
+
+                            <EditText
+                                android:id="@+id/profilemodify_password"
+                                android:layout_width="200dp"
+                                android:layout_height="40dp"
+                                android:layout_toRightOf="@+id/newpassword"
+                                android:background="@null"
+                                android:gravity="center"
+                                android:inputType="textPassword"
+                                android:textColor="#707070"
+                                android:textSize="15sp" />
+
+                            <Button
+                                android:id="@+id/profilemodify_check"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_alignRight="@+id/profilemodify_password"
+                                android:layout_marginRight="10dp"
+                                android:layout_centerVertical="true"
+                                android:background="@drawable/password_check"
+                                />
+
+
+                        </RelativeLayout>
+
 
 
                         <LinearLayout
