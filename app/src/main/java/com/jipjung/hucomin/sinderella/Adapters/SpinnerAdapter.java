@@ -40,7 +40,13 @@ public class SpinnerAdapter extends BaseAdapter {
 
 
 
+<<<<<<< HEAD
+    class ViewHolder {
+    }
+}
+=======
     public class ViewHolder {
+>>>>>>> 2f6067e0d35b7e480f00788f63b50fdc8b47c694
 
     }
 
