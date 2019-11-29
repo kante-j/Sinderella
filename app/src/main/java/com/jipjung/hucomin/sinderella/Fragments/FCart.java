@@ -123,7 +123,6 @@ public class FCart extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d("qpoqop", "whiatqwdqw?");
                 firebaseFirestore.collection("products").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override

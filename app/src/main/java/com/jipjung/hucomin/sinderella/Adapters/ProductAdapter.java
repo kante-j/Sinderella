@@ -1,6 +1,7 @@
 package com.jipjung.hucomin.sinderella.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -68,7 +69,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.category.setText(product.getCategory());
         holder.code_name.setText(product.getName());
         holder.price.setText(product.getPrice());
-        holder.productURL.setText(product.getProduct_url());
+        holder.brand.setText(product.getBrand());
 
         if (product.getImage_url() != null) {
             StorageReference path = storageRef.child(product.image_url);
@@ -99,7 +100,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         private Product product;
         private ImageView image;
         private TextView price;
-        private TextView productURL;
+        private TextView brand;
         private TextView code_name;
         private TextView category;
 
@@ -109,12 +110,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             image = itemView.findViewById(R.id.shoes_image);
             category = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
-            productURL = itemView.findViewById(R.id.brand);
+            brand = itemView.findViewById(R.id.brand);
             code_name = itemView.findViewById(R.id.shoes_code_name);
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, CartDetail.class);
+                    intent.putExtra("product",product);
                     context.startActivity(intent);
 //                    String pTitle = title.getText().toString();
 //                    String pBody = body.getText().toString();

@@ -229,7 +229,7 @@ public class Posting extends AppCompatActivity {
             }
         });
 
-        buyURL = findViewById(R.id.brand);
+        buyURL = findViewById(R.id.buyURL);
 
         priceTextView = findViewById(R.id.priceTextView);
 

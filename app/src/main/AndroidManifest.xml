@@ -2,14 +2,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.jipjung.hucomin.sinderella">
 
+
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_x"
         android:label="@string/app_name"
         android:roundIcon="@drawable/logo_x"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CartActivities.CartDetail"></activity>
+
+        <activity android:name=".InAppBrowser.InAppBrowser"></activity>
+        <activity android:name=".CartActivities.CartDetail" />
         <activity android:name=".StartAppActivities.FirstPage" />
         <activity
             android:name=".StartAppActivities.SplashScreen"
@@ -29,5 +34,5 @@
         <activity android:name=".MyMenuActivities.MyMenu" />
         <activity android:name=".Search.SearchActivity" />
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>
