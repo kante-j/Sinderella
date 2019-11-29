@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/logo_x"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartAppActivities.FirstPage"></activity>
+        <activity android:name=".CartActivities.CartDetail"></activity>
+        <activity android:name=".StartAppActivities.FirstPage" />
         <activity
             android:name=".StartAppActivities.SplashScreen"
             android:screenOrientation="portrait"
@@ -20,13 +21,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".StartAppActivities.EmailPasswordActivity"></activity>
-        <activity android:name=".HomeActivities.HomeFeed"></activity>
-        <activity android:name=".StartAppActivities.UserInfoInput"></activity>
-        <activity android:name=".PostActivities.Posting"></activity>
-        <activity android:name=".PostActivities.DetailedPost"></activity>
-        <activity android:name=".MyMenuActivities.MyMenu"></activity>
-        <activity android:name=".Search.SearchActivity"></activity>
+        <activity android:name=".StartAppActivities.EmailPasswordActivity" />
+        <activity android:name=".HomeActivities.HomeFeed" />
+        <activity android:name=".StartAppActivities.UserInfoInput" />
+        <activity android:name=".PostActivities.Posting" />
+        <activity android:name=".PostActivities.DetailedPost" />
+        <activity android:name=".MyMenuActivities.MyMenu" />
+        <activity android:name=".Search.SearchActivity" />
     </application>
 
 </manifest>

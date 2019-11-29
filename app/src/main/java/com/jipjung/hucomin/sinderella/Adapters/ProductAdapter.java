@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
 import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
@@ -117,6 +118,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Intent intent = new Intent(context, CartDetail.class);
+                    context.startActivity(intent);
 //                    String pTitle = title.getText().toString();
 //                    String pBody = body.getText().toString();
 //                    String pUid = feed_nickname.getText().toString();
