@@ -100,12 +100,12 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentEnd="true"
                                         android:layout_centerVertical="true"
-                                        android:layout_marginEnd="20dp"
+                                        android:layout_marginEnd="50dp"
                                         android:fontFamily="@font/norwester"
                                         android:text="follow"
                                         android:textColor="#ffffff"
                                         android:textSize="20dp"
-                                        android:visibility="visible" />
+                                        android:visibility="invisible" />
 
                                     <TextView
                                         android:id="@+id/unfollow_text"
@@ -113,12 +113,12 @@
                                         android:layout_height="wrap_content"
                                         android:layout_alignParentEnd="true"
                                         android:layout_centerVertical="true"
-                                        android:layout_marginEnd="35dp"
+                                        android:layout_marginEnd="7dp"
                                         android:fontFamily="@font/norwester"
                                         android:text="unfollow"
                                         android:textColor="#ffffff"
                                         android:textSize="20dp"
-                                        android:visibility="gone" />
+                                        android:visibility="visible" />
                                     <!--android:switchMinWidth="100dp"-->
 
                                     <!--<ImageView-->
@@ -287,7 +287,7 @@
                                 <TextView
                                     android:id="@+id/dp_title"
                                     android:layout_width="match_parent"
-                                    android:layout_height="20dp"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginLeft="27.5dp"
                                     android:layout_marginTop="10dp"
                                     android:layout_marginRight="27.5dp"

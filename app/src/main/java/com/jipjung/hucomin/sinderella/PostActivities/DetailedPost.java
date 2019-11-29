@@ -101,7 +101,7 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
-private TextView price_size;
+    private TextView price_size;
     private Switch followSwitch;
     private Button where_to_buy;
     private RatingBar star_evaluation;
@@ -403,6 +403,22 @@ private TextView price_size;
 
         /** 핀치 줌 **/
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+
+        /*팔로우, 팔로워 글자 보이기*/
+        followSwitch.setChecked(false);
+        followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    follow_text.setVisibility(View.VISIBLE);
+                    unfollow_text.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    follow_text.setVisibility(View.INVISIBLE);
+                    unfollow_text.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     /********************************
@@ -428,20 +444,6 @@ private TextView price_size;
     /********************************
      ************ 팔로우 관련***********
      ********************************/
-
-    class visibilitySwitchListener implements CompoundButton.OnCheckedChangeListener{
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if(isChecked){
-                follow_text.setVisibility(View.VISIBLE);
-                unfollow_text.setVisibility(View.INVISIBLE);
-            }
-            else{
-                unfollow_text.setVisibility(View.VISIBLE);
-                follow_text.setVisibility(View.INVISIBLE);
-            }
-        }
-    }
 
     public void isFollowed(){
 //        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
