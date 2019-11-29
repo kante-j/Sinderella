@@ -50,6 +50,7 @@ public class MyMenu extends AppCompatActivity {
     private Button btn_password;
     private RelativeLayout password_modify_layout;
     private Button profilemodify_check;
+    private Button action_bar_back_close;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,11 +94,15 @@ public class MyMenu extends AppCompatActivity {
         text_email.setText(fbUser.getEmail());
         birth_date.setText(user.getBirth_date());
 
+        //MoHyeonMin
+
 
         btn_password = findViewById(R.id.btn_passward_profilemodify);
         password_modify_layout = findViewById(R.id.password_modify_layout);
         profilemodify_check = findViewById(R.id.profilemodify_check);
+        action_bar_back_close = findViewById(R.id.action_bar_back_close);
 
+        //click시 비밀번호 창 생성했다가 사라지기
         btn_password.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -112,9 +117,6 @@ public class MyMenu extends AppCompatActivity {
 
         });
 
-
-
-
         profilemodify_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +126,14 @@ public class MyMenu extends AppCompatActivity {
                     password_modify_layout.setVisibility(View.GONE);
                     btn_password.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        //뒤로 가기 버튼
+        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
