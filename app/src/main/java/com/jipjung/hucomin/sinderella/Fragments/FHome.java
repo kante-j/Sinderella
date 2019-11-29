@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -151,6 +152,7 @@ public class FHome extends Fragment {
             }
         });
 
+        //Filter 기능 들
         applytext=v.findViewById(R.id.apply);
         filterscreen=v.findViewById(R.id.filter_screen);
 
@@ -176,7 +178,9 @@ public class FHome extends Fragment {
         });
 
         //ListView
-        ListView filterListView = v.findViewById(R.id.list_filter);
+        RecyclerView filterListView = v.findViewById(R.id.list_filter);
+
+
 
         //Spinner text 사이즈 줄이기
         //TODO: Spinner adapter 만들기
@@ -243,12 +247,9 @@ public class FHome extends Fragment {
 
 
 
-        ArrayList<String> filter_arrayList = new ArrayList<String>();
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 //                getActivity(), android.R.layout.i
 //       );
-        Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
-
 
 
 
@@ -258,17 +259,21 @@ public class FHome extends Fragment {
                 filterscreen.setVisibility(View.GONE);
                 applytext.setVisibility(View.GONE);
 
-                if(small_foot_checkbox.isChecked() == true){
+                ArrayList<String> filter_arrayList = new ArrayList<String>();
+
+                Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
+
+                if(small_foot_checkbox.isChecked()){
                     filter_arrayList.add(small_foot_checkbox.getText().toString());
 //                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","small_foot");
                 }
-                if(normal_foot_checkbox.isChecked()== true){
+                if(normal_foot_checkbox.isChecked()){
                     filter_arrayList.add(normal_foot_checkbox.getText().toString());
 //                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","normal_foot");
                 }
-                if(bigger_foot_checkbox.isChecked() == true){
+                if(bigger_foot_checkbox.isChecked()){
                     filter_arrayList.add(bigger_foot_checkbox.getText().toString());
 //                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","bigger_foot");
@@ -290,20 +295,6 @@ public class FHome extends Fragment {
 
 
         return v;
-    }
-
-    public String Checked(View v) {
-        String resultText = "";
-        if(small_foot_checkbox.isChecked()){
-            resultText="작은 편";
-        }
-        else if(normal_foot_checkbox.isChecked()){
-            resultText="보통";
-        }
-        else{
-            resultText="큰 편";
-        }
-        return  resultText;
     }
 
 

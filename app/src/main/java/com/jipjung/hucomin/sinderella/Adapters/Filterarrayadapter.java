@@ -61,7 +61,7 @@ public class Filterarrayadapter extends BaseAdapter {
         private TextView filter_item;
 
         public ViewHolder(View convertView) {
-            filter_item = (TextView) convertView.findViewById(R.id.filter_item);
+            filter_item = convertView.findViewById(R.id.filter_item);
         }
     }
 }
