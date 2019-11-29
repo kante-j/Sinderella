@@ -95,7 +95,7 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
-
+private TextView price_size;
     private Switch followSwitch;
 
 //    private Post p;
@@ -123,6 +123,7 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
+        price_size = findViewById(R.id.price_size);
 
         post_like_count = findViewById(R.id.post_like_count);
         post_commet_count = findViewById(R.id.post_commet_count);
@@ -132,7 +133,7 @@ public class DetailedPost extends AppCompatActivity {
         dBody = findViewById(R.id.dp_body);
         dUid = findViewById(R.id.dp_user_id);
         dTime = findViewById(R.id.dp_posted_time);
-        deleteButton = findViewById(R.id.postDelete);
+//        deleteButton = findViewById(R.id.postDelete);
         writeCommentButton = findViewById(R.id.btn_comment_input);
         contextComment = findViewById(R.id.input_comment_context);
         buttonLike = findViewById(R.id.btn_like);
@@ -144,7 +145,7 @@ public class DetailedPost extends AppCompatActivity {
         dBody.setText(intent.getStringExtra("BODY"));
         dUid.setText(intent.getStringExtra("UID"));
         dTime.setText(intent.getStringExtra("TIME"));
-
+        price_size.setText("구매가격 : "+post.getPrice() + " /구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
         if(intent.getStringExtra("CATEGORY").equals("FEatout")){
             findLocationButton.setVisibility(View.VISIBLE);
@@ -325,7 +326,7 @@ public class DetailedPost extends AppCompatActivity {
             r.setEnabled(true);
         }
 
-        String str_shoes_size = post.getShoe_size();
+        String str_shoes_size = post.getShoes_size();
         if(str_shoes_size.equals("big")){
             RadioButton r = findViewById(R.id.shoes_size_big);
             r.setChecked(true);
@@ -399,7 +400,22 @@ public class DetailedPost extends AppCompatActivity {
      ************ 팔로우 관련***********
      ********************************/
 
+    TextView follow_text = findViewById(R.id.follow_text);
+    TextView unfollow_text = findViewById(R.id.unfollow_text);
 
+    class visibilitySwitchListener implements CompoundButton.OnCheckedChangeListener{
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(isChecked){
+                follow_text.setVisibility(View.VISIBLE);
+                unfollow_text.setVisibility(View.INVISIBLE);
+            }
+            else{
+                unfollow_text.setVisibility(View.VISIBLE);
+                follow_text.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
 
     public void isFollowed(){
         Log.d("qwea","qweqwe");
