@@ -115,7 +115,6 @@ public class HomeFeed extends AppCompatActivity {
         userbundle = new Bundle();
         followbundle = new Bundle();
 
-
         firebaseFirestore.collection("users").whereEqualTo("user_id",firebaseUser.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

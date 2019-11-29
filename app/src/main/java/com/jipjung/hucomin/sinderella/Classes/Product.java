@@ -15,6 +15,8 @@ public class Product implements Serializable {
     public String price;
     public String image_url;
     public String product_url;
+    public String shoes_code_name;
+    public String created_at;
 
 
     public Product() {
@@ -28,6 +30,37 @@ public class Product implements Serializable {
         this.category = category;
     }
 
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public String getProduct_url() {
+        return product_url;
+    }
+
+    public String getShoes_code_name() {
+        return shoes_code_name;
+    }
 
     @Exclude
     public Map<String, Object> toMap() {
@@ -38,6 +71,7 @@ public class Product implements Serializable {
         result.put("image_url", image_url);
         result.put("category",category);
         result.put("product_url",product_url);
+        result.put("shoes_code_name",shoes_code_name);
         return result;
     }
 
