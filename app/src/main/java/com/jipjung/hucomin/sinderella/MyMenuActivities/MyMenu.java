@@ -13,8 +13,10 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -45,6 +47,9 @@ public class MyMenu extends AppCompatActivity {
 
     private User user;
     private FirebaseAuth fbAuth;
+    private Button btn_password;
+    private RelativeLayout password_modify_layout;
+    private Button profilemodify_check;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +93,56 @@ public class MyMenu extends AppCompatActivity {
         text_email.setText(fbUser.getEmail());
         birth_date.setText(user.getBirth_date());
 
+
+        btn_password = findViewById(R.id.btn_passward_profilemodify);
+        password_modify_layout = findViewById(R.id.password_modify_layout);
+        profilemodify_check = findViewById(R.id.profilemodify_check);
+
+        btn_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(btn_password.getVisibility() == View.VISIBLE){
+                    btn_password.setVisibility((View.GONE));
+                    password_modify_layout.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        Log.d("check","확인하자");
+        Log.d("check",String.valueOf(profilemodify_check.isSelected()));
+
+        profilemodify_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Log.d("check",String.valueOf(profilemodify_check.isSelected()));
+
+                if(profilemodify_check.isSelected()){
+                    password_modify_layout.setVisibility(View.GONE);
+                    btn_password.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+//        filterbtn =v.findViewById(R.id.btn_filter);
+//        filterbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(applytext.getVisibility() == View.GONE){
+//                    applytext.setVisibility(View.VISIBLE);
+//                }else{
+//                    applytext.setVisibility(View.GONE);
+//                }
+//
+//                if(filterscreen.getVisibility() == View.GONE){
+//                    filterscreen.setVisibility(View.VISIBLE);
+//                }else{
+//                    filterscreen.setVisibility(View.GONE);
+//                }
+//
+//            }
+//        });
 
 
 
