@@ -99,8 +99,10 @@ public class MyMenu extends AppCompatActivity {
         profilemodify_check = findViewById(R.id.profilemodify_check);
 
         btn_password.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+
                 if(btn_password.getVisibility() == View.VISIBLE){
                     btn_password.setVisibility((View.GONE));
                     password_modify_layout.setVisibility(View.VISIBLE);
@@ -108,18 +110,17 @@ public class MyMenu extends AppCompatActivity {
             }
         });
 
-        Log.d("check","확인하자");
-        Log.d("check",String.valueOf(profilemodify_check.isSelected()));
+
+
 
         profilemodify_check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.d("check",String.valueOf(profilemodify_check.isSelected()));
-
-                if(profilemodify_check.isSelected()){
+                if(profilemodify_check.isPressed()){
                     password_modify_layout.setVisibility(View.GONE);
                     btn_password.setVisibility(View.VISIBLE);
+
                 }
             }
         });
