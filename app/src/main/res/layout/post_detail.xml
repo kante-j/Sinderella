@@ -91,7 +91,7 @@
                                         android:textOn="unfollow"
                                         android:thumb="@drawable/switch_thumb"
                                         android:track="@drawable/switch_track_selector"
-                                        android:visibility="visible" />
+                                        android:visibility="gone" />
 
                                     <!--<ImageView-->
                                     <!--android:id="@+id/post_follow_bar"-->

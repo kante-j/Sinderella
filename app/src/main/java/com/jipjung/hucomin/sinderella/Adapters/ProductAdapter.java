@@ -1,14 +1,12 @@
 package com.jipjung.hucomin.sinderella.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -19,12 +17,10 @@ import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
 import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
-import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
 import com.jipjung.hucomin.sinderella.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
     private Context context;
@@ -113,7 +109,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             image = itemView.findViewById(R.id.shoes_image);
             category = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
-            productURL = itemView.findViewById(R.id.buyURL);
+            productURL = itemView.findViewById(R.id.brand);
             code_name = itemView.findViewById(R.id.shoes_code_name);
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override

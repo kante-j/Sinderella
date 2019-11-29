@@ -13,11 +13,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -38,8 +36,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.jipjung.hucomin.sinderella.StartAppActivities.FirstPage;
-import com.jipjung.hucomin.sinderella.StartAppActivities.SplashScreen;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -233,7 +229,7 @@ public class Posting extends AppCompatActivity {
             }
         });
 
-        buyURL = findViewById(R.id.buyURL);
+        buyURL = findViewById(R.id.brand);
 
         priceTextView = findViewById(R.id.priceTextView);
 
