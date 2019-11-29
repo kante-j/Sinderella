@@ -32,6 +32,20 @@
                     android:layout_marginRight="20dp"
                     android:background="@drawable/photo_sample"
                     android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/postImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/text_context"
+                    app:layout_constraintVertical_bias="0.473" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -80,7 +94,29 @@
                         android:inputType="textPersonName"
                         android:textSize="20sp" />
                 </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="상품 url"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/product_url"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -138,7 +174,7 @@
                         android:layout_marginStart="10dp"
                         android:gravity="right"
                         android:inputType="number"
-                        android:text="￦" />
+                        android:text="" />
                 </LinearLayout>
 
                 <Button

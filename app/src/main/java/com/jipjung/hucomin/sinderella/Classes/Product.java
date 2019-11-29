@@ -12,7 +12,7 @@ public class Product implements Serializable {
     public String id;
     public String name;
     public String category;
-    public String price;
+    public int price;
     public String image_url;
     public String product_url;
     public String brand;
@@ -24,7 +24,7 @@ public class Product implements Serializable {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
 
-    public Product(String id, String name, String price, String category) {
+    public Product(String id, String name, int price, String category) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -51,7 +51,7 @@ public class Product implements Serializable {
         return category;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 

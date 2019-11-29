@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,11 +35,13 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
+import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
+import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
 import com.jipjung.hucomin.sinderella.R;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -64,6 +67,9 @@ public class DetailedPost extends AppCompatActivity {
     private ScaleGestureDetector mScaleGestureDetector;
     private float mScaleFactor = 1.0f;
 
+
+    private TextView follow_text;
+    private TextView unfollow_text;
 
     private FirebaseStorage fs;
     private ImageView dImage;
@@ -95,8 +101,11 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
-private TextView price_size;
+    private TextView price_size;
     private Switch followSwitch;
+    private Button where_to_buy;
+    private RatingBar star_evaluation;
+    private Button action_bar_back_close;
 
 //    private Post p;
     @Override
@@ -123,8 +132,13 @@ private TextView price_size;
 //                        }
 //                    }
 //                });
-        price_size = findViewById(R.id.price_size);
 
+        star_evaluation = findViewById(R.id.star_evaluation);
+        action_bar_back_close = findViewById(R.id.action_bar_back_close);
+        follow_text = findViewById(R.id.follow_text);
+        unfollow_text = findViewById(R.id.unfollow_text);
+        price_size = findViewById(R.id.price_size);
+        where_to_buy = findViewById(R.id.where_to_buy);
         post_like_count = findViewById(R.id.post_like_count);
         post_commet_count = findViewById(R.id.post_commet_count);
         followSwitch = findViewById(R.id.follow_switch);
@@ -145,6 +159,7 @@ private TextView price_size;
         dBody.setText(intent.getStringExtra("BODY"));
         dUid.setText(intent.getStringExtra("UID"));
         dTime.setText(intent.getStringExtra("TIME"));
+        star_evaluation.setRating(post.rating);
         price_size.setText("구매가격 : "+post.getPrice() + " /구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
         if(intent.getStringExtra("CATEGORY").equals("FEatout")){
@@ -209,8 +224,8 @@ private TextView price_size;
 
 
         /* Drawer Menu*/
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerView = (View)findViewById(R.id.drawer);
+//        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawerView = (View)findViewById(R.id.drawer);
 
 //        Button buttonOpenDrawer = (Button) findViewById(R.id.action_bar_menu);
 //        buttonOpenDrawer.setOnClickListener(new View.OnClickListener() {
@@ -238,6 +253,20 @@ private TextView price_size;
 //            }
 //        });
 
+        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        where_to_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedPost.this, InAppBrowser.class);
+                intent.putExtra("url", post.getBuyURL());
+                startActivity(intent);
+            }
+        });
         followSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -374,6 +403,22 @@ private TextView price_size;
 
         /** 핀치 줌 **/
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+
+        /*팔로우, 팔로워 글자 보이기*/
+        followSwitch.setChecked(false);
+        followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    follow_text.setVisibility(View.VISIBLE);
+                    unfollow_text.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    follow_text.setVisibility(View.INVISIBLE);
+                    unfollow_text.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     /********************************
@@ -400,10 +445,7 @@ private TextView price_size;
      ************ 팔로우 관련***********
      ********************************/
 
-
-
     public void isFollowed(){
-        Log.d("qwea","qweqwe");
 //        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
 //                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
 //                    @Override
@@ -583,37 +625,37 @@ private TextView price_size;
         }
     }
 
-    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
-
-        public void onDrawerClosed(View drawerView) {
-        }
-        public void onDrawerOpened(View drawerView) {
-        }
-
-        public void onDrawerSlide(View drawerView, float slideOffset) {
-//                txtPrompt.setText("onDrawerSlide: "
-//                        + String.format("%.2f", slideOffset));
-        }
-
-        public void onDrawerStateChanged(int newState) {
-            String state;
-            switch (newState) {
-                case DrawerLayout.STATE_IDLE:
-                    state = "STATE_IDLE";
-                    break;
-                case DrawerLayout.STATE_DRAGGING:
-                    state = "STATE_DRAGGING";
-                    break;
-                case DrawerLayout.STATE_SETTLING:
-                    state = "STATE_SETTLING";
-                    break;
-                default:
-                    state = "unknown!";
-            }
-
-//                txtPrompt2.setText(state);
-        }
-    };
+//    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
+//
+//        public void onDrawerClosed(View drawerView) {
+//        }
+//        public void onDrawerOpened(View drawerView) {
+//        }
+//
+//        public void onDrawerSlide(View drawerView, float slideOffset) {
+////                txtPrompt.setText("onDrawerSlide: "
+////                        + String.format("%.2f", slideOffset));
+//        }
+//
+//        public void onDrawerStateChanged(int newState) {
+//            String state;
+//            switch (newState) {
+//                case DrawerLayout.STATE_IDLE:
+//                    state = "STATE_IDLE";
+//                    break;
+//                case DrawerLayout.STATE_DRAGGING:
+//                    state = "STATE_DRAGGING";
+//                    break;
+//                case DrawerLayout.STATE_SETTLING:
+//                    state = "STATE_SETTLING";
+//                    break;
+//                default:
+//                    state = "unknown!";
+//            }
+//
+////                txtPrompt2.setText(state);
+//        }
+//    };
 
 
     /**********************************

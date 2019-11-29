@@ -28,6 +28,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.w3c.dom.Text;
+
 import java.text.BreakIterator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -136,6 +138,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.post_id= post.getId();
         holder.post_category = post.getCategory();
         holder.rating.setRating(post.rating);
+        holder.star_evaluation.setText(String.valueOf(post.rating));
 
 //        like count 설정
 //        Like like = null;
@@ -175,6 +178,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                         }
                     }
                 });
+
+        firestore.collection("comments").whereEqualTo("post_id",post.id).whereEqualTo("status","active").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(queryDocumentSnapshots.isEmpty()){
+                            holder.comment_counts.setText(String.valueOf(0));
+                        }else {
+                            holder.comment_counts.setText(String.valueOf(queryDocumentSnapshots.size()));
+                        }
+                    }
+                });
+
+
 //        holder.feed_nickname.setText(user.getNickname());
 
         //리사이클러뷰 각각의 아이템에 유저 닉네임 보이도록 표시
@@ -233,10 +250,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private TextView feed_nickname;
         private CardView cardview;
         private ImageView image;
+        private TextView star_evaluation;
         private String url;
         private TextView time;
         private String post_id;
         private TextView like_counts;
+        private TextView cart_counts;
+        private TextView comment_counts;
         private ImageView like;
         private RatingBar rating;
         private String post_category;
@@ -246,8 +266,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
+            star_evaluation = itemView.findViewById(R.id.star_evaluation);
             image = (ImageView) itemView.findViewById(R.id.postedImage);
             rating = itemView.findViewById(R.id.ratingBar);
+            cart_counts = itemView.findViewById(R.id.cart_count);
+            comment_counts = itemView.findViewById(R.id.commet_count);
             title = (TextView) itemView.findViewById(R.id.title);
             body = (TextView) itemView.findViewById(R.id.detail);
             feed_nickname = (TextView) itemView.findViewById(R.id.feed_nickname);
