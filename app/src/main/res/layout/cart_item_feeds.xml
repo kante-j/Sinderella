@@ -48,8 +48,8 @@
                         android:fontFamily="@font/gyeonggititle_medium"
                         android:text="shoesname"
                         android:textColor="#6c6464"
-                        android:textSize="15sp"
-                        android:visibility="gone" />
+                        android:gravity="right"
+                        android:textSize="15sp"/>
 
                     <TextView
                         android:id="@+id/category"
