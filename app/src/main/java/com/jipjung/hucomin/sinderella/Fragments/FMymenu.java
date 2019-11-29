@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,6 +46,7 @@ public class FMymenu extends Fragment {
     private Button logoutbtn;
     private Button followerbtn;
     private Button followingbtn;
+    private FrameLayout follow_framelayout;
 
 
     public FMymenu(){
@@ -118,6 +120,8 @@ public class FMymenu extends Fragment {
 
         followerbtn = v.findViewById(R.id.mypage_follower);
         followingbtn=v.findViewById(R.id.mypage_following);
+        follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
+
         Log.d("click",String.valueOf(followerbtn.isSelected()));
         Log.d("click",String.valueOf(followingbtn.isSelected()));
 
@@ -131,6 +135,7 @@ public class FMymenu extends Fragment {
                     Log.d("click","follower_true");
                     followingbtn.setSelected(false);
                     followerbtn.setSelected(true);
+                    follow_framelayout.setVisibility(getView().VISIBLE);
                 }
             }
         });
@@ -147,6 +152,7 @@ public class FMymenu extends Fragment {
                     Log.d("click","following_true");
                     followerbtn.setSelected(false);
                     followingbtn.setSelected(true);
+                    follow_framelayout.setVisibility(getView().VISIBLE);
                 }
             }
         });
