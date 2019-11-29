@@ -30,7 +30,7 @@
                     android:id="@+id/postedImage"
                     android:layout_width="125dp"
                     android:layout_height="125dp"
-
+                    android:scaleType="centerCrop"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp" />
 
@@ -63,15 +63,6 @@
                             android:text="nickname"
                             android:textColor="#707070"
                             android:textSize="12sp" />
-
-                        <TextView
-                            android:id="@+id/dp_posted_time2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:text="Time"
-                            android:textAlignment="textEnd"
-                            android:textSize="15dp" />
 
                     </LinearLayout>
 

@@ -129,7 +129,7 @@
                 <RelativeLayout
                     android:layout_width="230dp"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/home_fragments_foot_with"
+                    android:layout_toRightOf="@+id/search_fragments_foot_with"
                     android:orientation="horizontal"
                     android:background="@drawable/home_fragments_filter_foot_width">
 
@@ -196,7 +196,7 @@
                 <RelativeLayout
                     android:layout_width="230dp"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/home_fragments_foot_size"
+                    android:layout_toRightOf="@+id/search_fragments_foot_size"
                     android:orientation="horizontal"
                     android:background="@drawable/home_fragments_filter_foot_size">
 
