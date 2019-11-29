@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -307,9 +308,67 @@ public class DetailedPost extends AppCompatActivity {
             }
         });
 
-        RadioGroup shoes_weight = findViewById(R.id.shoes_weight);
+
+        /******* 라디오 버튼 선택 *********/
         String str_shoesWeight = post.getShoes_weight();
-        shoes_weight.check(R.id.shoes_weight_fit);
+        if(str_shoesWeight.equals("fit")){
+            RadioButton r = findViewById(R.id.shoes_weight_fit);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else if(str_shoesWeight.equals("heavy")){
+            RadioButton r = findViewById(R.id.shoes_weight_heavy);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else{
+            RadioButton r = findViewById(R.id.shoes_weight_light);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }
+
+        String str_shoes_size = post.getShoe_size();
+        if(str_shoes_size.equals("big")){
+            RadioButton r = findViewById(R.id.shoes_size_big);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else if(str_shoes_size.equals("fit")){
+            RadioButton r = findViewById(R.id.shoes_size_fit);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else{
+            RadioButton r = findViewById(R.id.shoes_size_small);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }
+
+        String str_ventilation = post.getVentilation();
+        if(str_ventilation.equals("good")){
+            RadioButton r = findViewById(R.id.ventilation_good);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else if(str_ventilation.equals("best")){
+            RadioButton r = findViewById(R.id.ventilation_best);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else{
+            RadioButton r = findViewById(R.id.ventilation_bad);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }
+
+        String str_waterproof = post.getWaterproof();
+        if(str_waterproof.equals("bad")){
+            RadioButton r = findViewById(R.id.waterproof_bad);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else if(str_waterproof.equals("best")){
+            RadioButton r = findViewById(R.id.waterproof_best);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }else{
+            RadioButton r = findViewById(R.id.waterproof_good);
+            r.setChecked(true);
+            r.setEnabled(true);
+        }
 
 
         /** 핀치 줌 **/

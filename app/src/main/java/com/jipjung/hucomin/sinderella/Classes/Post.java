@@ -21,7 +21,7 @@ public class Post implements Serializable {
     public String body;
     public String category;
     public String shoes_weight;
-    public String vantilation;
+    public String ventilation;
     public String shoes_size;
     public String waterproof;
     public float rating;
@@ -55,7 +55,7 @@ public class Post implements Serializable {
     public String getImage_url() { return image_url; }
     public String getUser_id() { return user_id; }
     public String getShoes_weight() { return shoes_weight; }
-    public String getVantilation() { return vantilation; }
+    public String getVentilation() { return ventilation; }
     public String getShoe_size() { return shoes_size; }
     public String getWaterproof() { return waterproof; }
     public Bitmap getBitmap() { return bitmap; }
@@ -74,7 +74,7 @@ public class Post implements Serializable {
         result.put("rating",rating);
         result.put("shoes_weight",shoes_weight);
         result.put("user_id",user_id);
-        result.put("vantilation",vantilation);
+        result.put("ventilation",ventilation);
         result.put("shoe_size",shoes_size);
         result.put("waterproof",waterproof);
         return result;
