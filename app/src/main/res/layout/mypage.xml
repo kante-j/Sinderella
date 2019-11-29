@@ -256,7 +256,8 @@
                 android:layout_height="wrap_content"
                 android:layout_above="@id/mypage_commet_container_layout"
                 android:layout_below="@+id/mypage_followLayout"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:visibility="gone">
 
 
             </FrameLayout>
