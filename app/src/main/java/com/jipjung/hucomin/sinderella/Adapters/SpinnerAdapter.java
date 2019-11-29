@@ -14,8 +14,7 @@ public class SpinnerAdapter extends BaseAdapter {
     private SpinnerAdapter.ViewHolder mViewHolder;
 
 
-
-    public SpinnerAdapter(ArrayList<String> array_filter){
+    public SpinnerAdapter(ArrayList<String> array_filter) {
         this.array_filter = array_filter;
     }
 
@@ -36,14 +35,19 @@ public class SpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        return convertView;
+    }
 
 
 
+<<<<<<< HEAD
     class ViewHolder {
     }
 }
+=======
+    public class ViewHolder {
+>>>>>>> 2f6067e0d35b7e480f00788f63b50fdc8b47c694
 
-    private class ViewHolder {
     }
 
-
+}
