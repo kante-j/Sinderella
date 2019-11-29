@@ -1,5 +1,6 @@
 package com.jipjung.hucomin.sinderella.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -19,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.ProductAdapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
+import com.jipjung.hucomin.sinderella.CartActivities.AddProduct;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.Product;
@@ -32,7 +35,7 @@ import java.util.List;
 public class FCart extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
-
+    private Button add_model_btn;
     private ProductAdapter mAdapter;
     private List<Product> types;
     private ArrayList<Product> mArrayList;
@@ -59,7 +62,7 @@ public class FCart extends Fragment {
         user = (User) bundle.getSerializable("user");
         pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
         mArrayList = new ArrayList<>();
-
+        add_model_btn = v.findViewById(R.id.add_model_btn);
         types = new ArrayList<Product>();
 
         //피드 카드뷰 생성
@@ -105,6 +108,13 @@ public class FCart extends Fragment {
 //                types = new ArrayList<Product>();
                 getListItems();
                 swipeContainer.setRefreshing(false);
+            }
+        });
+        add_model_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddProduct.class);
+                startActivity(intent);
             }
         });
 
