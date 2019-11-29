@@ -97,9 +97,12 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
-private TextView price_size;
+    private TextView price_size;
     private Switch followSwitch;
     private Button where_to_buy;
+
+    private TextView follow_text;
+    private TextView unfollow_text;
 
 //    private Post p;
     @Override
@@ -385,6 +388,24 @@ private TextView price_size;
 
         /** 핀치 줌 **/
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+
+        /*팔로우, 팔로워 글자 보이기*/
+        follow_text = findViewById(R.id.follow_text);
+        unfollow_text = findViewById(R.id.unfollow_text);
+        followSwitch.setChecked(false);
+        followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    follow_text.setVisibility(View.VISIBLE);
+                    unfollow_text.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    follow_text.setVisibility(View.INVISIBLE);
+                    unfollow_text.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     /********************************
@@ -410,23 +431,6 @@ private TextView price_size;
     /********************************
      ************ 팔로우 관련***********
      ********************************/
-
-    TextView follow_text = findViewById(R.id.follow_text);
-    TextView unfollow_text = findViewById(R.id.unfollow_text);
-
-    class visibilitySwitchListener implements CompoundButton.OnCheckedChangeListener{
-        @Override
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if(isChecked){
-                follow_text.setVisibility(View.VISIBLE);
-                unfollow_text.setVisibility(View.INVISIBLE);
-            }
-            else{
-                unfollow_text.setVisibility(View.VISIBLE);
-                follow_text.setVisibility(View.INVISIBLE);
-            }
-        }
-    }
 
     public void isFollowed(){
         Log.d("qwea","qweqwe");
