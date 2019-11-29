@@ -22,6 +22,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -305,6 +306,11 @@ public class DetailedPost extends AppCompatActivity {
                 });
             }
         });
+
+        RadioGroup shoes_weight = findViewById(R.id.shoes_weight);
+        String str_shoesWeight = post.getShoes_weight();
+        shoes_weight.check(R.id.shoes_weight_fit);
+
 
         /** 핀치 줌 **/
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
