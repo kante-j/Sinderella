@@ -113,7 +113,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             category = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
             productURL = itemView.findViewById(R.id.buyURL);
-
+            code_name = itemView.findViewById(R.id.shoes_code_name);
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -16,6 +16,7 @@ public class Product implements Serializable {
     public String image_url;
     public String product_url;
     public String shoes_code_name;
+    public String created_at;
 
 
     public Product() {
@@ -27,6 +28,10 @@ public class Product implements Serializable {
         this.name = name;
         this.price = price;
         this.category = category;
+    }
+
+    public String getCreated_at() {
+        return created_at;
     }
 
     public String getId() {
