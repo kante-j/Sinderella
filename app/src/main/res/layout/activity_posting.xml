@@ -438,7 +438,7 @@
 
                         <RadioButton
                             android:id="@+id/waterproof_best"
-                            android:layout_width="97dp"
+                            android:layout_width="72dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"

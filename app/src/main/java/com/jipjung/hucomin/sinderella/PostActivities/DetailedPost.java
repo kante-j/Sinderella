@@ -133,7 +133,7 @@ private TextView price_size;
         dBody = findViewById(R.id.dp_body);
         dUid = findViewById(R.id.dp_user_id);
         dTime = findViewById(R.id.dp_posted_time);
-        deleteButton = findViewById(R.id.postDelete);
+//        deleteButton = findViewById(R.id.postDelete);
         writeCommentButton = findViewById(R.id.btn_comment_input);
         contextComment = findViewById(R.id.input_comment_context);
         buttonLike = findViewById(R.id.btn_like);
@@ -399,6 +399,8 @@ private TextView price_size;
     /********************************
      ************ 팔로우 관련***********
      ********************************/
+
+
 
     public void isFollowed(){
         Log.d("qwea","qweqwe");
