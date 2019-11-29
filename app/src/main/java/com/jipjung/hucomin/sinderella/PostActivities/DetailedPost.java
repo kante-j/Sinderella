@@ -340,6 +340,8 @@ public class DetailedPost extends AppCompatActivity {
      ************ 팔로우 관련***********
      ********************************/
 
+
+
     public void isFollowed(){
         Log.d("qwea","qweqwe");
 //        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()

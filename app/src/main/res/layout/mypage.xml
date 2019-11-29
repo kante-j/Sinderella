@@ -187,7 +187,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="30dp"
                 android:gravity="center">
 
@@ -202,7 +202,7 @@
                     <Button
                         android:id="@+id/mypage_follower"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@drawable/click_change_color"
@@ -216,7 +216,7 @@
                     <Button
                         android:id="@+id/mypage_following"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="60dp"
                         android:layout_gravity="center"
                         android:layout_weight="1"
                         android:background="@drawable/click_change_color"
@@ -233,18 +233,28 @@
                     android:id="@+id/follow_num_layout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="5dp"
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/follower_num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="100" />
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:gravity="center"
+                        android:text="100"
+                        android:textSize="20sp" />
 
                     <TextView
+                        android:id="@+id/following_num"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="100" />
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:gravity="center"
+                        android:text="100"
+                        android:textSize="20sp" />
                 </LinearLayout>
 
 
@@ -252,11 +262,13 @@
 
             <FrameLayout
                 android:id="@+id/mypage_follower_and_following"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/mypage_commet_container_layout"
                 android:layout_below="@+id/mypage_followLayout"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp">
 
 
             </FrameLayout>
@@ -267,12 +279,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/mypage_commet_upper_text"
-                    android:layout_width="300dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:gravity="start"

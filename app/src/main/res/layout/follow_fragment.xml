@@ -28,7 +28,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
 
                 <Button
                     android:id="@+id/cook"
@@ -36,7 +36,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
 
                 <Button
                     android:id="@+id/room"
@@ -44,7 +44,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
 
                 <Button
                     android:id="@+id/activities"
@@ -52,7 +52,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
 
                 <Button
                     android:id="@+id/tips"
@@ -60,7 +60,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
 
                 <Button
                     android:id="@+id/eatout"
@@ -68,7 +68,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
 
                 <Button
                     android:id="@+id/trans"
@@ -76,7 +76,7 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:background="@drawable/converse" />
+                    android:background="@drawable/person_circle" />
             </LinearLayout>
 
         </HorizontalScrollView>
