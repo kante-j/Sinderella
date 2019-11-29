@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/action_bar_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/actionbar"
@@ -12,8 +12,8 @@
         android:layout_height="50dp"
         android:background="#87bee8"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="0dp">
 
@@ -36,9 +36,6 @@
             android:background="@drawable/name_white" />
 
     </RelativeLayout>
-
-
-
 
 
 </android.support.constraint.ConstraintLayout>
