@@ -209,31 +209,31 @@ public class DetailedPost extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerView = (View)findViewById(R.id.drawer);
 
-        Button buttonOpenDrawer = (Button) findViewById(R.id.action_bar_menu);
-        buttonOpenDrawer.setOnClickListener(new View.OnClickListener() {
+//        Button buttonOpenDrawer = (Button) findViewById(R.id.action_bar_menu);
+//        buttonOpenDrawer.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View arg0) {
+//                drawerLayout.openDrawer(drawerView);
+//            }
+//        });
 
-            public void onClick(View arg0) {
-                drawerLayout.openDrawer(drawerView);
-            }
-        });
-
-        Button buttonCloseDrawer = (Button) findViewById(R.id.closedrawer);
-        buttonCloseDrawer.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-                drawerLayout.closeDrawers();
-            }
-        });
+//        Button buttonCloseDrawer = (Button) findViewById(R.id.closedrawer);
+//        buttonCloseDrawer.setOnClickListener(new View.OnClickListener() {
+//
+//            public void onClick(View arg0) {
+//                drawerLayout.closeDrawers();
+//            }
+//        });
 
 
-        drawerLayout.setDrawerListener(myDrawerListener);
-        drawerView.setOnTouchListener(new View.OnTouchListener() {
-
-            public boolean onTouch(View v, MotionEvent event) {
-                // TODO Auto-generated method stub
-                return true;
-            }
-        });
+//        drawerLayout.setDrawerListener(myDrawerListener);
+//        drawerView.setOnTouchListener(new View.OnTouchListener() {
+//
+//            public boolean onTouch(View v, MotionEvent event) {
+//                // TODO Auto-generated method stub
+//                return true;
+//            }
+//        });
 
         followSwitch.setOnClickListener(new View.OnClickListener() {
             @Override

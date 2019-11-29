@@ -157,25 +157,25 @@ public class FHome extends Fragment {
         filterscreen=v.findViewById(R.id.filter_screen);
 
 
-        filterbtn =v.findViewById(R.id.btn_filter);
-        filterbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                if(applytext.getVisibility() == View.GONE){
-                    applytext.setVisibility(View.VISIBLE);
-                }else{
-                    applytext.setVisibility(View.GONE);
-                }
-
-                if(filterscreen.getVisibility() == View.GONE){
-                    filterscreen.setVisibility(View.VISIBLE);
-                }else{
-                    filterscreen.setVisibility(View.GONE);
-                }
-
-            }
-        });
+//        filterbtn =v.findViewById(R.id.btn_filter);
+//        filterbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(applytext.getVisibility() == View.GONE){
+//                    applytext.setVisibility(View.VISIBLE);
+//                }else{
+//                    applytext.setVisibility(View.GONE);
+//                }
+//
+//                if(filterscreen.getVisibility() == View.GONE){
+//                    filterscreen.setVisibility(View.VISIBLE);
+//                }else{
+//                    filterscreen.setVisibility(View.GONE);
+//                }
+//
+//            }
+//        });
 
         //ListView
         RecyclerView filterListView = v.findViewById(R.id.list_filter);
@@ -197,52 +197,52 @@ public class FHome extends Fragment {
         SpinnerAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
 
 
-        foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                foot_size_spinner.getSelectedItem().toString();
-                Log.v("foot_size_spinner",foot_size_spinner.getSelectedItem().toString());
+//        foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                foot_size_spinner.getSelectedItem().toString();
+//                Log.v("foot_size_spinner",foot_size_spinner.getSelectedItem().toString());
+//
+////
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+
+
 
 //
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-
-
-
-        Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
-
-
-
-        foot_size_spinner2.setAdapter(SpinnerAdapter);
-
-        foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        foot_size_spinner.setAdapter(SpinnerAdapter);
+//        Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
+//
+//
+//
+//        foot_size_spinner2.setAdapter(SpinnerAdapter);
+//
+//        foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+//
+//        foot_size_spinner.setAdapter(SpinnerAdapter);
         // Spinner
 
 
 
         //ToDo:checkbox 선택될 시 값 전달
         
-        small_foot_checkbox = v.findViewById(R.id.small_foot);
-        normal_foot_checkbox = v.findViewById(R.id.normal_foot);
-        bigger_foot_checkbox = v.findViewById(R.id.bigger_foot);
+//        small_foot_checkbox = v.findViewById(R.id.small_foot);
+//        normal_foot_checkbox = v.findViewById(R.id.normal_foot);
+//        bigger_foot_checkbox = v.findViewById(R.id.bigger_foot);
 
 
 
@@ -253,41 +253,41 @@ public class FHome extends Fragment {
 
 
 
-        applytext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filterscreen.setVisibility(View.GONE);
-                applytext.setVisibility(View.GONE);
-
-                ArrayList<String> filter_arrayList = new ArrayList<String>();
-
-                Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
-
-                if(small_foot_checkbox.isChecked()){
-                    filter_arrayList.add(small_foot_checkbox.getText().toString());
-//                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
-                    Log.d("foot_size","small_foot");
-                }
-                if(normal_foot_checkbox.isChecked()){
-                    filter_arrayList.add(normal_foot_checkbox.getText().toString());
-//                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
-                    Log.d("foot_size","normal_foot");
-                }
-                if(bigger_foot_checkbox.isChecked()){
-                    filter_arrayList.add(bigger_foot_checkbox.getText().toString());
-//                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
-                    Log.d("foot_size","bigger_foot");
-                }
-                //TODO: 값은 나오는데 전달은 어디로 하는지?
-                //체크된 값을 어디로 넘겨야된다.
-
-
-                filterListView.setAdapter(filterarrayadapter);
-
-
-                filterarrayadapter.notifyDataSetChanged();
-            }
-        });
+//        applytext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                filterscreen.setVisibility(View.GONE);
+//                applytext.setVisibility(View.GONE);
+//
+//                ArrayList<String> filter_arrayList = new ArrayList<String>();
+//
+//                Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
+//
+//                if(small_foot_checkbox.isChecked()){
+//                    filter_arrayList.add(small_foot_checkbox.getText().toString());
+////                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+//                    Log.d("foot_size","small_foot");
+//                }
+//                if(normal_foot_checkbox.isChecked()){
+//                    filter_arrayList.add(normal_foot_checkbox.getText().toString());
+////                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
+//                    Log.d("foot_size","normal_foot");
+//                }
+//                if(bigger_foot_checkbox.isChecked()){
+//                    filter_arrayList.add(bigger_foot_checkbox.getText().toString());
+////                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
+//                    Log.d("foot_size","bigger_foot");
+//                }
+//                //TODO: 값은 나오는데 전달은 어디로 하는지?
+//                //체크된 값을 어디로 넘겨야된다.
+//
+//
+////                filterListView.setAdapter(filterarrayadapter);
+//
+//
+//                filterarrayadapter.notifyDataSetChanged();
+//            }
+//        });
 
 
 
