@@ -34,11 +34,13 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
+import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
+import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
 import com.jipjung.hucomin.sinderella.R;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -97,6 +99,7 @@ public class DetailedPost extends AppCompatActivity {
     private Follow follow;
 private TextView price_size;
     private Switch followSwitch;
+    private Button where_to_buy;
 
 //    private Post p;
     @Override
@@ -124,7 +127,7 @@ private TextView price_size;
 //                    }
 //                });
         price_size = findViewById(R.id.price_size);
-
+        where_to_buy = findViewById(R.id.where_to_buy);
         post_like_count = findViewById(R.id.post_like_count);
         post_commet_count = findViewById(R.id.post_commet_count);
         followSwitch = findViewById(R.id.follow_switch);
@@ -238,6 +241,14 @@ private TextView price_size;
 //            }
 //        });
 
+        where_to_buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedPost.this, InAppBrowser.class);
+                intent.putExtra("url", post.getBuyURL());
+                startActivity(intent);
+            }
+        });
         followSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

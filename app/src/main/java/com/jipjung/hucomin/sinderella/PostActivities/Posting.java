@@ -75,7 +75,7 @@ public class Posting extends AppCompatActivity {
     private RadioGroup waterproof_radiogroup;
 
     private String buyURLString;
-    private String price;
+    private int price;
 
     private String shoes_weight;
     private String shoe_size;
@@ -83,6 +83,7 @@ public class Posting extends AppCompatActivity {
     private String waterproof;
 
     private Spinner categorySpinner;
+    private Spinner shoesSizeSpinner;
 
 
     private TextView buyURL;
@@ -122,7 +123,7 @@ public class Posting extends AppCompatActivity {
         ratingBarForShoes = findViewById(R.id.ratingForShoes);
         shoes_weight_radiogroup = findViewById(R.id.shoes_weight);
         ImageButton xButton = findViewById(R.id.xButtoninPosting);
-
+        shoesSizeSpinner = findViewById(R.id.foot_size_correction);
         categorySpinner = findViewById(R.id.foot_size_correction2);
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
         users = mFirestore.collection("users").document(fbUser.getUid());
@@ -254,7 +255,8 @@ public class Posting extends AppCompatActivity {
     private void writeNewPost(String userId, String username, String title, String body) {
         rating = ratingBarForShoes.getRating();
         buyURLString = buyURL.getText().toString();
-        price = priceTextView.getText().toString();
+        price = Integer.valueOf(priceTextView.getText().toString());
+        int shoe_size_num = Integer.valueOf(shoesSizeSpinner.getSelectedItem().toString().substring(0,3));
         String category = categorySpinner.getSelectedItem().toString();
         WriteBatch batch = mFirestore.batch();
         DocumentReference posts = mFirestore.collection("posts").document();
@@ -267,6 +269,7 @@ public class Posting extends AppCompatActivity {
             docData.put("title",title);
             docData.put("nickname",nickname);
             docData.put("body",body);
+            docData.put("shoe_size_num",shoe_size_num);
             docData.put("waterproof",waterproof);
             docData.put("ventilation",vantilation);
             docData.put("shoes_size",shoe_size);
