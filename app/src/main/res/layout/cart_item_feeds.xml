@@ -48,7 +48,7 @@
                         android:gravity="right"
                         android:text="shoesname"
                         android:textColor="#6c6464"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/category"
@@ -62,14 +62,14 @@
 
 
                     <TextView
-                        android:id="@+id/buyURL"
+                        android:id="@+id/brand"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/gyeonggititle_medium"
                         android:lineSpacingExtra="3sp"
-                        android:text="buyURL"
+                        android:text="Brand"
                         android:textColor="#6c6464"
-                        android:textSize="13sp" />
+                        android:textSize="12sp" />
 
                     <TextView
                         android:id="@+id/price"
@@ -79,7 +79,7 @@
                         android:lineSpacingExtra="2sp"
                         android:text="price"
                         android:textColor="#6c6464"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>

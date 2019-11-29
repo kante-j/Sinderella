@@ -240,7 +240,7 @@
                         android:textStyle="bold" />
 
                     <EditText
-                        android:id="@+id/buyURL"
+                        android:id="@+id/brand"
                         android:layout_width="274dp"
                         android:layout_height="43dp"
                         android:hint="구입처의 url을 입력해 주세요"
