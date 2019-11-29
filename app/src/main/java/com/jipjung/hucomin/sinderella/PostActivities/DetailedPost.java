@@ -411,7 +411,22 @@ private TextView price_size;
      ************ 팔로우 관련***********
      ********************************/
 
+    TextView follow_text = findViewById(R.id.follow_text);
+    TextView unfollow_text = findViewById(R.id.unfollow_text);
 
+    class visibilitySwitchListener implements CompoundButton.OnCheckedChangeListener{
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            if(isChecked){
+                follow_text.setVisibility(View.VISIBLE);
+                unfollow_text.setVisibility(View.INVISIBLE);
+            }
+            else{
+                unfollow_text.setVisibility(View.VISIBLE);
+                follow_text.setVisibility(View.INVISIBLE);
+            }
+        }
+    }
 
     public void isFollowed(){
         Log.d("qwea","qweqwe");
