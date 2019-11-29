@@ -37,13 +37,13 @@ public class SpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
+        return convertView;
 
-
+    }
     private class ViewHolder {
     }
 }
 
-    private class ViewHolder {
-    }
+
 
 

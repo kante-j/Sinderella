@@ -247,9 +247,9 @@ public class FHome extends Fragment {
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 //                getActivity(), android.R.layout.i
 //       );
-
-
         Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
+
+
 
 
         applytext.setOnClickListener(new View.OnClickListener() {
@@ -260,21 +260,22 @@ public class FHome extends Fragment {
 
                 if(small_foot_checkbox.isChecked() == true){
                     filter_arrayList.add(small_foot_checkbox.getText().toString());
-                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","small_foot");
                 }
                 if(normal_foot_checkbox.isChecked()== true){
                     filter_arrayList.add(normal_foot_checkbox.getText().toString());
-                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","normal_foot");
                 }
                 if(bigger_foot_checkbox.isChecked() == true){
                     filter_arrayList.add(bigger_foot_checkbox.getText().toString());
-                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size","bigger_foot");
                 }
                 //TODO: 값은 나오는데 전달은 어디로 하는지?
                 //체크된 값을 어디로 넘겨야된다.
+
 
                 filterListView.setAdapter(filterarrayadapter);
 
