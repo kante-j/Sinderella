@@ -163,7 +163,7 @@ public class FMymenu extends Fragment {
 
         return v;
     }
-
+//유저id에 따라 유저 정보 받기
     private void getUser(){
         fs.collection("users").whereEqualTo("user_id",fbUser.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
