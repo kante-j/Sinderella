@@ -24,6 +24,7 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -103,6 +104,7 @@ public class DetailedPost extends AppCompatActivity {
 private TextView price_size;
     private Switch followSwitch;
     private Button where_to_buy;
+    private RatingBar star_evaluation;
     private Button action_bar_back_close;
 
 //    private Post p;
@@ -131,6 +133,7 @@ private TextView price_size;
 //                    }
 //                });
 
+        star_evaluation = findViewById(R.id.star_evaluation);
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         follow_text = findViewById(R.id.follow_text);
         unfollow_text = findViewById(R.id.unfollow_text);
@@ -156,6 +159,7 @@ private TextView price_size;
         dBody.setText(intent.getStringExtra("BODY"));
         dUid.setText(intent.getStringExtra("UID"));
         dTime.setText(intent.getStringExtra("TIME"));
+        star_evaluation.setRating(post.rating);
         price_size.setText("구매가격 : "+post.getPrice() + " /구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
         if(intent.getStringExtra("CATEGORY").equals("FEatout")){
