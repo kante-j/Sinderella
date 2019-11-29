@@ -267,8 +267,12 @@
                 android:layout_above="@id/mypage_commet_container_layout"
                 android:layout_below="@+id/mypage_followLayout"
                 android:layout_gravity="center"
+<<<<<<< HEAD
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp">
+=======
+                android:visibility="gone">
+>>>>>>> d2a9f89a19505f502ae37406dc48cb88784ada11
 
 
             </FrameLayout>

@@ -7,11 +7,13 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +46,7 @@ public class FMymenu extends Fragment {
     private Button logoutbtn;
     private Button followerbtn;
     private Button followingbtn;
+    private FrameLayout follow_framelayout;
 
 
     public FMymenu(){
@@ -113,26 +116,43 @@ public class FMymenu extends Fragment {
             }
         });
 
+        //TODO: btn 색깔변화
+
         followerbtn = v.findViewById(R.id.mypage_follower);
+        followingbtn=v.findViewById(R.id.mypage_following);
+        follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
+
+        Log.d("click",String.valueOf(followerbtn.isSelected()));
+        Log.d("click",String.valueOf(followingbtn.isSelected()));
+
         followerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(followerbtn.isSelected()){
+                    Log.d("click","follower_false");
                     followerbtn.setSelected(false);
                 }else{
+                    Log.d("click","follower_true");
+                    followingbtn.setSelected(false);
                     followerbtn.setSelected(true);
+                    follow_framelayout.setVisibility(getView().VISIBLE);
                 }
             }
         });
 
-        followingbtn=v.findViewById(R.id.mypage_following);
+
         followingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("click",String.valueOf(followingbtn.isSelected()));
                 if(followingbtn.isSelected()){
+                    Log.d("click","following_false");
                     followingbtn.setSelected(false);
                 }else{
+                    Log.d("click","following_true");
+                    followerbtn.setSelected(false);
                     followingbtn.setSelected(true);
+                    follow_framelayout.setVisibility(getView().VISIBLE);
                 }
             }
         });
