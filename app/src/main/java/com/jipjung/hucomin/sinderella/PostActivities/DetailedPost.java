@@ -67,6 +67,9 @@ public class DetailedPost extends AppCompatActivity {
     private float mScaleFactor = 1.0f;
 
 
+    private TextView follow_text;
+    private TextView unfollow_text;
+
     private FirebaseStorage fs;
     private ImageView dImage;
     private TextView dTitle;
@@ -100,9 +103,7 @@ public class DetailedPost extends AppCompatActivity {
     private TextView price_size;
     private Switch followSwitch;
     private Button where_to_buy;
-
-    private TextView follow_text;
-    private TextView unfollow_text;
+    private Button action_bar_back_close;
 
 //    private Post p;
     @Override
@@ -129,6 +130,10 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
+
+        action_bar_back_close = findViewById(R.id.action_bar_back_close);
+        follow_text = findViewById(R.id.follow_text);
+        unfollow_text = findViewById(R.id.unfollow_text);
         price_size = findViewById(R.id.price_size);
         where_to_buy = findViewById(R.id.where_to_buy);
         post_like_count = findViewById(R.id.post_like_count);
@@ -215,8 +220,8 @@ public class DetailedPost extends AppCompatActivity {
 
 
         /* Drawer Menu*/
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerView = (View)findViewById(R.id.drawer);
+//        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawerView = (View)findViewById(R.id.drawer);
 
 //        Button buttonOpenDrawer = (Button) findViewById(R.id.action_bar_menu);
 //        buttonOpenDrawer.setOnClickListener(new View.OnClickListener() {
@@ -244,6 +249,12 @@ public class DetailedPost extends AppCompatActivity {
 //            }
 //        });
 
+        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         where_to_buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -390,8 +401,6 @@ public class DetailedPost extends AppCompatActivity {
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
         /*팔로우, 팔로워 글자 보이기*/
-        follow_text = findViewById(R.id.follow_text);
-        unfollow_text = findViewById(R.id.unfollow_text);
         followSwitch.setChecked(false);
         followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
@@ -433,7 +442,6 @@ public class DetailedPost extends AppCompatActivity {
      ********************************/
 
     public void isFollowed(){
-        Log.d("qwea","qweqwe");
 //        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
 //                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
 //                    @Override
@@ -613,37 +621,37 @@ public class DetailedPost extends AppCompatActivity {
         }
     }
 
-    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
-
-        public void onDrawerClosed(View drawerView) {
-        }
-        public void onDrawerOpened(View drawerView) {
-        }
-
-        public void onDrawerSlide(View drawerView, float slideOffset) {
-//                txtPrompt.setText("onDrawerSlide: "
-//                        + String.format("%.2f", slideOffset));
-        }
-
-        public void onDrawerStateChanged(int newState) {
-            String state;
-            switch (newState) {
-                case DrawerLayout.STATE_IDLE:
-                    state = "STATE_IDLE";
-                    break;
-                case DrawerLayout.STATE_DRAGGING:
-                    state = "STATE_DRAGGING";
-                    break;
-                case DrawerLayout.STATE_SETTLING:
-                    state = "STATE_SETTLING";
-                    break;
-                default:
-                    state = "unknown!";
-            }
-
-//                txtPrompt2.setText(state);
-        }
-    };
+//    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
+//
+//        public void onDrawerClosed(View drawerView) {
+//        }
+//        public void onDrawerOpened(View drawerView) {
+//        }
+//
+//        public void onDrawerSlide(View drawerView, float slideOffset) {
+////                txtPrompt.setText("onDrawerSlide: "
+////                        + String.format("%.2f", slideOffset));
+//        }
+//
+//        public void onDrawerStateChanged(int newState) {
+//            String state;
+//            switch (newState) {
+//                case DrawerLayout.STATE_IDLE:
+//                    state = "STATE_IDLE";
+//                    break;
+//                case DrawerLayout.STATE_DRAGGING:
+//                    state = "STATE_DRAGGING";
+//                    break;
+//                case DrawerLayout.STATE_SETTLING:
+//                    state = "STATE_SETTLING";
+//                    break;
+//                default:
+//                    state = "unknown!";
+//            }
+//
+////                txtPrompt2.setText(state);
+//        }
+//    };
 
 
     /**********************************
