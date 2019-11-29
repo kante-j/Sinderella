@@ -1,6 +1,7 @@
 package com.jipjung.hucomin.sinderella.Adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,7 @@ public class Filterarrayadapter extends BaseAdapter {
         private TextView filter_item;
 
         public ViewHolder(View convertView) {
-            filter_item = (TextView) convertView.findViewById(R.id.filter_item);
+            filter_item = convertView.findViewById(R.id.filter_item);
         }
     }
 }

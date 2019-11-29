@@ -38,9 +38,6 @@ public class SpinnerAdapter extends BaseAdapter {
         return convertView;
     }
 
-
-
     class ViewHolder {
     }
-
 }
