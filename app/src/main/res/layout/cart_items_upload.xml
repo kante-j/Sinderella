@@ -6,50 +6,151 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <include layout="@layout/action_bar_back" />
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <include layout="@layout/action_bar_back" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:layout_height="match_parent">
 
-            <FrameLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <ImageButton
-                    android:id="@+id/btnChoose"
-                    android:layout_width="325dp"
+                    android:id="@+id/item_choose_btn"
+                    android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_gravity="center"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="20dp"
-                    android:layout_marginBottom="10dp"
                     android:background="@drawable/photo_sample"
                     android:textStyle="bold" />
 
-                <ImageView
-                    android:id="@+id/postImage"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/text_context"
-                    app:layout_constraintVertical_bias="0.473" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
 
-            </FrameLayout>
-        </LinearLayout>
-    </ScrollView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="모델명"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/model_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="브랜드"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/brand_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:inputType="textPersonName"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:gravity="left"
+                        android:text="카테고리"
+                        android:textSize="20sp"
+                        android:textStyle="normal" />
+
+                    <Spinner
+                        android:id="@+id/foot_size_correction2"
+                        style="?android:attr/spinnerItemStyle"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:autofillHints="@string/app_name"
+                        android:entries="@array/category"
+                        android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
+
+                        android:outlineSpotShadowColor="@color/bootstrap_brand_info"
+                        android:spinnerMode="dialog"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/information"
+                        app:layout_constraintEnd_toEndOf="@+id/information"
+                        app:layout_constraintStart_toStartOf="@+id/information"
+                        app:layout_constraintTop_toTopOf="@+id/information" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="가격"
+                        android:textSize="20sp" />
+
+                    <EditText
+                        android:id="@+id/price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:gravity="right"
+                        android:inputType="number"
+                        android:text="￦" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/item_submit_btn"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="60dp"
+                    android:background="@drawable/add_post_btin" />
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
 
 </RelativeLayout>
