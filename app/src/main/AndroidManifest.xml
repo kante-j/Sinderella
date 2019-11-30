@@ -32,6 +32,7 @@
         <activity android:name=".PostActivities.Posting" />
         <activity android:name=".PostActivities.DetailedPost" />
         <activity android:name=".MyMenuActivities.MyMenu" />
+        <activity android:name=".MyMenuActivities.OtherMyMenu"/>
         <activity android:name=".Search.SearchActivity" />
     </application>
 
