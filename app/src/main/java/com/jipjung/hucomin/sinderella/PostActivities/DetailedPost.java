@@ -10,7 +10,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -22,9 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.PopupMenu;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -36,7 +33,6 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
-import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Like;
@@ -49,7 +45,6 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
@@ -102,7 +97,8 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
-    private TextView price_size;
+    private TextView price;
+    private TextView size;
     private Switch followSwitch;
     private Button where_to_buy;
     private RatingBar star_evaluation;
@@ -146,7 +142,8 @@ public class DetailedPost extends AppCompatActivity {
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         follow_text = findViewById(R.id.follow_text);
         unfollow_text = findViewById(R.id.unfollow_text);
-        price_size = findViewById(R.id.price_size);
+        price = findViewById(R.id.price);
+        size = findViewById(R.id.size);
         where_to_buy = findViewById(R.id.where_to_buy);
         post_like_count = findViewById(R.id.post_like_count);
         post_commet_count = findViewById(R.id.post_commet_count);
@@ -169,7 +166,8 @@ public class DetailedPost extends AppCompatActivity {
         dUid.setText(intent.getStringExtra("UID"));
         dTime.setText(intent.getStringExtra("TIME"));
         star_evaluation.setRating(post.rating);
-        price_size.setText("구매가격 : "+post.getPrice() + " /구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
+        price.setText("구매가격 : "+post.getPrice() );
+        size.setText("구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
         if(intent.getStringExtra("CATEGORY").equals("FEatout")){
             findLocationButton.setVisibility(View.VISIBLE);
