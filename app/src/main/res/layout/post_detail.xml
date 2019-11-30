@@ -142,6 +142,7 @@
                                         android:background="@drawable/edit_box"
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="수정"
+                                        android:visibility="gone"
                                         android:textColor="#ffffff"
                                         android:textSize="20sp" />
 
