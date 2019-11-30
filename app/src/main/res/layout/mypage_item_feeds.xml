@@ -101,6 +101,8 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="left|center_vertical"
                         android:gravity="center"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -167,7 +169,7 @@
 
                         <RatingBar
                             android:id="@+id/ratingBar"
-                            style="@style/Widget.AppCompat.RatingBar.Indicator"
+                            style="@style/Widget.AppCompat.RatingBar.Small"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:numStars="5"

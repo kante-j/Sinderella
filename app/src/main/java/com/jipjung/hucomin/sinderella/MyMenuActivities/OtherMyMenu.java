@@ -3,6 +3,7 @@ package com.jipjung.hucomin.sinderella.MyMenuActivities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -22,6 +23,7 @@ public class OtherMyMenu extends AppCompatActivity {
     //private TextView other_people_follow_email;
     private TextView mypage_foot_size;
     private TextView mypage_foot_width;
+    private Button action_bar_back_close;
 
     private TextView other_people_follow_text;
     private TextView other_people_unfollow_text;
@@ -35,7 +37,7 @@ public class OtherMyMenu extends AppCompatActivity {
         post_user= (User)getIntent().getSerializableExtra("post_user");
         follow = (Follow)getIntent().getSerializableExtra("follow");
 
-        other_peoploe_follow_switch = findViewById(R.id.other_peoploe_follow_switch);
+        other_peoploe_follow_switch = findViewById(R.id.other_people_follow_switch);
         other_people_follow_username = findViewById(R.id.other_people_follow_username);
         //other_people_follow_email = findViewById(R.id.other_people_follow_email);
         mypage_foot_size = findViewById(R.id.mypage_foot_size);
@@ -59,6 +61,15 @@ public class OtherMyMenu extends AppCompatActivity {
         }else{
             mypage_foot_width.setText("큰편");
         }
+
+        action_bar_back_close = findViewById(R.id.action_bar_back_close);
+
+        action_bar_back_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         other_peoploe_follow_switch.setChecked(false);
         other_peoploe_follow_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
