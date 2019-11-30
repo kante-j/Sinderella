@@ -32,6 +32,7 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMenu;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
@@ -84,6 +85,7 @@ public class DetailedPost extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
     private User user;
+    private User post_user;
     private String post_id;
     private Button writeCommentButton;
     private Button findLocationButton;
@@ -230,10 +232,23 @@ public class DetailedPost extends AppCompatActivity {
                 swipeContainer.setRefreshing(false);
             }
         });
+
+        firebaseFirestore.collection("users").document(post.user_id)
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                post_user = documentSnapshot.toObject(User.class);
+            }
+        });
         other_people_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
+                if(follow != null){
+                    intent.putExtra("follow",follow);
+                }
+                intent.putExtra("post_user",post_user);
+                intent.putExtra("user",user);
                 startActivity(intent);
             }
         });
