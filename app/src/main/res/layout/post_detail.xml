@@ -119,6 +119,29 @@
                                         android:textColor="#ffffff"
                                         android:textSize="20dp"
                                         android:visibility="visible" />
+
+                                    <Button
+                                        android:id="@+id/delete_btn"
+                                        android:layout_width="60dp"
+                                        android:layout_height="45dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/delete"
+                                        android:fontFamily="@font/gyeonggititle_medium"
+                                        android:text="삭제"
+                                        android:textColor="#ffffff"
+                                        android:textSize="20sp"
+                                        tools:layout_marginEnd="70dp" />
+
+                                    <Button
+                                        android:id="@+id/edit_btn"
+                                        android:layout_width="60dp"
+                                        android:layout_height="45dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:background="@drawable/edit_box"
+                                        android:fontFamily="@font/gyeonggititle_medium"
+                                        android:text="수정"
+                                        android:textColor="#ffffff"
+                                        android:textSize="20sp" />
                                     <!--android:switchMinWidth="100dp"-->
 
                                     <!--<ImageView-->
