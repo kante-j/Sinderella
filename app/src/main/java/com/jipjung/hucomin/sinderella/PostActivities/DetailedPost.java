@@ -39,6 +39,7 @@ import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
+import com.jipjung.hucomin.sinderella.MyMenuActivities.OtherMyMenu;
 import com.jipjung.hucomin.sinderella.R;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -109,7 +110,7 @@ public class DetailedPost extends AppCompatActivity {
     private LinearLayout review_check_feature_layout;
     private Button review_write_watch_btn;
     private LinearLayout review_write_textview;
-
+    private LinearLayout other_people_page;
     //    private Post p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +139,7 @@ public class DetailedPost extends AppCompatActivity {
 
         delete_btn = findViewById(R.id.delete_btn);
         edit_btn = findViewById(R.id.edit_btn);
+        other_people_page = findViewById(R.id.other_people_page);
         star_evaluation = findViewById(R.id.star_evaluation);
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         follow_text = findViewById(R.id.follow_text);
@@ -228,7 +230,13 @@ public class DetailedPost extends AppCompatActivity {
                 swipeContainer.setRefreshing(false);
             }
         });
-
+        other_people_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
+                startActivity(intent);
+            }
+        });
 
         /* Drawer Menu*/
 //        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
