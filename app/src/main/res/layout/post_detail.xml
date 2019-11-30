@@ -133,14 +133,14 @@
                                         android:id="@+id/delete_btn"
                                         android:layout_width="60dp"
                                         android:layout_height="45dp"
-                                        android:layout_alignParentEnd="true"
+                                        android:layout_marginEnd="5dp"
+                                        android:layout_toLeftOf="@id/edit_btn"
                                         android:background="@drawable/delete"
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="삭제"
                                         android:textColor="#ffffff"
                                         android:textSize="20sp"
-                                        android:visibility="gone"
-                                        tools:layout_marginEnd="70dp" />
+                                        android:visibility="gone" />
 
                                     <Button
                                         android:id="@+id/edit_btn"
@@ -150,9 +150,9 @@
                                         android:background="@drawable/edit_box"
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="수정"
-                                        android:visibility="gone"
                                         android:textColor="#ffffff"
-                                        android:textSize="20sp" />
+                                        android:textSize="20sp"
+                                        android:visibility="gone" />
 
                                 </RelativeLayout>
 

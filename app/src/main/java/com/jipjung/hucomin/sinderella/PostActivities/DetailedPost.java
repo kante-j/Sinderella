@@ -542,6 +542,8 @@ public class DetailedPost extends AppCompatActivity {
         }
         if(post.getUser_id().equals(user.getUser_id())){
             followSwitch.setVisibility(View.GONE);
+            follow_text.setVisibility(View.GONE);
+            unfollow_text.setVisibility(View.GONE);
             delete_btn.setVisibility(View.VISIBLE);
             edit_btn.setVisibility(View.VISIBLE);
 
