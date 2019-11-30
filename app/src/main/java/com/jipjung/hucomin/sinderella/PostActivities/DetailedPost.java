@@ -469,10 +469,10 @@ public class DetailedPost extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(review_check_feature_layout.getVisibility() == View.GONE){
-                    review_check_feature_layout.setVisibility(View.VISIBLE);
-                }else{
+                if(review_check_feature_layout.getVisibility() == View.VISIBLE){
                     review_check_feature_layout.setVisibility(View.GONE);
+                }else{
+                    review_check_feature_layout.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -481,10 +481,10 @@ public class DetailedPost extends AppCompatActivity {
         review_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(review_write_textview.getVisibility() == View.GONE){
-                    review_write_textview.setVisibility(View.VISIBLE);
-                }else{
+                if(review_write_textview.getVisibility() == View.VISIBLE){
                     review_write_textview.setVisibility(View.GONE);
+                }else{
+                    review_write_textview.setVisibility(View.VISIBLE);
                 }
             }
         });
