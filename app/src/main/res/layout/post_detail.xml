@@ -119,35 +119,7 @@
                                         android:textColor="#ffffff"
                                         android:textSize="20dp"
                                         android:visibility="visible" />
-                                    <!--android:switchMinWidth="100dp"-->
 
-                                    <!--<ImageView-->
-                                    <!--android:id="@+id/post_follow_bar"-->
-                                    <!--android:layout_width="94dp"-->
-                                    <!--android:layout_height="33.5dp"-->
-                                    <!--android:layout_centerInParent="true"-->
-                                    <!--android:background="@drawable/follow_bar" />-->
-
-                                    <!--<TextView-->
-                                    <!--android:id="@+id/post_follow"-->
-                                    <!--android:layout_width="wrap_content"-->
-                                    <!--android:layout_height="wrap_content"-->
-                                    <!--android:layout_alignLeft="@+id/post_follow_bar"-->
-                                    <!--android:layout_centerInParent="true"-->
-                                    <!--android:layout_marginStart="13dp"-->
-                                    <!--android:letterSpacing="0.06"-->
-                                    <!--android:lineSpacingExtra="4sp"-->
-                                    <!--android:text="follow"-->
-                                    <!--android:textColor="#ffffff"-->
-                                    <!--android:textSize="15dp" />-->
-
-                                    <!--<ImageView-->
-                                    <!--android:id="@+id/follow_circle"-->
-                                    <!--android:layout_width="29.8dp"-->
-                                    <!--android:layout_height="29.8dp"-->
-                                    <!--android:layout_alignRight="@+id/post_follow_bar"-->
-                                    <!--android:layout_centerInParent="true"-->
-                                    <!--android:background="@drawable/follow_circle" />-->
                                 </RelativeLayout>
 
                             </LinearLayout>
@@ -171,8 +143,8 @@
 
                                 <ImageView
                                     android:id="@+id/btn_commet"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_alignParentStart="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="27.5dp"
@@ -191,14 +163,14 @@
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
-                                    android:textSize="15sp" />
+                                    android:textSize="20sp" />
 
                                 <ImageView
                                     android:id="@+id/btn_like"
-                                    android:layout_width="20dp"
-                                    android:layout_height="30dp"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginStart="5dp"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginTop="20dp"
                                     android:layout_marginBottom="10dp"
                                     android:layout_toRightOf="@+id/post_commet_count"
@@ -216,14 +188,14 @@
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
-                                    android:textSize="15sp" />
+                                    android:textSize="20sp" />
 
                                 <ImageView
                                     android:id="@+id/btn_cart"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginStart="5dp"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginTop="20dp"
                                     android:layout_marginBottom="10dp"
                                     android:layout_toRightOf="@+id/post_like_count"
@@ -241,7 +213,7 @@
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
-                                    android:textSize="15sp" />
+                                    android:textSize="20sp" />
 
 
                                 <RatingBar
