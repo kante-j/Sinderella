@@ -109,6 +109,8 @@ public class DetailedPost extends AppCompatActivity {
     private LinearLayout review_check_feature_layout;
     private Button review_write_watch_btn;
     private LinearLayout review_write_textview;
+    private LinearLayout detail_review_layout;
+    private LinearLayout review_layout;
 
     //    private Post p;
     @Override
@@ -436,10 +438,13 @@ public class DetailedPost extends AppCompatActivity {
         review_check_feature_layout = findViewById(R.id.review_check_feature_layout);
         review_write_watch_btn = findViewById(R.id.review_write_watch_btn);
         review_write_textview = findViewById(R.id.review_write_textview);
+        detail_review_layout = findViewById(R.id.detail_review_layout);
+        review_layout = findViewById(R.id.review_layout);
 
-        review_watch_btn.setOnClickListener(new View.OnClickListener() {
+        detail_review_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 if(review_check_feature_layout.getVisibility() == View.GONE){
                     review_check_feature_layout.setVisibility(View.VISIBLE);
                 }else{
@@ -449,7 +454,7 @@ public class DetailedPost extends AppCompatActivity {
             }
         });
 
-        review_write_watch_btn.setOnClickListener(new View.OnClickListener() {
+        review_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(review_write_textview.getVisibility() == View.GONE){
@@ -459,6 +464,8 @@ public class DetailedPost extends AppCompatActivity {
                 }
             }
         });
+
+
 
 
 

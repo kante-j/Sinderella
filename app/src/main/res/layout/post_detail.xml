@@ -337,6 +337,7 @@
                                     android:orientation="vertical">
 
                                     <LinearLayout
+                                        android:id="@+id/detail_review_layout"
                                         android:layout_width="match_parent"
                                         android:layout_height="37.5dp"
                                         android:layout_marginStart="22.5dp"
@@ -579,6 +580,7 @@
                                 </LinearLayout>
 
                                 <LinearLayout
+                                    android:id="@+id/review_layout"
                                     android:layout_width="fill_parent"
                                     android:layout_height="37.5dp"
                                     android:layout_marginStart="22.5dp"
