@@ -32,6 +32,7 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMenu;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
@@ -39,6 +40,7 @@ import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
+import com.jipjung.hucomin.sinderella.MyMenuActivities.OtherMyMenu;
 import com.jipjung.hucomin.sinderella.R;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -83,6 +85,7 @@ public class DetailedPost extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
     private FirebaseAuth firebaseAuth;
     private User user;
+    private User post_user;
     private String post_id;
     private Button writeCommentButton;
     private Button findLocationButton;
@@ -104,10 +107,12 @@ public class DetailedPost extends AppCompatActivity {
     private RatingBar star_evaluation;
     private Button action_bar_back_close;
     private Button review_watch_btn;
+    private Button delete_btn;
+    private Button edit_btn;
     private LinearLayout review_check_feature_layout;
     private Button review_write_watch_btn;
     private LinearLayout review_write_textview;
-
+    private LinearLayout other_people_page;
     //    private Post p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +139,9 @@ public class DetailedPost extends AppCompatActivity {
 //                    }
 //                });
 
+        delete_btn = findViewById(R.id.delete_btn);
+        edit_btn = findViewById(R.id.edit_btn);
+        other_people_page = findViewById(R.id.other_people_page);
         star_evaluation = findViewById(R.id.star_evaluation);
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         follow_text = findViewById(R.id.follow_text);
@@ -225,6 +233,25 @@ public class DetailedPost extends AppCompatActivity {
             }
         });
 
+        firebaseFirestore.collection("users").document(post.user_id)
+                .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                post_user = documentSnapshot.toObject(User.class);
+            }
+        });
+        other_people_page.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
+                if(follow != null){
+                    intent.putExtra("follow",follow);
+                }
+                intent.putExtra("post_user",post_user);
+                intent.putExtra("user",user);
+                startActivity(intent);
+            }
+        });
 
         /* Drawer Menu*/
 //        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -507,6 +534,9 @@ public class DetailedPost extends AppCompatActivity {
         }
         if(post.getUser_id().equals(user.getUser_id())){
             followSwitch.setVisibility(View.GONE);
+            delete_btn.setVisibility(View.VISIBLE);
+            edit_btn.setVisibility(View.VISIBLE);
+
         }
 
     }
