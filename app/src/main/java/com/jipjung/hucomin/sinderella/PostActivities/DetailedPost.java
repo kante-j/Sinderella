@@ -20,6 +20,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
@@ -106,8 +107,12 @@ public class DetailedPost extends AppCompatActivity {
     private Button where_to_buy;
     private RatingBar star_evaluation;
     private Button action_bar_back_close;
+    private Button review_watch_btn;
+    private LinearLayout review_check_feature_layout;
+    private Button review_write_watch_btn;
+    private LinearLayout review_write_textview;
 
-//    private Post p;
+    //    private Post p;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -419,6 +424,43 @@ public class DetailedPost extends AppCompatActivity {
                 }
             }
         });
+
+
+        /**********************************
+         *       클릭시 화면 보이기         *
+         **********************************/
+
+        review_watch_btn = findViewById(R.id.review_watch_btn);
+        review_check_feature_layout = findViewById(R.id.review_check_feature_layout);
+        review_write_watch_btn = findViewById(R.id.review_write_watch_btn);
+        review_write_textview = findViewById(R.id.review_write_textview);
+
+        review_watch_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(review_check_feature_layout.getVisibility() == View.GONE){
+                    review_check_feature_layout.setVisibility(View.VISIBLE);
+                }else{
+                    review_check_feature_layout.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+        review_write_watch_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(review_write_textview.getVisibility() == View.GONE){
+                    review_write_textview.setVisibility(View.VISIBLE);
+                }else{
+                    review_write_textview.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
+
+
     }
 
     /********************************
