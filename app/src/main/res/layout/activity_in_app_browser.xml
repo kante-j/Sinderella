@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".InAppBrowser.InAppBrowser">
-    <include layout="@layout/action_bar_back"
+    <include
         android:id="@+id/action_barx"
+        layout="@layout/action_bar_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
     <WebView
         android:id="@+id/webview"
         android:layout_below="@id/action_barx"

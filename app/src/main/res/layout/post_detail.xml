@@ -120,6 +120,7 @@
                                         android:textSize="20dp"
                                         android:visibility="visible" />
 
+
                                     <Button
                                         android:id="@+id/delete_btn"
                                         android:layout_width="60dp"
@@ -142,6 +143,7 @@
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="수정"
                                         android:textColor="#ffffff"
+<<<<<<< HEAD
                                         android:textSize="20sp"
                                         android:visibility="gone" />
                                     <!--android:switchMinWidth="100dp"-->
@@ -173,6 +175,10 @@
                                     <!--android:layout_alignRight="@+id/post_follow_bar"-->
                                     <!--android:layout_centerInParent="true"-->
                                     <!--android:background="@drawable/follow_circle" />-->
+=======
+                                        android:textSize="20sp" />
+
+>>>>>>> a885ab663a05e4a66107f6b2fda61c865e762723
                                 </RelativeLayout>
 
                             </LinearLayout>
@@ -196,8 +202,8 @@
 
                                 <ImageView
                                     android:id="@+id/btn_commet"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_alignParentStart="true"
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="27.5dp"
@@ -216,14 +222,14 @@
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
-                                    android:textSize="15sp" />
+                                    android:textSize="20sp" />
 
                                 <ImageView
                                     android:id="@+id/btn_like"
-                                    android:layout_width="20dp"
-                                    android:layout_height="30dp"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginStart="5dp"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginTop="20dp"
                                     android:layout_marginBottom="10dp"
                                     android:layout_toRightOf="@+id/post_commet_count"
@@ -241,14 +247,14 @@
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
-                                    android:textSize="15sp" />
+                                    android:textSize="20sp" />
 
                                 <ImageView
                                     android:id="@+id/btn_cart"
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_width="25dp"
+                                    android:layout_height="25dp"
                                     android:layout_centerVertical="true"
-                                    android:layout_marginStart="5dp"
+                                    android:layout_marginStart="10dp"
                                     android:layout_marginTop="20dp"
                                     android:layout_marginBottom="10dp"
                                     android:layout_toRightOf="@+id/post_like_count"
@@ -266,7 +272,7 @@
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
-                                    android:textSize="15sp" />
+                                    android:textSize="20sp" />
 
 
                                 <RatingBar
@@ -374,220 +380,235 @@
                                         android:orientation="horizontal">
 
                                         <TextView
-                                            android:layout_width="200dp"
+                                            android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:layout_gravity="center_vertical"
+                                            android:layout_gravity="left|center_vertical"
                                             android:layout_marginStart="15.5dp"
-                                            android:layout_marginEnd="100dp"
                                             android:fontFamily="@font/gyeonggititle_medium"
                                             android:text="상세 리뷰 보기"
                                             android:textColor="#FFFFFF"
                                             android:textSize="16sp" />
 
-                                        <Button
-                                            android:layout_width="14dp"
-                                            android:layout_height="6dp"
-                                            android:layout_gravity="left|center_vertical"
-                                            android:layout_marginEnd="15.5dp"
-                                            android:background="@drawable/up_button" />
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:gravity="right|center_vertical"
+                                            >
+
+                                            <Button
+                                                android:id="@+id/review_watch_btn"
+                                                android:layout_width="14dp"
+                                                android:layout_height="6dp"
+                                                android:layout_marginEnd="30dp"
+                                                android:background="@drawable/up_button" />
+                                        </LinearLayout>
                                     </LinearLayout>
 
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="30.2dp"
-                                        android:layout_marginEnd="30.2dp"
-                                        android:gravity="center_vertical">
+                                    <LinearLayout
+                                        android:id="@+id/review_check_feature_layout"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="vertical"
+                                        android:visibility="gone"
+                                        >
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_centerVertical="true"
-                                            android:text="신발 무게"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold" />
-
-                                        <RadioGroup
-                                            android:id="@+id/shoes_weight"
-                                            android:layout_width="wrap_content"
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_alignParentEnd="true"
-                                            android:orientation="horizontal">
+                                            android:layout_marginStart="30.2dp"
+                                            android:layout_marginEnd="30.2dp"
+                                            android:gravity="center_vertical">
 
-                                            <RadioButton
-                                                android:id="@+id/shoes_weight_heavy"
-                                                android:layout_width="72dp"
+                                            <TextView
+                                                android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:enabled="false"
-                                                android:text="무겁다"
-                                                android:textSize="14sp" />
+                                                android:layout_centerVertical="true"
+                                                android:text="신발 무게"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
 
-                                            <RadioButton
-                                                android:id="@+id/shoes_weight_fit"
-                                                android:layout_width="85dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_weight="1"
-                                                android:enabled="false"
-                                                android:text="적당하다"
-                                                android:textSize="14sp" />
+                                            <RadioGroup
+                                                android:id="@+id/shoes_weight"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_alignParentEnd="true"
+                                                android:orientation="horizontal">
 
-                                            <RadioButton
-                                                android:id="@+id/shoes_weight_light"
-                                                android:layout_width="72dp"
-                                                android:layout_height="wrap_content"
-                                                android:enabled="false"
-                                                android:text="가볍다"
-                                                android:textSize="14sp" />
-                                        </RadioGroup>
+                                                <RadioButton
+                                                    android:id="@+id/shoes_weight_heavy"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:enabled="false"
+                                                    android:text="무겁다"
+                                                    android:textSize="14sp" />
 
-                                    </RelativeLayout>
+                                                <RadioButton
+                                                    android:id="@+id/shoes_weight_fit"
+                                                    android:layout_width="85dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:enabled="false"
+                                                    android:text="적당하다"
+                                                    android:textSize="14sp" />
 
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="30.2dp"
-                                        android:layout_marginEnd="30.2dp">
+                                                <RadioButton
+                                                    android:id="@+id/shoes_weight_light"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="가볍다"
+                                                    android:textSize="14sp" />
+                                            </RadioGroup>
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentStart="true"
-                                            android:layout_centerVertical="true"
-                                            android:text="신발 사이즈"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold" />
+                                        </RelativeLayout>
 
-                                        <RadioGroup
-                                            android:id="@+id/shoes_size"
-                                            android:layout_width="wrap_content"
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_alignParentEnd="true"
-                                            android:orientation="horizontal">
+                                            android:layout_marginStart="30.2dp"
+                                            android:layout_marginEnd="30.2dp">
 
-                                            <RadioButton
-                                                android:id="@+id/shoes_size_big"
-                                                android:layout_width="72dp"
+                                            <TextView
+                                                android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:text="크다"
+                                                android:layout_alignParentStart="true"
+                                                android:layout_centerVertical="true"
+                                                android:text="신발 사이즈"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
 
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
+                                            <RadioGroup
+                                                android:id="@+id/shoes_size"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_alignParentEnd="true"
+                                                android:orientation="horizontal">
 
-                                            <RadioButton
-                                                android:id="@+id/shoes_size_fit"
-                                                android:layout_width="85dp"
-                                                android:layout_height="wrap_content"
-                                                android:text="적당하다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
+                                                <RadioButton
+                                                    android:id="@+id/shoes_size_big"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
 
-                                            <RadioButton
-                                                android:id="@+id/shoes_size_small"
-                                                android:layout_width="72dp"
-                                                android:layout_height="wrap_content"
-                                                android:text="작다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
-                                        </RadioGroup>
-                                    </RelativeLayout>
+                                                    android:text="크다"
+                                                    android:textSize="14sp" />
 
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="30.2dp"
-                                        android:layout_marginEnd="30.2dp">
+                                                <RadioButton
+                                                    android:id="@+id/shoes_size_fit"
+                                                    android:layout_width="85dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="적당하다"
+                                                    android:textSize="14sp" />
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_alignParentStart="true"
-                                            android:layout_centerVertical="true"
-                                            android:text="통풍"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold" />
+                                                <RadioButton
+                                                    android:id="@+id/shoes_size_small"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="작다"
+                                                    android:textSize="14sp" />
+                                            </RadioGroup>
+                                        </RelativeLayout>
 
-                                        <RadioGroup
-                                            android:id="@+id/ventilation"
-                                            android:layout_width="wrap_content"
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_alignParentEnd="true"
-                                            android:orientation="horizontal">
+                                            android:layout_marginStart="30.2dp"
+                                            android:layout_marginEnd="30.2dp">
 
-                                            <RadioButton
-                                                android:id="@+id/ventilation_best"
-                                                android:layout_width="72dp"
+                                            <TextView
+                                                android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:text="잘된다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
+                                                android:layout_alignParentStart="true"
+                                                android:layout_centerVertical="true"
+                                                android:text="통풍"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold" />
 
-                                            <RadioButton
-                                                android:id="@+id/ventilation_good"
-                                                android:layout_width="85dp"
-                                                android:layout_height="wrap_content"
-                                                android:text="적당하다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
+                                            <RadioGroup
+                                                android:id="@+id/ventilation"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_alignParentEnd="true"
+                                                android:orientation="horizontal">
 
-                                            <RadioButton
-                                                android:id="@+id/ventilation_bad"
-                                                android:layout_width="72dp"
-                                                android:layout_height="wrap_content"
-                                                android:text="안된다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
-                                        </RadioGroup>
-                                    </RelativeLayout>
+                                                <RadioButton
+                                                    android:id="@+id/ventilation_best"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="잘된다"
+                                                    android:textSize="14sp" />
 
-                                    <RelativeLayout
-                                        android:id="@+id/activity_posting_waterproof_layout"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="match_parent"
-                                        android:layout_marginStart="30.2dp"
-                                        android:layout_marginEnd="30.2dp">
+                                                <RadioButton
+                                                    android:id="@+id/ventilation_good"
+                                                    android:layout_width="85dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="적당하다"
+                                                    android:textSize="14sp" />
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="방수"
-                                            android:textSize="14sp"
-                                            android:textStyle="bold"
-                                            tools:layout_centerVertical="true" />
+                                                <RadioButton
+                                                    android:id="@+id/ventilation_bad"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="안된다"
+                                                    android:textSize="14sp" />
+                                            </RadioGroup>
+                                        </RelativeLayout>
 
-                                        <RadioGroup
-                                            android:id="@+id/waterproof"
-                                            android:layout_width="wrap_content"
+                                        <RelativeLayout
+                                            android:id="@+id/activity_posting_waterproof_layout"
+                                            android:layout_width="match_parent"
                                             android:layout_height="match_parent"
-                                            android:layout_alignParentEnd="true"
-                                            android:orientation="horizontal">
+                                            android:layout_marginStart="30.2dp"
+                                            android:layout_marginEnd="30.2dp">
 
-                                            <RadioButton
-                                                android:id="@+id/waterproof_best"
-                                                android:layout_width="72dp"
+                                            <TextView
+                                                android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
-                                                android:text="잘된다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
+                                                android:text="방수"
+                                                android:textSize="14sp"
+                                                android:textStyle="bold"
+                                                tools:layout_centerVertical="true" />
 
-                                            <RadioButton
-                                                android:id="@+id/waterproof_good"
-                                                android:layout_width="85dp"
-                                                android:layout_height="wrap_content"
-                                                android:text="적당하다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
+                                            <RadioGroup
+                                                android:id="@+id/waterproof"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_alignParentEnd="true"
+                                                android:orientation="horizontal">
 
-                                            <RadioButton
-                                                android:id="@+id/waterproof_bad"
-                                                android:layout_width="72dp"
-                                                android:layout_height="wrap_content"
-                                                android:text="안된다"
-                                                android:enabled="false"
-                                                android:textSize="14sp" />
-                                        </RadioGroup>
+                                                <RadioButton
+                                                    android:id="@+id/waterproof_best"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="잘된다"
+                                                    android:textSize="14sp" />
 
-                                    </RelativeLayout>
+                                                <RadioButton
+                                                    android:id="@+id/waterproof_good"
+                                                    android:layout_width="85dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="적당하다"
+                                                    android:textSize="14sp" />
+
+                                                <RadioButton
+                                                    android:id="@+id/waterproof_bad"
+                                                    android:layout_width="72dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:enabled="false"
+                                                    android:text="안된다"
+                                                    android:textSize="14sp" />
+                                            </RadioGroup>
+
+                                        </RelativeLayout>
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
@@ -601,38 +622,52 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:layout_width="200dp"
+                                        android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="center_vertical"
                                         android:layout_marginStart="15.5dp"
-                                        android:layout_marginEnd="100dp"
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="리뷰 보기"
                                         android:textColor="#FFFFFF"
                                         android:textSize="16sp" />
 
-                                    <Button
-                                        android:layout_width="14dp"
-                                        android:layout_height="6dp"
-                                        android:layout_gravity="left|center_vertical"
-                                        android:layout_marginEnd="15.5dp"
-                                        android:background="@drawable/up_button" />
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:gravity="right|center_vertical"
+                                        >
+
+                                        <Button
+                                            android:id="@+id/review_write_watch_btn"
+                                            android:layout_width="14dp"
+                                            android:layout_height="6dp"
+                                            android:layout_marginEnd="30dp"
+                                            android:background="@drawable/up_button" />
+                                    </LinearLayout>
 
                                 </LinearLayout>
 
-                                <TextView
-                                    android:id="@+id/dp_body"
-                                    android:layout_width="match_parent"
+                                <LinearLayout
+                                    android:id="@+id/review_write_textview"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginStart="30.2dp"
-                                    android:layout_marginEnd="30.2dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:text="body"
-                                    android:textColor="#707070"
-                                    android:textSize="16sp"
-                                    android:textStyle="normal" />
+                                    android:visibility="gone"
+                                    >
 
+                                    <TextView
+                                        android:id="@+id/dp_body"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_marginStart="30.2dp"
+                                        android:layout_marginEnd="30.2dp"
+                                        android:layout_marginBottom="10dp"
+                                        android:text="body"
+                                        android:textColor="#707070"
+                                        android:textSize="16sp"
+                                        android:textStyle="normal" />
+
+                                </LinearLayout>
                             </LinearLayout>
 
                         </LinearLayout>
