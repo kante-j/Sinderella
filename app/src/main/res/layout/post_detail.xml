@@ -394,7 +394,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:orientation="vertical"
-                                        android:visibility="gone"
+                                        android:visibility="visible"
                                         >
 
                                         <RelativeLayout
@@ -637,7 +637,7 @@
                                     android:id="@+id/review_write_textview"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:visibility="gone"
+                                    android:visibility="visible"
                                     >
 
                                     <TextView
