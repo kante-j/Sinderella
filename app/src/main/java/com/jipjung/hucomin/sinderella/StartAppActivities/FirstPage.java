@@ -3,8 +3,6 @@ package com.jipjung.hucomin.sinderella.StartAppActivities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,6 +18,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class FirstPage extends AppCompatActivity {
 

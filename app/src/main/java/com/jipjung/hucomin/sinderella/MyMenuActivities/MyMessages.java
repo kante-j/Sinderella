@@ -2,9 +2,9 @@
 //
 //import android.content.Intent;
 //import android.os.Bundle;
-//import android.support.v4.widget.SwipeRefreshLayout;
+//import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 //import android.support.v7.app.AppCompatActivity;
-//import android.support.v7.widget.CardView;
+//import androidx.cardview.widget.CardView;
 //import android.util.Log;
 //import android.view.View;
 //import android.view.ViewGroup;

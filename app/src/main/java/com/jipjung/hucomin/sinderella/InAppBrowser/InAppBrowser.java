@@ -1,6 +1,5 @@
 package com.jipjung.hucomin.sinderella.InAppBrowser;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebView;
@@ -8,6 +7,8 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 
 import com.jipjung.hucomin.sinderella.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class InAppBrowser extends AppCompatActivity {
 

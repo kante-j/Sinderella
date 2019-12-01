@@ -1,7 +1,6 @@
 package com.jipjung.hucomin.sinderella.MyMenuActivities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -11,6 +10,8 @@ import android.widget.TextView;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.R;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class OtherMyMenu extends AppCompatActivity {
 

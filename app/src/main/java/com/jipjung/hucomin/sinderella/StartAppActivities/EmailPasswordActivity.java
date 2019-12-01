@@ -18,7 +18,6 @@ package com.jipjung.hucomin.sinderella.StartAppActivities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -37,6 +36,8 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
+
+import androidx.annotation.NonNull;
 
 public class EmailPasswordActivity extends BaseActivity implements
         View.OnClickListener {

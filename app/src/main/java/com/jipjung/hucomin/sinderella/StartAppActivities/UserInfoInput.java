@@ -9,9 +9,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.TestLooperManager;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayout;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -42,6 +39,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class UserInfoInput extends AppCompatActivity {
 

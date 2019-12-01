@@ -1,7 +1,6 @@
 package com.jipjung.hucomin.sinderella.Classes;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 
 import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
@@ -10,8 +9,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+import androidx.annotation.NonNull;
+
 @IgnoreExtraProperties
-public class Post implements Serializable {
+public class Post implements Serializable{
     @Exclude
     public String id;
     public String image_url;

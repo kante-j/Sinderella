@@ -1,14 +1,14 @@
 package com.jipjung.hucomin.sinderella.Search;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 
 import com.jipjung.hucomin.sinderella.R;
 
-public class SearchActivity extends AppCompatActivity{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class SearchActivity extends AppCompatActivity {
 
     private ImageButton search_out_button;
     @Override

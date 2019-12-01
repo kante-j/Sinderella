@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -341,7 +341,7 @@
                         android:textAlignment="center" />
                 </LinearLayout>
 
-                <android.support.v7.widget.GridLayout
+                <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
@@ -625,7 +625,7 @@
                             android:layout_margin="2.5dp" />
 
                     </FrameLayout>
-                </android.support.v7.widget.GridLayout>
+                </androidx.gridlayout.widget.GridLayout>
 
             </LinearLayout>
 
@@ -648,7 +648,7 @@
                     android:text="신발을 살 때 고려해야 하는 발 질환이 있다면\n아래 항목에 체크해 주세요.\n만약 항목에 존재하지 않으시다면\n기타에 기입해 주시면 됩니다."
                     android:textSize="16sp" />
 
-                <android.support.v7.widget.GridLayout
+                <androidx.gridlayout.widget.GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
@@ -772,7 +772,7 @@
 
                     </LinearLayout>
 
-                </android.support.v7.widget.GridLayout>
+                </androidx.gridlayout.widget.GridLayout>
             </LinearLayout>
 
             <Button
@@ -792,7 +792,7 @@
         </LinearLayout>
     </ScrollView>
 
-</android.support.v7.widget.LinearLayoutCompat>
+</androidx.appcompat.widget.LinearLayoutCompat>
 
 
     <!--<LinearLayout-->

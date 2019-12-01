@@ -1,6 +1,4 @@
 package com.jipjung.hucomin.sinderella.Modules;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.Log;
 
 import com.bumptech.glide.Priority;
@@ -20,6 +18,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 /**
  * ModelLoader implementation to download images from FirebaseStorage with Glide.
@@ -57,6 +58,7 @@ public class FirebaseImageLoader implements ModelLoader<StorageReference, InputS
     public static class Factory implements ModelLoaderFactory<StorageReference, InputStream> {
 
         @NonNull
+
         @Override
         public ModelLoader<StorageReference, InputStream> build(@NonNull MultiModelLoaderFactory factory) {
             return new FirebaseImageLoader();

@@ -1,7 +1,6 @@
 package com.jipjung.hucomin.sinderella.CartActivities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
@@ -16,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.QuickContactBadge;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class CartDetail extends AppCompatActivity {
 

@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.view.Window;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
