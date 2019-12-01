@@ -45,7 +45,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_marginBottom="5dp"
                     android:orientation="vertical">
 
@@ -154,8 +154,8 @@
                     android:id="@+id/mypage_btn_profile"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginEnd="30dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/profile_correction"
 
                     android:gravity="center"
@@ -186,9 +186,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center">
 
                 <LinearLayout
@@ -267,10 +267,9 @@
                 android:layout_above="@id/mypage_commet_container_layout"
                 android:layout_below="@+id/mypage_followLayout"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp">
-                android:visibility="gone">
-            </FrameLayout>
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
+                android:visibility="gone"></FrameLayout>
 
 
             <LinearLayout
@@ -278,8 +277,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -297,13 +296,13 @@
 
             <FrameLayout
                 android:id="@+id/mypage_commet_fragment_container"
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_above="@id/under"
                 android:layout_below="@id/mypage_followLayout"
                 android:layout_gravity="center"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp">
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp">
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -317,8 +316,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_below="@+id/mypage_commet_fragment_container"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="@drawable/logout"
                 android:fontFamily="@font/gyeonggititle_bold"
                 android:gravity="center"
