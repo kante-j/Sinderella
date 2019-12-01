@@ -304,6 +304,10 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="30dp"
                 android:layout_marginEnd="30dp">
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/feeds"></android.support.v7.widget.RecyclerView>
 
             </FrameLayout>
 
