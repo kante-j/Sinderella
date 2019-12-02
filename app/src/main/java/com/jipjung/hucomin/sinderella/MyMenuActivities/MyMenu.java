@@ -1,23 +1,32 @@
 package com.jipjung.hucomin.sinderella.MyMenuActivities;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.jipjung.hucomin.sinderella.R;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.StartAppActivities.SplashScreen;
@@ -30,8 +39,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.UUID;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MyMenu extends AppCompatActivity {
@@ -51,6 +63,13 @@ public class MyMenu extends AppCompatActivity {
     private RelativeLayout password_modify_layout;
     private Button profilemodify_check;
     private Button action_bar_back_close;
+    private Button profilemodify_picture_edit_btn;
+    private final int PICK_IMAGE_REQUEST = 71;
+    private StorageReference storageReference;
+    private Uri filePath;
+    private String imagePath;
+    private ImageView profilemodify_Image;
+    private ImageView profilemodify_picture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,6 +155,20 @@ public class MyMenu extends AppCompatActivity {
                 onBackPressed();
             }
         });
+
+        //TODO: 프로필 사진 변경
+        profilemodify_picture= findViewById(R.id.profilemodify_picture);
+        profilemodify_Image = findViewById(R.id.profilemodify_Image);
+        profilemodify_picture_edit_btn = findViewById(R.id.profilemodify_picture_edit_btn);
+
+        profilemodify_picture_edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chooseImage();
+            }
+        });
+
+
 
 //        filterbtn =v.findViewById(R.id.btn_filter);
 //        filterbtn.setOnClickListener(new View.OnClickListener() {
@@ -234,6 +267,75 @@ public class MyMenu extends AppCompatActivity {
     }
 
     public void restartApp(Context context) {
+    }
+
+    //Image 변경
+    private void chooseImage() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            filePath = data.getData();
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
+                profilemodify_Image.setImageBitmap(bitmap);
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            profilemodify_picture.setVisibility(View.INVISIBLE);
+            profilemodify_Image.setVisibility(View.VISIBLE);
+        }
+
+    }
+
+
+    private void uploadImage() {
+
+        if(filePath != null)
+        {
+            final ProgressDialog progressDialog = new ProgressDialog(MyMenu.this);
+            progressDialog.setTitle("Uploading...");
+            progressDialog.show();
+
+            final StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+            imagePath = ref.getPath();
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            progressDialog.dismiss();
+                            Toast.makeText(MyMenu.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            ;
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(MyMenu.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    });
+        }
     }
 
 //    private void getUser(){
