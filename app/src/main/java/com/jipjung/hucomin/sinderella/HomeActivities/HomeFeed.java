@@ -230,7 +230,7 @@ public class HomeFeed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
-                startActivityForResult(intent, 1);
+                startActivityForResult(intent, 2);
 
             }
         });
@@ -282,21 +282,24 @@ public class HomeFeed extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
         // check if the request code is same as what is passed  here it is 1
-        if(requestCode==1)
+        if(requestCode==2)
         {
-            search_context=data.getStringExtra("search_context");
-            fr = new FSearchResult();
-            fr.setArguments(userbundle);
+            if(data !=null){
+                search_context=data.getStringExtra("search_context");
+                fr = new FSearchResult();
+                userbundle.putString("search_keyword", search_context);
+                fr.setArguments(userbundle);
 
-            follow_btn.setBackgroundResource(R.drawable.follow);
-            home_btn.setBackgroundResource(R.drawable.home);
-            cart_btn.setBackgroundResource(R.drawable.shop);
-            mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
+                follow_btn.setBackgroundResource(R.drawable.follow);
+                home_btn.setBackgroundResource(R.drawable.home);
+                cart_btn.setBackgroundResource(R.drawable.shop);
+                mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
 
-            FragmentManager fm = getSupportFragmentManager();
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.fragment_container, fr);
-            ft.commit();
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragment_container, fr);
+                ft.commit();
+            }
 
 
         }

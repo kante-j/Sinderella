@@ -51,10 +51,6 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-
-        출처: https://tiann.tistory.com/10 [티앤의 IT월드]
-
-
         search_out_button = findViewById(R.id.search_out_button);
         search_out_button.setOnClickListener(new View.OnClickListener() {
             @Override
