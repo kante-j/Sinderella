@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.Classes.Product;
+import com.jipjung.hucomin.sinderella.Fragments.FPostLinkProduct;
 import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
 import com.jipjung.hucomin.sinderella.R;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class CartDetail extends AppCompatActivity {
 
@@ -29,7 +32,8 @@ public class CartDetail extends AppCompatActivity {
     private TextView price;
     private ImageView cart_detail_btn_profile;
     private String product_url;
-
+    private Fragment fr;
+    private Bundle productbundle;
 
     private FirebaseStorage storage;
     private StorageReference storageRef;
@@ -67,6 +71,14 @@ public class CartDetail extends AppCompatActivity {
         });
         product_url = product.getProduct_url();
 
+//        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
+//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+////                types = new ArrayList<Product>();
+//                swipeContainer.setRefreshing(false);
+//            }
+//        });
 
         if (product.getImage_url() != null) {
             StorageReference path = storageRef.child(product.image_url);
@@ -79,8 +91,11 @@ public class CartDetail extends AppCompatActivity {
         brand.setText(product.getBrand());
         price.setText(product.getPrice() + "원");
 
-
-
+        Bundle productbundle = new Bundle();
+        productbundle.putSerializable("product",product);
+        fr = new FPostLinkProduct();
+        fr.setArguments(productbundle);
+        getSupportFragmentManager().beginTransaction().add(R.id.mypage_commet_fragment_container,fr).commit();
 
 
     }

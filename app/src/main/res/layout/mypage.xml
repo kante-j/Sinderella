@@ -297,17 +297,12 @@
             <FrameLayout
                 android:id="@+id/mypage_commet_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="250dp"
                 android:layout_above="@id/under"
                 android:layout_below="@id/mypage_followLayout"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp">
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:id="@+id/feeds"></androidx.recyclerview.widget.RecyclerView>
-
             </FrameLayout>
 
 
