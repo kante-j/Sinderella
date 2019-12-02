@@ -439,7 +439,7 @@ public class DetailedPost extends AppCompatActivity {
         mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
 
         /*팔로우, 팔로워 글자 보이기*/
-        followSwitch.setChecked(false);
+
         followSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -453,6 +453,11 @@ public class DetailedPost extends AppCompatActivity {
                 }
             }
         });
+
+
+
+
+
 
 
         /**********************************
@@ -537,9 +542,18 @@ public class DetailedPost extends AppCompatActivity {
 //                    }
 //                });
         if(follow == null){
+            followSwitch.setChecked(false);
+            follow_text.setVisibility(View.INVISIBLE);
+            unfollow_text.setVisibility(View.VISIBLE);
+
         }else if(follow.getStatus().equals("active")){
             followSwitch.setChecked(true);
+            follow_text.setVisibility(View.VISIBLE);
+            unfollow_text.setVisibility(View.INVISIBLE);
         }else{
+            followSwitch.setChecked(false);
+            follow_text.setVisibility(View.INVISIBLE);
+            unfollow_text.setVisibility(View.VISIBLE);
         }
         if(post.getUser_id().equals(user.getUser_id())){
             followSwitch.setVisibility(View.GONE);
