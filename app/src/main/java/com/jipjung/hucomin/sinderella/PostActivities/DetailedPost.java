@@ -49,6 +49,7 @@ import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
@@ -210,6 +211,14 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
+
+        try{
+            Date date = new SimpleDateFormat("yyyyMMddkkmmss").parse(post.getCreated_at());
+            String format = new SimpleDateFormat("yyyy년 MM월 dd일").format(date);
+            dTime.setText(format);
+        }catch(ParseException pe){
+            pe.printStackTrace();
+        }
 
 
 

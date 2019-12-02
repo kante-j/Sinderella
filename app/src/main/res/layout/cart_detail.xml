@@ -9,14 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        >
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/swipe_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/header"-->
+<!--        >-->
 
         <ScrollView
+            android:layout_below="@id/header"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -30,15 +31,20 @@
                 <RelativeLayout
                     android:id="@+id/cart_detail_shoes_item"
                     android:layout_width="350dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
                     android:layout_marginTop="30dp"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
+                    android:background="@drawable/item_box"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/mypage_item_feeds_post_body"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="20dp"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -50,10 +56,10 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@+id/shoes_image"
-                            android:orientation="vertical"
                             android:layout_gravity="center_vertical"
-                            android:gravity="end">
+                            android:layout_toRightOf="@+id/shoes_image"
+                            android:gravity="end"
+                            android:orientation="vertical">
 
                             <TextView
                                 android:id="@+id/shoes_code_name"
@@ -149,7 +155,7 @@
                 <FrameLayout
                     android:id="@+id/mypage_commet_fragment_container"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="400dp"
                     android:layout_gravity="center"
                     android:layout_above="@id/cart_detail_linearlayout"
                     android:layout_below="@id/cart_detail_go_homepage"
@@ -163,7 +169,7 @@
             </LinearLayout>
         </ScrollView>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
 
 </RelativeLayout>

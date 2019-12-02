@@ -40,6 +40,7 @@ import com.jipjung.hucomin.sinderella.StartAppActivities.SplashScreen;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 
 
@@ -60,6 +61,7 @@ public class FMymenu extends Fragment {
     private Button followingbtn;
     private FrameLayout follow_framelayout;
 
+    private Fragment fr;
 
 
     public FMymenu(){
@@ -81,13 +83,19 @@ public class FMymenu extends Fragment {
         text_foot_size = v.findViewById(R.id.mypage_foot_size);
         text_foot_width = v.findViewById(R.id.mypage_foot_width);
 
-
         Bundle bundle = getArguments();
         user = (User)bundle.getSerializable("user");
         text_nickname.setText(user.getNickname());
         text_email.setText(fbUser.getEmail());
         text_foot_width.setText(user.getFoot_width());
         text_foot_size.setText(String.valueOf(user.getFoot_size()));
+
+        Bundle userbundle = new Bundle();
+        userbundle.putSerializable("user",user);
+        fr = new FMyPosts();
+        fr.setArguments(userbundle);
+        FragmentManager fm = getActivity().getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.mypage_commet_fragment_container,fr).commit();
 
 
         go_profilecorrect = v.findViewById(R.id.mypage_btn_profile);
