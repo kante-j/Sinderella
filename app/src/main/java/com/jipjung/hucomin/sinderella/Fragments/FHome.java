@@ -212,13 +212,11 @@ public class FHome extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Log.d("qpoqop", "whiatqwdqw?");
                 fs.collection("posts").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                                 if (queryDocumentSnapshots.isEmpty()) {
-                                    Log.d("qpoqop", "whiat?");
                                     return;
                                 } else {
                                     types = queryDocumentSnapshots.toObjects(Post.class);
@@ -245,7 +243,6 @@ public class FHome extends Fragment {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.d("qweqweqwe", "아무내용이없습니다");
                                 pgsBar.setVisibility(ProgressBar.GONE);
                             }
                         });

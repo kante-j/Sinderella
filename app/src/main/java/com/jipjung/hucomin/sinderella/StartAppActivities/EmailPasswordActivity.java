@@ -252,7 +252,6 @@ public class EmailPasswordActivity extends BaseActivity implements
                         DocumentSnapshot document = task.getResult();
                         if (document != null && document.exists()) {
 //                        User user = document.toObject(User.class);
-                            Log.d("qweqwe",user.getEmail());
                             Intent intent = new Intent(EmailPasswordActivity.this, HomeFeed.class);
                             startActivity(intent);
                             finish();

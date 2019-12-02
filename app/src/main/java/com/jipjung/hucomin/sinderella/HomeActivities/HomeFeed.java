@@ -39,6 +39,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.jipjung.hucomin.sinderella.Fragments.FMymenu;
+import com.jipjung.hucomin.sinderella.Fragments.FSearchResult;
 import com.jipjung.hucomin.sinderella.MyMenuActivities.MyMenu;
 import com.jipjung.hucomin.sinderella.PostActivities.Posting;
 import com.jipjung.hucomin.sinderella.R;
@@ -64,6 +65,7 @@ public class HomeFeed extends AppCompatActivity {
     boolean visible = false;
     public EditText searchingText;
     public static Context context;
+    private String search_context;
 
     private Bundle userbundle;
     private Bundle followbundle;
@@ -80,28 +82,6 @@ public class HomeFeed extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        final DocumentReference docRef = firebaseFirestore.collection("users").document(firebaseUser.getUid());
-//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-//                if (task.isSuccessful()) {
-//                    DocumentSnapshot document = task.getResult();
-//                    if (document != null && document.exists()) {
-////                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-////                        User user = document.toObject(User.class);
-//                        nickname = document.getString("nickname");
-//
-//                    } else {
-//                        Intent i = new Intent(HomeFeed.this,UserInfoInput.class);
-//                        startActivityForResult(i, 1);
-////                        Log.d(TAG, "No such document");
-//                    }
-//                } else {
-//                    Log.d(TAG, "get failed with ", task.getException());
-//                }
-//
-//            }
-//        });
     }
 
     @Override
@@ -250,7 +230,7 @@ public class HomeFeed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
 
             }
         });
@@ -297,6 +277,31 @@ public class HomeFeed extends AppCompatActivity {
 
         context = this;
     }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 1
+        if(requestCode==1)
+        {
+            search_context=data.getStringExtra("search_context");
+            fr = new FSearchResult();
+            fr.setArguments(userbundle);
+
+            follow_btn.setBackgroundResource(R.drawable.follow);
+            home_btn.setBackgroundResource(R.drawable.home);
+            cart_btn.setBackgroundResource(R.drawable.shop);
+            mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
+
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container, fr);
+            ft.commit();
+
+
+        }
+    }
+
     DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
 
         public void onDrawerClosed(View drawerView) {
