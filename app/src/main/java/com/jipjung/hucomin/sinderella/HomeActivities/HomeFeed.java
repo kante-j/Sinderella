@@ -219,6 +219,13 @@ public class HomeFeed extends AppCompatActivity {
 
                 ft.commit();
 
+                follow_btn.setBackgroundResource(R.drawable.follow);
+                home_btn.setBackgroundResource(R.drawable.home);
+                cart_btn.setBackgroundResource(R.drawable.shop);
+                mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
+
+                drawerLayout.closeDrawers();
+
 //                Intent intent = new Intent(HomeFeed.this, MyMenu.class);
 //                startActivity(intent);
 

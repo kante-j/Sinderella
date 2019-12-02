@@ -453,26 +453,6 @@ public class Posting extends AppCompatActivity {
             return valid;
         }
         Log.d("qweqwe 3",String.valueOf(valid));
-//        if(!shoes_weight_radiogroup.isActivated()){
-//            shoesWeightNotSelected();
-//            valid = false;
-//            return valid;
-//        }
-//        if(!waterproof_radiogroup.isSelected()){
-//            waterproofNotSelected();
-//            valid = false;
-//            return valid;
-//        }
-//        if(!vantilation_radiogroup.isSelected()){
-//            ventilationNotSelected();
-//            valid = false;
-//            return valid;
-//        }
-//        if(!shoe_size_radiogroup.isSelected()){
-//            shoeSizenotSelected();
-//            valid = false;
-//            return valid;
-//        }
         return valid;
     }
 }

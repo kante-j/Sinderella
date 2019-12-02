@@ -9,14 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        >
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/swipe_layout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:layout_below="@id/header"-->
+<!--        >-->
 
         <ScrollView
+            android:layout_below="@id/header"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -154,7 +155,7 @@
                 <FrameLayout
                     android:id="@+id/mypage_commet_fragment_container"
                     android:layout_width="300dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="400dp"
                     android:layout_gravity="center"
                     android:layout_above="@id/cart_detail_linearlayout"
                     android:layout_below="@id/cart_detail_go_homepage"
@@ -168,7 +169,7 @@
             </LinearLayout>
         </ScrollView>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
 
 </RelativeLayout>

@@ -34,6 +34,7 @@ import com.jipjung.hucomin.sinderella.Adapters.Filterarrayadapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Adapters.SpinnerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
+import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
@@ -49,7 +50,7 @@ import java.util.Locale;
 
 import static com.firebase.ui.auth.AuthUI.getApplicationContext;
 
-public class FMyPosts extends Fragment {
+public class FPostLinkProduct extends Fragment {
     private FirebaseFirestore fs;
     //    static final int LIMIT = 50;
     private ArrayList<Post> mArrayList;
@@ -60,6 +61,7 @@ public class FMyPosts extends Fragment {
     boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     ProgressBar pgsBar;
+    private Product product;
 
 
     private CheckBox small_foot_checkbox;
@@ -68,7 +70,7 @@ public class FMyPosts extends Fragment {
     private ListView listView;
 
 
-    public FMyPosts() {
+    public FPostLinkProduct() {
         // Required empty public constructor
     }
 
@@ -84,8 +86,8 @@ public class FMyPosts extends Fragment {
 
         Bundle bundle = getArguments();
         mArrayList = new ArrayList<>();
-
-        user = (User) bundle.getSerializable("user");
+        product = (Product)bundle.getSerializable("product");
+//        user = (User) bundle.getSerializable("user");
         //피드 카드뷰 생성
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
@@ -129,7 +131,7 @@ public class FMyPosts extends Fragment {
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getListItems();
+//                getListItems();
                 swipeContainer.setRefreshing(false);
             }
         });
@@ -173,7 +175,7 @@ public class FMyPosts extends Fragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                fs.collection("posts").whereEqualTo("user_id",user.getUser_id()).get()
+                fs.collection("posts").get()
                         .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                             @Override
                             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
@@ -181,22 +183,10 @@ public class FMyPosts extends Fragment {
                                     return;
                                 } else {
                                     types = queryDocumentSnapshots.toObjects(Post.class);
-                                    for(int x = 0; x<types.size(); x++){
-                                        String post_id = queryDocumentSnapshots.getDocuments().get(x).getId();
-                                        types.get(x).withId(post_id);
-                                    }
-                                    types.sort(new CustomComparator().reversed());
-                                    if (types.size() < 10) {
-//                                        for (int i = 0; i < types.size(); i++) {
-//                                            mArrayList.add(types.get(i));
-//                                        }
-                                        mArrayList.addAll(types);
-                                    } else {
-                                        for (int j = 0; j < 10; j++)
-                                            mArrayList.add(types.get(j));
-                                    }
+                                    mArrayList.addAll(types);
                                     recyclerView.setAdapter(mAdapter);
                                     mAdapter.arrayList.addAll(mArrayList);
+                                    mAdapter.filter(product.getName());
                                     pgsBar.setVisibility(ProgressBar.GONE);
                                 }
                             }
