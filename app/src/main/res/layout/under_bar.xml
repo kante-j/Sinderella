@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/go_home"
-            android:layout_width="30dp"
+            android:layout_width="34dp"
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
@@ -28,7 +28,7 @@
 
         <ImageView
             android:id="@+id/go_follow"
-            android:layout_width="31dp"
+            android:layout_width="34dp"
             android:layout_height="30dp"
             android:layout_alignParentTop="false"
             android:layout_alignParentBottom="false"
@@ -40,7 +40,7 @@
 
         <ImageView
             android:id="@+id/go_shop"
-            android:layout_width="30dp"
+            android:layout_width="34dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
             android:layout_marginEnd="47dp"
@@ -50,7 +50,7 @@
 
         <ImageView
             android:id="@+id/go_mymenu"
-            android:layout_width="30dp"
+            android:layout_width="34dp"
             android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="false"
