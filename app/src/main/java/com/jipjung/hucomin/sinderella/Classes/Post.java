@@ -21,6 +21,7 @@ public class Post implements Serializable{
     public String title;
     public String body;
     public String category;
+    public String product;
     public String shoes_weight;
     public String ventilation;
     public String shoes_size;
@@ -53,6 +54,10 @@ public class Post implements Serializable{
 
     public String getBuyURL() {
         return buyURL;
+    }
+
+    public String getProduct() {
+        return product;
     }
 
     public String getImageURL() {
@@ -89,6 +94,7 @@ public class Post implements Serializable{
         result.put("created_at",created_at);
         result.put("id",id);
         result.put("price",price);
+        result.put("product",product);
         result.put("rating",rating);
         result.put("shoes_weight",shoes_weight);
         result.put("user_id",user_id);
