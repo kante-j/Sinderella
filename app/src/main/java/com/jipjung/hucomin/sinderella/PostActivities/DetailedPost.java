@@ -95,7 +95,6 @@ public class DetailedPost extends AppCompatActivity {
     private ImageView buttonLike;
     private ImageButton sendMessagebtn;
 
-    private DrawerLayout drawerLayout;
     private View drawerView;
     private ListView commentListView;
     private CommentAdapter adapter;
