@@ -42,7 +42,7 @@ public class FFollow extends Fragment {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
-
+    private LinearLayout layout;
     private RecyclerAdapter mAdapter;
     private List<Post> types;
     private ArrayList<Post> mArrayList;
@@ -119,17 +119,16 @@ public class FFollow extends Fragment {
             }
         });
 
-        LinearLayout layout = (LinearLayout) v.findViewById(R.id.follow_linear_layout);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
+        layout = (LinearLayout) v.findViewById(R.id.follow_linear_layout);
+//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         for (int i = 0; i < 1; i++) {
-            layoutParams.setMargins(20, 20, 20, 20);
-            layoutParams.gravity = Gravity.CENTER;
+//            layoutParams.setMargins(20, 20, 20, 20);
+//            layoutParams.gravity = Gravity.CENTER;
             ImageView imageView = new ImageView(getActivity());
 
             imageView.setImageResource(R.drawable.person_circle);
 //            imageView.setOnClickListener(documentImageListener);
-            imageView.setLayoutParams(layoutParams);
+//            imageView.setLayoutParams(layoutParams);
             imageView.setLayoutParams(
                     new ViewGroup.LayoutParams(
                             // or ViewGroup.LayoutParams.WRAP_CONTENT

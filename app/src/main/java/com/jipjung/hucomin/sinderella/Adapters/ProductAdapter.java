@@ -118,6 +118,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                 public void onClick(View v) {
                     Intent intent = new Intent(context, CartDetail.class);
                     intent.putExtra("product",product);
+                    intent.putExtra("user",user);
                     context.startActivity(intent);
 //                    String pTitle = title.getText().toString();
 //                    String pBody = body.getText().toString();
