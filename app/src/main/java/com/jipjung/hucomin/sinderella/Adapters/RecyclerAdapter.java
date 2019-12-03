@@ -256,7 +256,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private TextView time;
         private String post_id;
         private TextView like_counts;
-        private TextView cart_counts;
         private TextView comment_counts;
         private ImageView like;
         private RatingBar rating;
@@ -270,7 +269,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             star_evaluation = itemView.findViewById(R.id.star_evaluation);
             image = (ImageView) itemView.findViewById(R.id.postedImage);
             rating = itemView.findViewById(R.id.ratingBar);
-            cart_counts = itemView.findViewById(R.id.cart_count);
+
             comment_counts = itemView.findViewById(R.id.commet_count);
             title = (TextView) itemView.findViewById(R.id.title);
             body = (TextView) itemView.findViewById(R.id.detail);
