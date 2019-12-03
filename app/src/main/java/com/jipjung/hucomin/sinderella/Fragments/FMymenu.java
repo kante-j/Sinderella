@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,6 +29,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -47,6 +49,7 @@ import androidx.fragment.app.FragmentManager;
 public class FMymenu extends Fragment {
 
     private ImageView go_profilecorrect;
+    private StorageReference storageReference;
 
     private User user;
     private FirebaseUser fbUser;
@@ -60,6 +63,8 @@ public class FMymenu extends Fragment {
     private Button followerbtn;
     private Button followingbtn;
     private FrameLayout follow_framelayout;
+    private ImageView mypage_profile_picture;
+    private FirebaseStorage storage;
 
     private Fragment fr;
 
@@ -82,6 +87,10 @@ public class FMymenu extends Fragment {
         text_nickname = v.findViewById(R.id.mypage_username);
         text_foot_size = v.findViewById(R.id.mypage_foot_size);
         text_foot_width = v.findViewById(R.id.mypage_foot_width);
+        mypage_profile_picture = v.findViewById(R.id.mypage_profile_picture);
+
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
 
         Bundle bundle = getArguments();
         user = (User)bundle.getSerializable("user");
@@ -107,6 +116,12 @@ public class FMymenu extends Fragment {
                 startActivity(intent);
             }
         });
+
+        if(user.getProfile_url() !=null){
+
+            StorageReference path = storageReference.child(user.getProfile_url());
+            Glide.with(this).load(path).skipMemoryCache(false).into(mypage_profile_picture);
+        }
 
         logoutbtn = v.findViewById(R.id.mypage_logout);
         logoutbtn.setOnClickListener(new View.OnClickListener() {

@@ -53,6 +53,7 @@ public class OtherMyMenu extends AppCompatActivity {
         post_user= (User)getIntent().getSerializableExtra("post_user");
         follow = (Follow)getIntent().getSerializableExtra("follow");
         firebaseFirestore = FirebaseFirestore.getInstance();
+
         other_people_follow_switch = findViewById(R.id.other_people_follow_switch);
         other_people_follow_username = findViewById(R.id.other_people_follow_username);
         //other_people_follow_email = findViewById(R.id.other_people_follow_email);

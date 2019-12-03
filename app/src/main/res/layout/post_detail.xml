@@ -224,38 +224,13 @@
                                     android:layout_height="match_parent"
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="5dp"
+                                    android:layout_marginEnd="30dp"
                                     android:layout_toRightOf="@+id/btn_like"
                                     android:gravity="start"
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
                                     android:textColor="#bbbccd"
                                     android:textSize="20sp" />
-
-                                <ImageView
-                                    android:id="@+id/btn_cart"
-                                    android:layout_width="25dp"
-                                    android:layout_height="25dp"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginStart="10dp"
-                                    android:layout_marginTop="20dp"
-                                    android:layout_marginBottom="10dp"
-                                    android:layout_toRightOf="@+id/post_like_count"
-                                    android:background="@drawable/cart" />
-
-                                <TextView
-                                    android:id="@+id/post_cart_count"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_centerVertical="true"
-                                    android:layout_marginStart="5dp"
-                                    android:layout_marginEnd="30dp"
-                                    android:layout_toRightOf="@+id/btn_cart"
-                                    android:gravity="start"
-                                    android:lineSpacingExtra="1.5sp"
-                                    android:text=""
-                                    android:textColor="#bbbccd"
-                                    android:textSize="20sp" />
-
 
                                 <RatingBar
                                     android:id="@+id/star_evaluation"
@@ -279,6 +254,16 @@
                                     android:layout_marginBottom="5dp"
                                     android:text="5.0점" />
 
+                                <TextView
+                                    android:id="@+id/dp_posted_time"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@+id/post_star_evaluation"
+                                    android:layout_alignEnd="@+id/star_evaluation"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Time"
+                                    android:textAlignment="textEnd" />
+
                             </RelativeLayout>
 
                             <LinearLayout
@@ -298,54 +283,71 @@
                                     android:textColor="#707070"
                                     android:textSize="18sp"
                                     android:textStyle="normal" />
-
-                                <RelativeLayout
-                                    android:layout_width="match_parent"
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="27.5dp"
-                                    android:layout_marginEnd="27.5dp"
-                                    android:layout_marginBottom="5dp">
+                                    android:orientation="vertical">
 
-                                    <TextView
-                                        android:id="@+id/price"
-                                        android:layout_width="wrap_content"
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="10dp"
-                                        android:gravity="center_vertical"
-                                        android:text="구매가격"
-                                        android:textColor="#707070"
-                                        android:textSize="16sp"
-                                        android:textStyle="normal" />
+                                        android:layout_marginStart="27.5dp"
+                                        android:layout_marginEnd="27.5dp"
+                                        android:layout_marginBottom="5dp">
 
-                                    <TextView
-                                        android:id="@+id/size"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_alignParentBottom="true"
-                                        android:text="구매 사이즈"
-                                        android:textSize="16sp" />
+                                        <TextView
+                                            android:id="@+id/price"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="10dp"
+                                            android:gravity="center_vertical"
+                                            android:text="구매가격"
+                                            android:textColor="#707070"
+                                            android:textSize="16sp"
+                                            android:textStyle="normal" />
 
-                                    <Button
-                                        android:id="@+id/where_to_buy"
-                                        android:layout_width="100dp"
-                                        android:layout_height="37.5dp"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_gravity="right"
-                                        android:background="@drawable/where_to_buy_box"
-                                        android:fontFamily="@font/gyeonggititle_bold"
-                                        android:text="구입처   "
-                                        android:textColor="#ffffff" />
 
-                                    <TextView
-                                        android:id="@+id/dp_posted_time"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_below="@id/where_to_buy"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_marginTop="5dp"
-                                        android:text="Time"
-                                        android:textAlignment="textEnd" />
-                                </RelativeLayout>
+                                        <Button
+                                            android:id="@+id/where_to_buy"
+                                            android:layout_width="75dp"
+                                            android:layout_height="27.5dp"
+                                            android:layout_alignParentEnd="true"
+                                            android:layout_gravity="right"
+                                            android:background="@drawable/where_to_buy_box"
+                                            android:fontFamily="@font/gyeonggititle_bold"
+                                            android:text="구입처   "
+                                            android:textColor="#ffffff" />
+                                    </RelativeLayout>
+                                        <RelativeLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginStart="27.5dp"
+                                            android:layout_marginEnd="27.5dp"
+                                            android:layout_marginBottom="5dp">
+
+                                            <TextView
+                                                android:id="@+id/size"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentBottom="true"
+                                                android:text="구매 사이즈"
+                                                android:textSize="16sp" />
+                                            <Button
+                                                android:id="@+id/post_detail_cart"
+                                                android:layout_width="75dp"
+                                                android:layout_height="27.5dp"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_gravity="right"
+                                                android:background="@drawable/cart_background"
+                                                android:fontFamily="@font/gyeonggititle_bold"
+                                                android:text="    상품 담기"
+                                                android:textColor="#ffffff" />
+
+
+
+
+                                    </RelativeLayout>
+                                </LinearLayout>
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
