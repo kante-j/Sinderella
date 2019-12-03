@@ -19,8 +19,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -79,7 +81,6 @@ public class FMyPosts extends Fragment {
         View v = inflater.inflate(R.layout.home_fragments, container, false);
         FirebaseFirestore.setLoggingEnabled(true);
         fs = FirebaseFirestore.getInstance();
-
         pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
 
         Bundle bundle = getArguments();
@@ -92,6 +93,8 @@ public class FMyPosts extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.home_fragments, user);
+
+
 
         //데이터 정렬
         getListItems();

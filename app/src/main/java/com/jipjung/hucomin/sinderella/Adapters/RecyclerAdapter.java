@@ -140,7 +140,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.post_category = post.getCategory();
         holder.rating.setRating(post.rating);
         holder.star_evaluation.setText(String.valueOf(post.rating));
-
+//        holder.category_gone.setText(post.getCategory());
+//        holder.shoes_weight_gone.setText(post.getShoes_weight());
+//        holder.shoes_size_gone.setText(post.getShoes_size());
+//        holder.ventilation_gone.setText(post.getVentilation());
+//        holder.shoe_size_num_gone.setText(String.valueOf(post.getShoe_size_num()));
 //        like count 설정
 //        Like like = null;
 //        int likecount = 0;
@@ -265,6 +269,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private Post h_post;
         private Follow h_follow;
 
+        //gone part
+//        private TextView category_gone;
+//        private TextView shoes_weight_gone;
+//        private TextView shoes_size_gone;
+//        private TextView ventilation_gone;
+//        private TextView shoe_size_num_gone;
+
+
         public ViewHolder(View itemView) {
             super(itemView);
             star_evaluation = itemView.findViewById(R.id.star_evaluation);
@@ -279,6 +291,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             time = (TextView) itemView.findViewById(R.id.time);
             like_counts = itemView.findViewById(R.id.likes_count);
             like = itemView.findViewById(R.id.like);
+
+//            category_gone = itemView.findViewById(R.id.category_gone);
+//            shoes_weight_gone = itemView.findViewById(R.id.shoes_weight_gone);
+//            shoes_size_gone = itemView.findViewById(R.id.shoes_size_gone);
+//            ventilation_gone = itemView.findViewById(R.id.ventilation_gone);
+//            shoe_size_num_gone = itemView.findViewById(R.id.shoe_size_num_gone);
 //            posting_user_id = itemView.findViewById(R.id.posting_user_id);
 
 

@@ -87,6 +87,7 @@ public class FPostLinkProduct extends Fragment {
         Bundle bundle = getArguments();
         mArrayList = new ArrayList<>();
         product = (Product)bundle.getSerializable("product");
+        user = (User)bundle.getSerializable("user");
 //        user = (User) bundle.getSerializable("user");
         //피드 카드뷰 생성
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);

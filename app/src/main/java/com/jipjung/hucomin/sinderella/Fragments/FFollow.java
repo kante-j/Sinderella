@@ -1,5 +1,6 @@
 package com.jipjung.hucomin.sinderella.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -9,10 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,7 +42,7 @@ public class FFollow extends Fragment {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
-
+    private LinearLayout layout;
     private RecyclerAdapter mAdapter;
     private List<Post> types;
     private ArrayList<Post> mArrayList;
@@ -56,6 +62,7 @@ public class FFollow extends Fragment {
         View v = inflater.inflate(R.layout.follow_fragment, container, false);
         firebaseFirestore = FirebaseFirestore.getInstance();
         FirebaseFirestore.setLoggingEnabled(true);
+
 
 
         Bundle bundle = getArguments();
@@ -112,9 +119,36 @@ public class FFollow extends Fragment {
             }
         });
 
+        layout = (LinearLayout) v.findViewById(R.id.follow_linear_layout);
+//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        for (int i = 0; i < 1; i++) {
+//            layoutParams.setMargins(20, 20, 20, 20);
+//            layoutParams.gravity = Gravity.CENTER;
+            ImageView imageView = new ImageView(getActivity());
+
+            imageView.setImageResource(R.drawable.person_circle);
+//            imageView.setOnClickListener(documentImageListener);
+//            imageView.setLayoutParams(layoutParams);
+            imageView.setLayoutParams(
+                    new ViewGroup.LayoutParams(
+                            // or ViewGroup.LayoutParams.WRAP_CONTENT
+                            (int)dpToPx(getActivity(), 75),
+                            // or ViewGroup.LayoutParams.WRAP_CONTENT,
+                            (int)dpToPx(getActivity(), 75) ) );
+
+            layout.addView(imageView);
+
+        }
+
         getFollowList();
         getListItems();
+
+
         return v;
+    }
+    public float dpToPx(Context context, float dp) {
+        DisplayMetrics dm = context.getResources().getDisplayMetrics();
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, dm);
     }
 
     public void getListItems() {

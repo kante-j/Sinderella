@@ -152,17 +152,6 @@ public class FHome extends Fragment {
                 swipeContainer.setRefreshing(false);
             }
         });
-
-
-
-
-
-
-
-
-
-
-
         return v;
     }
 
