@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -233,11 +234,26 @@ public class HomeFeed extends AppCompatActivity {
         });
 
         Button btn_searchingText = findViewById(R.id.searchingText);
+
+//        btn_searchingText.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
+//                startActivityForResult(intent, 2);
+//
+//            }
+//        });
+        RelativeLayout search_Layout = findViewById(R.id.search_Layout);
         btn_searchingText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
-                startActivityForResult(intent, 2);
+                fr = new FSearchResult();
+                FragmentManager fm = getSupportFragmentManager();
+                FragmentTransaction ft = fm.beginTransaction();
+                ft.replace(R.id.fragment_container, fr);
+                ft.commit();
+//                Intent intent = new Intent(HomeFeed.this, SearchActivity.class);
+//                startActivityForResult(intent, 2);
 
             }
         });
