@@ -257,6 +257,7 @@
                         android:layout_width="274dp"
                         android:layout_height="43dp"
                         android:hint="구입처의 url을 입력해 주세요"
+                        android:inputType="textUri"
                         android:letterSpacing="-0.01"
                         android:textColor="#707070"
                         android:textSize="16sp" />
@@ -282,6 +283,7 @@
                         android:layout_width="274dp"
                         android:layout_height="43dp"
                         android:hint="구입한 가격을 입력해 주세요"
+                        android:inputType="number"
                         android:letterSpacing="-0.01"
                         android:textColor="#707070"
                         android:textSize="16sp" />

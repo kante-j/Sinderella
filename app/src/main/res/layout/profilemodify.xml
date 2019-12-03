@@ -120,6 +120,7 @@
                                 android:layout_weight="1"
                                 android:background="@null"
                                 android:gravity="center"
+                                android:inputType="textEmailAddress"
                                 android:text="hahaha@naver.com"
                                 android:textColor="#707070"
                                 android:textSize="15sp" />

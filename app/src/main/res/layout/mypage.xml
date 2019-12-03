@@ -95,6 +95,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:fontFamily="@font/gyeonggititle_medium"
                             android:gravity="center"
                             android:text="발사이즈"
                             android:textSize="15sp" />
@@ -122,6 +123,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:fontFamily="@font/gyeonggititle_medium"
                             android:gravity="center"
                             android:text="발볼"
                             android:textSize="15sp" />
@@ -186,9 +188,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="19dp"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="19dp"
                 android:gravity="center">
 
                 <LinearLayout
@@ -277,42 +279,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="19dp"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/mypage_following"
+                android:divider="#76A4BB"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/mypage_commet_upper_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:gravity="start"
+                    android:layout_height="32dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:fontFamily="@font/gyeonggititle_medium"
+                    android:gravity="center"
                     android:text="내가 쓴 게시물"
                     android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="normal" />
+
             </LinearLayout>
+
 
             <FrameLayout
                 android:id="@+id/mypage_commet_fragment_container"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_above="@id/under"
-                android:layout_below="@id/mypage_followLayout"
+                android:layout_below="@id/mypage_commet_container_layout"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
-            </FrameLayout>
-
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/mypage_post_listbox"></FrameLayout>
 
             <Button
                 android:id="@+id/mypage_logout"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_below="@+id/mypage_commet_fragment_container"
+                android:layout_below="@id/mypage_commet_container_layout"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="50dp"
                 android:background="@drawable/logout"
                 android:fontFamily="@font/gyeonggititle_bold"
                 android:gravity="center"
