@@ -119,7 +119,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_weight="0"
-                            android:text="100"
+                            android:text=""
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -136,7 +136,7 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_weight="0"
-                            android:text="100"
+                            android:text=""
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
@@ -153,9 +153,38 @@
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_weight="0"
-                            android:text="100"
+                            android:text=""
                             android:textSize="15sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/category"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/shoes_weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/shoes_size"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/ventilation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
+
+                        <TextView
+                            android:id="@+id/shoe_size_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"/>
 
                     </LinearLayout>
 
