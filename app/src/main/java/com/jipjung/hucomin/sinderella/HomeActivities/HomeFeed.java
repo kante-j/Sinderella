@@ -248,6 +248,7 @@ public class HomeFeed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 fr = new FSearchResult();
+                fr.setArguments(userbundle);
                 FragmentManager fm = getSupportFragmentManager();
                 FragmentTransaction ft = fm.beginTransaction();
                 ft.replace(R.id.fragment_container, fr);

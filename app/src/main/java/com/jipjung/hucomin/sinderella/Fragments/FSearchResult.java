@@ -338,7 +338,7 @@ public class FSearchResult extends Fragment {
 
                                     recyclerView.setAdapter(mAdapter);
                                     mAdapter.arrayList.addAll(mArrayList);
-                                    mAdapter.filter(search_keyword);
+//                                    mAdapter.filter(search_keyword);
                                     pgsBar.setVisibility(ProgressBar.GONE);
                                 }
                             }
