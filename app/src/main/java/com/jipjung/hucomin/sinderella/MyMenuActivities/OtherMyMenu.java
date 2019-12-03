@@ -33,7 +33,7 @@ public class OtherMyMenu extends AppCompatActivity {
     private User post_user;
     private Follow follow;
 
-    private Switch other_peoploe_follow_switch;
+    private Switch other_people_follow_switch;
     private TextView other_people_follow_username;
     //private TextView other_people_follow_email;
     private TextView mypage_foot_size;
@@ -53,7 +53,8 @@ public class OtherMyMenu extends AppCompatActivity {
         post_user= (User)getIntent().getSerializableExtra("post_user");
         follow = (Follow)getIntent().getSerializableExtra("follow");
         firebaseFirestore = FirebaseFirestore.getInstance();
-        other_peoploe_follow_switch = findViewById(R.id.other_people_follow_switch);
+
+        other_people_follow_switch = findViewById(R.id.other_people_follow_switch);
         other_people_follow_username = findViewById(R.id.other_people_follow_username);
         //other_people_follow_email = findViewById(R.id.other_people_follow_email);
         mypage_foot_size = findViewById(R.id.mypage_foot_size);
@@ -64,7 +65,7 @@ public class OtherMyMenu extends AppCompatActivity {
 
         if(follow!=null){
             if(follow.getStatus().equals("active")){
-                other_peoploe_follow_switch.setChecked(true);
+                other_people_follow_switch.setChecked(true);
             }
         }
 
@@ -88,8 +89,21 @@ public class OtherMyMenu extends AppCompatActivity {
             }
         });
 
-        other_peoploe_follow_switch.setChecked(false);
-        other_peoploe_follow_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
+        if(follow == null){
+            other_people_follow_switch.setChecked(false);
+            other_people_follow_text.setVisibility(View.INVISIBLE);
+            other_people_unfollow_text.setVisibility(View.VISIBLE);
+
+        }else if(follow.getStatus().equals("active")){
+            other_people_follow_switch.setChecked(true);
+            other_people_follow_text.setVisibility(View.VISIBLE);
+            other_people_unfollow_text.setVisibility(View.INVISIBLE);
+        }else{
+            other_people_follow_switch.setChecked(false);
+            other_people_follow_text.setVisibility(View.INVISIBLE);
+            other_people_unfollow_text.setVisibility(View.VISIBLE);
+        }
+        other_people_follow_switch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
@@ -103,7 +117,7 @@ public class OtherMyMenu extends AppCompatActivity {
             }
         });
 
-        other_peoploe_follow_switch.setOnClickListener(new View.OnClickListener() {
+        other_people_follow_switch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 firebaseFirestore.collection("follows").whereEqualTo("follower_id", user.getUser_id())
