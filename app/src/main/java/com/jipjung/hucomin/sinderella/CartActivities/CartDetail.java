@@ -6,6 +6,7 @@ import com.bumptech.glide.Glide;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.Classes.Product;
+import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.Fragments.FPostLinkProduct;
 import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
 import com.jipjung.hucomin.sinderella.R;
@@ -24,6 +25,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 public class CartDetail extends AppCompatActivity {
 
     private Product product;
+    private User user;
 
     private ImageView shoes_image;
     private TextView shoes_code;
@@ -45,6 +47,7 @@ public class CartDetail extends AppCompatActivity {
         setContentView(R.layout.cart_detail);
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         product = (Product)getIntent().getSerializableExtra("product");
+        user = (User)getIntent().getSerializableExtra("user");
         shoes_image = findViewById(R.id.shoes_image);
         shoes_code = findViewById(R.id.shoes_code_name);
         category = findViewById(R.id.category);
@@ -93,6 +96,7 @@ public class CartDetail extends AppCompatActivity {
 
         Bundle productbundle = new Bundle();
         productbundle.putSerializable("product",product);
+        productbundle.putSerializable("user",user);
         fr = new FPostLinkProduct();
         fr.setArguments(productbundle);
         getSupportFragmentManager().beginTransaction().add(R.id.mypage_commet_fragment_container,fr).commit();

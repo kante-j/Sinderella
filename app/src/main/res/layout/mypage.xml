@@ -297,7 +297,7 @@
             <FrameLayout
                 android:id="@+id/mypage_commet_fragment_container"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_height="320dp"
                 android:layout_above="@id/under"
                 android:layout_below="@id/mypage_followLayout"
                 android:layout_gravity="center"
