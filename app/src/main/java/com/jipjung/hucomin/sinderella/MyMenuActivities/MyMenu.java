@@ -24,6 +24,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.WriteBatch;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -41,6 +45,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import androidx.annotation.NonNull;
@@ -49,14 +55,17 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MyMenu extends AppCompatActivity {
 
     private FirebaseUser fbUser;
-    private FirebaseFirestore fs;
+    private FirebaseFirestore mFirestore;
     private TextView text_created_at;
     private EditText text_email;
     private EditText text_nickname;
     private TextView birth_date;
     private Spinner foot_size;
+    private ImageView btn_profilemodify;
     private RadioGroup foot_width;
 
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
     private User user;
     private FirebaseAuth fbAuth;
     private Button btn_password;
@@ -65,7 +74,6 @@ public class MyMenu extends AppCompatActivity {
     private Button action_bar_back_close;
     private Button profilemodify_picture_edit_btn;
     private final int PICK_IMAGE_REQUEST = 71;
-    private StorageReference storageReference;
     private Uri filePath;
     private String imagePath;
     private ImageView profilemodify_Image;
@@ -75,10 +83,9 @@ public class MyMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profilemodify);
-
 //        //get User Info
 //        FirebaseFirestore.setLoggingEnabled(true);
-        fs = FirebaseFirestore.getInstance();
+        mFirestore = FirebaseFirestore.getInstance();
 ////        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
 ////                .setTimestampsInSnapshotsEnabled(true)
 ////                .build();
@@ -86,6 +93,9 @@ public class MyMenu extends AppCompatActivity {
 //
 //
         fbUser = FirebaseAuth.getInstance().getCurrentUser();
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
+
 
         user = (User)getIntent().getSerializableExtra("user");
 
@@ -95,7 +105,13 @@ public class MyMenu extends AppCompatActivity {
         text_nickname = findViewById(R.id.profilemodify_nicname);
         birth_date = findViewById(R.id.year_month_day);
 
-
+        btn_profilemodify = findViewById(R.id.btn_profilemodify);
+        btn_profilemodify.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // Spinner set
 
         foot_size = findViewById(R.id.profilemodify_foot_size);
@@ -167,7 +183,19 @@ public class MyMenu extends AppCompatActivity {
                 chooseImage();
             }
         });
-
+//        StorageReference path = storageReference.child(user.getUser_id());
+//        Log.d("qweqwe",path.toString());
+//        if(path !=null){
+//            profilemodify_picture.setVisibility(View.GONE);
+//            profilemodify_Image.setVisibility(View.VISIBLE);
+//            Glide.with(this).load(path).skipMemoryCache(true).into(profilemodify_Image);
+//        }
+        if(user.getProfile_url() !=null){
+            profilemodify_picture.setVisibility(View.GONE);
+            profilemodify_Image.setVisibility(View.VISIBLE);
+            StorageReference path = storageReference.child(user.getProfile_url());
+            Glide.with(this).load(path).skipMemoryCache(false).into(profilemodify_Image);
+        }
 
 
 //        filterbtn =v.findViewById(R.id.btn_filter);
@@ -296,6 +324,8 @@ public class MyMenu extends AppCompatActivity {
             }
             profilemodify_picture.setVisibility(View.INVISIBLE);
             profilemodify_Image.setVisibility(View.VISIBLE);
+
+            uploadImage();
         }
 
     }
@@ -309,14 +339,14 @@ public class MyMenu extends AppCompatActivity {
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            final StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+            final StorageReference ref = storageReference.child("profiles/"+ user.getUser_id());
             imagePath = ref.getPath();
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
-                            Toast.makeText(MyMenu.this, "Uploaded", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MyMenu.this, "업로드 완료", Toast.LENGTH_SHORT).show();
                             ;
                         }
                     })
@@ -324,7 +354,7 @@ public class MyMenu extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(MyMenu.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MyMenu.this, "업로드 실패 "+e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -335,6 +365,24 @@ public class MyMenu extends AppCompatActivity {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
+
+//            WriteBatch batch = mFirestore.batch();
+            mFirestore.collection("users").document(user.getUser_id())
+                    .update("profile_url",imagePath).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+
+                        }
+                    });
+//            Map<String, Object> docData = new HashMap<>();
+//            docData.put("profile_url", imagePath);
+//            batch.set(profile, docData);
+//            batch.commit();
         }
     }
 

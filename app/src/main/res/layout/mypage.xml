@@ -37,6 +37,7 @@
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:layout_marginTop="5dp"
+                    android:scaleType="centerCrop"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="5dp"
                     android:background="@drawable/profile_picture" />
