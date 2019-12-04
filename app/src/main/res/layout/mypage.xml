@@ -25,8 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="36dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal">
 
 
@@ -150,6 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:gravity="center">
 
 
@@ -190,7 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="19dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="19dp"
                 android:gravity="center">
 
@@ -266,23 +266,25 @@
             <FrameLayout
                 android:id="@+id/mypage_follower_and_following"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="100dp"
                 android:layout_above="@id/mypage_commet_container_layout"
                 android:layout_below="@+id/mypage_followLayout"
                 android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp">
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/mypage_post_listbox">
                 android:visibility="gone"></FrameLayout>
 
 
             <LinearLayout
                 android:id="@+id/mypage_commet_container_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_marginStart="19dp"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="19dp"
+                android:layout_marginEnd="20dp"
                 android:layout_marginBottom="2dp"
                 android:background="@drawable/mypage_following"
                 android:divider="#76A4BB"
@@ -292,9 +294,7 @@
                 <TextView
                     android:id="@+id/mypage_commet_upper_text"
                     android:layout_width="match_parent"
-                    android:layout_height="32dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_height="match_parent"
                     android:fontFamily="@font/gyeonggititle_medium"
                     android:gravity="center"
                     android:text="내가 쓴 게시물"

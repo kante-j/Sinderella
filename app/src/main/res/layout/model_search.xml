@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<include layout="@layout/action_bar_back"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/model_search_box">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_centerVertical="true"
+                    app:srcCompat="@drawable/search_gray" />
+
+                <EditText
+                    android:id="@+id/model_search_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/imageView"
+                    android:background="@null"
+                    android:ems="10"
+                    android:fontFamily="@font/gyeonggititle_medium"
+                    android:hint="모델명, 브랜드 검색"
+                    android:inputType="textPersonName" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/help_btn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/help_box"
+                    android:fontFamily="sans-serif-black"
+                    android:text="\?"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/gyeonggititle_medium"
+                    android:gravity="center"
+                    android:text="만약 찾으시는 모델이 없다면?"
+                    android:textColor="#707070"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="45dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/model_input_checkbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/gyeonggititle_medium"
+                    android:text="직접 입력하기"
+                    android:textColor="#707070"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/editText2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="@font/gyeonggititle_medium"
+                    android:hint="모델명 입력"
+                    android:inputType="textPersonName"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/model_search_submit_btn"
+                android:layout_width="65dp"
+                android:layout_height="65dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/add_post_btin" />
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
