@@ -312,10 +312,19 @@
                 android:layout_above="@id/under"
                 android:layout_below="@id/mypage_commet_container_layout"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@null">
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="19dp"
+                android:layout_marginEnd="19dp"
                 android:layout_marginBottom="15dp"
-                android:background="@drawable/mypage_post_listbox"></FrameLayout>
+                android:background="@drawable/profilemodify_myfit_under" />
 
             <Button
                 android:id="@+id/mypage_logout"

@@ -10,9 +10,10 @@
         android:id="@+id/cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="15dp"
-        app:cardElevation="3dp">
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2.5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="2.5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,7 +38,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
                         android:layout_marginEnd="5dp">
 
                         <TextView
@@ -61,6 +61,13 @@
                             android:background="@drawable/profile_circle" />
 
                     </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="#e8eff5" />
 
                     <ImageView
                         android:id="@+id/postedImage"
@@ -159,6 +166,7 @@
                         <RelativeLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content">
+
                             <TextView
                                 android:id="@+id/detail"
                                 android:layout_width="match_parent"
@@ -167,6 +175,7 @@
                                 android:text="content"
                                 android:textColor="#707070"
                                 android:textSize="15sp" />
+
                             <TextView
                                 android:id="@+id/category"
                                 android:layout_width="wrap_content"
@@ -178,16 +187,19 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:visibility="gone" />
+
                             <TextView
                                 android:id="@+id/shoes_size"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:visibility="gone" />
+
                             <TextView
                                 android:id="@+id/ventilation"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:visibility="gone" />
+
                             <TextView
                                 android:id="@+id/shoe_size_num"
                                 android:layout_width="wrap_content"
