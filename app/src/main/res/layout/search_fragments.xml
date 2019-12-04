@@ -128,16 +128,16 @@
 
                 >
 
-                <HorizontalScrollView
-                    android:id="@+id/list_ScrollView"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/list_filter"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"/>
 
-                    <ListView
-                        android:id="@+id/list_filter"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </HorizontalScrollView>
+<!--                    <ListView-->
+<!--                        android:id="@+id/list_filter"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content" />-->
+
 
             </RelativeLayout>
 
