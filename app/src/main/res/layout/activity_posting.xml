@@ -63,7 +63,7 @@
 
                     <ImageButton
                         android:id="@+id/btnChoose"
-                        android:layout_width="325dp"
+                        android:layout_width="match_parent"
                         android:layout_height="150dp"
                         android:layout_gravity="center"
                         android:layout_marginLeft="20dp"
@@ -100,29 +100,19 @@
                     app:roundedCorners="true">
 
                 </com.beardedhen.androidbootstrap.BootstrapButtonGroup>
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:tooltipText="모델명"
-                    style="?android:attr/spinnerItemStyle"
-                    android:outlineAmbientShadowColor="@color/bootstrap_brand_danger"
-                    android:outlineSpotShadowColor="@color/bootstrap_brand_info"
-                    android:textSize="20sp"
-                   >
-
-
-                </Spinner>
 
                 <com.beardedhen.androidbootstrap.BootstrapWell
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="#FFFFFF"
+                    android:visibility="gone"
                     app:bootstrapSize="sm">
 
                     <EditText
                         android:id="@+id/text_title"
-                        android:layout_width="325dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:ems="10"
@@ -140,6 +130,34 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                 </com.beardedhen.androidbootstrap.BootstrapWell>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="5dp">
+
+                    <Button
+                        android:id="@+id/find_model_btn"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/add_model_btn_box"
+                        android:fontFamily="@font/gyeonggititle_bold"
+                        android:text="모델 찾기  "
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:visibility="visible" />
+
+                    <Button
+                        android:layout_width="25dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="right|center_vertical"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/right_button" />
+
+                </FrameLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -313,14 +331,14 @@
 
                     <RadioGroup
                         android:id="@+id/shoes_weight"
-                        android:layout_width="274dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/shoes_weight_heavy"
-                            android:layout_width="72dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -329,7 +347,7 @@
 
                         <RadioButton
                             android:id="@+id/shoes_weight_fit"
-                            android:layout_width="88dp"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -338,7 +356,7 @@
 
                         <RadioButton
                             android:id="@+id/shoes_weight_light"
-                            android:layout_width="63dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_weight="1"
@@ -363,14 +381,14 @@
 
                     <RadioGroup
                         android:id="@+id/shoes_size"
-                        android:layout_width="274dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/shoes_size_big"
-                            android:layout_width="72dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -379,7 +397,7 @@
 
                         <RadioButton
                             android:id="@+id/shoes_size_fit"
-                            android:layout_width="88dp"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -388,7 +406,7 @@
 
                         <RadioButton
                             android:id="@+id/shoes_size_small"
-                            android:layout_width="63dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -413,14 +431,14 @@
 
                     <RadioGroup
                         android:id="@+id/ventilation"
-                        android:layout_width="274dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/ventilation_best"
-                            android:layout_width="72dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -429,7 +447,7 @@
 
                         <RadioButton
                             android:id="@+id/ventilation_good"
-                            android:layout_width="88dp"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -438,7 +456,7 @@
 
                         <RadioButton
                             android:id="@+id/ventilation_bad"
-                            android:layout_width="63dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -455,14 +473,14 @@
 
                     <RadioGroup
                         android:id="@+id/waterproof"
-                        android:layout_width="274dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:orientation="horizontal">
 
                         <RadioButton
                             android:id="@+id/waterproof_best"
-                            android:layout_width="72dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -471,7 +489,7 @@
 
                         <RadioButton
                             android:id="@+id/waterproof_good"
-                            android:layout_width="88dp"
+                            android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -480,7 +498,7 @@
 
                         <RadioButton
                             android:id="@+id/waterproof_bad"
-                            android:layout_width="63dp"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
@@ -499,43 +517,50 @@
 
                 <RelativeLayout
                     android:id="@+id/activity_posting_contextbox"
-                    android:layout_width="364dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginTop="15.4dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@drawable/activity_posting_context_border"
                     android:gravity="center">
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/review_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="13.5dp"
                         android:layout_marginTop="10.5dp"
+                        android:fontFamily="@font/gyeonggititle_medium"
                         android:lineSpacingExtra="3sp"
                         android:text="리뷰"
                         android:textColor="#707070"
-                        android:textSize="16sp" />
+                        android:textSize="20sp" />
 
                     <View
                         android:id="@+id/vertical_line"
-                        android:layout_width="350dp"
-                        android:layout_height="2dp"
-                        android:layout_alignBottom="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_alignBottom="@id/review_text"
                         android:layout_centerInParent="true"
                         android:layout_marginBottom="-11dp"
                         android:background="#707070" />
 
                     <EditText
                         android:id="@+id/text_context"
-                        android:layout_width="340dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/vertical_line"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="12.5dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="15dp"
                         android:background="@null"
-                        android:gravity="center|center_vertical"
-                        android:hint=" 사진과 실물이 흡사한지, 발등은 어느정도 여유가 남는지 등 자세하고 자유롭게 서술해 주세요!" />
+                        android:gravity="left"
+                        android:hint=" 사진과 실물이 흡사한지, 발등은 어느정도 여유가 남는지 등 자세하고 자유롭게 서술해 주세요!"
+                        android:textSize="16sp" />
 
                 </RelativeLayout>
 
