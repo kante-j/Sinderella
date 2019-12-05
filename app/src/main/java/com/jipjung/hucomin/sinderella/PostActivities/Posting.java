@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RadioGroup;
@@ -20,6 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.beardedhen.androidbootstrap.BootstrapWell;
+import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -64,6 +67,10 @@ public class Posting extends AppCompatActivity {
     private Uri filePath;
     private ImageButton btnChoose;
     private ImageView imageView;
+    private Product product;
+    private BootstrapWell model_name;
+    private FrameLayout model_find_layout;
+
 
 
     //Rating bar
@@ -77,12 +84,14 @@ public class Posting extends AppCompatActivity {
 
     private String buyURLString;
     private int price;
+    private User user;
 
     private String shoes_weight;
     private String shoe_size;
     private String vantilation;
     private String waterproof;
 
+    private Button find_model_btn;
     private Spinner categorySpinner;
     private Spinner shoesSizeSpinner;
 
@@ -117,10 +126,12 @@ public class Posting extends AppCompatActivity {
             }
         });
         imageView = (ImageView) findViewById(R.id.postImage);
-
+        find_model_btn  = findViewById(R.id.find_model_btn);
         postingButton = findViewById(R.id.btn_posting);
         text_context = findViewById(R.id.text_context);
+        model_name = findViewById(R.id.model_name);
         text_title = findViewById(R.id.text_title);
+        model_find_layout = findViewById(R.id.model_find_layout);
         ratingBarForShoes = findViewById(R.id.ratingForShoes);
         shoes_weight_radiogroup = findViewById(R.id.shoes_weight);
         ImageButton xButton = findViewById(R.id.xButtoninPosting);
@@ -235,19 +246,28 @@ public class Posting extends AppCompatActivity {
 
         priceTextView = findViewById(R.id.priceTextView);
 
+        find_model_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Posting.this, FindModel.class);
+                intent.putExtra("user",user);
+                startActivityForResult(intent, 50);
+            }
+        });
+
 
 
 
     }
 
-    private void getUserInfo(FirebaseUser user){
-        uid = user.getUid();
+    private void getUserInfo(FirebaseUser fuser){
+        uid = fuser.getUid();
 //        nickname = user.getDisplayName();
-        email = user.getEmail();
+        email = fuser.getEmail();
         mFirestore.collection("users").document(uid).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                User user = documentSnapshot.toObject(User.class);
+                user = documentSnapshot.toObject(User.class);
                 nickname = user.getNickname();
             }
         });
@@ -280,6 +300,7 @@ public class Posting extends AppCompatActivity {
             docData.put("buyURL",buyURLString);
             docData.put("category",category);
 
+            // TODO : 여기에 product가 존재할 때랑 존재하지 않을 때 추가
             if(imagePath!=null){
                 docData.put("image_url",imagePath);
             }
@@ -323,6 +344,24 @@ public class Posting extends AppCompatActivity {
             }
             btnChoose.setVisibility(View.INVISIBLE);
             imageView.setVisibility(View.VISIBLE);
+        }else if(requestCode == 50){
+            if(data !=null) {
+                product = (Product) data.getSerializableExtra("product");
+                String string_model = data.getStringExtra("product_name");
+                if (product != null) {
+                    model_find_layout.setVisibility(View.GONE);
+                    model_name.setVisibility(View.VISIBLE);
+                    text_title.setText(product.getName());
+                    text_title.setEnabled(false);
+                } else if (string_model != null) {
+                    model_find_layout.setVisibility(View.GONE);
+                    model_name.setVisibility(View.VISIBLE);
+                    text_title.setText(string_model);
+                    text_title.setEnabled(false);
+                } else {
+
+                }
+            }
         }
 
     }
