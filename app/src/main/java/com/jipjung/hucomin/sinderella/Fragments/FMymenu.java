@@ -62,6 +62,8 @@ public class FMymenu extends Fragment {
     private Button logoutbtn;
     private Button followerbtn;
     private Button followingbtn;
+    private TextView follower_num;
+    private TextView following_num;
     private FrameLayout follow_framelayout;
     private ImageView mypage_profile_picture;
     private FirebaseStorage storage;
@@ -157,6 +159,8 @@ public class FMymenu extends Fragment {
         followerbtn = v.findViewById(R.id.mypage_follower);
         followingbtn=v.findViewById(R.id.mypage_following);
         follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
+        follower_num = v.findViewById(R.id.follower_num);
+        following_num = v.findViewById(R.id.following_num);
 
         Log.d("click",String.valueOf(followerbtn.isSelected()));
         Log.d("click",String.valueOf(followingbtn.isSelected()));
@@ -167,10 +171,16 @@ public class FMymenu extends Fragment {
                 if(followerbtn.isSelected()){
                     Log.d("click","follower_false");
                     followerbtn.setSelected(false);
+                    followerbtn.setTextColor(Color.BLACK);
+                    follower_num.setTextColor(Color.BLACK);
                 }else{
                     Log.d("click","follower_true");
                     followingbtn.setSelected(false);
+                    followingbtn.setTextColor(Color.BLACK);
+                    following_num.setTextColor(Color.BLACK);
                     followerbtn.setSelected(true);
+                    followerbtn.setTextColor(Color.WHITE);
+                    follower_num.setTextColor(Color.WHITE);
                     follow_framelayout.setVisibility(getView().VISIBLE);
                 }
             }
@@ -184,10 +194,17 @@ public class FMymenu extends Fragment {
                 if(followingbtn.isSelected()){
                     Log.d("click","following_false");
                     followingbtn.setSelected(false);
+                    followingbtn.setTextColor(Color.BLACK);
+                    following_num.setTextColor(Color.BLACK);
+
                 }else{
                     Log.d("click","following_true");
                     followerbtn.setSelected(false);
+                    followerbtn.setTextColor(Color.BLACK);
+                    follower_num.setTextColor(Color.BLACK);
                     followingbtn.setSelected(true);
+                    followingbtn.setTextColor(Color.WHITE);
+                    following_num.setTextColor(Color.WHITE);
                     follow_framelayout.setVisibility(getView().VISIBLE);
                 }
             }
