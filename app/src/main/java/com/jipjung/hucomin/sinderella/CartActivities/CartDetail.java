@@ -3,6 +3,7 @@ package com.jipjung.hucomin.sinderella.CartActivities;
 import android.content.Intent;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.Classes.Product;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.QuickContactBadge;
 import android.widget.TextView;
 
@@ -36,6 +38,8 @@ public class CartDetail extends AppCompatActivity {
     private String product_url;
     private Fragment fr;
     private Bundle productbundle;
+    private LinearLayout insert_cart;
+    private FirebaseFirestore firebaseFirestore;
 
     private FirebaseStorage storage;
     private StorageReference storageRef;
@@ -52,10 +56,12 @@ public class CartDetail extends AppCompatActivity {
         shoes_code = findViewById(R.id.shoes_code_name);
         category = findViewById(R.id.category);
         brand = findViewById(R.id.brand);
+        insert_cart = findViewById(R.id.insert_cart);
         price = findViewById(R.id.price);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         cart_detail_btn_profile = findViewById(R.id.cart_detail_btn_profile);
+        firebaseFirestore = FirebaseFirestore.getInstance();
 
         action_bar_back_close.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +79,13 @@ public class CartDetail extends AppCompatActivity {
             }
         });
         product_url = product.getProduct_url();
+
+        insert_cart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                firebaseFirestore.collection("carts")
+            }
+        });
 
 //        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)findViewById(R.id.swipe_layout);
 //        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
