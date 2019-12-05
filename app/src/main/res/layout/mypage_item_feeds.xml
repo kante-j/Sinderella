@@ -39,6 +39,13 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginEnd="5dp">
 
+                        <ImageView
+                            android:id="@+id/picture_post"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/profile_circle" />
+
                         <TextView
                             android:id="@+id/feed_nickname"
                             android:layout_width="wrap_content"
@@ -51,13 +58,6 @@
                             android:text="nickname"
                             android:textColor="#707070"
                             android:textSize="18sp" />
-
-                        <ImageView
-                            android:id="@+id/picture_post"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_centerVertical="true"
-                            android:background="@drawable/profile_circle" />
 
                     </RelativeLayout>
 

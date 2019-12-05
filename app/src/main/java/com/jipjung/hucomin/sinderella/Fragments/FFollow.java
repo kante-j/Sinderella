@@ -72,6 +72,10 @@ public class FFollow extends Fragment {
         mArrayList = new ArrayList<>();
         types = new ArrayList<Post>();
 
+
+
+
+
         //피드 카드뷰 생성
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
