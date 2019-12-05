@@ -40,6 +40,10 @@ public class OtherMyMenu extends AppCompatActivity {
     private TextView mypage_foot_width;
     private Button action_bar_back_close;
 
+    private Button other_people_post_board;
+    private Button other_people_follower;
+    private Button other_people_following;
+
     private FirebaseFirestore firebaseFirestore;
     private TextView other_people_follow_text;
     private TextView other_people_unfollow_text;
@@ -59,6 +63,10 @@ public class OtherMyMenu extends AppCompatActivity {
         //other_people_follow_email = findViewById(R.id.other_people_follow_email);
         mypage_foot_size = findViewById(R.id.mypage_foot_size);
         mypage_foot_width = findViewById(R.id.mypage_foot_width);
+
+        other_people_post_board = findViewById(R.id.other_people_post_board);
+        other_people_follower = findViewById(R.id.other_people_follower);
+        other_people_following = findViewById(R.id.other_people_following);
 
         other_people_follow_text = findViewById(R.id.other_people_follow_text);
         other_people_unfollow_text = findViewById(R.id.other_people_unfollow_text);
@@ -89,6 +97,9 @@ public class OtherMyMenu extends AppCompatActivity {
             }
         });
 
+
+
+        //follow, unfollow 버튼 보이기
         if(follow == null){
             other_people_follow_switch.setChecked(false);
             other_people_follow_text.setVisibility(View.INVISIBLE);
