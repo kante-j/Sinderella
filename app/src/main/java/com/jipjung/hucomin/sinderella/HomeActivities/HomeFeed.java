@@ -222,7 +222,7 @@ public class HomeFeed extends AppCompatActivity {
 
                 follow_btn.setBackgroundResource(R.drawable.follow);
                 home_btn.setBackgroundResource(R.drawable.home);
-                cart_btn.setBackgroundResource(R.drawable.shop);
+                cart_btn.setBackgroundResource(R.drawable.cart_white);
                 mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
 
                 drawerLayout.closeDrawers();
@@ -316,7 +316,7 @@ public class HomeFeed extends AppCompatActivity {
 
                 follow_btn.setBackgroundResource(R.drawable.follow);
                 home_btn.setBackgroundResource(R.drawable.home);
-                cart_btn.setBackgroundResource(R.drawable.shop);
+                cart_btn.setBackgroundResource(R.drawable.cart_white);
                 mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
 
                 FragmentManager fm = getSupportFragmentManager();
@@ -369,7 +369,7 @@ public class HomeFeed extends AppCompatActivity {
     public void selectCategory(View view){
         follow_btn.setBackgroundResource(R.drawable.follow);
         home_btn.setBackgroundResource(R.drawable.home);
-        cart_btn.setBackgroundResource(R.drawable.shop);
+        cart_btn.setBackgroundResource(R.drawable.cart_white);
         mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
 
         fr = null;

@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:shape="rectangle">
     <corners
-        android:radius="25dp" />
+        android:radius="5dp" />
     <size
         android:width="60dp"
         android:height="30dp" />
