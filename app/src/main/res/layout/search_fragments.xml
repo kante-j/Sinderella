@@ -101,20 +101,21 @@
 
             <ImageView
                 android:id="@+id/btn_filter"
-                android:layout_width="72.5dp"
-                android:layout_height="35dp"
+                android:layout_width="82.5dp"
+                android:layout_height="37dp"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/filter" />
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_alignTop="@+id/btn_filter"
                 android:layout_alignRight="@+id/btn_filter"
                 android:layout_alignBottom="@+id/btn_filter"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="5dp"
+                android:layout_centerVertical="true"
                 android:text="필터"
                 android:textColor="@android:color/white" />
 

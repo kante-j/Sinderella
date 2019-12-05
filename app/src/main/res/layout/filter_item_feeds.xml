@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="80dp"
+    android:layout_height="45dp"
+    android:background="@drawable/filter_item_background"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:layout_centerVertical="true"
     >
 
-    <ImageView
-        android:id="@+id/filter_item_image"
-        android:layout_width="80dp"
-        android:layout_height="45dp"
-        android:background="@drawable/filter_item_background"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_centerVertical="true"
-
-        />
 
     <TextView
         android:id="@+id/filter_item"
-        android:layout_width="50dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="적은편"
-        android:layout_marginStart="10dp"
-        android:layout_alignStart="@+id/filter_item_image"
-        android:layout_centerVertical="true"
+        android:textSize="15sp"
+        android:layout_centerInParent="true"
         />
     
-    <ImageView
-        android:id="@+id/delete_filter"
-        android:layout_width="17.5dp"
-        android:layout_height="17.5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_alignEnd="@+id/filter_item_image"
-        android:background="@drawable/filter_close"
-        android:layout_centerVertical="true"
-        />
+
 </RelativeLayout>
