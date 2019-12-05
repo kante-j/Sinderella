@@ -18,7 +18,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -29,12 +31,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jipjung.hucomin.sinderella.Adapters.FilterRecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Adapters.Filterarrayadapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.R;
+//import com.jipjung.hucomin.sinderella.item.Data;
 
 import org.w3c.dom.Text;
 
@@ -50,7 +54,6 @@ public class FSearchResult extends Fragment {
     private User user;
     private RelativeLayout filterscreen;
     private ImageView filterbtn;
-    private ListView filterListView;
     private CheckBox small_foot_checkbox;
     private CheckBox normal_foot_checkbox;
     private CheckBox bigger_foot_checkbox;
@@ -63,6 +66,8 @@ public class FSearchResult extends Fragment {
     private RecyclerAdapter mAdapter;
     private ArrayList<Post> mArrayList;
     private List<Post> types;
+    private TextView filter_item;
+    private RecyclerView list_filter;
 
     public FSearchResult() {
 
@@ -149,8 +154,6 @@ public class FSearchResult extends Fragment {
         //Filter 기능 들
         applytext = v.findViewById(R.id.apply);
         filterscreen = v.findViewById(R.id.filter_screen);
-
-
         filterbtn = v.findViewById(R.id.btn_filter);
         filterbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -170,8 +173,9 @@ public class FSearchResult extends Fragment {
 
             }
         });
-        //ListView
-        filterListView = v.findViewById(R.id.list_filter);
+
+        //RecycleView
+        list_filter = v.findViewById(R.id.list_filter);
 
 
         //Spinner text 사이즈 줄이기
@@ -181,14 +185,10 @@ public class FSearchResult extends Fragment {
 
         //array.foot_size
         String[] foot_sizes = getResources().getStringArray(R.array.foot_size);
-
         ArrayAdapter<String> SpinnerAdapter = new ArrayAdapter<String>(
                 getContext(), R.layout.foot_size_spinner_items, foot_sizes
         );
-
         SpinnerAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-
-
         foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -204,12 +204,8 @@ public class FSearchResult extends Fragment {
             }
         });
 
-
         Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
-
-
         foot_size_spinner2.setAdapter(SpinnerAdapter);
-
         foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -221,7 +217,6 @@ public class FSearchResult extends Fragment {
 
             }
         });
-
         foot_size_spinner.setAdapter(SpinnerAdapter);
 //         Spinner
 
@@ -230,6 +225,13 @@ public class FSearchResult extends Fragment {
         small_foot_checkbox = v.findViewById(R.id.small_foot);
         normal_foot_checkbox = v.findViewById(R.id.normal_foot);
         bigger_foot_checkbox = v.findViewById(R.id.bigger_foot);
+
+        filter_item = v.findViewById(R.id.filter_item);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        list_filter.setLayoutManager(linearLayoutManager);
+
 
 
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
@@ -245,7 +247,10 @@ public class FSearchResult extends Fragment {
 
                 ArrayList<String> filter_arrayList = new ArrayList<String>();
 
-                Filterarrayadapter filterarrayadapter = new Filterarrayadapter(getActivity(), filter_arrayList);
+
+
+
+
 
                 if (small_foot_checkbox.isChecked()) {
                     filter_arrayList.add(small_foot_checkbox.getText().toString());
@@ -262,14 +267,29 @@ public class FSearchResult extends Fragment {
 //                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size", "bigger_foot");
                 }
+
+                FilterRecyclerAdapter filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
+
+                list_filter.setAdapter(filterRecyclerAdapter);
+
+
                 //TODO: 값은 나오는데 전달은 어디로 하는지?
                 //체크된 값을 어디로 넘겨야된다.
 
 
-//                filterListView.setAdapter(filterarrayadapter);
+                for(int i = 0 ; i < filter_arrayList.size(); i++) {
+                    Log.d("do it!", "for function");
+                    Log.d("what?", filter_arrayList.get(i));
+                }
+//                    Data data = new Data();
+//                    data.setFilterItem(filter_arrayList.get(i));
+//                    filterRecyclerAdapter.addItem(data);
+//
+//                }
 
 
-                filterarrayadapter.notifyDataSetChanged();
+
+                filterRecyclerAdapter.notifyDataSetChanged();
             }
         });
 
@@ -353,10 +373,17 @@ public class FSearchResult extends Fragment {
         }, 500);
     }
 
-    public class CustomComparator implements Comparator<Post> {
+    public class sortCreatedAt implements Comparator<Post> {
         @Override
         public int compare(Post o1, Post o2) {
             return o1.getCreated_at().compareTo(o2.getCreated_at());
+        }
+    }
+    public class sortRating implements Comparator<Post> {
+        @Override
+        public int compare(Post o1, Post o2) {
+            return Float.compare(o1.getRating(),o2.getRating());
+//            return o1.getCreated_at().compareTo(o2.getCreated_at());
         }
     }
 

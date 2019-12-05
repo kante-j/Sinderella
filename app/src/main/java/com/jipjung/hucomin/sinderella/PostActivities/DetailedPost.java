@@ -582,7 +582,7 @@ public class DetailedPost extends AppCompatActivity {
 
 
     public void deletePost(){
-        firebaseFirestore.collection("posts").document(post_id).delete();
+        firebaseFirestore.collection("posts").document(post.getId()).delete();
     }
 
     public void deletePostAffirm(View v)

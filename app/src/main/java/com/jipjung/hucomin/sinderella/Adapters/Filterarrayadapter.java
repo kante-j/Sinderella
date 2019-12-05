@@ -57,7 +57,7 @@ public class Filterarrayadapter extends BaseAdapter {
         return convertView;
     }
 
-    public class ViewHolder {
+    public static class ViewHolder {
         private TextView filter_item;
 
         public ViewHolder(View convertView) {

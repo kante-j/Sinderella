@@ -141,6 +141,7 @@
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="삭제"
                                         android:textColor="#ffffff"
+                                        android:onClick="deletePostAffirm"
                                         android:textSize="20sp"
                                         android:visibility="gone" />
 
