@@ -155,6 +155,7 @@ public class FSearchResult extends Fragment {
         applytext = v.findViewById(R.id.apply);
         filterscreen = v.findViewById(R.id.filter_screen);
         filterbtn = v.findViewById(R.id.btn_filter);
+
         filterbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -185,16 +186,17 @@ public class FSearchResult extends Fragment {
 
         //array.foot_size
         String[] foot_sizes = getResources().getStringArray(R.array.foot_size);
+
         ArrayAdapter<String> SpinnerAdapter = new ArrayAdapter<String>(
                 getContext(), R.layout.foot_size_spinner_items, foot_sizes
         );
+
         SpinnerAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 foot_size_spinner.getSelectedItem().toString();
                 Log.v("foot_size_spinner", foot_size_spinner.getSelectedItem().toString());
-
 //
             }
 
@@ -205,7 +207,9 @@ public class FSearchResult extends Fragment {
         });
 
         Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
+
         foot_size_spinner2.setAdapter(SpinnerAdapter);
+
         foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -217,7 +221,10 @@ public class FSearchResult extends Fragment {
 
             }
         });
-        foot_size_spinner.setAdapter(SpinnerAdapter);
+
+        list_filter.setAdapter(SpinnerAdapter);
+
+
 //         Spinner
 
         //ToDo:checkbox 선택될 시 값 전달
@@ -277,10 +284,10 @@ public class FSearchResult extends Fragment {
                 //체크된 값을 어디로 넘겨야된다.
 
 
-                for(int i = 0 ; i < filter_arrayList.size(); i++) {
-                    Log.d("do it!", "for function");
-                    Log.d("what?", filter_arrayList.get(i));
-                }
+//                for(int i = 0 ; i < filter_arrayList.size(); i++) {
+//                    Log.d("do it!", "for function");
+//                    Log.d("what?", filter_arrayList.get(i));
+//                }
 //                    Data data = new Data();
 //                    data.setFilterItem(filter_arrayList.get(i));
 //                    filterRecyclerAdapter.addItem(data);
@@ -292,8 +299,6 @@ public class FSearchResult extends Fragment {
                 filterRecyclerAdapter.notifyDataSetChanged();
             }
         });
-
-
 
         return v;
     }
