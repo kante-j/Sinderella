@@ -7,9 +7,7 @@
     android:layout_marginBottom="5dp"
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
-    android:layout_centerVertical="true"
-    >
-
+    android:layout_centerVertical="true">
 
     <TextView
         android:id="@+id/filter_item"
@@ -19,6 +17,5 @@
         android:textSize="15sp"
         android:layout_centerInParent="true"
         />
-    
 
 </RelativeLayout>
