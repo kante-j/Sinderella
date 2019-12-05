@@ -34,6 +34,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.FilterRecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Adapters.Filterarrayadapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
+import com.jipjung.hucomin.sinderella.Adapters.SpinnerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
@@ -155,6 +156,7 @@ public class FSearchResult extends Fragment {
         applytext = v.findViewById(R.id.apply);
         filterscreen = v.findViewById(R.id.filter_screen);
         filterbtn = v.findViewById(R.id.btn_filter);
+
         filterbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -178,46 +180,37 @@ public class FSearchResult extends Fragment {
         list_filter = v.findViewById(R.id.list_filter);
 
 
+
         //Spinner text 사이즈 줄이기
         //TODO: Spinner adapter 만들기
 
-        Spinner foot_size_spinner = v.findViewById(R.id.start_foot_size);
-
         //array.foot_size
         String[] foot_sizes = getResources().getStringArray(R.array.foot_size);
+
         ArrayAdapter<String> SpinnerAdapter = new ArrayAdapter<String>(
                 getContext(), R.layout.foot_size_spinner_items, foot_sizes
         );
+
         SpinnerAdapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                foot_size_spinner.getSelectedItem().toString();
-                Log.v("foot_size_spinner", foot_size_spinner.getSelectedItem().toString());
 
-//
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        Spinner foot_size_spinner = v.findViewById(R.id.start_foot_size);
+        foot_size_spinner.setPrompt("발사이즈");
+        foot_size_spinner.setAdapter(SpinnerAdapter);
 
         Spinner foot_size_spinner2 = v.findViewById(R.id.end_foot_size);
+        foot_size_spinner2.setPrompt("발사이즈");
         foot_size_spinner2.setAdapter(SpinnerAdapter);
-        foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
-            }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-        foot_size_spinner.setAdapter(SpinnerAdapter);
+
+
+
+
+
+
+//        list_filter.setAdapter(SpinnerAdapter);
+
+
 //         Spinner
 
         //ToDo:checkbox 선택될 시 값 전달
@@ -231,12 +224,17 @@ public class FSearchResult extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         list_filter.setLayoutManager(linearLayoutManager);
-
+//        recyclerView.setLayoutManager(linearLayoutManager);
 
 
 //        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
 //                getActivity(), android.R.layout.i
 //        );
+
+
+
+
+
 
 
         applytext.setOnClickListener(new View.OnClickListener() {
@@ -246,10 +244,6 @@ public class FSearchResult extends Fragment {
                 applytext.setVisibility(View.GONE);
 
                 ArrayList<String> filter_arrayList = new ArrayList<String>();
-
-
-
-
 
 
                 if (small_foot_checkbox.isChecked()) {
@@ -268,19 +262,66 @@ public class FSearchResult extends Fragment {
                     Log.d("foot_size", "bigger_foot");
                 }
 
+
+
+
+                //Spinner
+
+                ArrayList<String> filter_spinner_arrayList = new ArrayList<String>();
+
+
+
+                foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Log.v("foot_size_spinner", foot_size_spinner.getSelectedItem().toString());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+
+                foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                        Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
+
+
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                filter_arrayList.add(foot_size_spinner.getSelectedItem().toString() +" ~ "+foot_size_spinner2.getSelectedItem().toString() );
+
+                for(int i = 0 ; i < filter_spinner_arrayList.size(); i++) {
+                    Log.d("do it!", "for function");
+                    Log.d("what?", filter_spinner_arrayList.get(i));
+                }
+
                 FilterRecyclerAdapter filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
 
                 list_filter.setAdapter(filterRecyclerAdapter);
+
+
+
 
 
                 //TODO: 값은 나오는데 전달은 어디로 하는지?
                 //체크된 값을 어디로 넘겨야된다.
 
 
-                for(int i = 0 ; i < filter_arrayList.size(); i++) {
-                    Log.d("do it!", "for function");
-                    Log.d("what?", filter_arrayList.get(i));
-                }
+//                for(int i = 0 ; i < filter_arrayList.size(); i++) {
+//                    Log.d("do it!", "for function");
+//                    Log.d("what?", filter_arrayList.get(i));
+//                }
 //                    Data data = new Data();
 //                    data.setFilterItem(filter_arrayList.get(i));
 //                    filterRecyclerAdapter.addItem(data);
@@ -292,8 +333,6 @@ public class FSearchResult extends Fragment {
                 filterRecyclerAdapter.notifyDataSetChanged();
             }
         });
-
-
 
         return v;
     }
