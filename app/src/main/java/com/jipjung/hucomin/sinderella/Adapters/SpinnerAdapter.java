@@ -1,20 +1,25 @@
 package com.jipjung.hucomin.sinderella.Adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
+
+import com.jipjung.hucomin.sinderella.R;
 
 import java.util.ArrayList;
 
 public class SpinnerAdapter extends BaseAdapter {
 
     private ArrayList<String> array_filter;
-
+    private Context mContext;
     private SpinnerAdapter.ViewHolder mViewHolder;
 
 
-    public SpinnerAdapter(ArrayList<String> array_filter) {
+    public SpinnerAdapter(Context mContext, ArrayList<String> array_filter) {
+        this.mContext = mContext;
         this.array_filter = array_filter;
     }
 
@@ -35,9 +40,24 @@ public class SpinnerAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+        if(convertView == null){
+            convertView= LayoutInflater.from(mContext).inflate(R.layout.filter_item_feeds,parent,false);
+            mViewHolder = new SpinnerAdapter.ViewHolder(convertView);
+            convertView.setTag(mViewHolder);
+        }else{
+            mViewHolder=(SpinnerAdapter.ViewHolder)convertView.getTag();
+        }
+        mViewHolder.filter_item.setText(array_filter.get(position));
+
         return convertView;
     }
 
-    class ViewHolder {
+    public static class ViewHolder {
+        private TextView filter_item;
+
+        public ViewHolder(View convertView) {
+            filter_item = convertView.findViewById(R.id.filter_item);
+        }
     }
 }
