@@ -38,6 +38,9 @@ public class FCart extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
     private Button add_model_btn;
+    private Button total_btn;
+    private Button cart_item_btn;
+
     private ProductAdapter mAdapter;
     private List<Product> types;
     private ArrayList<Product> mArrayList;
@@ -123,6 +126,27 @@ public class FCart extends Fragment {
 //        getFollowList();
         getListItems();
         return v;
+
+        //버튼 색 변경
+        total_btn = v.findViewById(R.id.total_btn);
+        cart_item_btn = v.findViewById(R.id.cart_item_btn);
+
+        total_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                total_btn.setSelected(true);
+            }
+        });
+
+        cart_item_btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                cart_item_btn.setSelected(true);
+            }
+        });
+
+
+
     }
 
 
