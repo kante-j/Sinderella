@@ -145,11 +145,32 @@
                         android:layout_marginEnd="5dp"
                         android:layout_marginBottom="5dp">
 
+
+                        <ImageView
+                            android:id="@+id/like"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center_vertical"
+                            app:srcCompat="@drawable/like" />
+                            android:layout_alignParentStart="true"
+                            android:background="@drawable/icons_comment" />
+
+                        <TextView
+                            android:id="@+id/likes_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_toRightOf="@id/like"
+                            android:text=""
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
                         <ImageView
                             android:id="@+id/commet"
                             android:layout_width="20dp"
                             android:layout_height="20dp"
-                            android:layout_alignParentStart="true"
+                            android:layout_toRightOf="@+id/likes_count"
                             android:background="@drawable/icons_comment" />
 
                         <TextView
@@ -163,24 +184,7 @@
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
-                        <ImageView
-                            android:id="@+id/like"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_toRightOf="@id/commet_count"
-                            app:srcCompat="@drawable/like" />
 
-                        <TextView
-                            android:id="@+id/likes_count"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_toRightOf="@id/like"
-                            android:text=""
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/star_evaluation"
