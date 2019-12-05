@@ -269,7 +269,6 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="10dp"
-                                    android:layout_marginBottom="10dp"
                                     android:text="title"
                                     android:textColor="#707070"
                                     android:textSize="18sp"
@@ -305,6 +304,7 @@
                                         android:id="@+id/dp_posted_time"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
+                                        android:layout_marginStart="5dp"
                                         android:layout_marginBottom="5dp"
                                         android:text="Time"
                                         android:textAlignment="textEnd" />
@@ -335,6 +335,7 @@
                                     </FrameLayout>
 
                                     <RelativeLayout
+                                        android:id="@+id/cart_like_btn"
                                         android:layout_width="100dp"
                                         android:layout_height="30dp"
                                         android:layout_below="@id/where_to_buy_layout"

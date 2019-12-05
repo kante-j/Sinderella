@@ -15,6 +15,7 @@
         <activity android:name=".CartActivities.AddProduct"></activity>
         <activity android:name=".InAppBrowser.InAppBrowser" />
         <activity android:name=".CartActivities.CartDetail" />
+        <activity android:name=".HomeActivities.vv"/>
         <activity android:name=".StartAppActivities.FirstPage" />
         <activity
             android:name=".StartAppActivities.SplashScreen"
@@ -22,7 +23,7 @@
             android:theme="@drawable/logo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

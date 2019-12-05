@@ -77,8 +77,7 @@ public class HomeFeed extends AppCompatActivity {
     private ImageView cart_btn;
     private ImageView home_btn;
     private ImageView mypage_btn;
-
-
+    private Button btn_searchingText;
 
     @Override
     protected void onStart() {
@@ -233,7 +232,7 @@ public class HomeFeed extends AppCompatActivity {
             }
         });
 
-        Button btn_searchingText = findViewById(R.id.searchingText);
+        btn_searchingText = findViewById(R.id.searchingText);
 
 //        btn_searchingText.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -247,6 +246,12 @@ public class HomeFeed extends AppCompatActivity {
         btn_searchingText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                follow_btn.setBackgroundResource(R.drawable.follow);
+                home_btn.setBackgroundResource(R.drawable.home);
+                cart_btn.setBackgroundResource(R.drawable.shop);
+                mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
+                btn_searchingText.setBackgroundResource(R.drawable.search_gray);
                 fr = new FSearchResult();
                 fr.setArguments(userbundle);
                 FragmentManager fm = getSupportFragmentManager();
@@ -371,7 +376,7 @@ public class HomeFeed extends AppCompatActivity {
         home_btn.setBackgroundResource(R.drawable.home);
         cart_btn.setBackgroundResource(R.drawable.shop);
         mypage_btn.setBackgroundResource(R.drawable.icon_perm_identity_rounded);
-
+        btn_searchingText.setBackgroundResource(R.drawable.search);
         fr = null;
 
         switch(view.getId()){
