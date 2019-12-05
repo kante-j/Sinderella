@@ -11,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
 import com.jipjung.hucomin.sinderella.Classes.Like;
@@ -43,6 +44,8 @@ import androidx.recyclerview.widget.RecyclerView;
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
     private Context context;
     private List<Post> posts;
+    private List<Comment> comments;
+    private List<Like> likes;
     private User user;
     private Post post;
     private Follow follow;
@@ -67,6 +70,21 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         arrayList = new ArrayList<>();
         arrayList.addAll(posts);
+
+        firestore.collection("comments").whereEqualTo("status","active").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        comments = queryDocumentSnapshots.toObjects(Comment.class);
+                    }
+                });
+        firestore.collection("likes").get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        likes = queryDocumentSnapshots.toObjects(Like.class);
+                    }
+                });
 
     }
 
@@ -159,42 +177,61 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //        }else{
 //            holder.like_counts.setText(String.valueOf(likecount));
 //        }
-        firestore.collection("likes").whereEqualTo("post_id",post.id).whereEqualTo("status","active").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(queryDocumentSnapshots.isEmpty()){
-                            holder.like_counts.setText(String.valueOf(0));
-                        }else {
-                            holder.like_counts.setText(String.valueOf(queryDocumentSnapshots.size()));
-                        }
-                    }
-                });
+//        firestore.collection("likes").whereEqualTo("post_id",post.id).whereEqualTo("status","active").get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(queryDocumentSnapshots.isEmpty()){
+//                            holder.like_counts.setText(String.valueOf(0));
+//                        }else {
+//                            holder.like_counts.setText(String.valueOf(queryDocumentSnapshots.size()));
+//                        }
+//                    }
+//                });
+//
+//        firestore.collection("likes").whereEqualTo("post_id",post.id).whereEqualTo("user_id",firebaseAuth.getUid()).get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(!queryDocumentSnapshots.isEmpty()){
+//                            Like l = queryDocumentSnapshots.toObjects(Like.class).get(0);
+//                            if(l.status.equals("active")){
+//                                holder.like.setImageResource(R.drawable.like_clicked);
+//                            }
+//                        }
+//                    }
+//                });
 
-        firestore.collection("likes").whereEqualTo("post_id",post.id).whereEqualTo("user_id",firebaseAuth.getUid()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(!queryDocumentSnapshots.isEmpty()){
-                            Like l = queryDocumentSnapshots.toObjects(Like.class).get(0);
-                            if(l.status.equals("active")){
-                                holder.like.setImageResource(R.drawable.like_clicked);
-                            }
-                        }
-                    }
-                });
+        int like_count = 0;
+        for(int i = 0; i<likes.size(); i++){
+            if(likes.get(i).post_id.equals(post.getId())){
+                like_count++;
+                if(likes.get(i).getUser_id().equals(user.getUser_id())){
+                    holder.like.setImageResource(R.drawable.like_clicked);
+                }
+            }
+        }
 
-        firestore.collection("comments").whereEqualTo("post_id",post.id).whereEqualTo("status","active").get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(queryDocumentSnapshots.isEmpty()){
-                            holder.comment_counts.setText(String.valueOf(0));
-                        }else {
-                            holder.comment_counts.setText(String.valueOf(queryDocumentSnapshots.size()));
-                        }
-                    }
-                });
+        holder.like_counts.setText(String.valueOf(like_count));
+
+        int comment_count=0;
+        for(int i = 0; i<comments.size(); i++){
+            if(comments.get(i).post_id.equals(post.getId())){
+                comment_count++;
+            }
+        }
+        holder.comment_counts.setText(String.valueOf(comment_count));
+//        firestore.collection("comments").whereEqualTo("post_id",post.id).whereEqualTo("status","active").get()
+//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                        if(queryDocumentSnapshots.isEmpty()){
+//                            holder.comment_counts.setText(String.valueOf(0));
+//                        }else {
+//                            holder.comment_counts.setText(String.valueOf(queryDocumentSnapshots.size()));
+//                        }
+//                    }
+//                });
 
 
 //        holder.feed_nickname.setText(user.getNickname());

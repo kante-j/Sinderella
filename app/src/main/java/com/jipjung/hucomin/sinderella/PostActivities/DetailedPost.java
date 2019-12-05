@@ -19,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,10 +31,12 @@ import com.bumptech.glide.Glide;
 
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
+import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.Post;
+import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
 import com.jipjung.hucomin.sinderella.MyMenuActivities.OtherMyMenu;
@@ -71,6 +74,7 @@ public class DetailedPost extends AppCompatActivity {
     private TextView follow_text;
     private TextView unfollow_text;
 
+    private Button post_detail_cart;
     private FirebaseStorage fs;
     private ImageView dImage;
     private TextView dTitle;
@@ -93,6 +97,8 @@ public class DetailedPost extends AppCompatActivity {
     private Button findLocationButton;
     private EditText contextComment;
     private ImageView buttonLike;
+    private TextView post_star_evaluation;
+    private Product product;
     private ImageButton sendMessagebtn;
 
     private View drawerView;
@@ -101,6 +107,7 @@ public class DetailedPost extends AppCompatActivity {
     private List<Comment> comments;
     private Post post;
     private Follow follow;
+    private RelativeLayout cart_like_btn;
     private TextView price;
     private TextView size;
     private Switch followSwitch;
@@ -142,11 +149,12 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
-
+        post_detail_cart = findViewById(R.id.post_detail_cart);
         delete_btn = findViewById(R.id.delete_btn);
         edit_btn = findViewById(R.id.edit_btn);
         other_people_page = findViewById(R.id.other_people_page);
         star_evaluation = findViewById(R.id.star_evaluation);
+        post_star_evaluation = findViewById(R.id.post_star_evaluation);
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         follow_text = findViewById(R.id.follow_text);
         unfollow_text = findViewById(R.id.unfollow_text);
@@ -173,6 +181,7 @@ public class DetailedPost extends AppCompatActivity {
         dBody.setText(intent.getStringExtra("BODY"));
         dUid.setText(intent.getStringExtra("UID"));
         dTime.setText(intent.getStringExtra("TIME"));
+        post_star_evaluation.setText(String.valueOf(post.getRating())+"점");
         star_evaluation.setRating(post.rating);
         price.setText("구매가격 : "+post.getPrice() );
         size.setText("구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
@@ -188,6 +197,27 @@ public class DetailedPost extends AppCompatActivity {
                     startActivity(searchIntent);
                 }
             });
+        }
+
+        cart_like_btn = findViewById(R.id.cart_like_btn);
+        if(post.getProduct()!=null){
+            firebaseFirestore.collection("products").document(post.getProduct())
+                    .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    product = documentSnapshot.toObject(Product.class);
+                    post_detail_cart.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent intent = new Intent(DetailedPost.this, CartDetail.class);
+                            intent.putExtra("product", product);
+                            startActivity(intent);
+                        }
+                    });
+                }
+            });
+        }else{
+            cart_like_btn.setVisibility(View.GONE);
         }
 
         //중고품 거래 기능 글에만 note 텍스트뷰 보이게
@@ -508,6 +538,9 @@ public class DetailedPost extends AppCompatActivity {
 
 
 
+
+
+
     }
 
     /********************************
@@ -535,20 +568,6 @@ public class DetailedPost extends AppCompatActivity {
      ********************************/
 
     public void isFollowed(){
-//        firebaseFirestore.collection("follows").whereEqualTo("follower_id",user.getUser_id()).whereEqualTo("followed_id",post.getUser_id()).get()
-//                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                        if(!queryDocumentSnapshots.isEmpty()){
-//                            Follow l = queryDocumentSnapshots.toObjects(Follow.class).get(0);
-//                            if(l.getStatus().equals("active")){
-//                                followSwitch.setChecked(true);
-//                            }
-//                        }else{
-//                            return;
-//                        }
-//                    }
-//                });
         if(follow == null){
             followSwitch.setChecked(false);
             follow_text.setVisibility(View.INVISIBLE);
@@ -728,39 +747,6 @@ public class DetailedPost extends AppCompatActivity {
         }
     }
 
-//    DrawerLayout.DrawerListener myDrawerListener = new DrawerLayout.DrawerListener() {
-//
-//        public void onDrawerClosed(View drawerView) {
-//        }
-//        public void onDrawerOpened(View drawerView) {
-//        }
-//
-//        public void onDrawerSlide(View drawerView, float slideOffset) {
-////                txtPrompt.setText("onDrawerSlide: "
-////                        + String.format("%.2f", slideOffset));
-//        }
-//
-//        public void onDrawerStateChanged(int newState) {
-//            String state;
-//            switch (newState) {
-//                case DrawerLayout.STATE_IDLE:
-//                    state = "STATE_IDLE";
-//                    break;
-//                case DrawerLayout.STATE_DRAGGING:
-//                    state = "STATE_DRAGGING";
-//                    break;
-//                case DrawerLayout.STATE_SETTLING:
-//                    state = "STATE_SETTLING";
-//                    break;
-//                default:
-//                    state = "unknown!";
-//            }
-//
-////                txtPrompt2.setText(state);
-//        }
-//    };
-
-
     /**********************************
      *             좋아요 관련            *
      **********************************/
@@ -840,7 +826,7 @@ public class DetailedPost extends AppCompatActivity {
                             docData.put("created_at",format);
                             docData.put("status", "active");
                             buttonLike.setImageResource(R.drawable.like_clicked);
-
+                            post_like_count.setText(String.valueOf(Integer.valueOf(post_like_count.getText().toString())+1));
                             batch.set(like,docData);
                             batch.commit();
 
@@ -852,11 +838,13 @@ public class DetailedPost extends AppCompatActivity {
                                 Log.d("qweasdzxc", "zxc");
                                 firebaseFirestore.collection("likes").document(l.id).update("status", "deactivated");
                                 buttonLike.setImageResource(R.drawable.like);
+                                post_like_count.setText(String.valueOf(Integer.valueOf(post_like_count.getText().toString())-1));
                                 Toast.makeText(getApplicationContext(),"좋아요 취소",Toast.LENGTH_LONG).show();
                             } else {
                                 Log.d("qweasdzxc", "qqq");
                                 firebaseFirestore.collection("likes").document(l.id).update("status", "active");
                                 buttonLike.setImageResource(R.drawable.like_clicked);
+                                post_like_count.setText(String.valueOf(Integer.valueOf(post_like_count.getText().toString())+1));
                                 Toast.makeText(getApplicationContext(),"좋아요",Toast.LENGTH_LONG).show();
                             }
                         }
