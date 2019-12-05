@@ -23,6 +23,7 @@ import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MessageActivities.SendMessage;
@@ -116,11 +117,11 @@ public class DetailedPost extends AppCompatActivity {
     private Button where_to_buy;
     private RatingBar star_evaluation;
     private Button action_bar_back_close;
-    private Button review_watch_btn;
+    private ToggleButton review_watch_btn;
     private Button delete_btn;
     private Button edit_btn;
     private LinearLayout review_check_feature_layout;
-    private Button review_write_watch_btn;
+    private ToggleButton review_write_watch_btn;
     private LinearLayout review_write_textview;
     private LinearLayout detail_review_layout;
     private LinearLayout review_layout;
@@ -519,8 +520,10 @@ public class DetailedPost extends AppCompatActivity {
 
                 if(review_check_feature_layout.getVisibility() == View.VISIBLE){
                     review_check_feature_layout.setVisibility(View.GONE);
+                    review_watch_btn.setChecked(true);
                 }else{
                     review_check_feature_layout.setVisibility(View.VISIBLE);
+                    review_watch_btn.setChecked(false);
                 }
 
             }
@@ -531,8 +534,10 @@ public class DetailedPost extends AppCompatActivity {
             public void onClick(View v) {
                 if(review_write_textview.getVisibility() == View.VISIBLE){
                     review_write_textview.setVisibility(View.GONE);
+                    review_write_watch_btn.setChecked(true);
                 }else{
                     review_write_textview.setVisibility(View.VISIBLE);
+                    review_write_watch_btn.setChecked(false);
                 }
             }
         });

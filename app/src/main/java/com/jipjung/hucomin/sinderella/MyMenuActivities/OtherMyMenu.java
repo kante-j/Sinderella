@@ -1,5 +1,6 @@
 package com.jipjung.hucomin.sinderella.MyMenuActivities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -43,6 +44,9 @@ public class OtherMyMenu extends AppCompatActivity {
     private Button other_people_post_board;
     private Button other_people_follower;
     private Button other_people_following;
+    private TextView num_post;
+    private TextView num_follower;
+    private TextView num_following;
 
     private FirebaseFirestore firebaseFirestore;
     private TextView other_people_follow_text;
@@ -67,9 +71,93 @@ public class OtherMyMenu extends AppCompatActivity {
         other_people_post_board = findViewById(R.id.other_people_post_board);
         other_people_follower = findViewById(R.id.other_people_follower);
         other_people_following = findViewById(R.id.other_people_following);
+        num_post = findViewById(R.id.num_post);
+        num_follower = findViewById(R.id.num_follower);
+        num_following = findViewById(R.id.num_following);
 
         other_people_follow_text = findViewById(R.id.other_people_follow_text);
         other_people_unfollow_text = findViewById(R.id.other_people_unfollow_text);
+
+        other_people_post_board.setSelected(true);
+        other_people_post_board.setTextColor(Color.WHITE);
+        num_post.setTextColor(Color.WHITE);
+
+        //post, follower, following 전화
+        Log.d("click",String.valueOf(other_people_post_board.isSelected()));
+        Log.d("click",String.valueOf(other_people_following.isSelected()));
+        Log.d("click",String.valueOf(other_people_follower.isSelected()));
+
+        other_people_post_board.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(other_people_post_board.isSelected()){
+                    Log.d("click","post_false");
+                    other_people_post_board.setSelected(false);
+                    other_people_post_board.setTextColor(Color.BLACK);
+                    num_post.setTextColor(Color.BLACK);
+                }else{
+                    Log.d("click","post_true");
+                    other_people_following.setSelected(false);
+                    other_people_following.setTextColor(Color.BLACK);
+                    num_following.setTextColor(Color.BLACK);
+                    other_people_follower.setSelected(false);
+                    other_people_follower.setTextColor(Color.BLACK);
+                    num_follower.setTextColor(Color.BLACK);
+                    other_people_post_board.setSelected(true);
+                    other_people_post_board.setTextColor(Color.WHITE);
+                    num_post.setTextColor(Color.WHITE);
+                }
+            }
+        });
+
+        other_people_following.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(other_people_following.isSelected()){
+                    Log.d("click","following_false");
+                    other_people_following.setSelected(false);
+                    other_people_following.setTextColor(Color.BLACK);
+                    num_following.setTextColor(Color.BLACK);
+                }else{
+                    Log.d("click","following_true");
+                    other_people_post_board.setSelected(false);
+                    other_people_post_board.setTextColor(Color.BLACK);
+                    num_post.setTextColor(Color.BLACK);
+                    other_people_follower.setSelected(false);
+                    other_people_follower.setTextColor(Color.BLACK);
+                    num_follower.setTextColor(Color.BLACK);
+                    other_people_following.setSelected(true);
+                    other_people_following.setTextColor(Color.WHITE);
+                    num_following.setTextColor(Color.WHITE);
+                }
+            }
+        });
+
+        other_people_follower.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(other_people_follower.isSelected()){
+                    Log.d("click","follower_false");
+                    other_people_follower.setSelected(false);
+                    other_people_follower.setTextColor(Color.BLACK);
+                    num_follower.setTextColor(Color.WHITE);
+                }else{
+                    Log.d("click","follower_true");
+                    other_people_following.setSelected(false);
+                    other_people_following.setTextColor(Color.BLACK);
+                    num_following.setTextColor(Color.BLACK);
+                    other_people_post_board.setSelected(false);
+                    other_people_post_board.setTextColor(Color.BLACK);
+                    num_post.setTextColor(Color.BLACK);
+                    other_people_follower.setSelected(true);
+                    other_people_follower.setTextColor(Color.WHITE);
+                    num_follower.setTextColor(Color.WHITE);
+                }
+            }
+        });
+
+
+
 
         if(follow!=null){
             if(follow.getStatus().equals("active")){

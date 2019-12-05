@@ -1,6 +1,7 @@
 package com.jipjung.hucomin.sinderella.Fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -38,6 +39,9 @@ public class FCart extends Fragment {
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
     private Button add_model_btn;
+    private Button total_btn;
+    private Button cart_item_btn;
+
     private ProductAdapter mAdapter;
     private List<Product> types;
     private ArrayList<Product> mArrayList;
@@ -64,8 +68,57 @@ public class FCart extends Fragment {
         user = (User) bundle.getSerializable("user");
         pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
         mArrayList = new ArrayList<>();
+
+        total_btn = v.findViewById(R.id.total_btn);
+        cart_item_btn = v.findViewById(R.id.cart_item_btn);
         add_model_btn = v.findViewById(R.id.add_model_btn);
         types = new ArrayList<Product>();
+
+        //버튼 색 변경
+
+        total_btn.setSelected(true);
+        total_btn.setTextColor(Color.WHITE);
+
+        Log.d("click",String.valueOf(total_btn.isSelected()));
+        Log.d("click",String.valueOf(cart_item_btn.isSelected()));
+
+        total_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(total_btn.isSelected()){
+                    Log.d("click","follower_false");
+                    total_btn.setSelected(false);
+                    total_btn.setTextColor(Color.BLACK);
+                }else{
+                    Log.d("click","follower_true");
+                    cart_item_btn.setSelected(false);
+                    cart_item_btn.setTextColor(Color.BLACK);
+                    total_btn.setSelected(true);
+                    total_btn.setTextColor(Color.WHITE);
+                }
+            }
+        });
+
+        cart_item_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("click",String.valueOf(cart_item_btn.isSelected()));
+                if(cart_item_btn.isSelected()){
+                    Log.d("click","following_false");
+                    cart_item_btn.setSelected(false);
+                    cart_item_btn.setTextColor(Color.BLACK);
+                }else{
+                    Log.d("click","following_true");
+                    total_btn.setSelected(false);
+                    total_btn.setTextColor(Color.BLACK);
+                    cart_item_btn.setSelected(true);
+                    cart_item_btn.setTextColor(Color.WHITE);
+                }
+            }
+        });
+
+
+
 
         //피드 카드뷰 생성
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);
@@ -123,6 +176,11 @@ public class FCart extends Fragment {
 //        getFollowList();
         getListItems();
         return v;
+
+
+
+
+
     }
 
 
