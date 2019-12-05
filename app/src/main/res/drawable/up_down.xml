@@ -2,12 +2,13 @@
     <item
         android:state_selected="true"
 
-        android:drawable="@drawable/mypage_follow"
+        android:drawable="@drawable/down_button"
         />
     <item
-
         android:state_selected="false"
-        android:drawable="@drawable/mypage_following"
+        android:drawable="@drawable/up_button"
         />
+
+
 
 </selector>
