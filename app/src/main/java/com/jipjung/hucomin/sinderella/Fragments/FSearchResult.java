@@ -378,10 +378,17 @@ public class FSearchResult extends Fragment {
         }, 500);
     }
 
-    public class CustomComparator implements Comparator<Post> {
+    public class sortCreatedAt implements Comparator<Post> {
         @Override
         public int compare(Post o1, Post o2) {
             return o1.getCreated_at().compareTo(o2.getCreated_at());
+        }
+    }
+    public class sortRating implements Comparator<Post> {
+        @Override
+        public int compare(Post o1, Post o2) {
+            return Float.compare(o1.getRating(),o2.getRating());
+//            return o1.getCreated_at().compareTo(o2.getCreated_at());
         }
     }
 

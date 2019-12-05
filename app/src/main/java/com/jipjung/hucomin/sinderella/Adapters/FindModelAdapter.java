@@ -14,9 +14,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
-import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
+import com.jipjung.hucomin.sinderella.PostActivities.FindModel;
 import com.jipjung.hucomin.sinderella.R;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.Locale;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+public class FindModelAdapter extends RecyclerView.Adapter<FindModelAdapter.ViewHolder>{
     private Context context;
     private Product product;
     private List<Product> products;
@@ -46,7 +46,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private FirebaseFirestore firestore;
     private FirebaseAuth firebaseAuth;
 
-    public ProductAdapter(Context context, List<Product> products, int item_layout, User user) {
+    public FindModelAdapter(Context context, List<Product> products, int item_layout, User user) {
         this.context = context;
         this.products = products;
         this.item_layout = item_layout;
@@ -59,14 +59,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         arrayList.addAll(products);
     }
 
-
     @Override
     public int getItemCount() {
         return this.products.size();
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position){
+    public void onBindViewHolder(final FindModelAdapter.ViewHolder holder, int position){
         product = products.get(position);
         holder.product = product;
         holder.category.setText(product.getCategory());
@@ -89,12 +88,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FindModelAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item_feeds, null);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
 
-        return new ViewHolder(v);
+        return new FindModelAdapter.ViewHolder(v);
     }
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
@@ -113,7 +112,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
         notifyDataSetChanged();
     }
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cardview;
@@ -135,31 +133,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, CartDetail.class);
+                    Intent intent = new Intent();
                     intent.putExtra("product",product);
-                    intent.putExtra("user",user);
-                    context.startActivity(intent);
-//                    String pTitle = title.getText().toString();
-//                    String pBody = body.getText().toString();
-//                    String pUid = feed_nickname.getText().toString();
-////                    String pTime = time.getText().toString();
-//                    Intent intent = new Intent(context, DetailedPost.class);
-////                    intent.putExtra("TIME", pTime);
-//                    intent.putExtra("user",user);
-//                    intent.putExtra("post",h_post);
-//                    intent.putExtra("follow",h_follow);
-//                    intent.putExtra("TITLE", pTitle);
-//                    intent.putExtra("BODY", pBody);
-//                    intent.putExtra("UID", pUid);
-////                    intent.putExtra("TIME", pTime);
-//                    intent.putExtra("URL", url);
-//                    intent.putExtra("POSTID",post_id);
-////                    intent.putExtra("posting_user_id",posting_user_id.getText().toString());
-//                    intent.putExtra("CATEGORY",post_category);
-//                    context.startActivity(intent);
+                    ((FindModel)context).setResult(50,intent);
+                    ((FindModel)context).finish();
                 }
             });
         }
     }
-
 }
