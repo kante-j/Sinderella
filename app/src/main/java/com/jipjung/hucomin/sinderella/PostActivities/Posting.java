@@ -301,6 +301,10 @@ public class Posting extends AppCompatActivity {
             docData.put("category",category);
 
             // TODO : 여기에 product가 존재할 때랑 존재하지 않을 때 추가
+            if(product !=null){
+                docData.put("product",product.getId());
+            }
+
             if(imagePath!=null){
                 docData.put("image_url",imagePath);
             }

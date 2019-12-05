@@ -335,6 +335,7 @@
                                     </FrameLayout>
 
                                     <RelativeLayout
+                                        android:id="@+id/cart_like_btn"
                                         android:layout_width="100dp"
                                         android:layout_height="30dp"
                                         android:layout_below="@id/where_to_buy_layout"

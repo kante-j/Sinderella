@@ -33,6 +33,7 @@ public class Post implements Serializable{
     public int shoe_size_num;
     public Bitmap bitmap;
 
+
     public Post() {
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
     }
