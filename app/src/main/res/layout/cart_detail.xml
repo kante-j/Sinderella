@@ -109,41 +109,19 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
 
-                                <ImageButton
-                                    android:id="@+id/imageButton"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="40dp"
-                                    android:layout_gravity="bottom|right"
-                                    android:layout_marginStart="10dp"
-                                    android:background="@drawable/linkbox"
-                                    app:srcCompat="@null" />
-
-                                <LinearLayout
+                                <ToggleButton
+                                    android:id="@+id/toggleButton"
                                     android:layout_width="match_parent"
                                     android:layout_height="40dp"
                                     android:layout_gravity="bottom"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginEnd="10dp"
-                                    android:gravity="center_horizontal"
-                                    android:orientation="horizontal">
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="40dp"
-                                        android:layout_gravity="bottom"
-                                        android:fontFamily="@font/gyeonggititle_medium"
-                                        android:gravity="center_vertical"
-                                        android:text="카트에 담기"
-                                        android:textColor="#ffffff"
-                                        android:textSize="16sp" />
-
-                                    <ImageView
-                                        android:layout_width="25dp"
-                                        android:layout_height="25dp"
-                                        android:layout_gravity="center_vertical"
-                                        android:layout_marginStart="5dp"
-                                        app:srcCompat="@drawable/cart_white" />
-                                </LinearLayout>
+                                    android:layout_marginStart="10dp"
+                                    android:background="@drawable/add_to_cart_box"
+                                    android:fontFamily="@font/gyeonggititle_medium"
+                                    android:text="ToggleButton"
+                                    android:textColor="#ffffff"
+                                    android:textOff="카트에 담기     "
+                                    android:textOn="담기 취소       "
+                                    android:textSize="16sp" />
 
                             </FrameLayout>
 
