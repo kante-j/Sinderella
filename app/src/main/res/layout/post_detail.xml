@@ -221,7 +221,7 @@
                                     app:srcCompat="@drawable/comment" />
 
                                 <TextView
-                                    android:id="@+id/post_comment_count"
+                                    android:id="@+id/post_commet_count"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
                                     android:layout_centerVertical="true"
