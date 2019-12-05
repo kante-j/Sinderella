@@ -9,11 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
+import com.jipjung.hucomin.sinderella.Classes.Cart;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
@@ -37,7 +40,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private String price;
     private String image_url;
     private String product_url;
+    private Cart cart;
     private User user;
+    private FirebaseFirestore firebaseFirestore;
     private FirebaseStorage storage;
     private StorageReference storageRef;
 
@@ -86,11 +91,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             l.height =0;
             holder.image.setLayoutParams(l);
         }
+
+        firebaseFirestore.collection("carts").whereEqualTo("product_id",product.getId()).whereEqualTo("user_id",user.getUser_id()).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(!queryDocumentSnapshots.isEmpty()){
+                            cart = queryDocumentSnapshots.toObjects(Cart.class).get(0);
+                        }else{
+                            return;
+                        }
+                    }
+                });
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.cart_item_feeds, null);
+        firebaseFirestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
 
@@ -138,6 +156,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                     Intent intent = new Intent(context, CartDetail.class);
                     intent.putExtra("product",product);
                     intent.putExtra("user",user);
+                    intent.putExtra("cart",cart);
                     context.startActivity(intent);
 //                    String pTitle = title.getText().toString();
 //                    String pBody = body.getText().toString();
