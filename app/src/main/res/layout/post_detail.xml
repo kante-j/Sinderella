@@ -177,6 +177,8 @@
                                     android:layout_gravity="center"
                                     android:layout_marginTop="10dp"
                                     android:duplicateParentState="false"
+                                    android:scaleType="matrix"
+                                    android:adjustViewBounds="true"
                                     android:visibility="gone" />
 
                             </LinearLayout>
