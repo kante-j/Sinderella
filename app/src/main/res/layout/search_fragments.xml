@@ -101,34 +101,31 @@
             android:orientation="vertical">
 
 
-            <RelativeLayout
-                android:id="@+id/filter_layout"
+        <RelativeLayout
+            android:id="@+id/filter_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/btn_filter"
+                android:layout_width="82.5dp"
+                android:layout_height="37dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/filter" />
+
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="7dp"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:id="@+id/btn_filter"
-                    android:layout_width="72.5dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@drawable/filter" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignTop="@+id/btn_filter"
-                    android:layout_alignRight="@+id/btn_filter"
-                    android:layout_alignBottom="@+id/btn_filter"
-                    android:layout_marginTop="7.5dp"
-                    android:layout_marginRight="13dp"
-                    android:layout_marginBottom="5dp"
-                    android:fontFamily="@font/gyeonggititle_medium"
-                    android:text="필터"
-                    android:textColor="@android:color/white" />
+                android:layout_height="match_parent"
+                android:layout_alignTop="@+id/btn_filter"
+                android:layout_alignRight="@+id/btn_filter"
+                android:layout_alignBottom="@+id/btn_filter"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="5dp"
+                android:layout_centerVertical="true"
+                android:text="필터"
+                android:textColor="@android:color/white" />
 
 
                 <RelativeLayout

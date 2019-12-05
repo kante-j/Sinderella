@@ -69,6 +69,7 @@ public class FSearchResult extends Fragment {
     private List<Post> types;
     private TextView filter_item;
     private RecyclerView list_filter;
+    private ImageView delete_filter;
 
     public FSearchResult() {
 
@@ -310,10 +311,7 @@ public class FSearchResult extends Fragment {
 
                 list_filter.setAdapter(filterRecyclerAdapter);
 
-
-
-
-
+                filterRecyclerAdapter.notifyDataSetChanged();
                 //TODO: 값은 나오는데 전달은 어디로 하는지?
                 //체크된 값을 어디로 넘겨야된다.
 
@@ -327,12 +325,10 @@ public class FSearchResult extends Fragment {
 //                    filterRecyclerAdapter.addItem(data);
 //
 //                }
-
-
-
-                filterRecyclerAdapter.notifyDataSetChanged();
             }
         });
+
+
 
         return v;
     }

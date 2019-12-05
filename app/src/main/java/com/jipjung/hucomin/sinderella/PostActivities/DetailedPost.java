@@ -29,6 +29,8 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMenu;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
+import com.github.chrisbanes.photoview.PhotoView;
+import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
 import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
@@ -474,7 +476,9 @@ public class DetailedPost extends AppCompatActivity {
 
 
         /** 핀치 줌 **/
-        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+//        mScaleGestureDetector = new ScaleGestureDetector(this, new ScaleListener());
+        PhotoViewAttacher photoViewAttacher = new PhotoViewAttacher(dImage);
+        photoViewAttacher.setScaleType(ImageView.ScaleType.FIT_XY);
 
         /*팔로우, 팔로워 글자 보이기*/
 
@@ -547,22 +551,22 @@ public class DetailedPost extends AppCompatActivity {
      ************ 핀치 줌 관련***********
      ********************************/
 
-    public boolean onTouchEvent(MotionEvent motionEvent) {
-        mScaleGestureDetector.onTouchEvent(motionEvent);
-        return true;
-    }
-
-    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
-        @Override
-        public boolean onScale(ScaleGestureDetector scaleGestureDetector){
-            mScaleFactor *= scaleGestureDetector.getScaleFactor();
-            mScaleFactor = Math.max(0.1f,
-                    Math.min(mScaleFactor, 10.0f));
-            dImage.setScaleX(mScaleFactor);
-            dImage.setScaleY(mScaleFactor);
-            return true;
-        }
-    }
+//    public boolean onTouchEvent(MotionEvent motionEvent) {
+//        mScaleGestureDetector.onTouchEvent(motionEvent);
+//        return true;
+//    }
+//
+//    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+//        @Override
+//        public boolean onScale(ScaleGestureDetector scaleGestureDetector){
+//            mScaleFactor *= scaleGestureDetector.getScaleFactor();
+//            mScaleFactor = Math.max(0.1f,
+//                    Math.min(mScaleFactor, 10.0f));
+//            dImage.setScaleX(mScaleFactor);
+//            dImage.setScaleY(mScaleFactor);
+//            return true;
+//        }
+//    }
     /********************************
      ************ 팔로우 관련***********
      ********************************/
