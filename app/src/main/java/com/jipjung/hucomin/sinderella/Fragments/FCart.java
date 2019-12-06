@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -41,6 +42,7 @@ public class FCart extends Fragment {
     private Button add_model_btn;
     private Button total_btn;
     private Button cart_item_btn;
+    private TextView no_product_cart;
 
     private ProductAdapter mAdapter;
     private List<Product> types;
@@ -68,7 +70,7 @@ public class FCart extends Fragment {
         user = (User) bundle.getSerializable("user");
         pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
         mArrayList = new ArrayList<>();
-
+        no_product_cart = v.findViewById(R.id.no_product_cart);
         total_btn = v.findViewById(R.id.total_btn);
         cart_item_btn = v.findViewById(R.id.cart_item_btn);
         add_model_btn = v.findViewById(R.id.add_model_btn);
@@ -85,6 +87,7 @@ public class FCart extends Fragment {
         total_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                no_product_cart.setVisibility(View.GONE);
                 Log.d("click","follower_true");
                 mAdapter.clear();
                 cart_item_btn.setSelected(false);
@@ -98,7 +101,12 @@ public class FCart extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("click",String.valueOf(cart_item_btn.isSelected()));
-                mAdapter.idFilter();
+                boolean isEmpty = mAdapter.idFilter();
+                if(isEmpty){
+                    no_product_cart.setVisibility(View.VISIBLE);
+                }else{
+                    no_product_cart.setVisibility(View.GONE);
+                }
                 total_btn.setSelected(false);
                 total_btn.setTextColor(Color.BLACK);
                 cart_item_btn.setSelected(true);

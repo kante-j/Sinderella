@@ -84,6 +84,7 @@ public class HomeFeed extends AppCompatActivity {
         super.onStart();
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -413,4 +414,32 @@ public class HomeFeed extends AppCompatActivity {
         ft.replace(R.id.fragment_container, fr);
         ft.commit();
     }
+
+
+    @Override
+    protected void onResume() {
+
+        if(fr!=null){
+            if(fr.getClass()==FHome.class){
+                fr = new FHome();
+            }else if(fr.getClass()==FFollow.class){
+                fr= new FFollow();
+            }else if(fr.getClass()==FCart.class){
+                fr= new FCart();
+            }else if(fr.getClass()==FMymenu.class){
+                fr= new FMymenu();
+            }
+
+            fr.setArguments(userbundle);
+
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container, fr);
+            ft.commit();
+        }
+
+        super.onResume();
+
+    }
+
 }
