@@ -45,7 +45,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private FirebaseFirestore firebaseFirestore;
     private FirebaseStorage storage;
     private StorageReference storageRef;
-
+    private List<Cart> carts;
     public ArrayList<Product> arrayList;
 
     private FirebaseFirestore firestore;
@@ -62,6 +62,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         arrayList = new ArrayList<>();
         arrayList.addAll(products);
+
+        firestore.collection("carts").whereEqualTo("user_id",user.getUser_id())
+                .whereEqualTo("status","active").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                if(!queryDocumentSnapshots.isEmpty()) {
+                    carts = queryDocumentSnapshots.toObjects(Cart.class);
+                }
+            }
+        });
+
     }
 
 
@@ -114,6 +125,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         return new ViewHolder(v);
     }
+
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         products.clear();
@@ -130,6 +142,31 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             }
         }
         notifyDataSetChanged();
+    }
+
+    public void idFilter() {
+        String user_id = user.getUser_id().toLowerCase(Locale.getDefault());
+        products.clear();
+        if (user_id.length() == 0) {
+            products.addAll(arrayList);
+        } else {
+            if (carts !=null) {
+                for (Product p : arrayList) {
+                    for (Cart c : carts) {
+                        if (c.getProduct_id().equals(p.getId())) {
+                            products.add(p);
+                        }
+                    }
+                }
+            }
+            notifyDataSetChanged();
+        }
+    }
+    public void clear() {
+        products.clear();
+        products.addAll(arrayList);
+        notifyDataSetChanged();
+
     }
 
 

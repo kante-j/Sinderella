@@ -69,6 +69,7 @@ public class AddProduct extends AppCompatActivity {
     private EditText price;
     private Spinner foot_size_correction2;
     private Button action_bar_back_close;
+    private EditText item_option_txt;
     private File tempFile;
     private static final String TAG = "blackjin";
 
@@ -96,73 +97,58 @@ public class AddProduct extends AppCompatActivity {
         tedPermission();
 
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
-
+        item_option_txt = findViewById(R.id.item_option_txt);
         price = findViewById(R.id.price);
         foot_size_correction2 = findViewById(R.id.foot_size_correction2);
         imageView =  findViewById(R.id.postImage);
         mFirestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-//        item_choose_btn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                int permissionCheck = ContextCompat.checkSelfPermission(AddProduct.this, Manifest.permission.CAMERA);
-////                if(permissionCheck== PackageManager.PERMISSION_DENIED){
-////                    // 권한 없음
-////                    ActivityCompat.requestPermissions(AddProduct.this,new String[]{Manifest.permission.CAMERA},0);
-////                    //Toast.makeText(getApplicationContext(),"권한없음",Toast.LENGTH_SHORT).show();
-////                }else{
-//                //권한 있음
-////                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-////                    startActivityForResult(intent,1);
-//
-////                    doTakePhotoAction();
-//                DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        doTakePhotoAction();
-//                    }
-//                };
-//
-//                DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        chooseImage();
-//                    }
-//                };
-//
-//                DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialog, int which) {
-//                        dialog.dismiss();
-//                    }
-//                };
-//
-//                new AlertDialog.Builder(AddProduct.this)
-//                        .setTitle("업로드할 이미지 선택")
-//                        .setPositiveButton("사진촬영", cameraListener)
-//                        .setNeutralButton("앨범선택", albumListener)
-//                        .setNegativeButton("취소", cancelListener)
-//                        .show();
-//            }
-////            }
-//        });
-        findViewById(R.id.btnGallery).setOnClickListener(new View.OnClickListener() {
+        item_choose_btn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                // 권한 허용에 동의하지 않았을 경우 토스트를 띄웁니다.
-                if(isPermission) goToAlbum();
-                else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
-            }
-        });
+            public void onClick(View v) {
+//                int permissionCheck = ContextCompat.checkSelfPermission(AddProduct.this, Manifest.permission.CAMERA);
+//                if(permissionCheck== PackageManager.PERMISSION_DENIED){
+//                    // 권한 없음
+//                    ActivityCompat.requestPermissions(AddProduct.this,new String[]{Manifest.permission.CAMERA},0);
+//                    //Toast.makeText(getApplicationContext(),"권한없음",Toast.LENGTH_SHORT).show();
+//                }else{
+                //권한 있음
+//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                    startActivityForResult(intent,1);
 
-        findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 권한 허용에 동의하지 않았을 경우 토스트를 띄웁니다.
-                if(isPermission)  takePhoto();
-                else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
+//                    doTakePhotoAction();
+                DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(isPermission)  takePhoto();
+                        else Toast.makeText(AddProduct.this, getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
+                    }
+                };
+
+                DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(isPermission) goToAlbum();
+                        else Toast.makeText(AddProduct.this, getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
+                    }
+                };
+
+                DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                };
+
+                new AlertDialog.Builder(AddProduct.this)
+                        .setTitle("업로드할 이미지 선택")
+                        .setNegativeButton("취소", cancelListener)
+                        .setPositiveButton("사진촬영", cameraListener)
+                        .setNeutralButton("앨범선택", albumListener)
+                        .show();
             }
+//            }
         });
         item_submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,7 +182,7 @@ public class AddProduct extends AppCompatActivity {
             docData.put("name", model_name.getText().toString());
             docData.put("price", Integer.valueOf(price.getText().toString()));
             docData.put("product_url", product_url.getText().toString());
-
+            docData.put("option",item_option_txt.getText().toString());
             if (imagePath != null) {
                 docData.put("image_url", imagePath);
             }

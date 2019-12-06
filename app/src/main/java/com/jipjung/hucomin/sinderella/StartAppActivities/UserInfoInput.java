@@ -53,6 +53,7 @@ public class UserInfoInput extends AppCompatActivity {
     private RadioGroup sex_group;
     private RadioGroup radio_foot_width;
     private int foot_size;
+    private TextView birth_date_txt;
     private String foot_width;
     private String birth_date;
     private String nickname;
@@ -68,7 +69,7 @@ public class UserInfoInput extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_information);
-
+        birth_date_txt = findViewById(R.id.birth_date_txt);
         textview_nickname = findViewById(R.id.info_nickname);
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -384,7 +385,7 @@ public class UserInfoInput extends AppCompatActivity {
                 }
                 birth_date = String.valueOf(year) + moy + doy;
 //                Log.d("qweqwe",birth_date);
-//                textView_Date.setText(year + "년" + monthOfYear + "월" + dayOfMonth + "일");
+                birth_date_txt.setText(year + "년" + monthOfYear + "월" + dayOfMonth + "일");
             }
         };
         birthbtn.setOnClickListener(new View.OnClickListener() {

@@ -90,69 +90,48 @@ public class OtherMyMenu extends AppCompatActivity {
         other_people_post_board.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(other_people_post_board.isSelected()){
-                    Log.d("click","post_false");
-                    other_people_post_board.setSelected(false);
-                    other_people_post_board.setTextColor(Color.BLACK);
-                    num_post.setTextColor(Color.BLACK);
-                }else{
-                    Log.d("click","post_true");
-                    other_people_following.setSelected(false);
-                    other_people_following.setTextColor(Color.BLACK);
-                    num_following.setTextColor(Color.BLACK);
-                    other_people_follower.setSelected(false);
-                    other_people_follower.setTextColor(Color.BLACK);
-                    num_follower.setTextColor(Color.BLACK);
-                    other_people_post_board.setSelected(true);
-                    other_people_post_board.setTextColor(Color.WHITE);
-                    num_post.setTextColor(Color.WHITE);
-                }
+                Log.d("click","post_true");
+                other_people_following.setSelected(false);
+                other_people_following.setTextColor(Color.BLACK);
+                num_following.setTextColor(Color.BLACK);
+                other_people_follower.setSelected(false);
+                other_people_follower.setTextColor(Color.BLACK);
+                num_follower.setTextColor(Color.BLACK);
+                other_people_post_board.setSelected(true);
+                other_people_post_board.setTextColor(Color.WHITE);
+                num_post.setTextColor(Color.WHITE);
             }
         });
 
         other_people_following.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(other_people_following.isSelected()){
-                    Log.d("click","following_false");
-                    other_people_following.setSelected(false);
-                    other_people_following.setTextColor(Color.BLACK);
-                    num_following.setTextColor(Color.BLACK);
-                }else{
-                    Log.d("click","following_true");
-                    other_people_post_board.setSelected(false);
-                    other_people_post_board.setTextColor(Color.BLACK);
-                    num_post.setTextColor(Color.BLACK);
-                    other_people_follower.setSelected(false);
-                    other_people_follower.setTextColor(Color.BLACK);
-                    num_follower.setTextColor(Color.BLACK);
-                    other_people_following.setSelected(true);
-                    other_people_following.setTextColor(Color.WHITE);
-                    num_following.setTextColor(Color.WHITE);
-                }
+                Log.d("click","following_true");
+                other_people_post_board.setSelected(false);
+                other_people_post_board.setTextColor(Color.BLACK);
+                num_post.setTextColor(Color.BLACK);
+                other_people_follower.setSelected(false);
+                other_people_follower.setTextColor(Color.BLACK);
+                num_follower.setTextColor(Color.BLACK);
+                other_people_following.setSelected(true);
+                other_people_following.setTextColor(Color.WHITE);
+                num_following.setTextColor(Color.WHITE);
             }
         });
 
         other_people_follower.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(other_people_follower.isSelected()){
-                    Log.d("click","follower_false");
-                    other_people_follower.setSelected(false);
-                    other_people_follower.setTextColor(Color.BLACK);
-                    num_follower.setTextColor(Color.WHITE);
-                }else{
-                    Log.d("click","follower_true");
-                    other_people_following.setSelected(false);
-                    other_people_following.setTextColor(Color.BLACK);
-                    num_following.setTextColor(Color.BLACK);
-                    other_people_post_board.setSelected(false);
-                    other_people_post_board.setTextColor(Color.BLACK);
-                    num_post.setTextColor(Color.BLACK);
-                    other_people_follower.setSelected(true);
-                    other_people_follower.setTextColor(Color.WHITE);
-                    num_follower.setTextColor(Color.WHITE);
-                }
+                Log.d("click","follower_true");
+                other_people_following.setSelected(false);
+                other_people_following.setTextColor(Color.BLACK);
+                num_following.setTextColor(Color.BLACK);
+                other_people_post_board.setSelected(false);
+                other_people_post_board.setTextColor(Color.BLACK);
+                num_post.setTextColor(Color.BLACK);
+                other_people_follower.setSelected(true);
+                other_people_follower.setTextColor(Color.WHITE);
+                num_follower.setTextColor(Color.WHITE);
             }
         });
 
