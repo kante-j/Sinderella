@@ -354,6 +354,7 @@ public class FSearchResult extends Fragment {
 
                 filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(), filter_arrayList);
 
+                
                 list_filter.setAdapter(filterRecyclerAdapter);
 
                 filterRecyclerAdapter.notifyDataSetChanged();
