@@ -168,12 +168,6 @@ public class FMymenu extends Fragment {
         followerbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(followerbtn.isSelected()){
-                    Log.d("click","follower_false");
-                    followerbtn.setSelected(false);
-                    followerbtn.setTextColor(Color.BLACK);
-                    follower_num.setTextColor(Color.BLACK);
-                }else{
                     Log.d("click","follower_true");
                     followingbtn.setSelected(false);
                     followingbtn.setTextColor(Color.BLACK);
@@ -182,7 +176,7 @@ public class FMymenu extends Fragment {
                     followerbtn.setTextColor(Color.WHITE);
                     follower_num.setTextColor(Color.WHITE);
                     follow_framelayout.setVisibility(getView().VISIBLE);
-                }
+
             }
         });
 
@@ -190,14 +184,6 @@ public class FMymenu extends Fragment {
         followingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("click",String.valueOf(followingbtn.isSelected()));
-                if(followingbtn.isSelected()){
-                    Log.d("click","following_false");
-                    followingbtn.setSelected(false);
-                    followingbtn.setTextColor(Color.BLACK);
-                    following_num.setTextColor(Color.BLACK);
-
-                }else{
                     Log.d("click","following_true");
                     followerbtn.setSelected(false);
                     followerbtn.setTextColor(Color.BLACK);
@@ -206,7 +192,7 @@ public class FMymenu extends Fragment {
                     followingbtn.setTextColor(Color.WHITE);
                     following_num.setTextColor(Color.WHITE);
                     follow_framelayout.setVisibility(getView().VISIBLE);
-                }
+
             }
         });
 
