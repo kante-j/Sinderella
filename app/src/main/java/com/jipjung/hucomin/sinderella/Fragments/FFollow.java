@@ -26,6 +26,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.jipjung.hucomin.sinderella.Adapters.FollowArrayAdapter;
 import com.jipjung.hucomin.sinderella.Adapters.RecyclerAdapter;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Post;
@@ -42,7 +43,7 @@ public class FFollow extends Fragment {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
-    private LinearLayout layout;
+//    private LinearLayout layout;
     private RecyclerAdapter mAdapter;
     private List<Post> types;
     private ArrayList<Post> mArrayList;
@@ -51,6 +52,7 @@ public class FFollow extends Fragment {
     boolean isScrolling = false;
     int currentItems, totalItems, scrollOutItems;
     ProgressBar pgsBar;
+    private RecyclerView list_follow;
 
     public FFollow() {
     }
@@ -123,29 +125,53 @@ public class FFollow extends Fragment {
             }
         });
 
-        layout = (LinearLayout) v.findViewById(R.id.follow_linear_layout);
-//        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        for (int i = 0; i < 1; i++) {
-//            layoutParams.setMargins(20, 20, 20, 20);
-//            layoutParams.gravity = Gravity.CENTER;
-            ImageView imageView = new ImageView(getActivity());
-
-            imageView.setImageResource(R.drawable.person_circle);
-//            imageView.setOnClickListener(documentImageListener);
-//            imageView.setLayoutParams(layoutParams);
-            imageView.setLayoutParams(
-                    new ViewGroup.LayoutParams(
-                            // or ViewGroup.LayoutParams.WRAP_CONTENT
-                            (int)dpToPx(getActivity(), 75),
-                            // or ViewGroup.LayoutParams.WRAP_CONTENT,
-                            (int)dpToPx(getActivity(), 75) ) );
-
-            layout.addView(imageView);
-
-        }
+//        layout = (LinearLayout) v.findViewById(R.id.follow_linear_layout);
+////        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+//        for (int i = 0; i < 1; i++) {
+////            layoutParams.setMargins(20, 20, 20, 20);
+////            layoutParams.gravity = Gravity.CENTER;
+//            ImageView imageView = new ImageView(getActivity());
+//
+//            imageView.setImageResource(R.drawable.person_circle);
+////            imageView.setOnClickListener(documentImageListener);
+////            imageView.setLayoutParams(layoutParams);
+//            imageView.setLayoutParams(
+//                    new ViewGroup.LayoutParams(
+//                            // or ViewGroup.LayoutParams.WRAP_CONTENT
+//                            (int)dpToPx(getActivity(), 75),
+//                            // or ViewGroup.LayoutParams.WRAP_CONTENT,
+//                            (int)dpToPx(getActivity(), 75) ) );
+//
+//            layout.addView(imageView);
+//
+//        }
 
         getFollowList();
         getListItems();
+
+        //TODO: follow Horizantal RecyclerView
+
+        list_follow = v.findViewById(R.id.list_follow);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        list_follow.setLayoutManager(linearLayoutManager);
+
+        //TODO: 없애시오
+        ArrayList<String> items = new ArrayList<>();
+        items.add("Hard");
+        items.add("DBHard");
+        items.add("Please");
+        items.add("Sorry");
+        items.add("Maybe");
+        // 여기까지
+
+        FollowArrayAdapter followArrayAdapter = new FollowArrayAdapter(getContext(),0, items);
+
+        list_follow.setAdapter(followArrayAdapter);
+
+
+
 
 
         return v;
