@@ -22,6 +22,7 @@ import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
 import com.jipjung.hucomin.sinderella.R;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -40,6 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private String price;
     private String image_url;
     private String product_url;
+    private String price_str;
     private Cart cart;
     private User user;
     private FirebaseFirestore firebaseFirestore;
@@ -88,7 +90,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.product = product;
         holder.category.setText(product.getCategory());
         holder.code_name.setText(product.getName());
-        holder.price.setText(String.valueOf(product.getPrice()));
+        //holder.price.setText(String.valueOf(product.getPrice()));
+        price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(product.getPrice());
+        holder.price.setText(price_str);
+
         holder.brand.setText(product.getBrand());
 
         if (product.getImage_url() != null) {
