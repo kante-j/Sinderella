@@ -75,6 +75,7 @@
                                         android:layout_gravity="center_vertical"
                                         android:layout_marginStart="10dp"
                                         android:layout_marginEnd="50dp"
+                                        android:fontFamily="@font/gyeonggititle_medium"
                                         android:gravity="left"
                                         android:letterSpacing="0.06"
                                         android:lineSpacingExtra="5sp"
@@ -195,7 +196,7 @@
                                     android:layout_height="25dp"
                                     android:layout_alignParentStart="true"
                                     android:layout_centerVertical="true"
-                                    android:background="@drawable/like" />
+                                    app:srcCompat="@drawable/like" />
 
                                 <TextView
                                     android:id="@+id/post_like_count"
@@ -204,6 +205,7 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="5dp"
                                     android:layout_toRightOf="@+id/btn_like"
+                                    android:fontFamily="@font/gyeonggititle_medium"
                                     android:gravity="start"
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
@@ -227,7 +229,8 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="5dp"
                                     android:layout_marginEnd="30dp"
-                                    android:layout_toRightOf="@+id/btn_like"
+                                    android:layout_toRightOf="@id/btn_comment"
+                                    android:fontFamily="@font/gyeonggititle_medium"
                                     android:gravity="start"
                                     android:lineSpacingExtra="1.5sp"
                                     android:text=""
@@ -252,6 +255,7 @@
                                     android:layout_height="match_parent"
                                     android:layout_alignParentEnd="true"
                                     android:layout_centerVertical="true"
+                                    android:fontFamily="@font/gyeonggititle_medium"
                                     android:text="5.0점"
                                     android:textSize="20sp" />
 
@@ -260,15 +264,16 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginStart="20dp"
-                                android:layout_marginEnd="20dp"
                                 android:orientation="vertical">
 
                                 <TextView
                                     android:id="@+id/dp_title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
                                     android:layout_marginBottom="5dp"
+                                    android:fontFamily="@font/gyeonggititle_medium"
                                     android:text="title"
                                     android:textColor="#707070"
                                     android:textSize="18sp"
@@ -277,6 +282,8 @@
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
                                     android:layout_marginBottom="10dp">
 
                                     <TextView
@@ -284,6 +291,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/size"
+                                        android:fontFamily="@font/gyeonggititle_medium"
                                         android:gravity="center_vertical"
                                         android:text="구매가격"
                                         android:textColor="#707070"
@@ -297,6 +305,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_below="@id/dp_posted_time"
                                         android:layout_marginBottom="5dp"
+                                        android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="구매 사이즈"
                                         android:textSize="16sp" />
 
@@ -305,6 +314,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="5dp"
+                                        android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="Time"
                                         android:textAlignment="textEnd" />
 
@@ -369,6 +379,8 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginEnd="15dp"
                                     android:orientation="vertical">
 
                                     <LinearLayout
@@ -615,6 +627,8 @@
                                     android:id="@+id/review_layout"
                                     android:layout_width="fill_parent"
                                     android:layout_height="37.5dp"
+                                    android:layout_marginStart="15dp"
+                                    android:layout_marginEnd="15dp"
                                     android:layout_marginBottom="10dp"
                                     android:background="@drawable/review_box"
                                     android:orientation="horizontal">
@@ -649,6 +663,8 @@
                                     android:id="@+id/review_write_textview"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="20dp"
+                                    android:layout_marginEnd="20dp"
                                     android:layout_marginBottom="20dp"
                                     android:visibility="visible">
 
@@ -676,6 +692,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="20dp"
+                        android:layout_marginBottom="5dp"
                         android:orientation="horizontal">
 
 
@@ -690,7 +707,7 @@
                         <Button
                             android:id="@+id/btn_comment_input"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="35dp"
                             android:background="@drawable/edit_box"
                             android:fontFamily="@font/gyeonggititle_medium"
                             android:letterSpacing="0.1"
