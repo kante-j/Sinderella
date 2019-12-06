@@ -1,12 +1,15 @@
 package com.jipjung.hucomin.sinderella.CartActivities;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -30,12 +33,15 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.jipjung.hucomin.sinderella.PostActivities.Posting;
 import com.jipjung.hucomin.sinderella.R;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -63,10 +69,15 @@ public class AddProduct extends AppCompatActivity {
     private EditText price;
     private Spinner foot_size_correction2;
     private Button action_bar_back_close;
+    private File tempFile;
+    private static final String TAG = "blackjin";
 
-    private static final int PICK_FROM_CAMERA = 0;
+    private Boolean isPermission = true;
+
+    //    private static final int PICK_FROM_CAMERA = 0;
+    private static final int PICK_FROM_CAMERA = 2;
     private static final int PICK_FROM_ALBUM = 1;
-    private static final int CROP_FROM_CAMERA = 2;
+//    private static final int CROP_FROM_CAMERA = 2;
 
     private Uri mImageCaptureUri;
     private ImageView mPhotoImageView;
@@ -82,80 +93,84 @@ public class AddProduct extends AppCompatActivity {
         model_name = findViewById(R.id.model_name);
         brand_name = findViewById(R.id.brand_name);
         product_url = findViewById(R.id.product_url);
+        tedPermission();
 
-        action_bar_back_close= findViewById(R.id.action_bar_back_close);
+        action_bar_back_close = findViewById(R.id.action_bar_back_close);
 
         price = findViewById(R.id.price);
         foot_size_correction2 = findViewById(R.id.foot_size_correction2);
-        imageView = (ImageView) findViewById(R.id.postImage);
+        imageView =  findViewById(R.id.postImage);
         mFirestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        item_choose_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                int permissionCheck = ContextCompat.checkSelfPermission(AddProduct.this, Manifest.permission.CAMERA);
-//                if(permissionCheck== PackageManager.PERMISSION_DENIED){
-//                    // 권한 없음
-//                    ActivityCompat.requestPermissions(AddProduct.this,new String[]{Manifest.permission.CAMERA},0);
-//                    //Toast.makeText(getApplicationContext(),"권한없음",Toast.LENGTH_SHORT).show();
-//                }else{
-                    //권한 있음
-//                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//                    startActivityForResult(intent,1);
-
-//                    doTakePhotoAction();
-                    DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            doTakePhotoAction();
-                        }
-                    };
-
-                    DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            chooseImage();
-                        }
-                    };
-
-                    DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener()
-                    {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which)
-                        {
-                            dialog.dismiss();
-                        }
-                    };
-
-                    new AlertDialog.Builder(AddProduct.this)
-                            .setTitle("업로드할 이미지 선택")
-                            .setPositiveButton("사진촬영", cameraListener)
-                            .setNeutralButton("앨범선택", albumListener)
-                            .setNegativeButton("취소", cancelListener)
-                            .show();
-                }
+//        item_choose_btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                int permissionCheck = ContextCompat.checkSelfPermission(AddProduct.this, Manifest.permission.CAMERA);
+////                if(permissionCheck== PackageManager.PERMISSION_DENIED){
+////                    // 권한 없음
+////                    ActivityCompat.requestPermissions(AddProduct.this,new String[]{Manifest.permission.CAMERA},0);
+////                    //Toast.makeText(getApplicationContext(),"권한없음",Toast.LENGTH_SHORT).show();
+////                }else{
+//                //권한 있음
+////                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+////                    startActivityForResult(intent,1);
+//
+////                    doTakePhotoAction();
+//                DialogInterface.OnClickListener cameraListener = new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        doTakePhotoAction();
+//                    }
+//                };
+//
+//                DialogInterface.OnClickListener albumListener = new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        chooseImage();
+//                    }
+//                };
+//
+//                DialogInterface.OnClickListener cancelListener = new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                        dialog.dismiss();
+//                    }
+//                };
+//
+//                new AlertDialog.Builder(AddProduct.this)
+//                        .setTitle("업로드할 이미지 선택")
+//                        .setPositiveButton("사진촬영", cameraListener)
+//                        .setNeutralButton("앨범선택", albumListener)
+//                        .setNegativeButton("취소", cancelListener)
+//                        .show();
 //            }
+////            }
+//        });
+        findViewById(R.id.btnGallery).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 권한 허용에 동의하지 않았을 경우 토스트를 띄웁니다.
+                if(isPermission) goToAlbum();
+                else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        findViewById(R.id.btnCamera).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 권한 허용에 동의하지 않았을 경우 토스트를 띄웁니다.
+                if(isPermission)  takePhoto();
+                else Toast.makeText(view.getContext(), getResources().getString(R.string.permission_2), Toast.LENGTH_LONG).show();
+            }
         });
         item_submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String eatoutBody = null;
-                String transBody;
-//                writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
-//                if(imageView.getDrawable()==null) {
-//                        writeNewPost(uid, nickname, text_title.getText().toString(), text_context.getText().toString());
-//                    if(validatePost())
-//                        finish();
-//                }else{
-                if(validatePost())
-                    doTakePhotoAction();
-                writeNewPost();
-//                }
+                if (validatePost()) {
+                    uploadImage();
+                    writeNewPost();
+                }
             }
         });
 
@@ -169,31 +184,56 @@ public class AddProduct extends AppCompatActivity {
 
     }
 
-    private void writeNewPost(){
+    private void writeNewPost() {
         WriteBatch batch = mFirestore.batch();
         DocumentReference products = mFirestore.collection("products").document();
-        if(validatePost()){
+        if (validatePost()) {
             Map<String, Object> docData = new HashMap<>();
-            docData.put("id",products.getId());
+            docData.put("id", products.getId());
 
-            docData.put("brand",brand_name.getText().toString());
-            docData.put("category",foot_size_correction2.getSelectedItem().toString());
-            docData.put("name",model_name.getText().toString());
-            docData.put("price",Integer.valueOf(price.getText().toString()));
-            docData.put("product_url",product_url.getText().toString());
+            docData.put("brand", brand_name.getText().toString());
+            docData.put("category", foot_size_correction2.getSelectedItem().toString());
+            docData.put("name", model_name.getText().toString());
+            docData.put("price", Integer.valueOf(price.getText().toString()));
+            docData.put("product_url", product_url.getText().toString());
 
-            if(imagePath!=null){
-                docData.put("image_url",imagePath);
+            if (imagePath != null) {
+                docData.put("image_url", imagePath);
             }
             SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
             String format = s.format(new Date());
 
-            docData.put("created_at",format);
+            docData.put("created_at", format);
             batch.set(products, docData);
             batch.commit();
         }
     }
-    public void shoeDialogNotImage(){
+
+    private void tedPermission() {
+
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+                // 권한 요청 성공
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+                // 권한 요청 실패
+            }
+        };
+
+        TedPermission.with(this)
+                .setPermissionListener(permissionListener)
+                .setRationaleMessage(getResources().getString(R.string.permission_2))
+                .setDeniedMessage(getResources().getString(R.string.permission_1))
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .check();
+
+    }
+
+    public void shoeDialogNotImage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("사진을 넣어주세요!");
         builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
@@ -204,116 +244,83 @@ public class AddProduct extends AppCompatActivity {
         });
         builder.show();
     }
-    public boolean validatePost(){
+
+    public boolean validatePost() {
         boolean valid = true;
-        if(filePath==null){
+        if (filePath == null) {
             shoeDialogNotImage();
             valid = false;
             return valid;
         }
         return valid;
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == 71 && resultCode == RESULT_OK
-//                && data != null && data.getData() != null )
-//        {
-//            filePath = data.getData();
-//            try {
-//                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-//                imageView.setImageBitmap(bitmap);
-//            }
-//            catch (IOException e)
-//            {
-//                e.printStackTrace();
-//            }
-//            item_choose_btn.setVisibility(View.INVISIBLE);
-//            imageView.setVisibility(View.VISIBLE);
-//        }
+        if (resultCode != Activity.RESULT_OK) {
+            Toast.makeText(this, "취소 되었습니다.", Toast.LENGTH_SHORT).show();
 
-        if(resultCode != RESULT_OK)
-        {
+            if (tempFile != null) {
+                if (tempFile.exists()) {
+                    if (tempFile.delete()) {
+                        Log.e(TAG, tempFile.getAbsolutePath() + " 삭제 성공");
+                        tempFile = null;
+                    }
+                }
+            }
+
             return;
         }
 
-        switch(requestCode)
-        {
-            case CROP_FROM_CAMERA:
-            {
-                // 크롭이 된 이후의 이미지를 넘겨 받습니다.
-                // 이미지뷰에 이미지를 보여준다거나 부가적인 작업 이후에
-                // 임시 파일을 삭제합니다.
-                final Bundle extras = data.getExtras();
+        if (requestCode == PICK_FROM_ALBUM) {
 
-                if(extras != null)
-                {
-                    Bitmap photo = extras.getParcelable("data");
-                    item_choose_btn.setVisibility(View.INVISIBLE);
-                    imageView.setVisibility(View.VISIBLE);
-                    imageView.setImageBitmap(photo);
+            filePath = data.getData();
+            Log.d(TAG, "PICK_FROM_ALBUM photoUri : " + filePath);
+
+            Cursor cursor = null;
+
+            try {
+
+                /*
+                 *  Uri 스키마를
+                 *  content:/// 에서 file:/// 로  변경한다.
+                 */
+                String[] proj = {MediaStore.Images.Media.DATA};
+
+                assert filePath != null;
+                cursor = getContentResolver().query(filePath, proj, null, null, null);
+
+                assert cursor != null;
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+
+                cursor.moveToFirst();
+
+                tempFile = new File(cursor.getString(column_index));
+
+                Log.d(TAG, "tempFile Uri : " + Uri.fromFile(tempFile));
+
+            } finally {
+                if (cursor != null) {
+                    cursor.close();
                 }
-
-                // 임시 파일 삭제
-                File f = new File(filePath.getPath());
-                if(f.exists())
-                {
-                    f.delete();
-                }
-
-                break;
             }
 
-            case PICK_FROM_ALBUM:
-            {
-                // 이후의 처리가 카메라와 같으므로 일단  break없이 진행합니다.
-                // 실제 코드에서는 좀더 합리적인 방법을 선택하시기 바랍니다.
+            setImage();
 
-//                mImageCaptureUri = data.getData();
-                filePath = data.getData();
-                try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                    imageView.setImageBitmap(bitmap);
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
-                item_choose_btn.setVisibility(View.INVISIBLE);
-                imageView.setVisibility(View.VISIBLE);
-            }
+        } else if (requestCode == PICK_FROM_CAMERA) {
 
-            case PICK_FROM_CAMERA:
-            {
-                // 이미지를 가져온 이후의 리사이즈할 이미지 크기를 결정합니다.
-                // 이후에 이미지 크롭 어플리케이션을 호출하게 됩니다.
+            setImage();
 
-                Intent intent = new Intent("com.android.camera.action.CROP");
-                intent.setDataAndType(filePath, "image/*");
-
-                intent.putExtra("outputX", 90);
-                intent.putExtra("outputY", 90);
-                intent.putExtra("aspectX", 1);
-                intent.putExtra("aspectY", 1);
-                intent.putExtra("scale", true);
-                intent.putExtra("return-data", true);
-                startActivityForResult(intent, CROP_FROM_CAMERA);
-
-                break;
-            }
         }
-
     }
+
     private void uploadImage() {
 
-        if(filePath != null)
-        {
+        if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(AddProduct.this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            final StorageReference ref = storageReference.child("products/"+ UUID.randomUUID().toString());
+            final StorageReference ref = storageReference.child("products/" + UUID.randomUUID().toString());
             imagePath = ref.getPath();
             ref.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -321,6 +328,8 @@ public class AddProduct extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             Toast.makeText(AddProduct.this, "Uploaded", Toast.LENGTH_SHORT).show();
+
+                            tempFile = null;
                             finish();
                         }
                     })
@@ -328,50 +337,81 @@ public class AddProduct extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(AddProduct.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddProduct.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            progressDialog.setMessage("Uploaded " + (int) progress + "%");
+
+                            tempFile = null;
                         }
                     });
         }
     }
-    private void chooseImage() {
+    private void goToAlbum() {
+
         Intent intent = new Intent(Intent.ACTION_PICK);
-        intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
+        intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
         startActivityForResult(intent, PICK_FROM_ALBUM);
-//        Intent intent = new Intent();
-//        intent.setType("image/*");
-//        intent.setAction(Intent.ACTION_PICK);
-//        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 71);
     }
 
-    private void doTakePhotoAction()
-    {
-        /*
-         * 참고 해볼곳
-         * http://2009.hfoss.org/Tutorial:Camera_and_Gallery_Demo
-         * http://stackoverflow.com/questions/1050297/how-to-get-the-url-of-the-captured-image
-         * http://www.damonkohler.com/2009/02/android-recipes.html
-         * http://www.firstclown.us/tag/android/
-         */
+    private void setImage() {
+
+//        ImageView imageView = findViewById(R.id.dp_image);
+
+        imageView.setVisibility(View.VISIBLE);
+        item_choose_btn.setVisibility(View.GONE);
+        BitmapFactory.Options options = new BitmapFactory.Options();
+        Bitmap originalBm = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
+        Log.d(TAG, "setImage : " + tempFile.getAbsolutePath());
+
+        imageView.setImageBitmap(originalBm);
+
+
+    }
+
+    private void takePhoto() {
 
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        // 임시로 사용할 파일의 경로를 생성
-        String url = "tmp_" + String.valueOf(System.currentTimeMillis()) + ".jpg";
-//        filePath = Uri.fromFile(new File(Environment.getExternalStorageDirectory(), url));
-        filePath = FileProvider.getUriForFile(this, "com.bignerdranch.android.test.fileprovider",
-                new File(Environment.getExternalStorageDirectory(), url));
+        try {
+            tempFile = createImageFile();
+        } catch (IOException e) {
+            Toast.makeText(this, "이미지 처리 오류! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+            finish();
+            e.printStackTrace();
+        }
+        if (tempFile != null) {
+//            String url = "tmp_" + String.valueOf(System.currentTimeMillis()) + ".jpg";
+//            filePath = FileProvider.getUriForFile(this, "com.bignerdranch.android.test.fileprovider",
+//                    new File(Environment.getExternalStorageDirectory(), url));
+            filePath = FileProvider.getUriForFile(this, "com.test.android.test.fileprovider", tempFile);
+//            Uri photoUri = Uri.fromFile(tempFile);
+//            Uri photoUri = Uri.fromFile(tempFile);
 
-        intent.putExtra(android.provider.MediaStore.EXTRA_OUTPUT, filePath);
-//        // 특정기기에서 사진을 저장못하는 문제가 있어 다음을 주석처리 합니다.
-//        //intent.putExtra("return-data", true);
-        startActivityForResult(intent, PICK_FROM_CAMERA);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, filePath);
+            startActivityForResult(intent, PICK_FROM_CAMERA);
+        }
     }
+
+    private File createImageFile() throws IOException {
+
+        // 이미지 파일 이름 ( blackJin_{시간}_ )
+        String timeStamp = new SimpleDateFormat("HHmmss").format(new Date());
+        String imageFileName = "blackJin_" + timeStamp + "_";
+
+        // 이미지가 저장될 폴더 이름 ( blackJin )
+        File storageDir = new File(Environment.getExternalStorageDirectory() + "/blackJin/");
+        if (!storageDir.exists()) storageDir.mkdirs();
+
+        // 빈 파일 생성
+        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+
+        return image;
+    }
+
 }

@@ -86,6 +86,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     }
                 });
 
+        firestore.collection("users").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                users = queryDocumentSnapshots.toObjects(User.class);
+            }
+        });
+
     }
 
 
@@ -129,6 +136,39 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     }
                 });
 
+        User post_user = null;
+        for (User p : users){
+            if(p.getUser_id().equals(post.getUser_id())){
+                post_user = p;
+                break;
+            }
+        }
+        if(post_user!=null){
+            holder.foot_size_header.setText(String.valueOf(post_user.getFoot_size()));
+            if(post_user.getFoot_width().equals("small")){
+                holder.foot_width_header.setText("작은편");
+            }else if(post_user.getFoot_width().equals("normal")){
+                holder.foot_width_header.setText("보통");
+            }else{
+                holder.foot_width_header.setText("큰편");
+            }
+        }
+//        firestore.collection("users").document(post.getUser_id()).get()
+//                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//                    @Override
+//                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                        User post_user = documentSnapshot.toObject(User.class);
+//                        holder.foot_size_header.setText(String.valueOf(post_user.getFoot_size()));
+//                        if(post_user.getFoot_width().equals("small")){
+//                            holder.foot_width_header.setText("작은편");
+//                        }else if(post_user.getFoot_width().equals("normal")){
+//                            holder.foot_width_header.setText("보통");
+//                        }else{
+//                            holder.foot_width_header.setText("큰편");
+//                        }
+//                    }
+//                });
+
         //TODO : 그냥 FCOOK 이런데서 불러올 때 포스트 객체에다가 닉네임 칼럼 추가해서 넘겨주는게 로딩 안걸리고 젤 좋은것 같다...
 //        firestore.collection("users").document(firebaseAuth.getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
 //            @Override
@@ -158,6 +198,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.post_category = post.getCategory();
         holder.rating.setRating(post.rating);
         holder.star_evaluation.setText(String.valueOf(post.rating));
+
+
 //        holder.category_gone.setText(post.getCategory());
 //        holder.shoes_weight_gone.setText(post.getShoes_weight());
 //        holder.shoes_size_gone.setText(post.getShoes_size());
@@ -303,6 +345,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private String post_category;
         private TextView posting_user_id;
         private Post h_post;
+        private TextView foot_size_header;
+        private TextView foot_width_header;
         private Follow h_follow;
 
         //gone part
@@ -318,7 +362,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             star_evaluation = itemView.findViewById(R.id.star_evaluation);
             image = (ImageView) itemView.findViewById(R.id.postedImage);
             rating = itemView.findViewById(R.id.ratingBar);
-
+            foot_size_header = itemView.findViewById(R.id.foot_size_header);
+            foot_width_header = itemView.findViewById(R.id.foot_width_header);
             comment_counts = itemView.findViewById(R.id.commet_count);
             title = (TextView) itemView.findViewById(R.id.title);
             body = (TextView) itemView.findViewById(R.id.detail);
