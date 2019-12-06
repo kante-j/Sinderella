@@ -86,6 +86,7 @@ public class FCart extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("click","follower_true");
+                mAdapter.clear();
                 cart_item_btn.setSelected(false);
                 cart_item_btn.setTextColor(Color.BLACK);
                 total_btn.setSelected(true);
@@ -97,6 +98,7 @@ public class FCart extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("click",String.valueOf(cart_item_btn.isSelected()));
+                mAdapter.idFilter();
                 total_btn.setSelected(false);
                 total_btn.setTextColor(Color.BLACK);
                 cart_item_btn.setSelected(true);
