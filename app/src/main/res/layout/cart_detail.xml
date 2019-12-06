@@ -54,7 +54,6 @@
                         <com.github.chrisbanes.photoview.PhotoView
                             android:id="@+id/shoes_image"
                             android:layout_width="175dp"
-                            android:scaleType="centerCrop"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical" />
 
