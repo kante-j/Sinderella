@@ -143,29 +143,29 @@ public class FCart extends Fragment {
 //                }
             }
 
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                currentItems = layoutManager.getChildCount();
-                totalItems = layoutManager.getItemCount();
-                scrollOutItems = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
-
-                if(isScrolling && (currentItems + scrollOutItems >= totalItems)){
-                    isScrolling = false;
-                    fetchData();
-                }
-            }
+//            @Override
+//            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//                currentItems = layoutManager.getChildCount();
+//                totalItems = layoutManager.getItemCount();
+//                scrollOutItems = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
+//
+//                if(isScrolling && (currentItems + scrollOutItems >= totalItems)){
+//                    isScrolling = false;
+//                    fetchData();
+//                }
+//            }
         });
 
-        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipe_layout);
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-//                types = new ArrayList<Product>();
-                getListItems();
-                swipeContainer.setRefreshing(false);
-            }
-        });
+//        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipe_layout);
+//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+////                types = new ArrayList<Product>();
+//                getListItems();
+//                swipeContainer.setRefreshing(false);
+//            }
+//        });
         add_model_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
