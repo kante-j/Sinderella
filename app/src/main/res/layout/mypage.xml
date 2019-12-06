@@ -273,74 +273,84 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="1dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/mypage_post_listbox">
-                android:visibility="gone"></FrameLayout>
-
-
-            <LinearLayout
-                android:id="@+id/mypage_commet_container_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="2dp"
-                android:background="@drawable/mypage_following"
-                android:divider="#76A4BB"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/mypage_commet_upper_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/gyeonggititle_medium"
-                    android:gravity="center"
-                    android:text="내가 쓴 게시물"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-
-            <FrameLayout
-                android:id="@+id/mypage_commet_fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="320dp"
-                android:layout_above="@id/under"
-                android:layout_below="@id/mypage_commet_container_layout"
-                android:layout_gravity="center"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                android:background="@null">
+                android:background="@drawable/mypage_post_listbox"
+                android:visibility="gone">
 
             </FrameLayout>
 
-            <View
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="19dp"
-                android:layout_marginEnd="19dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/profilemodify_myfit_under" />
+                android:layout_height="wrap_content"
+                >
 
-            <Button
-                android:id="@+id/mypage_logout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_below="@id/mypage_commet_container_layout"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="50dp"
-                android:background="@drawable/logout"
-                android:fontFamily="@font/gyeonggititle_bold"
-                android:gravity="center"
-                android:text="로그아웃"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/mypage_commet_container_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/mypage_following"
+                    android:divider="#76A4BB"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/mypage_commet_upper_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:gravity="center"
+                        android:text="내가 쓴 게시물"
+                        android:textColor="@android:color/black"
+                        android:textSize="20sp"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+
+                <FrameLayout
+                    android:id="@+id/mypage_commet_fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="320dp"
+                    android:layout_below="@id/mypage_commet_container_layout"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@null"
+                    android:visibility="gone"
+                    >
+
+                </FrameLayout>
+
+                <View
+                    android:id="@+id/comment_fragement_container_under_bar"
+                    android:layout_below="@+id/mypage_commet_fragment_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="19dp"
+                    android:layout_marginEnd="19dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/profilemodify_myfit_under" />
+
+                <Button
+                    android:id="@+id/mypage_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/comment_fragement_container_under_bar"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@drawable/logout"
+                    android:fontFamily="@font/gyeonggititle_bold"
+                    android:gravity="center"
+                    android:text="로그아웃"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
 
 
         </LinearLayout>
