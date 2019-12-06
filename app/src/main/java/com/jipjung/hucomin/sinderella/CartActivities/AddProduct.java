@@ -69,6 +69,7 @@ public class AddProduct extends AppCompatActivity {
     private EditText price;
     private Spinner foot_size_correction2;
     private Button action_bar_back_close;
+    private EditText item_option_txt;
     private File tempFile;
     private static final String TAG = "blackjin";
 
@@ -96,7 +97,7 @@ public class AddProduct extends AppCompatActivity {
         tedPermission();
 
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
-
+        item_option_txt = findViewById(R.id.item_option_txt);
         price = findViewById(R.id.price);
         foot_size_correction2 = findViewById(R.id.foot_size_correction2);
         imageView =  findViewById(R.id.postImage);
@@ -181,7 +182,7 @@ public class AddProduct extends AppCompatActivity {
             docData.put("name", model_name.getText().toString());
             docData.put("price", Integer.valueOf(price.getText().toString()));
             docData.put("product_url", product_url.getText().toString());
-
+            docData.put("option",item_option_txt.getText().toString());
             if (imagePath != null) {
                 docData.put("image_url", imagePath);
             }

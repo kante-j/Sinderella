@@ -15,6 +15,7 @@ public class Cart implements Serializable {
     public String product_id;
     public String created_at;
     public String status;
+    public String option;
 
 
     public Cart() {
@@ -40,6 +41,10 @@ public class Cart implements Serializable {
         return product_id;
     }
 
+    public String getOption() {
+        return option;
+    }
+
     public String getCreated_at() {
         return created_at;
     }
@@ -53,6 +58,7 @@ public class Cart implements Serializable {
         HashMap<String, Object> result = new HashMap<>();
         result.put("id",id);
         result.put("user_id",user_id);
+        result.put("option",option);
         result.put("product_id",product_id);
         result.put("status", status);
         result.put("created_at",created_at);
