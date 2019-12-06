@@ -103,9 +103,9 @@
                     android:id="@+id/sex_group"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
                     android:background="@drawable/user_information_input"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
 
                     >
 
@@ -244,7 +244,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:fontFamily="@font/gyeonggititle_bold"
                     android:gravity="center"
                     android:letterSpacing="0.06"
@@ -262,9 +262,12 @@
                     <RadioGroup
                         android:id="@+id/foot_width_group"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:gravity="center"
                         android:orientation="horizontal"
+                        android:visibility="visible"
                         >
 
                         <RadioButton
@@ -308,11 +311,14 @@
                     <RadioButton
                         android:id="@+id/unknown"
                         android:layout_width="match_parent"
-                        android:layout_height="50dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:fontFamily="@font/gyeonggititle_medium"
                         android:text="잘 모르겠다"
                         android:textColor="#757070"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        />
 
                 </LinearLayout>
 
@@ -326,6 +332,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="25dp"
                 android:background="@drawable/user_informatrion_check_foot_width"
+                android:visibility="gone"
                 android:orientation="vertical">
 
                 <LinearLayout
