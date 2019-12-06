@@ -70,6 +70,10 @@ public class FSearchResult extends Fragment {
     private TextView filter_item;
     private RecyclerView list_filter;
     private ImageView delete_filter;
+    private ImageView filter_initialization;
+
+    private ArrayList<String> filter_arrayList;
+    private FilterRecyclerAdapter filterRecyclerAdapter;
 
     public FSearchResult() {
 
@@ -157,6 +161,7 @@ public class FSearchResult extends Fragment {
         applytext = v.findViewById(R.id.apply);
         filterscreen = v.findViewById(R.id.filter_screen);
         filterbtn = v.findViewById(R.id.btn_filter);
+        filter_initialization = v.findViewById(R.id.filter_initialization);
 
         filterbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,6 +177,12 @@ public class FSearchResult extends Fragment {
                     filterscreen.setVisibility(View.VISIBLE);
                 } else {
                     filterscreen.setVisibility(View.GONE);
+                }
+
+                if (filter_initialization.getVisibility() == View.GONE) {
+                    filter_initialization.setVisibility(View.VISIBLE);
+                } else {
+                    filter_initialization.setVisibility(View.GONE);
                 }
 
             }
@@ -203,12 +214,6 @@ public class FSearchResult extends Fragment {
         foot_size_spinner2.setAdapter(SpinnerAdapter);
 
 
-
-
-
-
-
-
 //        list_filter.setAdapter(SpinnerAdapter);
 
 
@@ -235,16 +240,18 @@ public class FSearchResult extends Fragment {
 
 
 
-
-
-
         applytext.setOnClickListener(new View.OnClickListener() {
+
+
+
+
             @Override
             public void onClick(View v) {
                 filterscreen.setVisibility(View.GONE);
                 applytext.setVisibility(View.GONE);
+                filter_initialization.setVisibility(View.GONE);
 
-                ArrayList<String> filter_arrayList = new ArrayList<String>();
+                filter_arrayList = new ArrayList<String>();
 
 
                 if (small_foot_checkbox.isChecked()) {
@@ -263,37 +270,24 @@ public class FSearchResult extends Fragment {
                     Log.d("foot_size", "bigger_foot");
                 }
 
-
-
-
                 //Spinner
-
-                ArrayList<String> filter_spinner_arrayList = new ArrayList<String>();
-
-
-
                 foot_size_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         Log.v("foot_size_spinner", foot_size_spinner.getSelectedItem().toString());
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
                     }
                 });
 
-
                 foot_size_spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                         Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
-
-
                     }
-
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
@@ -302,33 +296,39 @@ public class FSearchResult extends Fragment {
 
                 filter_arrayList.add(foot_size_spinner.getSelectedItem().toString() +" ~ "+foot_size_spinner2.getSelectedItem().toString() );
 
-                for(int i = 0 ; i < filter_spinner_arrayList.size(); i++) {
-                    Log.d("do it!", "for function");
-                    Log.d("what?", filter_spinner_arrayList.get(i));
-                }
-
-                FilterRecyclerAdapter filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
+                filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
 
                 list_filter.setAdapter(filterRecyclerAdapter);
 
                 filterRecyclerAdapter.notifyDataSetChanged();
                 //TODO: 값은 나오는데 전달은 어디로 하는지?
                 //체크된 값을 어디로 넘겨야된다.
-
-
-//                for(int i = 0 ; i < filter_arrayList.size(); i++) {
-//                    Log.d("do it!", "for function");
-//                    Log.d("what?", filter_arrayList.get(i));
-//                }
-//                    Data data = new Data();
-//                    data.setFilterItem(filter_arrayList.get(i));
-//                    filterRecyclerAdapter.addItem(data);
-//
-//                }
             }
         });
 
 
+
+        //TODO:초기화 버튼
+        filter_initialization.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filter_arrayList = new ArrayList<String>();
+                filterscreen.setVisibility(View.GONE);
+                applytext.setVisibility(View.GONE);
+                filter_initialization.setVisibility(View.GONE);
+
+                small_foot_checkbox.setChecked(false);
+                normal_foot_checkbox.setChecked(false);
+                bigger_foot_checkbox.setChecked(false);
+
+                filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
+
+                list_filter.setAdapter(filterRecyclerAdapter);
+
+                filterRecyclerAdapter.notifyDataSetChanged();
+
+            }
+        });
 
         return v;
     }
