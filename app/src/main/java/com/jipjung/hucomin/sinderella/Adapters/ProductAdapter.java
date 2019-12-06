@@ -62,6 +62,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         arrayList = new ArrayList<>();
         arrayList.addAll(products);
+
+//        firestore.collection("")
     }
 
 
@@ -114,6 +116,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         return new ViewHolder(v);
     }
+
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         products.clear();
@@ -131,6 +134,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
         notifyDataSetChanged();
     }
+
+//    public void idFilter(String user_id) {
+//        user_id = user_id.toLowerCase(Locale.getDefault());
+//        products.clear();
+//        if (user_id.length() == 0) {
+//            products.addAll(arrayList);
+//        } else {
+//            for (Product p : arrayList) {
+//                String id = p.getName();
+//                String b = p.getBrand();
+//                if (t.toLowerCase().contains(charText) ||
+//                        b.toLowerCase().contains(charText)){
+//                    products.add(p);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
