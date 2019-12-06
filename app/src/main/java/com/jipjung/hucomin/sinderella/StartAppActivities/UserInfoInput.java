@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -60,6 +61,8 @@ public class UserInfoInput extends AppCompatActivity {
 
     private Button birthbtn;
     private DatePickerDialog.OnDateSetListener callbackMethod;
+    private LinearLayout check_foot_width;
+    private RadioButton unkown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +73,12 @@ public class UserInfoInput extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         sex_group = findViewById(R.id.sex_group);
-        submit_btn = (Button)findViewById(R.id.information_button);
+        submit_btn = (Button) findViewById(R.id.information_button);
         birthbtn = findViewById(R.id.birth_date);
         spinner_foot_size = findViewById(R.id.foot_size);
         radio_foot_width = findViewById(R.id.foot_width_group);
+
+        check_foot_width = findViewById(R.id.check_foot_width);
 //<<<<<<< HEAD
 //        TextView nike_airforce_hover;
 //        AnimatorSet animatorSet;
@@ -105,12 +110,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(nike_airforce_text.getVisibility()==view.INVISIBLE){
+                        if (nike_airforce_text.getVisibility() == view.INVISIBLE) {
                             nike_airforce_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             nike_airforce_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -129,12 +133,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(reebok_text.getVisibility()==view.INVISIBLE){
+                        if (reebok_text.getVisibility() == view.INVISIBLE) {
                             reebok_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             reebok_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -153,12 +156,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(newbalance_text.getVisibility()==view.INVISIBLE){
+                        if (newbalance_text.getVisibility() == view.INVISIBLE) {
                             newbalance_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             newbalance_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -177,12 +179,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(converse_text.getVisibility()==view.INVISIBLE){
+                        if (converse_text.getVisibility() == view.INVISIBLE) {
                             converse_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             converse_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -201,12 +202,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(vans_text.getVisibility()==view.INVISIBLE){
+                        if (vans_text.getVisibility() == view.INVISIBLE) {
                             vans_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             vans_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -225,12 +225,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(adidas_text.getVisibility()==view.INVISIBLE){
+                        if (adidas_text.getVisibility() == view.INVISIBLE) {
                             adidas_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             adidas_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -249,12 +248,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(skechers_text.getVisibility()==view.INVISIBLE){
+                        if (skechers_text.getVisibility() == view.INVISIBLE) {
                             skechers_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             skechers_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -273,12 +271,11 @@ public class UserInfoInput extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 int action = motionEvent.getAction();
-                switch (action){
+                switch (action) {
                     case MotionEvent.ACTION_DOWN:
-                        if(fila_text.getVisibility()==view.INVISIBLE){
+                        if (fila_text.getVisibility() == view.INVISIBLE) {
                             fila_text.setVisibility(View.VISIBLE);
-                        }
-                        else{
+                        } else {
                             fila_text.setVisibility(view.INVISIBLE);
                         }
                         break;
@@ -297,7 +294,7 @@ public class UserInfoInput extends AppCompatActivity {
         radio_foot_width.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.small_foot:
                         foot_width = "small";
                         break;
@@ -307,6 +304,8 @@ public class UserInfoInput extends AppCompatActivity {
                     case R.id.bigger_foot:
                         foot_width = "big";
                         break;
+
+
                 }
             }
         });
@@ -314,7 +313,7 @@ public class UserInfoInput extends AppCompatActivity {
         submit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!validateForm()){
+                if (!validateForm()) {
                     return;
                 }
 
@@ -322,12 +321,12 @@ public class UserInfoInput extends AppCompatActivity {
                 DocumentReference users = firebaseFirestore.collection("users").document(firebaseUser.getUid());
                 Map<String, Object> docData = new HashMap<>();
                 docData.put("nickname", textview_nickname.getText().toString());
-                docData.put("user_id",firebaseUser.getUid());
+                docData.put("user_id", firebaseUser.getUid());
                 docData.put("sex", sex);
                 docData.put("birth_date", birth_date);
                 docData.put("foot_size", foot_size);
                 docData.put("foot_width", foot_width);
-                docData.put("age",2019-Integer.valueOf(year_to_age)+1);
+                docData.put("age", 2019 - Integer.valueOf(year_to_age) + 1);
 
 //                SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
 //                String format = s.format(new Date());
@@ -349,43 +348,41 @@ public class UserInfoInput extends AppCompatActivity {
         sex_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.man:
-                        sex="male";
+                        sex = "male";
                         break;
                     case R.id.woman:
-                        sex="female";
+                        sex = "female";
                         break;
                 }
             }
         });
 
-        callbackMethod = new DatePickerDialog.OnDateSetListener()
-        {
+        callbackMethod = new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-            {
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 //                Log.d("qweqwe",String.valueOf(monthOfYear));
                 String moy;
-                monthOfYear = monthOfYear+1;
+                monthOfYear = monthOfYear + 1;
                 year_to_age = String.valueOf(year);
 //                Log.d("qweqwe",String.valueOf(monthOfYear/10));
-                if(monthOfYear/10==0){
-                    moy = "0"+String.valueOf(monthOfYear);
-                }else if(monthOfYear == 10){
+                if (monthOfYear / 10 == 0) {
+                    moy = "0" + String.valueOf(monthOfYear);
+                } else if (monthOfYear == 10) {
                     moy = String.valueOf(monthOfYear);
-                }else{
+                } else {
                     moy = String.valueOf(monthOfYear);
                 }
 
                 String doy;
 //                Log.d("qweqwe",String.valueOf(dayOfMonth/10));
-                if(dayOfMonth/10 == 0){
-                    doy = "0"+String.valueOf(dayOfMonth);
-                }else{
+                if (dayOfMonth / 10 == 0) {
+                    doy = "0" + String.valueOf(dayOfMonth);
+                } else {
                     doy = String.valueOf(dayOfMonth);
                 }
-                birth_date = String.valueOf(year)+moy+doy;
+                birth_date = String.valueOf(year) + moy + doy;
 //                Log.d("qweqwe",birth_date);
 //                textView_Date.setText(year + "년" + monthOfYear + "월" + dayOfMonth + "일");
             }
@@ -404,7 +401,7 @@ public class UserInfoInput extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String size;
                 size = parent.getItemAtPosition(position).toString();
-                size = size.substring(0,3);
+                size = size.substring(0, 3);
                 foot_size = Integer.valueOf(size);
             }
 
@@ -413,7 +410,30 @@ public class UserInfoInput extends AppCompatActivity {
 
             }
         });
+
+        //TODO: 잘모르겠다 누를시 check_foot_width_layout visible
+        unkown = findViewById(R.id.unknown);
+
+        unkown.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                if (unkown.isChecked()) {
+                    if (check_foot_width.getVisibility() == View.GONE) {
+                        check_foot_width.setVisibility(View.VISIBLE);
+                        radio_foot_width.setVisibility(View.GONE);
+                    } else {
+                        check_foot_width.setVisibility(View.GONE);
+                        radio_foot_width.setVisibility(View.VISIBLE);
+                        unkown.setChecked(false);
+                    }
+                }
+            }
+        });
+
+
     }
+
 
     @Override
     public void onBackPressed() {
@@ -434,11 +454,11 @@ public class UserInfoInput extends AppCompatActivity {
             textview_nickname.setError(null);
         }
 
-        if(radio_foot_width.getCheckedRadioButtonId() == -1){
+        if (radio_foot_width.getCheckedRadioButtonId() == -1) {
             valid = false;
         }
-        if(sex_group.getCheckedRadioButtonId() == -1){
-            Log.d("qweqwe","asdasd");
+        if (sex_group.getCheckedRadioButtonId() == -1) {
+            Log.d("qweqwe", "asdasd");
             valid = false;
         }
 //        school = eschoolName.getText().toString();
