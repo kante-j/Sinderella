@@ -14,7 +14,9 @@ import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +42,7 @@ import com.jipjung.hucomin.sinderella.R;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -104,6 +107,9 @@ public class AddProduct extends AppCompatActivity {
         mFirestore = FirebaseFirestore.getInstance();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        price.addTextChangedListener(new NumberTextWatcher(price));
+
         item_choose_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,8 +173,11 @@ public class AddProduct extends AppCompatActivity {
             }
         });
 
-
     }
+
+
+
+
 
     private void writeNewPost() {
         WriteBatch batch = mFirestore.batch();
@@ -180,7 +189,9 @@ public class AddProduct extends AppCompatActivity {
             docData.put("brand", brand_name.getText().toString());
             docData.put("category", foot_size_correction2.getSelectedItem().toString());
             docData.put("name", model_name.getText().toString());
+
             docData.put("price", Integer.valueOf(price.getText().toString()));
+
             docData.put("product_url", product_url.getText().toString());
             docData.put("option",item_option_txt.getText().toString());
             if (imagePath != null) {
@@ -399,5 +410,4 @@ public class AddProduct extends AppCompatActivity {
 
         return image;
     }
-
 }

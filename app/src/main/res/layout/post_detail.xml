@@ -196,6 +196,7 @@
                                     android:layout_height="25dp"
                                     android:layout_alignParentStart="true"
                                     android:layout_centerVertical="true"
+                                    android:onClick="onClickLike"
                                     app:srcCompat="@drawable/like" />
 
                                 <TextView
@@ -219,7 +220,6 @@
                                     android:layout_centerVertical="true"
                                     android:layout_marginStart="10dp"
                                     android:layout_toRightOf="@+id/post_like_count"
-                                    android:onClick="onClickLike"
                                     app:srcCompat="@drawable/comment" />
 
                                 <TextView

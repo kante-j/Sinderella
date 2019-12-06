@@ -112,6 +112,11 @@
                                 android:textColor="#707070"
                                 android:textSize="14sp" />
 
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"></LinearLayout>
+
                             <TextView
                                 android:id="@+id/price"
                                 android:layout_width="wrap_content"
@@ -133,8 +138,8 @@
                                 android:fontFamily="@font/gyeonggititle_medium"
                                 android:text="ToggleButton"
                                 android:textColor="#ffffff"
-                                android:textOff="카트에 담기     "
-                                android:textOn="담기 취소       "
+                                android:textOff="찜하기     "
+                                android:textOn="찜하기 취소       "
                                 android:textSize="16sp" />
 
                         </LinearLayout>

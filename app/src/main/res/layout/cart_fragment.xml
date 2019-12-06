@@ -41,7 +41,7 @@
                 android:background="@drawable/click_change_color"
                 android:elevation="10dp"
                 android:fontFamily="@font/gyeonggititle_bold"
-                android:text="전체 상품 보기"
+                android:text="전체 신발 보기"
                 android:textSize="16sp" />
 
             <Button
@@ -52,7 +52,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/click_change_color"
                 android:fontFamily="@font/gyeonggititle_bold"
-                android:text="찜한 상품 보기"
+                android:text="찜한 신발 보기"
                 android:textSize="16sp" />
         </LinearLayout>
 
