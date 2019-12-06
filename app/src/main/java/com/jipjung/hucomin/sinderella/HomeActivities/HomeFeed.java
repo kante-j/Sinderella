@@ -203,6 +203,13 @@ public class HomeFeed extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.go_vv).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeFeed.this, VV.class);
+                startActivity(intent);
+            }
+        });
         Button btn_gomymenu = findViewById(R.id.go_mymenu_btn);
         btn_gomymenu.setOnClickListener(new View.OnClickListener() {
             @Override
