@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -60,6 +61,7 @@ public class FSearchResult extends Fragment {
     private CheckBox bigger_foot_checkbox;
     private ProgressBar pgsBar;
     private String search_keyword;
+    private EditText search;
     private RecyclerView recyclerView;
     int currentItems, totalItems, scrollOutItems;
 
@@ -93,13 +95,14 @@ public class FSearchResult extends Fragment {
         Bundle bundle = getArguments();
         user = (User)bundle.getSerializable("user");
         search_keyword = (String)bundle.getString("search_keyword");
-
+        search = v.findViewById(R.id.search);
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);
         final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.search_fragments, user);
         getListItems();
+
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
@@ -135,6 +138,26 @@ public class FSearchResult extends Fragment {
             public void onRefresh() {
                 getListItems();
                 swipeContainer.setRefreshing(false);
+            }
+        });
+
+
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String searchWord = search.getText().toString()
+                        .toLowerCase(Locale.getDefault());
+                mAdapter.filter(searchWord);
             }
         });
 
