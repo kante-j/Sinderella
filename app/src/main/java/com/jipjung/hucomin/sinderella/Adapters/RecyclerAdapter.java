@@ -29,6 +29,7 @@ import com.google.firebase.storage.StorageReference;
 
 import org.w3c.dom.Text;
 
+import java.lang.reflect.Array;
 import java.text.BreakIterator;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -147,7 +148,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         if(post_user!=null){
             holder.foot_size_header.setText(String.valueOf(post_user.getFoot_size()));
             if(post_user.getFoot_width().equals("small")){
-                holder.foot_width_header.setText("작은편");
+                holder.foot_width_header.setText("좁은편");
             }else if(post_user.getFoot_width().equals("normal")){
                 holder.foot_width_header.setText("보통");
             }else{
@@ -291,6 +292,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         posts.clear();
+        Log.d("qweqwe 0",String.valueOf(posts.size()));
         if (charText.length() == 0) {
             posts.addAll(arrayList);
         } else {
@@ -305,8 +307,36 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                 }
             }
         }
+
+        Log.d("qweqwe 1",String.valueOf(posts.size()));
         notifyDataSetChanged();
     }
+
+    //발 볼로 필터
+    public void filter_footwidth(String footwidth){
+
+        List<User> foot_users = new ArrayList<User>();
+        for(User user : users){
+            String user_footWidth = user.getFoot_width();
+            if(footwidth.equals(user_footWidth)){
+                foot_users.add(user);
+            }
+        }
+        Log.d("qweqwe",String.valueOf(foot_users.size()));
+        posts.clear();
+        for(Post p : arrayList){
+            String uid = p.getUser_id();
+            for(User fu : foot_users){
+                if(fu.getUser_id().equals(uid))
+                    posts.add(p);
+            }
+//            if(foot_users.contains(uid)){
+//                posts.add(p);
+//            }
+        }
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getItemCount() {

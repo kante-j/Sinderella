@@ -63,6 +63,7 @@ public class FSearchResult extends Fragment {
     private String search_keyword;
     private EditText search;
     private RecyclerView recyclerView;
+    private Spinner order_of_priority;
     int currentItems, totalItems, scrollOutItems;
 
     boolean isScrolling = false;
@@ -80,24 +81,25 @@ public class FSearchResult extends Fragment {
     public FSearchResult() {
 
     }
-    
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup contaniner, 
+    public View onCreateView(LayoutInflater inflater, ViewGroup contaniner,
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.search_fragments, contaniner, false);
         FirebaseFirestore.setLoggingEnabled(true);
         fs = FirebaseFirestore.getInstance();
-        
-        pgsBar =(ProgressBar) v.findViewById(R.id.progress_bar);
+
+        pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
 
         mArrayList = new ArrayList<>();
         Bundle bundle = getArguments();
-        user = (User)bundle.getSerializable("user");
-        search_keyword = (String)bundle.getString("search_keyword");
+        user = (User) bundle.getSerializable("user");
+        search_keyword = (String) bundle.getString("search_keyword");
         search = v.findViewById(R.id.search);
+        order_of_priority = v.findViewById(R.id.order_of_priority);
         recyclerView = (RecyclerView) v.findViewById(R.id.feeds);
-        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        final RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.search_fragments, user);
@@ -108,9 +110,9 @@ public class FSearchResult extends Fragment {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if(!recyclerView.canScrollVertically(-1) || !recyclerView.canScrollVertically(1)){
+                if (!recyclerView.canScrollVertically(-1) || !recyclerView.canScrollVertically(1)) {
                     isScrolling = true;
-                }else if(recyclerView.computeVerticalScrollOffset() == 0){
+                } else if (recyclerView.computeVerticalScrollOffset() == 0) {
                     isScrolling = true;
                 }
 
@@ -126,20 +128,20 @@ public class FSearchResult extends Fragment {
                 totalItems = layoutManager.getItemCount();
                 scrollOutItems = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
 
-                if(isScrolling && (currentItems + scrollOutItems >= totalItems)){
+                if (isScrolling && (currentItems + scrollOutItems >= totalItems)) {
                     isScrolling = false;
                     fetchData();
                 }
             }
         });
-        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipe_layout);
-        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                getListItems();
-                swipeContainer.setRefreshing(false);
-            }
-        });
+//        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipe_layout);
+//        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                getListItems();
+//                swipeContainer.setRefreshing(false);
+//            }
+//        });
 
 
         search.addTextChangedListener(new TextWatcher() {
@@ -161,6 +163,37 @@ public class FSearchResult extends Fragment {
             }
         });
 
+        order_of_priority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        break;
+
+                    case 1:
+                        mArrayList = new ArrayList<>();
+                        types.sort(new FSearchResult.sortRating().reversed());
+                        mArrayList.addAll(types);
+                        recyclerView.setAdapter(mAdapter);
+                        mAdapter.arrayList.clear();
+                        mAdapter.arrayList.addAll(mArrayList);
+                        break;
+                    case 2:
+                        mArrayList = new ArrayList<>();
+                        types.sort(new FSearchResult.sortCreatedAt().reversed());
+                        mArrayList.addAll(types);
+                        recyclerView.setAdapter(mAdapter);
+                        mAdapter.arrayList.clear();
+                        mAdapter.arrayList.addAll(mArrayList);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 //        ((HomeFeed)HomeFeed.context).searchingText.addTextChangedListener(new TextWatcher() {
 //            @Override
 //            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -215,7 +248,6 @@ public class FSearchResult extends Fragment {
         list_filter = v.findViewById(R.id.list_filter);
 
 
-
         //Spinner text 사이즈 줄이기
         //TODO: Spinner adapter 만들기
 
@@ -261,11 +293,7 @@ public class FSearchResult extends Fragment {
 //        );
 
 
-
-
         applytext.setOnClickListener(new View.OnClickListener() {
-
-
 
 
             @Override
@@ -279,16 +307,19 @@ public class FSearchResult extends Fragment {
 
                 if (small_foot_checkbox.isChecked()) {
                     filter_arrayList.add(small_foot_checkbox.getText().toString());
+                    mAdapter.filter_footwidth("small");
 //                    Toast.makeText(getActivity(),filter_arrayList.get(0),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size", "small_foot");
                 }
                 if (normal_foot_checkbox.isChecked()) {
                     filter_arrayList.add(normal_foot_checkbox.getText().toString());
+                    mAdapter.filter_footwidth("normal");
 //                    Toast.makeText(getActivity(),filter_arrayList.get(1),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size", "normal_foot");
                 }
                 if (bigger_foot_checkbox.isChecked()) {
                     filter_arrayList.add(bigger_foot_checkbox.getText().toString());
+                    mAdapter.filter_footwidth("big");
 //                    Toast.makeText(getActivity(),filter_arrayList.get(2),Toast.LENGTH_SHORT).show();
                     Log.d("foot_size", "bigger_foot");
                 }
@@ -299,6 +330,7 @@ public class FSearchResult extends Fragment {
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         Log.v("foot_size_spinner", foot_size_spinner.getSelectedItem().toString());
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
@@ -311,15 +343,16 @@ public class FSearchResult extends Fragment {
 
                         Log.v("foot_size_spinner2", foot_size_spinner2.getSelectedItem().toString() + "is selected");
                     }
+
                     @Override
                     public void onNothingSelected(AdapterView<?> parent) {
 
                     }
                 });
 
-                filter_arrayList.add(foot_size_spinner.getSelectedItem().toString() +" ~ "+foot_size_spinner2.getSelectedItem().toString() );
+                filter_arrayList.add(foot_size_spinner.getSelectedItem().toString() + " ~ " + foot_size_spinner2.getSelectedItem().toString());
 
-                filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
+                filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(), filter_arrayList);
 
                 list_filter.setAdapter(filterRecyclerAdapter);
 
@@ -328,7 +361,6 @@ public class FSearchResult extends Fragment {
                 //체크된 값을 어디로 넘겨야된다.
             }
         });
-
 
 
         //TODO:초기화 버튼
@@ -344,7 +376,7 @@ public class FSearchResult extends Fragment {
                 normal_foot_checkbox.setChecked(false);
                 bigger_foot_checkbox.setChecked(false);
 
-                filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(),filter_arrayList);
+                filterRecyclerAdapter = new FilterRecyclerAdapter(getActivity(), filter_arrayList);
 
                 list_filter.setAdapter(filterRecyclerAdapter);
 
@@ -357,24 +389,24 @@ public class FSearchResult extends Fragment {
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
-        if(pgsBar != null)
+        if (pgsBar != null)
             pgsBar.setVisibility(ProgressBar.GONE);
     }
+
     private void fetchData() {
         pgsBar.setVisibility(ProgressBar.VISIBLE);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 int k = mArrayList.size();
-                for (int i =0 ; i < 5; i++){
-                    if(k + i < types.size()){
+                for (int i = 0; i < 5; i++) {
+                    if (k + i < types.size()) {
                         mArrayList.add(types.get(k + i));
                         mAdapter.notifyDataSetChanged();
                         pgsBar.setVisibility(ProgressBar.GONE);
-                    }
-                    else{
+                    } else {
                         pgsBar.setVisibility(ProgressBar.GONE);
                         return;
                     }
@@ -382,9 +414,10 @@ public class FSearchResult extends Fragment {
             }
         }, 1000);
     }
+
     public void getListItems() {
         pgsBar.setVisibility(ProgressBar.VISIBLE);
-        if (!mArrayList.isEmpty()){
+        if (!mArrayList.isEmpty()) {
             mArrayList.clear();
             mAdapter.arrayList.clear();
         }
@@ -408,7 +441,7 @@ public class FSearchResult extends Fragment {
 ////                                        for (int i = 0; i < types.size(); i++) {
 ////                                            mArrayList.add(types.get(i));
 ////                                        }
-                                        mArrayList.addAll(types);
+                                    mArrayList.addAll(types);
 //                                    } else {
 //                                        for (int j = 0; j < 10; j++)
 //                                            mArrayList.add(types.get(j));
@@ -437,10 +470,11 @@ public class FSearchResult extends Fragment {
             return o1.getCreated_at().compareTo(o2.getCreated_at());
         }
     }
+
     public class sortRating implements Comparator<Post> {
         @Override
         public int compare(Post o1, Post o2) {
-            return Float.compare(o1.getRating(),o2.getRating());
+            return Float.compare(o1.getRating(), o2.getRating());
 //            return o1.getCreated_at().compareTo(o2.getCreated_at());
         }
     }

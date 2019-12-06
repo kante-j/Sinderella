@@ -148,7 +148,7 @@ public class OtherMyMenu extends AppCompatActivity {
         mypage_foot_size.setText(String.valueOf(post_user.getFoot_size()));
 
         if(post_user.getFoot_width().equals("small")){
-            mypage_foot_width.setText("작은편");
+            mypage_foot_width.setText("좁은편");
         }else if(post_user.getFoot_width().equals("normal")){
             mypage_foot_width.setText("보통");
         }else{
