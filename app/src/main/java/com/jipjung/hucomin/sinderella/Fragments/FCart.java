@@ -85,17 +85,11 @@ public class FCart extends Fragment {
         total_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(total_btn.isSelected()){
-                    Log.d("click","follower_false");
-                    total_btn.setSelected(false);
-                    total_btn.setTextColor(Color.BLACK);
-                }else{
-                    Log.d("click","follower_true");
-                    cart_item_btn.setSelected(false);
-                    cart_item_btn.setTextColor(Color.BLACK);
-                    total_btn.setSelected(true);
-                    total_btn.setTextColor(Color.WHITE);
-                }
+                Log.d("click","follower_true");
+                cart_item_btn.setSelected(false);
+                cart_item_btn.setTextColor(Color.BLACK);
+                total_btn.setSelected(true);
+                total_btn.setTextColor(Color.WHITE);
             }
         });
 
@@ -103,7 +97,12 @@ public class FCart extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.d("click",String.valueOf(cart_item_btn.isSelected()));
-                if(cart_item_btn.isSelected()){
+                total_btn.setSelected(false);
+                total_btn.setTextColor(Color.BLACK);
+                cart_item_btn.setSelected(true);
+                cart_item_btn.setTextColor(Color.WHITE);
+
+                /*if(cart_item_btn.isSelected()){
                     Log.d("click","following_false");
                     cart_item_btn.setSelected(false);
                     cart_item_btn.setTextColor(Color.BLACK);
@@ -113,7 +112,7 @@ public class FCart extends Fragment {
                     total_btn.setTextColor(Color.BLACK);
                     cart_item_btn.setSelected(true);
                     cart_item_btn.setTextColor(Color.WHITE);
-                }
+                }*/
             }
         });
 

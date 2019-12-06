@@ -183,7 +183,7 @@
             android:layout_marginBottom="3dp"
             android:fontFamily="@font/gyeonggititle_light"
             android:gravity="left|center_vertical"
-            android:text="플립플랍"
+            android:text="슬리퍼"
             android:textColor="#ffffff"
             android:textSize="16sp" />
 
