@@ -59,25 +59,20 @@
     </LinearLayout>
 
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cart_product_layout"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="19dp"
-        android:background="@drawable/cart_box">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:background="@drawable/cart_box"
+            android:layout_marginStart="19dp"
+            android:layout_marginEnd="19dp"
             android:id="@+id/feeds"
             android:layout_width="match_parent"
+            android:layout_below="@+id/cart_product_layout"
             android:layout_height="match_parent" />
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyle"
-        android:layout_alignBottom="@id/swipe_layout"
+        android:layout_alignBottom="@id/feeds"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
