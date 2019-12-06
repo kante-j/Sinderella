@@ -55,6 +55,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/converse_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -66,6 +67,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/slip_on_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -77,6 +79,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/sneakers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -105,6 +108,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/aqua_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -116,6 +120,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/golf_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -127,6 +132,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/running_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -138,6 +144,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/hiking_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -166,6 +173,7 @@
             android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/slid_shoe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -177,6 +185,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/slipper"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
@@ -188,6 +197,7 @@
             android:textSize="16sp" />
 
         <TextView
+            android:id="@+id/strap_sandal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="17dp"
