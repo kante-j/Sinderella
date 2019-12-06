@@ -144,7 +144,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         notifyDataSetChanged();
     }
 
-    public void idFilter() {
+    public boolean idFilter() {
+        boolean isEmpty = false;
         String user_id = user.getUser_id().toLowerCase(Locale.getDefault());
         products.clear();
         if (user_id.length() == 0) {
@@ -158,9 +159,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
                         }
                     }
                 }
+            }else{
+                isEmpty=true;
             }
             notifyDataSetChanged();
         }
+        return isEmpty;
     }
     public void clear() {
         products.clear();
