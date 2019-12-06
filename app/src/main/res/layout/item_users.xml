@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="60dp"
-    android:layout_marginStart="5dp"
-    android:layout_marginEnd="5dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/feed_nickname"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/follow_cardview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="5dp"
-        android:layout_toRightOf="@id/picture_post"
-        android:gravity="center"
-        android:lineSpacingExtra="3sp"
-        android:text="nickname"
-        android:textColor="#707070"
-        android:textSize="18sp" />
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="9dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="3dp">
 
-    <ImageView
-        android:id="@+id/picture_post"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_centerVertical="true"
-        android:background="@drawable/profile_circle" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/picture_post"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/profile_circle" />
+
+            <TextView
+                android:id="@+id/feed_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lineSpacingExtra="3sp"
+                android:text="nickname"
+                android:textColor="#707070"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
