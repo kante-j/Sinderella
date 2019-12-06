@@ -69,6 +69,7 @@ public class FMymenu extends Fragment {
     private FirebaseStorage storage;
 
     private Fragment fr;
+    private FrameLayout follower_and_following_FrameLayout;
 
 
     public FMymenu(){
@@ -162,6 +163,9 @@ public class FMymenu extends Fragment {
         follower_num = v.findViewById(R.id.follower_num);
         following_num = v.findViewById(R.id.following_num);
 
+        //TODO: 추가적으로 follower and following layout 보이기
+        follower_and_following_FrameLayout = v.findViewById(R.id.mypage_follower_and_following);
+
         Log.d("click",String.valueOf(followerbtn.isSelected()));
         Log.d("click",String.valueOf(followingbtn.isSelected()));
 
@@ -176,6 +180,7 @@ public class FMymenu extends Fragment {
                     followerbtn.setTextColor(Color.WHITE);
                     follower_num.setTextColor(Color.WHITE);
                     follow_framelayout.setVisibility(getView().VISIBLE);
+                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
 
             }
         });
@@ -192,6 +197,7 @@ public class FMymenu extends Fragment {
                     followingbtn.setTextColor(Color.WHITE);
                     following_num.setTextColor(Color.WHITE);
                     follow_framelayout.setVisibility(getView().VISIBLE);
+                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
 
             }
         });
@@ -235,14 +241,6 @@ public class FMymenu extends Fragment {
     }
 
     //TODO: follow 기능 만들기
-
-
-
-
-
-
-
-
 
 
 }

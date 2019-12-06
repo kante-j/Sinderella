@@ -47,6 +47,8 @@ import com.jipjung.hucomin.sinderella.R;
 import com.jipjung.hucomin.sinderella.Search.SearchActivity;
 import com.jipjung.hucomin.sinderella.StartAppActivities.UserInfoInput;
 
+import org.w3c.dom.Text;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,6 +80,16 @@ public class HomeFeed extends AppCompatActivity {
     private ImageView home_btn;
     private ImageView mypage_btn;
     private Button btn_searchingText;
+    private TextView sneakers_btn;
+    private TextView converse_shoe;
+    private TextView slip_on_shoe;
+    private TextView running_shoe;
+    private TextView aqua_shoe;
+    private TextView golf_shoe;
+    private TextView hiking_shoe;
+    private TextView slid_shoe;
+    private TextView slipper;
+    private TextView strap_sandal;
 
     @Override
     protected void onStart() {
@@ -161,6 +173,7 @@ public class HomeFeed extends AppCompatActivity {
 //        Button bRoom = (Button) findViewById(R.id.room);
 //        Button bActivities = (Button) findViewById(R.id.activities);
 //        Button bTips = (Button) findViewById(R.id.tips);
+
         Button btn = (Button) findViewById(R.id.add_post);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,6 +224,36 @@ public class HomeFeed extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //TODO: 카테고리에서 누르시 Intent 값을 통해서 값 전달
+        converse_shoe = findViewById(R.id.converse_shoe);
+        slip_on_shoe = findViewById(R.id.slip_on_shoe);
+        sneakers_btn = findViewById(R.id.sneakers);
+        aqua_shoe = findViewById(R.id.aqua_shoe);
+        golf_shoe = findViewById(R.id.golf_shoe);
+        running_shoe = findViewById(R.id.running_shoe);
+        hiking_shoe = findViewById(R.id.hiking_shoe);
+        slid_shoe = findViewById(R.id.slid_shoe);
+        slipper = findViewById(R.id.slipper);
+        strap_sandal = findViewById(R.id.strap_sandal);
+        Intent intent = new Intent(getApplicationContext(),FSearchResult.class);
+
+
+        converse_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                intent.putExtra("shoe",converse_shoe.getText().toString());
+
+            }
+        });
+
+
+
+
+
+
+
         Button btn_gomymenu = findViewById(R.id.go_mymenu_btn);
         btn_gomymenu.setOnClickListener(new View.OnClickListener() {
             @Override
