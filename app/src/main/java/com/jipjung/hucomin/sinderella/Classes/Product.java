@@ -18,6 +18,7 @@ public class Product implements Serializable {
     public String brand;
     public String shoes_code_name;
     public String created_at;
+    public String option;
 
 
     public Product() {
@@ -33,6 +34,10 @@ public class Product implements Serializable {
 
     public String getBrand() {
         return brand;
+    }
+
+    public String getOption() {
+        return option;
     }
 
     public String getCreated_at() {
@@ -77,6 +82,7 @@ public class Product implements Serializable {
         result.put("category",category);
         result.put("product_url",product_url);
         result.put("brand",brand);
+        result.put("option",option);
         result.put("shoes_code_name",shoes_code_name);
         return result;
     }

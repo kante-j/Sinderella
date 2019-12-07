@@ -93,6 +93,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         //holder.price.setText(String.valueOf(product.getPrice()));
         price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(product.getPrice());
         holder.price.setText(price_str);
+        holder.item_option.setText(product.getOption());
 
         holder.brand.setText(product.getBrand());
 
@@ -188,6 +189,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         private TextView brand;
         private TextView code_name;
         private TextView category;
+        private TextView item_option;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -196,6 +198,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             category = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
             brand = itemView.findViewById(R.id.brand);
+            item_option = itemView.findViewById(R.id.item_option);
             code_name = itemView.findViewById(R.id.shoes_code_name);
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override
