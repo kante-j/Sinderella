@@ -289,13 +289,16 @@ public class DetailedPost extends AppCompatActivity {
         other_people_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
-                if(follow != null){
-                    intent.putExtra("follow",follow);
+                if(!post_user.getUser_id().equals(user.getUser_id())) {
+                    Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
+                    if(follow != null){
+                        intent.putExtra("follow",follow);
+                    }
+                    intent.putExtra("post_user",post_user);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
                 }
-                intent.putExtra("post_user",post_user);
-                intent.putExtra("user",user);
-                startActivity(intent);
+
             }
         });
 
