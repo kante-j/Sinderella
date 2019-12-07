@@ -71,6 +71,7 @@ public class FMymenu extends Fragment {
 
     private Fragment fr;
     private FrameLayout follower_and_following_FrameLayout;
+    private User user_self;
 
 
     public FMymenu(){
@@ -103,6 +104,18 @@ public class FMymenu extends Fragment {
         text_foot_width.setText(user.getFoot_width());
         text_foot_size.setText(String.valueOf(user.getFoot_size()));
 
+
+//        //TODO:DetailedPost에서 FMymenu로 받기
+//        Bundle bundle_self = getArguments();
+//        user_self = (User)bundle_self.getSerializable("user_self");
+//        text_nickname.setText(user_self.getNickname());
+//        text_email.setText(fbUser.getEmail());
+//        text_foot_width.setText(user_self.getFoot_width());
+//        text_foot_size.setText(String.valueOf(user_self.getFoot_size()));
+
+
+
+        /* 여기 까지*/
         Bundle userbundle = new Bundle();
         userbundle.putSerializable("user",user);
         fr = new FMyPosts();
