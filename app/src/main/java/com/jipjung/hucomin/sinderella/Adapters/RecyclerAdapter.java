@@ -320,6 +320,23 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         notifyDataSetChanged();
     }
 
+    public void filter_by_category(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        posts.clear();
+        if (charText.length() == 0) {
+            posts.addAll(arrayList);
+        } else {
+            for (Post p : arrayList) {
+                String t = p.getCategory();
+                if (t.toLowerCase().contains(charText)){
+                    posts.add(p);
+                }
+            }
+        }
+
+        Log.d("qweqwe 1",String.valueOf(posts.size()));
+        notifyDataSetChanged();
+    }
     //발 볼로 필터
     public void filter_footwidth(String footwidth){
 
