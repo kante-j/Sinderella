@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -93,12 +94,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         //holder.price.setText(String.valueOf(product.getPrice()));
         price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(product.getPrice());
         holder.price.setText(price_str);
+        holder.item_option.setText(product.getOption());
 
         holder.brand.setText(product.getBrand());
 
         if (product.getImage_url() != null) {
             StorageReference path = storageRef.child(product.image_url);
-            Glide.with(this.context).load(path).skipMemoryCache(true).into(holder.image);
+            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(holder.image);
 //            holder.url = product.getImage_url();
         }
         else {
@@ -188,6 +190,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         private TextView brand;
         private TextView code_name;
         private TextView category;
+        private TextView item_option;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -196,6 +199,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             category = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
             brand = itemView.findViewById(R.id.brand);
+            item_option = itemView.findViewById(R.id.item_option);
             code_name = itemView.findViewById(R.id.shoes_code_name);
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override

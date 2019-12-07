@@ -72,6 +72,7 @@ public class FindModelAdapter extends RecyclerView.Adapter<FindModelAdapter.View
         holder.code_name.setText(product.getName());
         holder.price.setText(String.valueOf(product.getPrice()));
         holder.brand.setText(product.getBrand());
+        holder.item_option.setText(product.getOption());
 
         if (product.getImage_url() != null) {
             StorageReference path = storageRef.child(product.image_url);
@@ -121,6 +122,7 @@ public class FindModelAdapter extends RecyclerView.Adapter<FindModelAdapter.View
         private TextView brand;
         private TextView code_name;
         private TextView category;
+        private TextView item_option;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -129,6 +131,7 @@ public class FindModelAdapter extends RecyclerView.Adapter<FindModelAdapter.View
             category = itemView.findViewById(R.id.category);
             price = itemView.findViewById(R.id.price);
             brand = itemView.findViewById(R.id.brand);
+            item_option = itemView.findViewById(R.id.item_option);
             code_name = itemView.findViewById(R.id.shoes_code_name);
             cardview.setOnClickListener(new View.OnClickListener() {
                 @Override

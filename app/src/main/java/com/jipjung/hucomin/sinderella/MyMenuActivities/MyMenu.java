@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
@@ -25,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.FirebaseStorage;
@@ -79,6 +81,10 @@ public class MyMenu extends AppCompatActivity {
     private ImageView profilemodify_Image;
     private ImageView profilemodify_picture;
 
+    private RadioButton profilemodify_small_foot;
+    private RadioButton profilemodify_normal_foot;
+    private RadioButton profilemodify_bigger_foot;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,7 +102,9 @@ public class MyMenu extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
 
-
+        profilemodify_small_foot=findViewById(R.id.profilemodify_small_foot);
+        profilemodify_normal_foot = findViewById(R.id.profilemodify_normal_foot);
+        profilemodify_bigger_foot = findViewById(R.id.profilemodify_bigger_foot);
         user = (User)getIntent().getSerializableExtra("user");
 
 //        //Find Text View by Id
@@ -122,6 +130,14 @@ public class MyMenu extends AppCompatActivity {
         if (compareValue != null) {
             int spinnerPosition = adapter.getPosition(compareValue);
             foot_size.setSelection(spinnerPosition);
+        }
+
+        if(user.getFoot_width().equals("small")){
+            profilemodify_small_foot.setChecked(true);
+        }else if(user.getFoot_width().equals("normal")){
+            profilemodify_normal_foot.setChecked(true);
+        }else{
+            profilemodify_bigger_foot.setChecked(true);
         }
 
 
@@ -151,6 +167,8 @@ public class MyMenu extends AppCompatActivity {
 
 
         });
+
+
 
         profilemodify_check.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -194,7 +212,7 @@ public class MyMenu extends AppCompatActivity {
             profilemodify_picture.setVisibility(View.GONE);
             profilemodify_Image.setVisibility(View.VISIBLE);
             StorageReference path = storageReference.child(user.getProfile_url());
-            Glide.with(this).load(path).skipMemoryCache(false).into(profilemodify_Image);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(profilemodify_Image);
         }
 
 

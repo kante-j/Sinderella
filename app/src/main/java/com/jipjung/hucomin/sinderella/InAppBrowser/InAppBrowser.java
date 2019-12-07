@@ -29,10 +29,6 @@ public class InAppBrowser extends AppCompatActivity {
 
         inputurl = findViewById(R.id.uri);
         url = getIntent().getStringExtra("url");
-        if(url.startsWith("http://")) {
-            webView.loadUrl(url);
-        } else {
-            webView.loadUrl("http://" + url); }
         inputurl.setText(url);
         goURL(null,url);
 
@@ -60,7 +56,10 @@ public class InAppBrowser extends AppCompatActivity {
 
     public void goURL(View view, String url){
         webView.setWebViewClient(new WebViewClient()); // 이걸 안해주면 새창이 뜸
-        webView.loadUrl(url);
+        if(url.startsWith("http://")) {
+            webView.loadUrl(url);
+        } else {
+            webView.loadUrl("http://" + url); }
 
     }
 

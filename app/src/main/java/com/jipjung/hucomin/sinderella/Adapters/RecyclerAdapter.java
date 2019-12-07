@@ -11,6 +11,7 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
@@ -145,6 +146,13 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             }
         }
 
+        if (post_user.getProfile_url()!=null) {
+            StorageReference path = storageRef.child("/profiles/"+post_user.getUser_id());
+            Glide.with(context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                    .skipMemoryCache(true).centerCrop().into(holder.picture_post);
+//            holder.url = product.getImage_url();
+        }
+
         if(post_user!=null){
             holder.foot_size_header.setText(String.valueOf(post_user.getFoot_size()));
             if(post_user.getFoot_width().equals("small")){
@@ -276,7 +284,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //        }
         if (post.getImageURL() != null) {
             StorageReference path = storageRef.child(post.image_url);
-            Glide.with(this.context).load(path).skipMemoryCache(true).into(holder.image);
+            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(holder.image);
             holder.url = post.getImageURL();
         }
         else {
@@ -364,6 +372,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         private TextView foot_size_header;
         private TextView foot_width_header;
         private Follow h_follow;
+        private ImageView picture_post;
 
         //gone part
 //        private TextView category_gone;
@@ -378,6 +387,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             star_evaluation = itemView.findViewById(R.id.star_evaluation);
             image = (ImageView) itemView.findViewById(R.id.postedImage);
             rating = itemView.findViewById(R.id.ratingBar);
+            picture_post = itemView.findViewById(R.id.picture_post);
             foot_size_header = itemView.findViewById(R.id.foot_size_header);
             foot_width_header = itemView.findViewById(R.id.foot_width_header);
             comment_counts = itemView.findViewById(R.id.commet_count);
