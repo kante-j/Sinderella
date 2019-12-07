@@ -3,6 +3,7 @@ package com.jipjung.hucomin.sinderella.HomeActivities;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 
 import androidx.annotation.NonNull;
@@ -236,16 +237,48 @@ public class HomeFeed extends AppCompatActivity {
         slid_shoe = findViewById(R.id.slid_shoe);
         slipper = findViewById(R.id.slipper);
         strap_sandal = findViewById(R.id.strap_sandal);
+
         Intent intent = new Intent(getApplicationContext(),FSearchResult.class);
+
+        Fragment fragment = new FSearchResult();
+        Bundle bundle = new Bundle(1);
+        FragmentManager fm_search = getSupportFragmentManager();
+        FragmentTransaction ft_search = fm_search.beginTransaction();
+
+//        SharedPreferences sf = getSharedPreferences("sFile",MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sf.edit();
 
 
         converse_shoe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                intent.putExtra("shoe",converse_shoe.getText().toString());
+                bundle.putString("shoe",converse_shoe.getText().toString());
+                fragment.setArguments(bundle);
+
+                ft_search.replace(R.id.fragment_container,fragment);
+                ft_search.commit();
+
+
+
+//                intent.putExtra("shoe",converse_shoe.getText().toString());
+//                startActivityFromFragment();
+
+//                String text =converse_shoe.getText().toString();
+//                editor.putString("shoe",text);
+//                Log.d("bundle", toString().valueOf(editor));
+//                editor.commit();
 
             }
+        });
+        slip_on_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                intent.putExtra("shoe",slip_on_shoe.getText().toString());
+//
+//                startActivity(intent);
+            }
+
         });
 
 

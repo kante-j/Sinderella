@@ -6,6 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
@@ -162,6 +165,28 @@ public class FSearchResult extends Fragment {
                 mAdapter.filter(searchWord);
             }
         });
+
+        //TODO:카테고리에서 선택하면 intent로 search로 넘기기
+//        String intent = getActivity().getIntent().getExtras().getString("shoe");
+//
+//        search.setText(intent);
+
+        Bundle extra = this.getArguments();
+        if (extra != null) {
+            String shoe = extra.getString("shoe");
+
+            search.setText(shoe);
+    }
+
+//        SharedPreferences sf_search = this.getActivity().getSharedPreferences("sfile", Context.MODE_PRIVATE);
+//
+//        String text = sf_search.getString("shoe","");
+//        Log.d("shoe",text);
+//
+//        search.setText(text);
+
+
+
 
         order_of_priority.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
