@@ -109,6 +109,7 @@ public class FSearchResult extends Fragment {
         getListItems();
 
 
+
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
@@ -146,6 +147,19 @@ public class FSearchResult extends Fragment {
 //            }
 //        });
 
+        //TODO:카테고리에서 선택하면 intent로 search로 넘기기
+//        String intent = getActivity().getIntent().getExtras().getString("shoe");
+//
+//        search.setText(intent);
+
+        Bundle extra = this.getArguments();
+        if (extra != null) {
+            String shoe = extra.getString("shoe");
+            user = (User) extra.getSerializable("user");
+
+            search.setText(shoe);
+        }
+
 
         search.addTextChangedListener(new TextWatcher() {
             @Override
@@ -166,24 +180,9 @@ public class FSearchResult extends Fragment {
             }
         });
 
-        //TODO:카테고리에서 선택하면 intent로 search로 넘기기
-//        String intent = getActivity().getIntent().getExtras().getString("shoe");
-//
-//        search.setText(intent);
 
-        Bundle extra = this.getArguments();
-        if (extra != null) {
-            String shoe = extra.getString("shoe");
 
-            search.setText(shoe);
-    }
 
-//        SharedPreferences sf_search = this.getActivity().getSharedPreferences("sfile", Context.MODE_PRIVATE);
-//
-//        String text = sf_search.getString("shoe","");
-//        Log.d("shoe",text);
-//
-//        search.setText(text);
 
 
 

@@ -241,9 +241,9 @@ public class HomeFeed extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(),FSearchResult.class);
 
         Fragment fragment = new FSearchResult();
-        Bundle bundle = new Bundle(1);
-        FragmentManager fm_search = getSupportFragmentManager();
-        FragmentTransaction ft_search = fm_search.beginTransaction();
+        Bundle bundle = new Bundle();
+//        FragmentManager fm_search = getSupportFragmentManager();
+//        FragmentTransaction ft_search = fm_search.beginTransaction();
 
 //        SharedPreferences sf = getSharedPreferences("sFile",MODE_PRIVATE);
 //        SharedPreferences.Editor editor = sf.edit();
@@ -253,33 +253,261 @@ public class HomeFeed extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                bundle.putString("shoe",converse_shoe.getText().toString());
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", converse_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", converse_shoe.getText().toString());
+
                 fragment.setArguments(bundle);
 
-                ft_search.replace(R.id.fragment_container,fragment);
+
+                ft_search.replace(R.id.fragment_container, fragment);
                 ft_search.commit();
 
-
-
-//                intent.putExtra("shoe",converse_shoe.getText().toString());
-//                startActivityFromFragment();
-
-//                String text =converse_shoe.getText().toString();
-//                editor.putString("shoe",text);
-//                Log.d("bundle", toString().valueOf(editor));
-//                editor.commit();
+                drawerLayout.closeDrawers();
 
             }
         });
+
         slip_on_shoe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                intent.putExtra("shoe",slip_on_shoe.getText().toString());
-//
-//                startActivity(intent);
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", slip_on_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", slip_on_shoe.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+        });
+
+        sneakers_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", sneakers_btn.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", sneakers_btn.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
             }
 
         });
+
+        aqua_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", aqua_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", aqua_shoe.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+        golf_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", golf_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", golf_shoe.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+        running_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", running_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", running_shoe.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+        hiking_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", hiking_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", hiking_shoe.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+        slid_shoe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", slid_shoe.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", slid_shoe.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+        slipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", slipper.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", slipper.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+        strap_sandal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Fragment fragment = new FSearchResult();
+                Bundle bundle = new Bundle();
+
+                FragmentManager fm_search = getSupportFragmentManager();
+                FragmentTransaction ft_search = fm_search.beginTransaction();
+
+                bundle.putString("shoe", strap_sandal.getText().toString());
+                bundle.putSerializable("user",user);
+
+                Log.d("shoe", strap_sandal.getText().toString());
+
+                fragment.setArguments(bundle);
+
+
+                ft_search.replace(R.id.fragment_container, fragment);
+                ft_search.commit();
+
+                drawerLayout.closeDrawers();
+            }
+
+        });
+
+
 
 
 
