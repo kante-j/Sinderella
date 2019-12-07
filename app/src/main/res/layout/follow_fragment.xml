@@ -9,6 +9,17 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/is_no_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:fontFamily="@font/gyeonggititle_bold"
+            android:visibility="gone"
+            android:textSize="25sp"
+            android:text="아직 팔로우한 사람이 없습니다.\n팔로우를 통해 \n자신과 발 사이즈나, 신발 취향이 \n비슷한 사람을 모아보세요!"
+            />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_follow"
             android:layout_width="match_parent"
