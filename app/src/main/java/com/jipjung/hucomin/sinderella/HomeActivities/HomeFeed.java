@@ -218,13 +218,13 @@ public class HomeFeed extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.go_vv).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeFeed.this, VV.class);
-                startActivity(intent);
-            }
-        });
+//        findViewById(R.id.go_vv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeFeed.this, VV.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //TODO: 카테고리에서 누르시 Intent 값을 통해서 값 전달
         converse_shoe = findViewById(R.id.converse_shoe);
