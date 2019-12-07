@@ -30,6 +30,7 @@
         <activity android:name=".StartAppActivities.FirstPage" />
         <activity
             android:name=".StartAppActivities.SplashScreen"
+            android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"
             android:theme="@drawable/logo">
             <intent-filter>
@@ -39,7 +40,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".StartAppActivities.EmailPasswordActivity" />
-        <activity android:name=".HomeActivities.HomeFeed" />
+        <activity android:name=".HomeActivities.HomeFeed"
+
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".StartAppActivities.UserInfoInput" />
         <activity android:name=".PostActivities.Posting" />
         <activity android:name=".PostActivities.DetailedPost" />

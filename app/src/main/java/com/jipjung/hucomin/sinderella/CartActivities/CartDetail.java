@@ -31,9 +31,11 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
@@ -50,8 +52,11 @@ public class CartDetail extends AppCompatActivity {
     private ImageView shoes_image;
     private TextView shoes_code;
     private TextView category;
+    private TextView item_option;
     private TextView brand;
     private TextView price;
+    private int price_int;
+    private String price_str;
     private ImageView cart_detail_btn_profile;
     private String product_url;
     private Fragment fr;
@@ -76,6 +81,7 @@ public class CartDetail extends AppCompatActivity {
         category = findViewById(R.id.category);
         brand = findViewById(R.id.brand);
         insert_cart = findViewById(R.id.insert_cart);
+        item_option = findViewById(R.id.item_option);
         price = findViewById(R.id.price);
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
@@ -191,8 +197,12 @@ public class CartDetail extends AppCompatActivity {
 
         shoes_code.setText(product.getName());
         category.setText(product.getCategory());
+        item_option.setText(product.getOption());
         brand.setText(product.getBrand());
-        price.setText(product.getPrice() + "원");
+        //price.setText(product.getPrice());
+
+        price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(product.getPrice());
+        price.setText(price_str);
 
         Bundle productbundle = new Bundle();
         productbundle.putSerializable("product",product);

@@ -108,8 +108,6 @@ public class AddProduct extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        price.addTextChangedListener(new NumberTextWatcher(price));
-
         item_choose_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,7 +187,6 @@ public class AddProduct extends AppCompatActivity {
             docData.put("brand", brand_name.getText().toString());
             docData.put("category", foot_size_correction2.getSelectedItem().toString());
             docData.put("name", model_name.getText().toString());
-
             docData.put("price", Integer.valueOf(price.getText().toString()));
 
             docData.put("product_url", product_url.getText().toString());
