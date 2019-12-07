@@ -6,18 +6,24 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.User;
+import com.jipjung.hucomin.sinderella.Fragments.FMyPosts;
 import com.jipjung.hucomin.sinderella.R;
 
 import java.text.SimpleDateFormat;
@@ -27,6 +33,8 @@ import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 public class OtherMyMenu extends AppCompatActivity {
 
@@ -34,12 +42,15 @@ public class OtherMyMenu extends AppCompatActivity {
     private User post_user;
     private Follow follow;
 
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
     private Switch other_people_follow_switch;
     private TextView other_people_follow_username;
     //private TextView other_people_follow_email;
     private TextView mypage_foot_size;
     private TextView mypage_foot_width;
     private Button action_bar_back_close;
+    private ImageView mypage_profile_picture;
 
     private Button other_people_post_board;
     private Button other_people_follower;
@@ -48,6 +59,7 @@ public class OtherMyMenu extends AppCompatActivity {
     private TextView num_follower;
     private TextView num_following;
 
+    private Fragment fr;
     private FirebaseFirestore firebaseFirestore;
     private TextView other_people_follow_text;
     private TextView other_people_unfollow_text;
@@ -61,13 +73,14 @@ public class OtherMyMenu extends AppCompatActivity {
         post_user= (User)getIntent().getSerializableExtra("post_user");
         follow = (Follow)getIntent().getSerializableExtra("follow");
         firebaseFirestore = FirebaseFirestore.getInstance();
-
+        storage = FirebaseStorage.getInstance();
+        storageRef = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         other_people_follow_switch = findViewById(R.id.other_people_follow_switch);
         other_people_follow_username = findViewById(R.id.other_people_follow_username);
         //other_people_follow_email = findViewById(R.id.other_people_follow_email);
         mypage_foot_size = findViewById(R.id.mypage_foot_size);
         mypage_foot_width = findViewById(R.id.mypage_foot_width);
-
+        mypage_profile_picture = findViewById(R.id.mypage_profile_picture);
         other_people_post_board = findViewById(R.id.other_people_post_board);
         other_people_follower = findViewById(R.id.other_people_follower);
         other_people_following = findViewById(R.id.other_people_following);
@@ -86,6 +99,22 @@ public class OtherMyMenu extends AppCompatActivity {
         Log.d("click",String.valueOf(other_people_post_board.isSelected()));
         Log.d("click",String.valueOf(other_people_following.isSelected()));
         Log.d("click",String.valueOf(other_people_follower.isSelected()));
+
+        if (post_user.getProfile_url()!=null) {
+            StorageReference path = storageRef.child("/profiles/"+post_user.getUser_id());
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                    .skipMemoryCache(true).centerCrop().into(mypage_profile_picture);
+//            holder.url = product.getImage_url();
+        }
+
+
+        Bundle userbundle = new Bundle();
+        userbundle.putSerializable("user",post_user);
+        fr = new FMyPosts();
+        fr.setArguments(userbundle);
+        FragmentManager fm = this.getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.mypage_follower_and_following,fr).commit();
+
 
         other_people_post_board.setOnClickListener(new View.OnClickListener() {
             @Override
