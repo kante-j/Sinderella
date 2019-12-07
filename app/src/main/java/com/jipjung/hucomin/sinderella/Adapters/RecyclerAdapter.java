@@ -80,7 +80,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                         comments = queryDocumentSnapshots.toObjects(Comment.class);
                     }
                 });
-        firestore.collection("likes").get()
+        firestore.collection("likes").whereEqualTo("status","active").get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
