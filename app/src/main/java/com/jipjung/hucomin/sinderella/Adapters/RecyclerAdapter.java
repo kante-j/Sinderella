@@ -148,7 +148,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         if (post_user.getProfile_url()!=null) {
             StorageReference path = storageRef.child("/profiles/"+post_user.getUser_id());
-            Glide.with(context).load(path).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+            Glide.with(context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE)
                     .skipMemoryCache(true).centerCrop().into(holder.picture_post);
 //            holder.url = product.getImage_url();
         }
@@ -284,7 +284,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //        }
         if (post.getImageURL() != null) {
             StorageReference path = storageRef.child(post.image_url);
-            Glide.with(this.context).load(path).skipMemoryCache(true).into(holder.image);
+            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(holder.image);
             holder.url = post.getImageURL();
         }
         else {

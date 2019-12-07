@@ -30,6 +30,7 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMenu;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -258,7 +259,7 @@ public class DetailedPost extends AppCompatActivity {
         sr = fs.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         if(dUrl != null){
             StorageReference path = sr.child(dUrl);
-            Glide.with(this).load(path).skipMemoryCache(true).into(dImage);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(dImage);
         }
 
         commentListView = (ListView)findViewById(R.id.list_comments);
