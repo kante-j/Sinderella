@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.FirebaseStorage;
@@ -211,7 +212,7 @@ public class MyMenu extends AppCompatActivity {
             profilemodify_picture.setVisibility(View.GONE);
             profilemodify_Image.setVisibility(View.VISIBLE);
             StorageReference path = storageReference.child(user.getProfile_url());
-            Glide.with(this).load(path).skipMemoryCache(false).into(profilemodify_Image);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(profilemodify_Image);
         }
 
 

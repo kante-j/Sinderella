@@ -302,7 +302,7 @@
                 <FrameLayout
                     android:id="@+id/mypage_follower_and_following"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="500dp"
                     android:layout_below="@+id/other_people_follow_btnlayout"
                     android:layout_gravity="center"
                     android:layout_marginStart="15dp"

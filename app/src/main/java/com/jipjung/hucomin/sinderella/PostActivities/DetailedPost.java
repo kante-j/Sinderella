@@ -30,6 +30,7 @@ import com.bumptech.glide.Glide;
 //import com.example.kante.live_alone.MyMenuActivities.MyMenu;
 //import com.example.kante.live_alone.MyMenuActivities.MyMessages;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -258,7 +259,7 @@ public class DetailedPost extends AppCompatActivity {
         sr = fs.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         if(dUrl != null){
             StorageReference path = sr.child(dUrl);
-            Glide.with(this).load(path).skipMemoryCache(true).into(dImage);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(dImage);
         }
 
         commentListView = (ListView)findViewById(R.id.list_comments);
@@ -288,13 +289,16 @@ public class DetailedPost extends AppCompatActivity {
         other_people_page.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
-                if(follow != null){
-                    intent.putExtra("follow",follow);
+                if(!post_user.getUser_id().equals(user.getUser_id())) {
+                    Intent intent = new Intent(DetailedPost.this, OtherMyMenu.class);
+                    if(follow != null){
+                        intent.putExtra("follow",follow);
+                    }
+                    intent.putExtra("post_user",post_user);
+                    intent.putExtra("user",user);
+                    startActivity(intent);
                 }
-                intent.putExtra("post_user",post_user);
-                intent.putExtra("user",user);
-                startActivity(intent);
+
             }
         });
 

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -123,7 +124,7 @@ public class FMymenu extends Fragment {
         if(user.getProfile_url() !=null){
 
             StorageReference path = storageReference.child(user.getProfile_url());
-            Glide.with(this).load(path).skipMemoryCache(false).into(mypage_profile_picture);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(mypage_profile_picture);
         }
 
         logoutbtn = v.findViewById(R.id.mypage_logout);

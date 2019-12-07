@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -43,6 +44,7 @@ public class FFollow extends Fragment {
 
     private RecyclerView recyclerView;
     private FirebaseFirestore firebaseFirestore;
+    private TextView is_no_follower;
 //    private LinearLayout layout;
     private RecyclerAdapter mAdapter;
     private List<Post> types;
@@ -73,7 +75,7 @@ public class FFollow extends Fragment {
         pgsBar = (ProgressBar) v.findViewById(R.id.progress_bar);
         mArrayList = new ArrayList<>();
         types = new ArrayList<Post>();
-
+        is_no_follower = v.findViewById(R.id.is_no_follower);
 
 
 
@@ -157,6 +159,7 @@ public class FFollow extends Fragment {
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         list_follow.setLayoutManager(linearLayoutManager);
 
+
         //TODO: 없애시오
         ArrayList<String> items = new ArrayList<>();
         items.add("Hard");
@@ -164,11 +167,13 @@ public class FFollow extends Fragment {
         items.add("Please");
         items.add("Sorry");
         items.add("Maybe");
+        items.add("Sorry");
+        items.add("Maybe");
+        items.add("Sorry");
+        items.add("Maybe");
         // 여기까지
 
-        FollowArrayAdapter followArrayAdapter = new FollowArrayAdapter(getContext(),0, items);
 
-        list_follow.setAdapter(followArrayAdapter);
 
 
 
@@ -197,6 +202,11 @@ public class FFollow extends Fragment {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         followList = queryDocumentSnapshots.toObjects(Follow.class);
+                        if((followList.size() ==0)){
+                            is_no_follower.setVisibility(View.VISIBLE);
+                        }
+                        FollowArrayAdapter followArrayAdapter = new FollowArrayAdapter(getContext(),0, followList, user);
+                        list_follow.setAdapter(followArrayAdapter);
 //                        String[] followarr = new String[];
                         ArrayList<String> followarr = new ArrayList<String>();
                         for(Iterator<Follow> it = followList.iterator(); it.hasNext(); ) {

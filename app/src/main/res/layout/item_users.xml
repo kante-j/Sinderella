@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:lineSpacingExtra="3sp"
-                android:text="nickname"
+                android:text=""
                 android:textColor="#707070"
                 android:textSize="12sp" />
 
