@@ -1,5 +1,6 @@
 package com.jipjung.hucomin.sinderella.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -92,9 +93,9 @@ public class FHome extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         mAdapter = new RecyclerAdapter(getContext(), mArrayList, R.layout.home_fragments, user);
-
         //데이터 정렬
         getListItems();
+
         //게시글 검색기능
 //        ((HomeFeed)HomeFeed.context).searchingText.addTextChangedListener(new TextWatcher() {
 //            @Override

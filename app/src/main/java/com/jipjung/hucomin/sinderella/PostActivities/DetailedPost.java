@@ -199,7 +199,6 @@ public class DetailedPost extends AppCompatActivity {
         post_star_evaluation.setText(String.valueOf(post.getRating())+"점");
         star_evaluation.setRating(post.rating);
         category.setText(post.getCategory());
-
         price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(post.getPrice());
         price.setText("구매가격 : "+price_str);
         //price.setText("구매가격 : "+post.getPrice() );
@@ -316,10 +315,9 @@ public class DetailedPost extends AppCompatActivity {
                 // mymenu로 이동
                 else{
 //                    Intent intent_self = new Intent(DetailedPost.this, HomeFeed.class);
-                    Intent intent_self = new Intent();
-                    intent_self.putExtra("user_self",user);
-                    setResult(33);
-                    finish();
+//                    Intent intent_self = new Intent();
+//                    intent_self.putExtra("user_self",user);
+
 //                    startActivity(intent_self);
 
 //                    Fragment fragment_self = new FMymenu();
@@ -594,6 +592,12 @@ public class DetailedPost extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+//        Bundle bundle = new Bundle();
+//        bundle.putString(FIELD_A, mA.getText().toString());
+        super.onBackPressed();
+    }
     /********************************
      ************ 핀치 줌 관련***********
      ********************************/
@@ -615,11 +619,11 @@ public class DetailedPost extends AppCompatActivity {
 //        }
 //    }
 
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode) {
-        intent.putExtra("requestCode",33);
-        super.startActivityForResult(intent, requestCode);
-    }
+//    @Override
+//    public void startActivityForResult(Intent intent, int requestCode) {
+//        intent.putExtra("requestCode",33);
+//        super.startActivityForResult(intent, 33);
+//    }
 
     /********************************
      ************ 팔로우 관련***********

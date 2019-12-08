@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
+import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
 import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.User;
@@ -446,7 +447,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     intent.putExtra("POSTID",post_id);
 //                    intent.putExtra("posting_user_id",posting_user_id.getText().toString());
                     intent.putExtra("CATEGORY",post_category);
-
                     context.startActivity(intent);
                 }
             });

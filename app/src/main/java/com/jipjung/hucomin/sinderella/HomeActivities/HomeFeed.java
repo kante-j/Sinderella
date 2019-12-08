@@ -43,6 +43,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.jipjung.hucomin.sinderella.Fragments.FMymenu;
 import com.jipjung.hucomin.sinderella.Fragments.FSearchResult;
 import com.jipjung.hucomin.sinderella.MyMenuActivities.MyMenu;
+import com.jipjung.hucomin.sinderella.PostActivities.DetailedPost;
 import com.jipjung.hucomin.sinderella.PostActivities.Posting;
 import com.jipjung.hucomin.sinderella.R;
 import com.jipjung.hucomin.sinderella.Search.SearchActivity;
@@ -113,7 +114,6 @@ public class HomeFeed extends AppCompatActivity {
         home_btn = findViewById(R.id.go_home);
 
         btn_searchingText = findViewById(R.id.searchingText);
-
         userbundle = new Bundle();
         followbundle = new Bundle();
 //        user_self = (User) getIntent().getSerializableExtra("user_self");
@@ -613,8 +613,10 @@ public class HomeFeed extends AppCompatActivity {
         context = this;
     }
 
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d("qweqwe",String.valueOf(resultCode)+"  "+String.valueOf(requestCode));
         // check if the request code is same as what is passed  here it is 1
         if (requestCode == 2) {
             if (data != null) {
@@ -635,7 +637,7 @@ public class HomeFeed extends AppCompatActivity {
             }
 
 
-        } else if (requestCode == 33) {
+        } else if (resultCode == 33) {
             Log.d("qweqwe", "asdasd");
             follow_btn.setBackgroundResource(R.drawable.follow);
             home_btn.setBackgroundResource(R.drawable.home);
@@ -740,6 +742,8 @@ public class HomeFeed extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        super.onResume();
+
 
         if (fr != null) {
             if (fr.getClass() == FHome.class) {
@@ -760,7 +764,6 @@ public class HomeFeed extends AppCompatActivity {
             ft.commit();
         }
 
-        super.onResume();
 
     }
 
