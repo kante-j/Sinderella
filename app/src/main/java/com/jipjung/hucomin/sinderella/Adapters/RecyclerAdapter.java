@@ -2,6 +2,8 @@ package com.jipjung.hucomin.sinderella.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -430,6 +432,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
                     context.startActivity(intent);
                 }
             });
+
+            picture_post.setBackground(new ShapeDrawable(new OvalShape()));
+            picture_post.setClipToOutline(true);
         }
     }
 }

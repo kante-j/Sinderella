@@ -56,12 +56,14 @@ import com.google.firebase.firestore.WriteBatch;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import androidx.annotation.NonNull;
@@ -112,7 +114,9 @@ public class DetailedPost extends AppCompatActivity {
     private Post post;
     private Follow follow;
     private RelativeLayout cart_like_btn;
+    private TextView category;
     private TextView price;
+    private String price_str;
     private TextView size;
     private Switch followSwitch;
     private Button where_to_buy;
@@ -162,6 +166,7 @@ public class DetailedPost extends AppCompatActivity {
         action_bar_back_close = findViewById(R.id.action_bar_back_close);
         follow_text = findViewById(R.id.follow_text);
         unfollow_text = findViewById(R.id.unfollow_text);
+        category = findViewById(R.id.category);
         price = findViewById(R.id.price);
         size = findViewById(R.id.size);
         where_to_buy = findViewById(R.id.where_to_buy);
@@ -187,7 +192,11 @@ public class DetailedPost extends AppCompatActivity {
         dTime.setText(intent.getStringExtra("TIME"));
         post_star_evaluation.setText(String.valueOf(post.getRating())+"점");
         star_evaluation.setRating(post.rating);
-        price.setText("구매가격 : "+post.getPrice() );
+        category.setText(post.getCategory());
+
+        price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(post.getPrice());
+        price.setText("구매가격 : "+price_str);
+        //price.setText("구매가격 : "+post.getPrice() );
         size.setText("구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
         if(intent.getStringExtra("CATEGORY").equals("FEatout")){
