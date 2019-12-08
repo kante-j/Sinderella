@@ -188,6 +188,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginStart="20dp"
                                 android:layout_marginEnd="20dp"
+                                android:layout_marginBottom="5dp"
                                 android:orientation="horizontal">
 
                                 <ImageView
@@ -266,25 +267,35 @@
                                 android:layout_height="match_parent"
                                 android:orientation="vertical">
 
-                                <TextView
-                                    android:id="@+id/dp_title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="20dp"
-                                    android:layout_marginEnd="20dp"
-                                    android:layout_marginBottom="5dp"
-                                    android:fontFamily="@font/gyeonggititle_medium"
-                                    android:text="title"
-                                    android:textColor="#707070"
-                                    android:textSize="18sp"
-                                    android:textStyle="normal" />
-
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="20dp"
                                     android:layout_marginEnd="20dp"
                                     android:layout_marginBottom="10dp">
+
+                                    <TextView
+                                        android:id="@+id/dp_title"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_alignParentStart="true"
+                                        android:layout_alignParentTop="true"
+                                        android:layout_marginBottom="5dp"
+                                        android:fontFamily="@font/gyeonggititle_medium"
+                                        android:text="title"
+                                        android:textColor="#707070"
+                                        android:textSize="18sp"
+                                        android:textStyle="normal" />
+
+                                    <TextView
+                                        android:id="@+id/category"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_below="@id/dp_title"
+                                        android:layout_marginBottom="5dp"
+                                        android:fontFamily="@font/gyeonggititle_medium"
+                                        android:text="카테고리"
+                                        android:textSize="16sp" />
 
                                     <TextView
                                         android:id="@+id/price"
@@ -303,77 +314,87 @@
                                         android:id="@+id/size"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_below="@id/dp_posted_time"
+                                        android:layout_below="@id/category"
+                                        android:layout_alignParentTop="false"
                                         android:layout_marginBottom="5dp"
                                         android:fontFamily="@font/gyeonggititle_medium"
                                         android:text="구매 사이즈"
                                         android:textSize="16sp" />
 
-                                    <TextView
-                                        android:id="@+id/dp_posted_time"
+                                    <LinearLayout
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="5dp"
-                                        android:fontFamily="@font/gyeonggititle_medium"
-                                        android:text="Time"
-                                        android:textAlignment="textEnd" />
-
-                                    <FrameLayout
-                                        android:id="@+id/where_to_buy_layout"
-                                        android:layout_width="125dp"
-                                        android:layout_height="30dp"
                                         android:layout_alignParentEnd="true"
-                                        android:background="@drawable/switch_track_unfollow">
+                                        android:layout_alignParentBottom="true"
+                                        android:orientation="vertical">
 
-                                        <Button
-                                            android:id="@+id/where_to_buy"
-                                            android:layout_width="match_parent"
+                                        <FrameLayout
+                                            android:id="@+id/where_to_buy_layout"
+                                            android:layout_width="130dp"
                                             android:layout_height="30dp"
-                                            android:layout_gravity="right"
-                                            android:background="@null"
-                                            android:fontFamily="@font/gyeonggititle_bold"
-                                            android:text="구입처   "
-                                            android:textColor="#ffffff" />
+                                            android:layout_marginBottom="5dp"
+                                            android:background="@drawable/switch_track_unfollow">
 
-                                        <View
-                                            android:layout_width="10dp"
-                                            android:layout_height="16dp"
-                                            android:layout_gravity="right|center_vertical"
-                                            android:layout_marginEnd="10dp"
-                                            android:background="@drawable/right_button" />
-                                    </FrameLayout>
+                                            <Button
+                                                android:id="@+id/where_to_buy"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="30dp"
+                                                android:layout_gravity="right"
+                                                android:background="@null"
+                                                android:fontFamily="@font/gyeonggititle_bold"
+                                                android:text="구입처   "
+                                                android:textColor="#ffffff" />
 
-                                    <RelativeLayout
-                                        android:id="@+id/cart_like_btn"
-                                        android:layout_width="125dp"
-                                        android:layout_height="30dp"
-                                        android:layout_below="@id/where_to_buy_layout"
-                                        android:layout_alignParentEnd="true"
-                                        android:layout_marginTop="10dp"
-                                        android:background="@drawable/switch_track_unfollow">
+                                            <View
+                                                android:layout_width="10dp"
+                                                android:layout_height="16dp"
+                                                android:layout_gravity="right|center_vertical"
+                                                android:layout_marginEnd="10dp"
+                                                android:background="@drawable/right_button" />
+                                        </FrameLayout>
 
-                                        <View
-                                            android:layout_width="22dp"
-                                            android:layout_height="22dp"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_centerVertical="true"
-                                            android:layout_marginEnd="10dp"
-                                            android:background="@drawable/cart_white" />
+                                        <RelativeLayout
+                                            android:id="@+id/cart_like_btn"
+                                            android:layout_width="130dp"
+                                            android:layout_height="30dp"
+                                            android:background="@drawable/switch_track_unfollow">
 
-                                        <Button
-                                            android:id="@+id/post_detail_cart"
+                                            <View
+                                                android:layout_width="20dp"
+                                                android:layout_height="20dp"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_centerVertical="true"
+                                                android:layout_marginEnd="10dp"
+                                                android:background="@drawable/cart_white" />
+
+                                            <Button
+                                                android:id="@+id/post_detail_cart"
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="match_parent"
+                                                android:layout_alignParentEnd="true"
+                                                android:layout_gravity="right"
+                                                android:layout_marginStart="5dp"
+                                                android:layout_marginEnd="35dp"
+                                                android:background="@null"
+                                                android:fontFamily="@font/gyeonggititle_bold"
+                                                android:text="상품 보러가기"
+                                                android:textColor="#ffffff" />
+
+
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:id="@+id/dp_posted_time"
                                             android:layout_width="wrap_content"
-                                            android:layout_height="match_parent"
-                                            android:layout_alignParentEnd="true"
-                                            android:layout_gravity="right"
-                                            android:layout_marginEnd="30dp"
-                                            android:background="@null"
-                                            android:fontFamily="@font/gyeonggititle_bold"
-                                            android:text="상품 보러가기"
-                                            android:textColor="#ffffff" />
+                                            android:layout_height="wrap_content"
+                                            android:layout_gravity="end"
+                                            android:layout_marginTop="5dp"
+                                            android:fontFamily="@font/gyeonggititle_medium"
+                                            android:text="Time"
+                                            android:textAlignment="textEnd" />
 
+                                    </LinearLayout>
 
-                                    </RelativeLayout>
                                 </RelativeLayout>
 
                                 <LinearLayout
