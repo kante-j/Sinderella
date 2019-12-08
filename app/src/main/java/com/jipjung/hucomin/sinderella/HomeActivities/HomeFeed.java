@@ -112,9 +112,11 @@ public class HomeFeed extends AppCompatActivity {
         mypage_btn = findViewById(R.id.go_mymenu);
         home_btn = findViewById(R.id.go_home);
 
+        btn_searchingText = findViewById(R.id.searchingText);
 
         userbundle = new Bundle();
         followbundle = new Bundle();
+//        user_self = (User) getIntent().getSerializableExtra("user_self");
 
         firebaseFirestore.collection("users").whereEqualTo("user_id", firebaseUser.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -142,6 +144,7 @@ public class HomeFeed extends AppCompatActivity {
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
+
 
 //        follow_btn.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -508,24 +511,6 @@ public class HomeFeed extends AppCompatActivity {
         });
 
         //TODO:DetailedPost에서 Mymenu가기
-        user_self = (User) getIntent().getSerializableExtra("user_self");
-        if(user_self != null) {
-            Log.d("mypage",user_self.getFoot_width());
-            Log.d("mypage", toString().valueOf(user_self.getFoot_size()));
-            Log.d("mypage",user_self.getNickname());
-
-            Fragment fragment_self = new FMymenu();
-            Bundle bundle_self = new Bundle();
-
-            FragmentManager fm_self = getSupportFragmentManager();
-            FragmentTransaction ft_self = fm_self.beginTransaction();
-
-            bundle_self.putSerializable("user", user_self);
-            fragment_self.setArguments(bundle_self);
-
-            ft_self.replace(R.id.fragment_container, fragment_self);
-            ft_self.commit();
-        }
 
 
         Button btn_gomymenu = findViewById(R.id.go_mymenu_btn);
@@ -557,7 +542,6 @@ public class HomeFeed extends AppCompatActivity {
             }
         });
 
-        btn_searchingText = findViewById(R.id.searchingText);
 
 //        btn_searchingText.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -651,6 +635,30 @@ public class HomeFeed extends AppCompatActivity {
             }
 
 
+        } else if (requestCode == 33) {
+            Log.d("qweqwe", "asdasd");
+            follow_btn.setBackgroundResource(R.drawable.follow);
+            home_btn.setBackgroundResource(R.drawable.home);
+            cart_btn.setBackgroundResource(R.drawable.cart_white);
+            mypage_btn.setBackgroundResource(R.drawable.mypage_clicked);
+            btn_searchingText.setBackgroundResource(R.drawable.search);
+
+            fr = new FMymenu();
+            fr.setArguments(userbundle);
+//            Bundle bundle_self = new Bundle();
+//
+//            FragmentManager fm_self = getSupportFragmentManager();
+//            FragmentTransaction ft_self = fm_self.beginTransaction();
+//
+//            bundle_self.putSerializable("user", user_self);
+//            fragment_self.setArguments(bundle_self);
+
+//            fr.replace(R.id.fragment_container, fragment_self);
+//            ft_self.commit();
+            FragmentManager fm = getSupportFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment_container, fr);
+            ft.commit();
         }
     }
 

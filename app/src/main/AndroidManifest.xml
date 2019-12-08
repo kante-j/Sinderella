@@ -41,7 +41,7 @@
         </activity>
         <activity android:name=".StartAppActivities.EmailPasswordActivity" />
         <activity android:name=".HomeActivities.HomeFeed"
-
+            android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".StartAppActivities.UserInfoInput" />
         <activity android:name=".PostActivities.Posting" />

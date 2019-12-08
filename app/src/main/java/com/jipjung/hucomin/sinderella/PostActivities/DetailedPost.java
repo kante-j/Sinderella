@@ -306,9 +306,12 @@ public class DetailedPost extends AppCompatActivity {
                 }
                 // mymenu로 이동
                 else{
-                    Intent intent_self = new Intent(DetailedPost.this, HomeFeed.class);
+//                    Intent intent_self = new Intent(DetailedPost.this, HomeFeed.class);
+                    Intent intent_self = new Intent();
                     intent_self.putExtra("user_self",user);
-                    startActivity(intent_self);
+                    setResult(33);
+                    finish();
+//                    startActivity(intent_self);
 
 //                    Fragment fragment_self = new FMymenu();
 //                    Bundle bundle_self = new Bundle();
@@ -602,9 +605,17 @@ public class DetailedPost extends AppCompatActivity {
 //            return true;
 //        }
 //    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode) {
+        intent.putExtra("requestCode",33);
+        super.startActivityForResult(intent, requestCode);
+    }
+
     /********************************
      ************ 팔로우 관련***********
      ********************************/
+
 
     public void isFollowed(){
         if(follow == null){
