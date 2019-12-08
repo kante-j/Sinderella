@@ -226,11 +226,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
                         android:layout_marginBottom="5dp"
+                        android:fontFamily="@font/gyeonggititle_medium"
                         android:gravity="left|center_vertical"
                         android:lineSpacingExtra="2.5sp"
                         android:text="Title"
                         android:textColor="#060202"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        tools:textColor="#707070" />
 
 
                     <LinearLayout

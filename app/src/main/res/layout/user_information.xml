@@ -114,6 +114,7 @@
                         android:layout_width="61dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/gyeonggititle_medium"
                         android:lineSpacingExtra="5sp"
                         android:text="남자"
                         android:textColor="#757070"
@@ -125,6 +126,7 @@
                         android:layout_width="61dp"
                         android:layout_height="20dp"
                         android:layout_weight="1"
+                        android:fontFamily="@font/gyeonggititle_medium"
                         android:lineSpacingExtra="5sp"
                         android:text="여자"
                         android:textColor="#757070"
@@ -231,6 +233,65 @@
                         />
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/foot_height_box"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginEnd="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/user_information_mid"
+                    android:fontFamily="@font/gyeonggititle_bold"
+                    android:gravity="center"
+                    android:letterSpacing="0.6"
+                    android:text="발 높이"
+                    android:textSize="16sp" />
+
+                <RadioGroup
+                    android:id="@+id/foot_height_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/low"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="평발"
+                        android:textColor="#707070"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/nornal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="보통"
+                        android:textColor="#707070"
+                        android:textSize="12sp" />
+
+                    <RadioButton
+                        android:id="@+id/high"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/gyeonggititle_medium"
+                        android:text="까치발"
+                        android:textColor="#707070"
+                        android:textSize="12sp" />
+                </RadioGroup>
             </LinearLayout>
 
             <LinearLayout
