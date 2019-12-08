@@ -86,6 +86,8 @@ public class DetailedPost extends AppCompatActivity {
     private TextView follow_text;
     private TextView unfollow_text;
 
+    private FirebaseStorage storage;
+    private StorageReference storageReference;
     private Button post_detail_cart;
     private FirebaseStorage fs;
     private ImageView dImage;
@@ -137,6 +139,7 @@ public class DetailedPost extends AppCompatActivity {
     private LinearLayout detail_review_layout;
     private LinearLayout review_layout;
     private LinearLayout other_people_page;
+    private ImageView picture_post;
 
     //    private Post p;
     @Override
@@ -163,6 +166,10 @@ public class DetailedPost extends AppCompatActivity {
 //                        }
 //                    }
 //                });
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
+
+        picture_post = findViewById(R.id.picture_post);
         post_detail_cart = findViewById(R.id.post_detail_cart);
         delete_btn = findViewById(R.id.delete_btn);
         edit_btn = findViewById(R.id.edit_btn);
@@ -237,6 +244,12 @@ public class DetailedPost extends AppCompatActivity {
             });
         }else{
             cart_like_btn.setVisibility(View.GONE);
+        }
+
+        if(user.getProfile_url() !=null){
+            StorageReference path = storageReference.child(user.getProfile_url());
+            Glide.with(this).load(path)
+                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
         }
 
         //중고품 거래 기능 글에만 note 텍스트뷰 보이게
