@@ -72,6 +72,7 @@ public class FMymenu extends Fragment {
     private Fragment fr;
     private FrameLayout follower_and_following_FrameLayout;
     private User user_self;
+    private FrameLayout mypage_commet_fragment_container;
 
 
     public FMymenu(){
@@ -93,6 +94,8 @@ public class FMymenu extends Fragment {
         text_foot_size = v.findViewById(R.id.mypage_foot_size);
         text_foot_width = v.findViewById(R.id.mypage_foot_width);
         mypage_profile_picture = v.findViewById(R.id.mypage_profile_picture);
+
+        mypage_commet_fragment_container =v.findViewById(R.id.mypage_commet_fragment_container);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
@@ -116,12 +119,20 @@ public class FMymenu extends Fragment {
 
 
         /* 여기 까지*/
+
         Bundle userbundle = new Bundle();
         userbundle.putSerializable("user",user);
         fr = new FMyPosts();
         fr.setArguments(userbundle);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.mypage_commet_fragment_container,fr).commit();
+
+        // TODO: 게시물 있을 시 보이도록 하기!
+        if(user.toMap() != null){
+
+            mypage_commet_fragment_container.setVisibility(View.VISIBLE);
+
+        }
 
 
         go_profilecorrect = v.findViewById(R.id.mypage_btn_profile);
@@ -171,50 +182,50 @@ public class FMymenu extends Fragment {
 
         //TODO: btn 색깔변화
 
-        followerbtn = v.findViewById(R.id.mypage_follower);
-        followingbtn=v.findViewById(R.id.mypage_following);
-        follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
-        follower_num = v.findViewById(R.id.follower_num);
-        following_num = v.findViewById(R.id.following_num);
-
-        //TODO: 추가적으로 follower and following layout 보이기
-        follower_and_following_FrameLayout = v.findViewById(R.id.mypage_follower_and_following);
-
-        Log.d("click",String.valueOf(followerbtn.isSelected()));
-        Log.d("click",String.valueOf(followingbtn.isSelected()));
-
-        followerbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Log.d("click","follower_true");
-                    followingbtn.setSelected(false);
-                    followingbtn.setTextColor(Color.BLACK);
-                    following_num.setTextColor(Color.BLACK);
-                    followerbtn.setSelected(true);
-                    followerbtn.setTextColor(Color.WHITE);
-                    follower_num.setTextColor(Color.WHITE);
-                    follow_framelayout.setVisibility(getView().VISIBLE);
-                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
-
-            }
-        });
-
-
-        followingbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Log.d("click","following_true");
-                    followerbtn.setSelected(false);
-                    followerbtn.setTextColor(Color.BLACK);
-                    follower_num.setTextColor(Color.BLACK);
-                    followingbtn.setSelected(true);
-                    followingbtn.setTextColor(Color.WHITE);
-                    following_num.setTextColor(Color.WHITE);
-                    follow_framelayout.setVisibility(getView().VISIBLE);
-                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
-
-            }
-        });
+//        followerbtn = v.findViewById(R.id.mypage_follower);
+//        followingbtn=v.findViewById(R.id.mypage_following);
+//        follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
+//        follower_num = v.findViewById(R.id.follower_num);
+//        following_num = v.findViewById(R.id.following_num);
+//
+//        //TODO: 추가적으로 follower and following layout 보이기
+//        follower_and_following_FrameLayout = v.findViewById(R.id.mypage_follower_and_following);
+//
+//        Log.d("click",String.valueOf(followerbtn.isSelected()));
+//        Log.d("click",String.valueOf(followingbtn.isSelected()));
+//
+//        followerbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                    Log.d("click","follower_true");
+//                    followingbtn.setSelected(false);
+//                    followingbtn.setTextColor(Color.BLACK);
+//                    following_num.setTextColor(Color.BLACK);
+//                    followerbtn.setSelected(true);
+//                    followerbtn.setTextColor(Color.WHITE);
+//                    follower_num.setTextColor(Color.WHITE);
+//                    follow_framelayout.setVisibility(getView().VISIBLE);
+//                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
+//
+//            }
+//        });
+//
+//
+//        followingbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                    Log.d("click","following_true");
+//                    followerbtn.setSelected(false);
+//                    followerbtn.setTextColor(Color.BLACK);
+//                    follower_num.setTextColor(Color.BLACK);
+//                    followingbtn.setSelected(true);
+//                    followingbtn.setTextColor(Color.WHITE);
+//                    following_num.setTextColor(Color.WHITE);
+//                    follow_framelayout.setVisibility(getView().VISIBLE);
+//                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
+//
+//            }
+//        });
 
 
 
