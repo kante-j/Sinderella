@@ -52,9 +52,11 @@ public class UserInfoInput extends AppCompatActivity {
     private Spinner spinner_foot_size;
     private RadioGroup sex_group;
     private RadioGroup radio_foot_width;
+    private RadioGroup foot_height_group;
     private int foot_size;
     private TextView birth_date_txt;
     private String foot_width;
+    private String foot_height;
     private String birth_date;
     private String nickname;
     private String sex;
@@ -78,7 +80,7 @@ public class UserInfoInput extends AppCompatActivity {
         birthbtn = findViewById(R.id.birth_date);
         spinner_foot_size = findViewById(R.id.foot_size);
         radio_foot_width = findViewById(R.id.foot_width_group);
-
+        foot_height_group = findViewById(R.id.foot_height_group);
         check_foot_width = findViewById(R.id.check_foot_width);
 //<<<<<<< HEAD
 //        TextView nike_airforce_hover;
@@ -291,6 +293,23 @@ public class UserInfoInput extends AppCompatActivity {
             }
         });
 
+        foot_height_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.low:
+                        foot_height = "low";
+                        break;
+                    case R.id.nornal:
+                        foot_height = "normal";
+                        break;
+                    case R.id.high:
+                        foot_height = "high";
+                        break;
+                }
+
+            }
+        });
 
         radio_foot_width.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -327,6 +346,7 @@ public class UserInfoInput extends AppCompatActivity {
                 docData.put("birth_date", birth_date);
                 docData.put("foot_size", foot_size);
                 docData.put("foot_width", foot_width);
+                docData.put("foot_height",foot_height);
                 docData.put("age", 2019 - Integer.valueOf(year_to_age) + 1);
 
 //                SimpleDateFormat s = new SimpleDateFormat("yyyyMMddkkmmss");
