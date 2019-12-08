@@ -210,16 +210,16 @@ public class FCart extends Fragment {
                                     return;
                                 } else {
                                     types = queryDocumentSnapshots.toObjects(Product.class);
-                                    for(int x = 0; x<types.size(); x++){
-                                        String post_id = queryDocumentSnapshots.getDocuments().get(x).getId();
-                                    }
+//                                    for(int x = 0; x<types.size(); x++){
+//                                        String post_id = queryDocumentSnapshots.getDocuments().get(x).getId();
+//                                    }
                                     types.sort(new FCart.CustomComparator().reversed());
-                                    if (types.size() < 10) {
-                                        mArrayList.addAll(types);
-                                    } else {
-                                        for (int j = 0; j < 10; j++)
-                                            mArrayList.add(types.get(j));
-                                    }
+//                                    if (types.size() < 10) {
+//                                        mArrayList.addAll(types);
+//                                    } else {
+//                                        for (int j = 0; j < 10; j++)
+//                                            mArrayList.add(types.get(j));
+//                                    }
                                     recyclerView.setAdapter(mAdapter);
                                     mAdapter.arrayList.addAll(mArrayList);
                                     pgsBar.setVisibility(ProgressBar.GONE);
