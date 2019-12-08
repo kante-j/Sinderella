@@ -78,6 +78,17 @@ public class FMymenu extends Fragment {
     public FMymenu(){
 
     }
+
+    @Override
+    public void onResume() {
+        if(user.getProfile_url() !=null){
+
+            StorageReference path = storageReference.child(user.getProfile_url());
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(mypage_profile_picture);
+        }
+        super.onResume();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
