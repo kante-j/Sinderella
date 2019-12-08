@@ -3,6 +3,8 @@ package com.jipjung.hucomin.sinderella.PostActivities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -246,11 +248,10 @@ public class DetailedPost extends AppCompatActivity {
             cart_like_btn.setVisibility(View.GONE);
         }
 
-        if(user.getProfile_url() !=null){
-            StorageReference path = storageReference.child(user.getProfile_url());
-            Glide.with(this).load(path)
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
-        }
+
+
+        picture_post.setBackground(new ShapeDrawable(new OvalShape()));
+        picture_post.setClipToOutline(true);
 
         //중고품 거래 기능 글에만 note 텍스트뷰 보이게
 //        if(intent.getStringExtra("CATEGORY").equals("FTrans")){
@@ -312,6 +313,11 @@ public class DetailedPost extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 post_user = documentSnapshot.toObject(User.class);
+                if(post_user.getProfile_url() !=null){
+                    StorageReference path = storageReference.child(post_user.getProfile_url());
+                    Glide.with(DetailedPost.this).load(path)
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
+                }
             }
         });
         other_people_page.setOnClickListener(new View.OnClickListener() {
