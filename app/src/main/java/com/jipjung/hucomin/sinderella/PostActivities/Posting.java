@@ -323,7 +323,7 @@ public class Posting extends AppCompatActivity {
         buyURLString = buyURL.getText().toString();
         price = Integer.valueOf(priceTextView.getText().toString());
         int shoe_size_num = Integer.valueOf(shoesSizeSpinner.getSelectedItem().toString().substring(0,3));
-//        String category = categorySpinner.getSelectedItem().toString();
+
         WriteBatch batch = mFirestore.batch();
         DocumentReference posts = mFirestore.collection("posts").document();
         if(validatePost()){
@@ -343,10 +343,10 @@ public class Posting extends AppCompatActivity {
             docData.put("rating",rating);
             docData.put("price",price);
             docData.put("buyURL",buyURLString);
-//            docData.put("category",category);
 
             // TODO : 여기에 product가 존재할 때랑 존재하지 않을 때 추가
             if(product !=null){
+                docData.put("category",product.getCategory());
                 docData.put("product",product.getId());
             }
 
