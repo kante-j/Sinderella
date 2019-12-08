@@ -602,6 +602,18 @@ public class DetailedPost extends AppCompatActivity {
             }
         });
 
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DetailedPost.this, PostModifyActivity.class);
+                intent.putExtra("user",user);
+                intent.putExtra("product",product);
+                intent.putExtra("post",post);
+                startActivity(intent);
+                finish();
+            }
+        });
+
 
 
 

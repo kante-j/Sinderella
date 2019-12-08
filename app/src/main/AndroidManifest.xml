@@ -50,6 +50,7 @@
         <activity android:name=".MyMenuActivities.OtherMyMenu"/>
         <activity android:name=".Search.SearchActivity" />
         <activity android:name=".PostActivities.FindModel"/>
+        <activity android:name=".PostActivities.PostModifyActivity"/>
     </application>
 
 </manifest>
