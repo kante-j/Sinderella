@@ -80,7 +80,7 @@ public class FSearchResult extends Fragment {
 
     private ArrayList<String> filter_arrayList;
     private FilterRecyclerAdapter filterRecyclerAdapter;
-
+private String shoe;
     public FSearchResult() {
 
     }
@@ -132,10 +132,10 @@ public class FSearchResult extends Fragment {
                 totalItems = layoutManager.getItemCount();
                 scrollOutItems = ((LinearLayoutManager) layoutManager).findFirstVisibleItemPosition();
 
-                if (isScrolling && (currentItems + scrollOutItems >= totalItems)) {
-                    isScrolling = false;
-                    fetchData();
-                }
+//                if (isScrolling && (currentItems + scrollOutItems >= totalItems)) {
+//                    isScrolling = false;
+//                    fetchData();
+//                }
             }
         });
 //        final SwipeRefreshLayout swipeContainer = (SwipeRefreshLayout)v.findViewById(R.id.swipe_layout);
@@ -152,13 +152,7 @@ public class FSearchResult extends Fragment {
 //
 //        search.setText(intent);
 
-        Bundle extra = this.getArguments();
-        if (extra != null) {
-            String shoe = extra.getString("shoe");
-            user = (User) extra.getSerializable("user");
 
-            search.setText(shoe);
-        }
 
 
         search.addTextChangedListener(new TextWatcher() {
@@ -169,7 +163,13 @@ public class FSearchResult extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
+                Log.d("qweqwe","123");
+                if(search.getText().length()!=0) {
+                    Log.d("qweqwe","456");
+                    String searchWord = search.getText().toString()
+                            .toLowerCase(Locale.getDefault());
+                    mAdapter.filter(searchWord);
+                }
             }
 
             @Override
@@ -180,7 +180,12 @@ public class FSearchResult extends Fragment {
             }
         });
 
-
+        Bundle extra = this.getArguments();
+        if (extra != null && extra.getString("shoe")!=null) {
+            shoe = extra.getString("shoe").toLowerCase(Locale.getDefault());
+            user = (User) extra.getSerializable("user");
+            search.setText(shoe);
+        }
 
 
 
@@ -420,25 +425,25 @@ public class FSearchResult extends Fragment {
             pgsBar.setVisibility(ProgressBar.GONE);
     }
 
-    private void fetchData() {
-        pgsBar.setVisibility(ProgressBar.VISIBLE);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                int k = mArrayList.size();
-                for (int i = 0; i < 5; i++) {
-                    if (k + i < types.size()) {
-                        mArrayList.add(types.get(k + i));
-                        mAdapter.notifyDataSetChanged();
-                        pgsBar.setVisibility(ProgressBar.GONE);
-                    } else {
-                        pgsBar.setVisibility(ProgressBar.GONE);
-                        return;
-                    }
-                }
-            }
-        }, 1000);
-    }
+//    private void fetchDta() {
+////        pgsBar.setVisibility(ProgressBar.VISIBLE);
+////        new Handler().postDelayed(new Runnable() {
+////            @Override
+////            public void run() {
+////                int k = mArrayList.size();
+////                for (int i = 0; i < 5; i++) {
+////                    if (k + i < types.size()) {
+////                        mArrayList.add(types.get(k + i));
+////                        mAdapter.notifyDataSetChanged();
+////                        pgsBar.setVisibility(ProgressBar.GONE);
+////                    } else {
+////                        pgsBar.setVisibility(ProgressBar.GONE);
+////                        return;
+////                    }
+////                }
+////            }
+////        }, 1000);
+////    }a
 
     public void getListItems() {
         pgsBar.setVisibility(ProgressBar.VISIBLE);
@@ -474,6 +479,9 @@ public class FSearchResult extends Fragment {
 
                                     recyclerView.setAdapter(mAdapter);
                                     mAdapter.arrayList.addAll(mArrayList);
+                                    if(shoe!=null){
+                                        mAdapter.filter_by_category(shoe);
+                                    }
 //                                    mAdapter.filter(search_keyword);
                                     pgsBar.setVisibility(ProgressBar.GONE);
                                 }

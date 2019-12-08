@@ -57,7 +57,7 @@ import java.util.concurrent.ForkJoinPool;
 
 public class HomeFeed extends AppCompatActivity {
 
-    public static String TAG="HomeFeed";
+    public static String TAG = "HomeFeed";
     private DrawerLayout drawerLayout;
     private View drawerView;
     private FirebaseFirestore firebaseFirestore;
@@ -91,6 +91,7 @@ public class HomeFeed extends AppCompatActivity {
     private TextView slid_shoe;
     private TextView slipper;
     private TextView strap_sandal;
+    private User user_self;
 
     @Override
     protected void onStart() {
@@ -115,7 +116,7 @@ public class HomeFeed extends AppCompatActivity {
         userbundle = new Bundle();
         followbundle = new Bundle();
 
-        firebaseFirestore.collection("users").whereEqualTo("user_id",firebaseUser.getUid()).get()
+        firebaseFirestore.collection("users").whereEqualTo("user_id", firebaseUser.getUid()).get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -124,15 +125,15 @@ public class HomeFeed extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(queryDocumentSnapshots.isEmpty()){
+                        if (queryDocumentSnapshots.isEmpty()) {
                             return;
-                        }else{
+                        } else {
                             user = queryDocumentSnapshots.toObjects(User.class).get(0);
-                            userbundle.putSerializable("user",user);
-                            followbundle.putSerializable("user",user);
+                            userbundle.putSerializable("user", user);
+                            followbundle.putSerializable("user", user);
                             fr = new FHome();
                             fr.setArguments(userbundle);
-                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,fr).commit();
+                            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fr).commit();
                         }
                     }
                 })
@@ -159,7 +160,6 @@ public class HomeFeed extends AppCompatActivity {
 //        });
 
 
-
 //        buttons = new ArrayList<Button>();
 //        buttons.add((Button)findViewById(R.id.chat));
 //        buttons.add((Button)findViewById(R.id.cook));
@@ -182,7 +182,7 @@ public class HomeFeed extends AppCompatActivity {
                 goPosting();
             }
         });
-        Button btnSearch = (Button)findViewById(R.id.searchingText);
+        Button btnSearch = (Button) findViewById(R.id.searchingText);
 //        searchingText = (EditText)findViewById(R.id.searchingText);
 //        btnSearch.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -200,7 +200,7 @@ public class HomeFeed extends AppCompatActivity {
 
         // Drawer Layout 화면
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawerView = (View)findViewById(R.id.drawer);
+        drawerView = (View) findViewById(R.id.drawer);
 
         Button buttonOpenDrawer = (Button) findViewById(R.id.action_bar_menu);
         buttonOpenDrawer.setOnClickListener(new View.OnClickListener() {
@@ -218,13 +218,13 @@ public class HomeFeed extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.go_vv).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeFeed.this, VV.class);
-                startActivity(intent);
-            }
-        });
+//        findViewById(R.id.go_vv).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(HomeFeed.this, VV.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //TODO: 카테고리에서 누르시 Intent 값을 통해서 값 전달
         converse_shoe = findViewById(R.id.converse_shoe);
@@ -238,7 +238,7 @@ public class HomeFeed extends AppCompatActivity {
         slipper = findViewById(R.id.slipper);
         strap_sandal = findViewById(R.id.strap_sandal);
 
-        Intent intent = new Intent(getApplicationContext(),FSearchResult.class);
+        Intent intent = new Intent(getApplicationContext(), FSearchResult.class);
 
         Fragment fragment = new FSearchResult();
         Bundle bundle = new Bundle();
@@ -260,7 +260,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", converse_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", converse_shoe.getText().toString());
 
@@ -286,7 +286,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", slip_on_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", slip_on_shoe.getText().toString());
 
@@ -311,7 +311,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", sneakers_btn.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", sneakers_btn.getText().toString());
 
@@ -337,7 +337,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", aqua_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", aqua_shoe.getText().toString());
 
@@ -362,7 +362,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", golf_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", golf_shoe.getText().toString());
 
@@ -388,7 +388,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", running_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", running_shoe.getText().toString());
 
@@ -414,7 +414,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", hiking_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", hiking_shoe.getText().toString());
 
@@ -440,7 +440,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", slid_shoe.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", slid_shoe.getText().toString());
 
@@ -466,7 +466,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", slipper.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", slipper.getText().toString());
 
@@ -492,7 +492,7 @@ public class HomeFeed extends AppCompatActivity {
                 FragmentTransaction ft_search = fm_search.beginTransaction();
 
                 bundle.putString("shoe", strap_sandal.getText().toString());
-                bundle.putSerializable("user",user);
+                bundle.putSerializable("user", user);
 
                 Log.d("shoe", strap_sandal.getText().toString());
 
@@ -507,12 +507,25 @@ public class HomeFeed extends AppCompatActivity {
 
         });
 
+        //TODO:DetailedPost에서 Mymenu가기
+        user_self = (User) getIntent().getSerializableExtra("user_self");
+        if(user_self != null) {
+            Log.d("mypage",user_self.getFoot_width());
+            Log.d("mypage", toString().valueOf(user_self.getFoot_size()));
+            Log.d("mypage",user_self.getNickname());
 
+            Fragment fragment_self = new FMymenu();
+            Bundle bundle_self = new Bundle();
 
+            FragmentManager fm_self = getSupportFragmentManager();
+            FragmentTransaction ft_self = fm_self.beginTransaction();
 
+            bundle_self.putSerializable("user", user_self);
+            fragment_self.setArguments(bundle_self);
 
-
-
+            ft_self.replace(R.id.fragment_container, fragment_self);
+            ft_self.commit();
+        }
 
 
         Button btn_gomymenu = findViewById(R.id.go_mymenu_btn);
@@ -587,7 +600,6 @@ public class HomeFeed extends AppCompatActivity {
         });
 
 
-
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.INTERNET)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -614,19 +626,15 @@ public class HomeFeed extends AppCompatActivity {
         }
 
 
-
-
         context = this;
     }
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // check if the request code is same as what is passed  here it is 1
-        if(requestCode==2)
-        {
-            if(data !=null){
-                search_context=data.getStringExtra("search_context");
+        if (requestCode == 2) {
+            if (data != null) {
+                search_context = data.getStringExtra("search_context");
                 fr = new FSearchResult();
                 userbundle.putString("search_keyword", search_context);
                 fr.setArguments(userbundle);
@@ -650,6 +658,7 @@ public class HomeFeed extends AppCompatActivity {
 
         public void onDrawerClosed(View drawerView) {
         }
+
         public void onDrawerOpened(View drawerView) {
         }
 
@@ -678,12 +687,13 @@ public class HomeFeed extends AppCompatActivity {
         }
     };
 
-    private void goPosting(){
+    private void goPosting() {
         Intent intent = new Intent(this, Posting.class);
-        intent.putExtra("Category",fr.getClass().getSimpleName());
+        intent.putExtra("Category", fr.getClass().getSimpleName());
         startActivity(intent);
     }
-    public void selectCategory(View view){
+
+    public void selectCategory(View view) {
         follow_btn.setBackgroundResource(R.drawable.follow);
         home_btn.setBackgroundResource(R.drawable.home);
         cart_btn.setBackgroundResource(R.drawable.cart_white);
@@ -691,7 +701,7 @@ public class HomeFeed extends AppCompatActivity {
         btn_searchingText.setBackgroundResource(R.drawable.search);
         fr = null;
 
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.go_home:
                 fr = new FHome();
                 fr.setArguments(userbundle);
@@ -723,15 +733,15 @@ public class HomeFeed extends AppCompatActivity {
     @Override
     protected void onResume() {
 
-        if(fr!=null){
-            if(fr.getClass()==FHome.class){
+        if (fr != null) {
+            if (fr.getClass() == FHome.class) {
                 fr = new FHome();
-            }else if(fr.getClass()==FFollow.class){
-                fr= new FFollow();
-            }else if(fr.getClass()==FCart.class){
-                fr= new FCart();
-            }else if(fr.getClass()==FMymenu.class){
-                fr= new FMymenu();
+            } else if (fr.getClass() == FFollow.class) {
+                fr = new FFollow();
+            } else if (fr.getClass() == FCart.class) {
+                fr = new FCart();
+            } else if (fr.getClass() == FMymenu.class) {
+                fr = new FMymenu();
             }
 
             fr.setArguments(userbundle);

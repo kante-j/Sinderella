@@ -250,17 +250,17 @@
             android:text="MY PAGE"
             android:textColor="#ffffff"
             android:textSize="28sp" />
-        <Button
-            android:id="@+id/go_vv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="7.5dp"
-            android:background="@null"
-            android:fontFamily="@font/norwester"
-            android:gravity="center"
-            android:text="VV"
-            android:textColor="#ffffff"
-            android:textSize="28sp" />
+<!--        <Button-->
+<!--            android:id="@+id/go_vv"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="7.5dp"-->
+<!--            android:background="@null"-->
+<!--            android:fontFamily="@font/norwester"-->
+<!--            android:gravity="center"-->
+<!--            android:text="VV"-->
+<!--            android:textColor="#ffffff"-->
+<!--            android:textSize="28sp" />-->
     </LinearLayout>
 
     <!--</LinearLayout>-->

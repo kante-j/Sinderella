@@ -42,6 +42,9 @@ import com.jipjung.hucomin.sinderella.Classes.Like;
 import com.jipjung.hucomin.sinderella.Classes.Post;
 import com.jipjung.hucomin.sinderella.Classes.Product;
 import com.jipjung.hucomin.sinderella.Classes.User;
+import com.jipjung.hucomin.sinderella.Fragments.FMymenu;
+import com.jipjung.hucomin.sinderella.Fragments.FSearchResult;
+import com.jipjung.hucomin.sinderella.HomeActivities.HomeFeed;
 import com.jipjung.hucomin.sinderella.InAppBrowser.InAppBrowser;
 import com.jipjung.hucomin.sinderella.MyMenuActivities.OtherMyMenu;
 import com.jipjung.hucomin.sinderella.R;
@@ -69,6 +72,9 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class DetailedPost extends AppCompatActivity {
@@ -306,6 +312,26 @@ public class DetailedPost extends AppCompatActivity {
                     intent.putExtra("post_user",post_user);
                     intent.putExtra("user",user);
                     startActivity(intent);
+                }
+                // mymenu로 이동
+                else{
+                    Intent intent_self = new Intent(DetailedPost.this, HomeFeed.class);
+                    intent_self.putExtra("user_self",user);
+                    startActivity(intent_self);
+
+//                    Fragment fragment_self = new FMymenu();
+//                    Bundle bundle_self = new Bundle();
+//
+//                    FragmentManager fm_self = getSupportFragmentManager();
+//                    FragmentTransaction ft_self = fm_self.beginTransaction();
+//
+//                    bundle_self.putSerializable("user",user);
+//
+//                    fragment_self.setArguments(bundle_self);
+//
+//
+//                    ft_self.replace(R.id.fragment_container,)
+//                    ft_self.commit();
                 }
 
             }
