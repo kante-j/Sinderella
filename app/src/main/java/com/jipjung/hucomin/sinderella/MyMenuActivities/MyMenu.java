@@ -12,6 +12,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -84,6 +85,9 @@ public class MyMenu extends AppCompatActivity {
     private RadioButton profilemodify_small_foot;
     private RadioButton profilemodify_normal_foot;
     private RadioButton profilemodify_bigger_foot;
+    private RadioGroup profilemodify_foot_width_group;
+    private EditText profilemodify_password;
+    private Spinner profilemodify_foot_size;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,6 +182,7 @@ public class MyMenu extends AppCompatActivity {
                 if(profilemodify_check.isPressed()){
                     password_modify_layout.setVisibility(View.GONE);
                     btn_password.setVisibility(View.VISIBLE);
+                    fbUser.updatePassword(profilemodify_password.getText().toString());
                 }
             }
         });
@@ -214,6 +219,54 @@ public class MyMenu extends AppCompatActivity {
             StorageReference path = storageReference.child(user.getProfile_url());
             Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(profilemodify_Image);
         }
+
+        //TODO: mymenu 바뀌기
+
+        profilemodify_foot_width_group = findViewById(R.id.profilemodify_foot_width_group);
+        profilemodify_password = findViewById(R.id.profilemodify_password);
+
+
+        profilemodify_foot_width_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.profilemodify_small_foot:
+                        mFirestore.collection("users").document(user.getUser_id()).update("foot_width", "small");
+                        break;
+                    case R.id.profilemodify_normal_foot:
+                        mFirestore.collection("users").document(user.getUser_id()).update("foot_width", "normal");
+                        break;
+                    case R.id.profilemodify_bigger_foot:
+                        mFirestore.collection("users").document(user.getUser_id()).update("foot_width", "big");
+                        break;
+                }
+            }
+        });
+
+        foot_size.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("mypage_foot",foot_size.getSelectedItem().toString());
+                mFirestore.collection("users").document(user.getUser_id()).update("foot_size", Integer.valueOf(foot_size.getSelectedItem().toString()));
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //        filterbtn =v.findViewById(R.id.btn_filter);
