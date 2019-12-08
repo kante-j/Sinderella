@@ -30,6 +30,7 @@ public class InAppBrowser extends AppCompatActivity {
         inputurl = findViewById(R.id.uri);
         url = getIntent().getStringExtra("url");
         inputurl.setText(url);
+//        inputurl.setWidth();
         goURL(null,url);
 
         go.setOnClickListener(new View.OnClickListener() {
