@@ -227,32 +227,32 @@
                             android:textSize="15sp"
                             android:textStyle="bold" />
 
-                        <Button
-                            android:id="@+id/other_people_follower"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:background="@drawable/click_change_color"
-                            android:fontFamily="@font/gyeonggititle_medium"
-                            android:gravity="center"
-                            android:text="\n팔로워"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
 
+<!--                        <Button-->
+<!--                            android:id="@+id/other_people_follower"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:background="@drawable/click_change_color"-->
+<!--                            android:fontFamily="@font/gyeonggititle_medium"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="\n팔로워"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:textStyle="bold" />-->
 
-                        <Button
-                            android:id="@+id/other_people_following"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="center"
-                            android:layout_weight="1"
-                            android:background="@drawable/click_change_color"
-                            android:fontFamily="@font/gyeonggititle_medium"
-                            android:gravity="center"
-                            android:text="\n팔로잉"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
+<!--                        <Button-->
+<!--                            android:id="@+id/other_people_following"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="match_parent"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:background="@drawable/click_change_color"-->
+<!--                            android:fontFamily="@font/gyeonggititle_medium"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="\n팔로잉"-->
+<!--                            android:textSize="15sp"-->
+<!--                            android:textStyle="bold" />-->
 
                     </LinearLayout>
 
@@ -269,31 +269,31 @@
                             android:layout_weight="1"
                             android:fontFamily="@font/gyeonggititle_medium"
                             android:gravity="center"
-                            android:text="100"
+                            android:text=""
                             android:textSize="20sp" />
 
-                        <TextView
-                            android:id="@+id/num_follower"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginBottom="10dp"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/gyeonggititle_medium"
-                            android:gravity="center"
-                            android:text="100"
-                            android:textSize="20sp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/num_follower"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_centerHorizontal="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:layout_marginBottom="10dp"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:fontFamily="@font/gyeonggititle_medium"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="100"-->
+<!--                            android:textSize="20sp" />-->
 
-                        <TextView
-                            android:id="@+id/num_following"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/gyeonggititle_medium"
-                            android:gravity="center"
-                            android:text="100"
-                            android:textSize="20sp" />
+<!--                        <TextView-->
+<!--                            android:id="@+id/num_following"-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:fontFamily="@font/gyeonggititle_medium"-->
+<!--                            android:gravity="center"-->
+<!--                            android:text="100"-->
+<!--                            android:textSize="20sp" />-->
                     </LinearLayout>
 
 
