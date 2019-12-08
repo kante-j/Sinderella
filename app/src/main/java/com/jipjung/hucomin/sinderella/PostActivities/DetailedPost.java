@@ -198,7 +198,7 @@ public class DetailedPost extends AppCompatActivity {
         dTime.setText(intent.getStringExtra("TIME"));
         post_star_evaluation.setText(String.valueOf(post.getRating())+"점");
         star_evaluation.setRating(post.rating);
-        category.setText(post.getCategory());
+        category.setText(product.getCategory());
         price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(post.getPrice());
         price.setText("구매가격 : "+price_str);
         //price.setText("구매가격 : "+post.getPrice() );
