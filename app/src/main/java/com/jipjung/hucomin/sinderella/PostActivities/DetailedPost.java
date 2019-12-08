@@ -248,8 +248,8 @@ public class DetailedPost extends AppCompatActivity {
             cart_like_btn.setVisibility(View.GONE);
         }
 
-        if(user.getProfile_url() !=null){
-            StorageReference path = storageReference.child(user.getProfile_url());
+        if(post_user.getProfile_url() !=null){
+            StorageReference path = storageReference.child(post_user.getProfile_url());
             Glide.with(this).load(path)
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
         }
