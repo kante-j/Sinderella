@@ -248,11 +248,7 @@ public class DetailedPost extends AppCompatActivity {
             cart_like_btn.setVisibility(View.GONE);
         }
 
-        if(post_user.getProfile_url() !=null){
-            StorageReference path = storageReference.child(post_user.getProfile_url());
-            Glide.with(this).load(path)
-                    .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
-        }
+
 
         picture_post.setBackground(new ShapeDrawable(new OvalShape()));
         picture_post.setClipToOutline(true);
@@ -317,6 +313,11 @@ public class DetailedPost extends AppCompatActivity {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 post_user = documentSnapshot.toObject(User.class);
+                if(post_user.getProfile_url() !=null){
+                    StorageReference path = storageReference.child(post_user.getProfile_url());
+                    Glide.with(DetailedPost.this).load(path)
+                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
+                }
             }
         });
         other_people_page.setOnClickListener(new View.OnClickListener() {
