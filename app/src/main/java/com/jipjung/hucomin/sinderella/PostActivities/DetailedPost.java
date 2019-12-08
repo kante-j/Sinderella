@@ -3,6 +3,8 @@ package com.jipjung.hucomin.sinderella.PostActivities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -251,6 +253,9 @@ public class DetailedPost extends AppCompatActivity {
             Glide.with(this).load(path)
                     .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
         }
+
+        picture_post.setBackground(new ShapeDrawable(new OvalShape()));
+        picture_post.setClipToOutline(true);
 
         //중고품 거래 기능 글에만 note 텍스트뷰 보이게
 //        if(intent.getStringExtra("CATEGORY").equals("FTrans")){
