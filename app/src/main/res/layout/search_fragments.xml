@@ -42,7 +42,7 @@
                 android:layout_toLeftOf="@id/search_Enter"
                 android:layout_toRightOf="@id/searching_Image"
                 android:background="@null"
-                android:imeOptions="actionSearch"
+                android:imeOptions="actionDone|actionUnspecified"
                 android:textAlignment="textStart" />
 
             <ImageView

@@ -227,6 +227,7 @@
                         app:layout_constraintVertical_bias="0.676" />
                 </RelativeLayout>
 
+                <!--
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -263,6 +264,7 @@
                         app:layout_constraintVertical_bias="0.676" />
 
                 </LinearLayout>
+                -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
