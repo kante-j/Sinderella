@@ -348,6 +348,8 @@ public class Posting extends AppCompatActivity {
             if(product !=null){
                 docData.put("category",product.getCategory());
                 docData.put("product",product.getId());
+            }else{
+                docData.put("category","");
             }
 
             if(imagePath!=null){
