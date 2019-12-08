@@ -215,7 +215,7 @@ public class FCart extends Fragment {
 //                                    }
                                     types.sort(new FCart.CustomComparator().reversed());
 //                                    if (types.size() < 10) {
-//                                        mArrayList.addAll(types);
+                                        mArrayList.addAll(types);
 //                                    } else {
 //                                        for (int j = 0; j < 10; j++)
 //                                            mArrayList.add(types.get(j));
