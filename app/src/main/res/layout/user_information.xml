@@ -259,6 +259,7 @@
                     android:id="@+id/foot_height_group"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
+                    android:background="@drawable/user_information_input"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
