@@ -198,24 +198,23 @@ public class DetailedPost extends AppCompatActivity {
         dTime.setText(intent.getStringExtra("TIME"));
         post_star_evaluation.setText(String.valueOf(post.getRating())+"점");
         star_evaluation.setRating(post.rating);
-        category.setText(post.getCategory());
         price_str = NumberFormat.getCurrencyInstance(Locale.KOREA).format(post.getPrice());
         price.setText("구매가격 : "+price_str);
         //price.setText("구매가격 : "+post.getPrice() );
         size.setText("구매 사이즈 : "+String.valueOf(post.getShoe_size_num()));
         //음식점 추천 카테고리 글에만 위치 검색기능 버튼 활성화
-        if(intent.getStringExtra("CATEGORY").equals("FEatout")){
-            findLocationButton.setVisibility(View.VISIBLE);
-            findLocationButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent searchIntent = new Intent();
-                    searchIntent.setAction(Intent.ACTION_VIEW);
-                    searchIntent.setData(Uri.parse("geo:0,0?q="+dTitle.getText()));
-                    startActivity(searchIntent);
-                }
-            });
-        }
+//        if(intent.getStringExtra("CATEGORY").equals("FEatout")){
+//            findLocationButton.setVisibility(View.VISIBLE);
+//            findLocationButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent searchIntent = new Intent();
+//                    searchIntent.setAction(Intent.ACTION_VIEW);
+//                    searchIntent.setData(Uri.parse("geo:0,0?q="+dTitle.getText()));
+//                    startActivity(searchIntent);
+//                }
+//            });
+//        }
 
         cart_like_btn = findViewById(R.id.cart_like_btn);
         if(post.getProduct()!=null){
@@ -224,6 +223,8 @@ public class DetailedPost extends AppCompatActivity {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                     product = documentSnapshot.toObject(Product.class);
+
+                    category.setText(product.getCategory());
                     post_detail_cart.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
@@ -239,9 +240,9 @@ public class DetailedPost extends AppCompatActivity {
         }
 
         //중고품 거래 기능 글에만 note 텍스트뷰 보이게
-        if(intent.getStringExtra("CATEGORY").equals("FTrans")){
-            note.setVisibility(View.VISIBLE);
-        }
+//        if(intent.getStringExtra("CATEGORY").equals("FTrans")){
+//            note.setVisibility(View.VISIBLE);
+//        }
 
         dUrl = getIntent().getStringExtra("URL");
         if(dUrl != null){
