@@ -72,6 +72,7 @@ public class FMymenu extends Fragment {
     private Fragment fr;
     private FrameLayout follower_and_following_FrameLayout;
     private User user_self;
+    private FrameLayout mypage_commet_fragment_container;
 
 
     public FMymenu(){
@@ -93,6 +94,8 @@ public class FMymenu extends Fragment {
         text_foot_size = v.findViewById(R.id.mypage_foot_size);
         text_foot_width = v.findViewById(R.id.mypage_foot_width);
         mypage_profile_picture = v.findViewById(R.id.mypage_profile_picture);
+
+        mypage_commet_fragment_container =v.findViewById(R.id.mypage_commet_fragment_container);
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
@@ -116,12 +119,20 @@ public class FMymenu extends Fragment {
 
 
         /* 여기 까지*/
+
         Bundle userbundle = new Bundle();
         userbundle.putSerializable("user",user);
         fr = new FMyPosts();
         fr.setArguments(userbundle);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.beginTransaction().replace(R.id.mypage_commet_fragment_container,fr).commit();
+
+        // TODO: 게시물 있을 시 보이도록 하기!
+        if(user.toMap() != null){
+
+            mypage_commet_fragment_container.setVisibility(View.VISIBLE);
+
+        }
 
 
         go_profilecorrect = v.findViewById(R.id.mypage_btn_profile);
