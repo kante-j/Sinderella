@@ -182,50 +182,50 @@ public class FMymenu extends Fragment {
 
         //TODO: btn 색깔변화
 
-        followerbtn = v.findViewById(R.id.mypage_follower);
-        followingbtn=v.findViewById(R.id.mypage_following);
-        follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
-        follower_num = v.findViewById(R.id.follower_num);
-        following_num = v.findViewById(R.id.following_num);
-
-        //TODO: 추가적으로 follower and following layout 보이기
-        follower_and_following_FrameLayout = v.findViewById(R.id.mypage_follower_and_following);
-
-        Log.d("click",String.valueOf(followerbtn.isSelected()));
-        Log.d("click",String.valueOf(followingbtn.isSelected()));
-
-        followerbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Log.d("click","follower_true");
-                    followingbtn.setSelected(false);
-                    followingbtn.setTextColor(Color.BLACK);
-                    following_num.setTextColor(Color.BLACK);
-                    followerbtn.setSelected(true);
-                    followerbtn.setTextColor(Color.WHITE);
-                    follower_num.setTextColor(Color.WHITE);
-                    follow_framelayout.setVisibility(getView().VISIBLE);
-                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
-
-            }
-        });
-
-
-        followingbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                    Log.d("click","following_true");
-                    followerbtn.setSelected(false);
-                    followerbtn.setTextColor(Color.BLACK);
-                    follower_num.setTextColor(Color.BLACK);
-                    followingbtn.setSelected(true);
-                    followingbtn.setTextColor(Color.WHITE);
-                    following_num.setTextColor(Color.WHITE);
-                    follow_framelayout.setVisibility(getView().VISIBLE);
-                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
-
-            }
-        });
+//        followerbtn = v.findViewById(R.id.mypage_follower);
+//        followingbtn=v.findViewById(R.id.mypage_following);
+//        follow_framelayout = v.findViewById(R.id.mypage_follower_and_following);
+//        follower_num = v.findViewById(R.id.follower_num);
+//        following_num = v.findViewById(R.id.following_num);
+//
+//        //TODO: 추가적으로 follower and following layout 보이기
+//        follower_and_following_FrameLayout = v.findViewById(R.id.mypage_follower_and_following);
+//
+//        Log.d("click",String.valueOf(followerbtn.isSelected()));
+//        Log.d("click",String.valueOf(followingbtn.isSelected()));
+//
+//        followerbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                    Log.d("click","follower_true");
+//                    followingbtn.setSelected(false);
+//                    followingbtn.setTextColor(Color.BLACK);
+//                    following_num.setTextColor(Color.BLACK);
+//                    followerbtn.setSelected(true);
+//                    followerbtn.setTextColor(Color.WHITE);
+//                    follower_num.setTextColor(Color.WHITE);
+//                    follow_framelayout.setVisibility(getView().VISIBLE);
+//                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
+//
+//            }
+//        });
+//
+//
+//        followingbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                    Log.d("click","following_true");
+//                    followerbtn.setSelected(false);
+//                    followerbtn.setTextColor(Color.BLACK);
+//                    follower_num.setTextColor(Color.BLACK);
+//                    followingbtn.setSelected(true);
+//                    followingbtn.setTextColor(Color.WHITE);
+//                    following_num.setTextColor(Color.WHITE);
+//                    follow_framelayout.setVisibility(getView().VISIBLE);
+//                    follower_and_following_FrameLayout.setVisibility(getView().VISIBLE);
+//
+//            }
+//        });
 
 
 

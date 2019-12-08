@@ -187,98 +187,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="19dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="19dp"
-                android:gravity="center">
-
-                <LinearLayout
-                    android:id="@+id/mypage_followLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/mypage_follower"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:background="@drawable/click_change_color"
-                        android:fontFamily="@font/gyeonggititle_medium"
-                        android:gravity="center"
-                        android:text="\n팔로워"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                    <Button
-                        android:id="@+id/mypage_following"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:background="@drawable/click_change_color"
-                        android:fontFamily="@font/gyeonggititle_medium"
-                        android:gravity="center"
-                        android:text="\n팔로잉"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/follow_num_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/follower_num"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/gyeonggititle_medium"
-                        android:gravity="center"
-                        android:text=""
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/following_num"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:fontFamily="@font/gyeonggititle_medium"
-                        android:gravity="center"
-                        android:text=""
-                        android:textSize="20sp" />
-                </LinearLayout>
-
-
-            </RelativeLayout>
-
-            <FrameLayout
-                android:id="@+id/mypage_follower_and_following"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_above="@id/mypage_commet_container_layout"
-                android:layout_below="@+id/mypage_followLayout"
-                android:layout_gravity="center"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="1dp"
-                android:layout_marginEnd="20dp"
-                android:background="@drawable/mypage_post_listbox"
-                android:visibility="gone">
-
-            </FrameLayout>
-
-            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 >
@@ -314,7 +222,7 @@
                 <FrameLayout
                     android:id="@+id/mypage_commet_fragment_container"
                     android:layout_width="match_parent"
-                    android:layout_height="320dp"
+                    android:layout_height="385dp"
                     android:layout_below="@id/mypage_commet_container_layout"
                     android:layout_gravity="center"
                     android:layout_marginStart="16dp"
