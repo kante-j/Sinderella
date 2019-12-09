@@ -39,7 +39,9 @@ public class InAppBrowser extends AppCompatActivity {
                 weburi = inputurl.getText().toString();
                 if(weburi.startsWith("http://")) {
                     webView.loadUrl(weburi);
-                } else {
+                }else if(weburi.startsWith("https://")){
+                    webView.loadUrl(weburi);
+                }else{
                     webView.loadUrl("http://" + weburi); }
             }
         });
@@ -59,6 +61,8 @@ public class InAppBrowser extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient()); // 이걸 안해주면 새창이 뜸
         if(url.startsWith("http://")) {
             webView.loadUrl(url);
+        }else if(weburi.startsWith("https://")){
+            webView.loadUrl(weburi);
         } else {
             webView.loadUrl("http://" + url); }
 
