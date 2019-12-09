@@ -217,7 +217,7 @@ public class MyMenu extends AppCompatActivity {
             profilemodify_picture.setVisibility(View.GONE);
             profilemodify_Image.setVisibility(View.VISIBLE);
             StorageReference path = storageReference.child(user.getProfile_url());
-            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(profilemodify_Image);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(profilemodify_Image);
         }
 
         //TODO: mymenu 바뀌기

@@ -159,7 +159,7 @@ public class FMymenu extends Fragment {
         if(user.getProfile_url() !=null){
 
             StorageReference path = storageReference.child(user.getProfile_url());
-            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(mypage_profile_picture);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(mypage_profile_picture);
         }
 
         logoutbtn = v.findViewById(R.id.mypage_logout);

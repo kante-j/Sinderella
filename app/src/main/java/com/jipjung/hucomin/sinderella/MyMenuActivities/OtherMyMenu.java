@@ -102,7 +102,7 @@ public class OtherMyMenu extends AppCompatActivity {
 
         if (post_user.getProfile_url()!=null) {
             StorageReference path = storageRef.child("/profiles/"+post_user.getUser_id());
-            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true).centerCrop().into(mypage_profile_picture);
 //            holder.url = product.getImage_url();
         }

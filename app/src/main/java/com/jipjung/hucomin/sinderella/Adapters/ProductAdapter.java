@@ -100,7 +100,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         if (product.getImage_url() != null) {
             StorageReference path = storageRef.child(product.image_url);
-            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(holder.image);
+            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.image);
 //            holder.url = product.getImage_url();
         }
         else {

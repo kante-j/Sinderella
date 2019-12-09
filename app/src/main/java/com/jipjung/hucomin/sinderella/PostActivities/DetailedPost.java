@@ -38,6 +38,7 @@ import com.github.chrisbanes.photoview.PhotoViewAttacher;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.jipjung.hucomin.sinderella.Adapters.CommentAdapter;
 import com.jipjung.hucomin.sinderella.CartActivities.CartDetail;
+import com.jipjung.hucomin.sinderella.Classes.Cart;
 import com.jipjung.hucomin.sinderella.Classes.Comment;
 import com.jipjung.hucomin.sinderella.Classes.Follow;
 import com.jipjung.hucomin.sinderella.Classes.Like;
@@ -142,6 +143,7 @@ public class DetailedPost extends AppCompatActivity {
     private LinearLayout review_layout;
     private LinearLayout other_people_page;
     private ImageView picture_post;
+    private Cart cart;
 
     //    private Post p;
     @Override
@@ -225,6 +227,18 @@ public class DetailedPost extends AppCompatActivity {
 //            });
 //        }
 
+        firebaseFirestore.collection("carts").whereEqualTo("product_id",product.getId()).whereEqualTo("user_id",user.getUser_id()).get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if(!queryDocumentSnapshots.isEmpty()){
+                            cart = queryDocumentSnapshots.toObjects(Cart.class).get(0);
+                        }else{
+                            return;
+                        }
+                    }
+                });
+
         cart_like_btn = findViewById(R.id.cart_like_btn);
         if(post.getProduct()!=null){
             firebaseFirestore.collection("products").document(post.getProduct())
@@ -238,7 +252,10 @@ public class DetailedPost extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             Intent intent = new Intent(DetailedPost.this, CartDetail.class);
+                            intent.putExtra("user",user);
                             intent.putExtra("product", product);
+                            intent.putExtra("cart",cart);
+
                             startActivity(intent);
                         }
                     });
@@ -288,7 +305,7 @@ public class DetailedPost extends AppCompatActivity {
         sr = fs.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         if(dUrl != null){
             StorageReference path = sr.child(dUrl);
-            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(dImage);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(dImage);
         }
 
         commentListView = (ListView)findViewById(R.id.list_comments);
@@ -316,7 +333,7 @@ public class DetailedPost extends AppCompatActivity {
                 if(post_user.getProfile_url() !=null){
                     StorageReference path = storageReference.child(post_user.getProfile_url());
                     Glide.with(DetailedPost.this).load(path)
-                            .diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(picture_post);
+                            .diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(picture_post);
                 }
             }
         });
