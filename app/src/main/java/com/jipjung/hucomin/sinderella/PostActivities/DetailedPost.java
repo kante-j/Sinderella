@@ -227,17 +227,20 @@ public class DetailedPost extends AppCompatActivity {
 //            });
 //        }
 
-        firebaseFirestore.collection("carts").whereEqualTo("product_id",product.getId()).whereEqualTo("user_id",user.getUser_id()).get()
-                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                    @Override
-                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                        if(!queryDocumentSnapshots.isEmpty()){
-                            cart = queryDocumentSnapshots.toObjects(Cart.class).get(0);
-                        }else{
-                            return;
+        if(product!=null){
+            firebaseFirestore.collection("carts").whereEqualTo("product_id",product.getId()).whereEqualTo("user_id",user.getUser_id()).get()
+                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                        @Override
+                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                            if(!queryDocumentSnapshots.isEmpty()){
+                                cart = queryDocumentSnapshots.toObjects(Cart.class).get(0);
+                            }else{
+                                return;
+                            }
                         }
-                    }
-                });
+                    });
+        }
+
 
         cart_like_btn = findViewById(R.id.cart_like_btn);
         if(post.getProduct()!=null){
@@ -305,7 +308,7 @@ public class DetailedPost extends AppCompatActivity {
         sr = fs.getReferenceFromUrl("gs://sinderella-d45a8.appspot.com");
         if(dUrl != null){
             StorageReference path = sr.child(dUrl);
-            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(dImage);
+            Glide.with(this).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(dImage);
         }
 
         commentListView = (ListView)findViewById(R.id.list_comments);
@@ -416,6 +419,7 @@ public class DetailedPost extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(DetailedPost.this, InAppBrowser.class);
                 intent.putExtra("url", post.getBuyURL());
+                Log.d("qweqwe",post.getBuyURL());
                 startActivity(intent);
             }
         });

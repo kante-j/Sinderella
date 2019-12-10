@@ -287,7 +287,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 //        }
         if (post.getImageURL() != null) {
             StorageReference path = storageRef.child(post.image_url);
-            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.NONE).skipMemoryCache(true).into(holder.image);
+            Glide.with(this.context).load(path).diskCacheStrategy(DiskCacheStrategy.RESOURCE).skipMemoryCache(true).into(holder.image);
             holder.url = post.getImageURL();
         }
         else {

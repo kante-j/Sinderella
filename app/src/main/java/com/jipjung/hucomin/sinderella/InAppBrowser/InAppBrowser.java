@@ -1,6 +1,7 @@
 package com.jipjung.hucomin.sinderella.InAppBrowser;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -59,9 +60,10 @@ public class InAppBrowser extends AppCompatActivity {
 
     public void goURL(View view, String url){
         webView.setWebViewClient(new WebViewClient()); // 이걸 안해주면 새창이 뜸
+        Log.d("qweqwe",url);
         if(url.startsWith("http://")) {
             webView.loadUrl(url);
-        }else if(weburi.startsWith("https://")){
+        }else if(url.startsWith("https://")){
             webView.loadUrl(weburi);
         } else {
             webView.loadUrl("http://" + url); }
