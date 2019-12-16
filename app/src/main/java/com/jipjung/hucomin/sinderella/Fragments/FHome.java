@@ -1,6 +1,7 @@
 package com.jipjung.hucomin.sinderella.Fragments;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 
@@ -67,6 +68,8 @@ public class FHome extends Fragment {
     private CheckBox normal_foot_checkbox;
     private CheckBox bigger_foot_checkbox;
     private ListView listView;
+    private Button total_post_btn;
+    private Button same_foot_post_btn;
 
 
     public FHome() {
@@ -153,6 +156,38 @@ public class FHome extends Fragment {
                 swipeContainer.setRefreshing(false);
             }
         });
+
+        //TODO: 버튼 색 변경
+        total_post_btn =v.findViewById(R.id.total_post_btn);
+        same_foot_post_btn =v.findViewById(R.id.same_foot_post_btn);
+
+        total_post_btn.setSelected(true);
+        total_post_btn.setTextColor(Color.WHITE);
+
+        total_post_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("click","follower_true");
+                same_foot_post_btn.setSelected(false);
+                same_foot_post_btn.setTextColor(Color.BLACK);
+                total_post_btn.setSelected(true);
+                total_post_btn.setTextColor(Color.WHITE);
+            }
+        });
+
+        same_foot_post_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("click",String.valueOf(same_foot_post_btn.isSelected()));
+
+                total_post_btn.setSelected(false);
+                total_post_btn.setTextColor(Color.BLACK);
+                same_foot_post_btn.setSelected(true);
+                same_foot_post_btn.setTextColor(Color.WHITE);
+            }
+        });
+
+
         return v;
     }
 
